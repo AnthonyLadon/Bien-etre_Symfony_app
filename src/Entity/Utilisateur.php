@@ -40,6 +40,9 @@ class Utilisateur
     #[ORM\Column]
     private ?bool $confirmationInscription = null;
 
+    #[ORM\OneToOne(mappedBy: 'utilisateurID', cascade: ['persist', 'remove'])]
+    private ?Prestataire $prestataire = null;
+
 
 
     public function getId(): ?int
@@ -151,6 +154,23 @@ class Utilisateur
     public function setConfirmationInscription(bool $confirmationInscription): self
     {
         $this->confirmationInscription = $confirmationInscription;
+
+        return $this;
+    }
+
+    public function getPrestataire(): ?Prestataire
+    {
+        return $this->prestataire;
+    }
+
+    public function setPrestataire(Prestataire $prestataire): self
+    {
+        // set the owning side of the relation if necessary
+        if ($prestataire->getUtilisateurID() !== $this) {
+            $prestataire->setUtilisateurID($this);
+        }
+
+        $this->prestataire = $prestataire;
 
         return $this;
     }

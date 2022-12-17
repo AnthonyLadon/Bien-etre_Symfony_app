@@ -25,6 +25,10 @@ class Prestataire
     #[ORM\Column]
     private ?int $tvaNum = null;
 
+    #[ORM\OneToOne(inversedBy: 'prestataire', cascade: ['persist', 'remove'])]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Utilisateur $utilisateurID = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -74,6 +78,18 @@ class Prestataire
     public function setTvaNum(int $tvaNum): self
     {
         $this->tvaNum = $tvaNum;
+
+        return $this;
+    }
+
+    public function getUtilisateurID(): ?Utilisateur
+    {
+        return $this->utilisateurID;
+    }
+
+    public function setUtilisateurID(Utilisateur $utilisateurID): self
+    {
+        $this->utilisateurID = $utilisateurID;
 
         return $this;
     }
