@@ -3,7 +3,6 @@
 namespace App\Entity;
 
 use App\Repository\UtilisateurRepository;
-use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: UtilisateurRepository::class)]
@@ -14,47 +13,34 @@ class Utilisateur
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $email = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $motDePasse = null;
 
-    #[ORM\Column]
+    #[ORM\Column(nullable: true)]
     private ?int $adresseNum = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $adresseRue = null;
 
-    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    private ?\DateTimeInterface $inscriptionDate = null;
-
     #[ORM\Column(length: 255)]
-    private ?string $typeUtilisateur = null;
+    private ?string $dateInscription = null;
 
     #[ORM\Column]
-    private ?int $nbEssais = null;
+    private ?int $typeUtilisateur = null;
+
+    #[ORM\Column]
+    private ?int $NbEssais = null;
 
     #[ORM\Column]
     private ?bool $banni = null;
 
     #[ORM\Column]
-    private ?bool $confirmInscription = null;
+    private ?bool $confirmationInscription = null;
 
-    #[ORM\Column]
-    private ?int $utilisateurId = null;
 
-    #[ORM\Column(nullable: true)]
-    private ?int $codePostalId = null;
-
-    #[ORM\Column(nullable: true)]
-    private ?int $communeId = null;
-
-    #[ORM\Column]
-    private ?int $InternauteId = null;
-
-    #[ORM\Column]
-    private ?int $localiteId = null;
 
     public function getId(): ?int
     {
@@ -66,7 +52,7 @@ class Utilisateur
         return $this->email;
     }
 
-    public function setEmail(string $email): self
+    public function setEmail(?string $email): self
     {
         $this->email = $email;
 
@@ -78,7 +64,7 @@ class Utilisateur
         return $this->motDePasse;
     }
 
-    public function setMotDePasse(string $motDePasse): self
+    public function setMotDePasse(?string $motDePasse): self
     {
         $this->motDePasse = $motDePasse;
 
@@ -90,7 +76,7 @@ class Utilisateur
         return $this->adresseNum;
     }
 
-    public function setAdresseNum(int $adresseNum): self
+    public function setAdresseNum(?int $adresseNum): self
     {
         $this->adresseNum = $adresseNum;
 
@@ -102,31 +88,31 @@ class Utilisateur
         return $this->adresseRue;
     }
 
-    public function setAdresseRue(string $adresseRue): self
+    public function setAdresseRue(?string $adresseRue): self
     {
         $this->adresseRue = $adresseRue;
 
         return $this;
     }
 
-    public function getInscriptionDate(): ?\DateTimeInterface
+    public function getDateInscription(): ?string
     {
-        return $this->inscriptionDate;
+        return $this->dateInscription;
     }
 
-    public function setInscriptionDate(\DateTimeInterface $inscriptionDate): self
+    public function setDateInscription(string $dateInscription): self
     {
-        $this->inscriptionDate = $inscriptionDate;
+        $this->dateInscription = $dateInscription;
 
         return $this;
     }
 
-    public function getTypeUtilisateur(): ?string
+    public function getTypeUtilisateur(): ?int
     {
         return $this->typeUtilisateur;
     }
 
-    public function setTypeUtilisateur(string $typeUtilisateur): self
+    public function setTypeUtilisateur(int $typeUtilisateur): self
     {
         $this->typeUtilisateur = $typeUtilisateur;
 
@@ -135,12 +121,12 @@ class Utilisateur
 
     public function getNbEssais(): ?int
     {
-        return $this->nbEssais;
+        return $this->NbEssais;
     }
 
-    public function setNbEssais(int $nbEssais): self
+    public function setNbEssais(int $NbEssais): self
     {
-        $this->nbEssais = $nbEssais;
+        $this->NbEssais = $NbEssais;
 
         return $this;
     }
@@ -157,74 +143,14 @@ class Utilisateur
         return $this;
     }
 
-    public function isConfirmInscription(): ?bool
+    public function isConfirmationInscription(): ?bool
     {
-        return $this->confirmInscription;
+        return $this->confirmationInscription;
     }
 
-    public function setConfirmInscription(bool $confirmInscription): self
+    public function setConfirmationInscription(bool $confirmationInscription): self
     {
-        $this->confirmInscription = $confirmInscription;
-
-        return $this;
-    }
-
-    public function getUtilisateurId(): ?int
-    {
-        return $this->utilisateurId;
-    }
-
-    public function setUtilisateurId(int $utilisateurId): self
-    {
-        $this->utilisateurId = $utilisateurId;
-
-        return $this;
-    }
-
-    public function getCodePostalId(): ?int
-    {
-        return $this->codePostalId;
-    }
-
-    public function setCodePostalId(?int $codePostalId): self
-    {
-        $this->codePostalId = $codePostalId;
-
-        return $this;
-    }
-
-    public function getCommuneId(): ?int
-    {
-        return $this->communeId;
-    }
-
-    public function setCommuneId(?int $communeId): self
-    {
-        $this->communeId = $communeId;
-
-        return $this;
-    }
-
-    public function getInternauteId(): ?int
-    {
-        return $this->InternauteId;
-    }
-
-    public function setInternauteId(int $InternauteId): self
-    {
-        $this->InternauteId = $InternauteId;
-
-        return $this;
-    }
-
-    public function getLocaliteId(): ?int
-    {
-        return $this->localiteId;
-    }
-
-    public function setLocaliteId(int $localiteId): self
-    {
-        $this->localiteId = $localiteId;
+        $this->confirmationInscription = $confirmationInscription;
 
         return $this;
     }
