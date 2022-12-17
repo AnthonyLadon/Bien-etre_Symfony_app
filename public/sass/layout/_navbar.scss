@@ -1,0 +1,23 @@
+
+
+
+
+
+
+
+
+@media screen and (min-width: $laptop-break) {
+
+
+    nav{
+        display: flex;
+    
+        ul{
+            margin: 0 auto;
+            width: 60%;
+            display: flex;
+            justify-content: space-evenly;
+        }
+    }
+
+}

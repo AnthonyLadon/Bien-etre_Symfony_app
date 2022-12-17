@@ -3,15 +3,31 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>
-			{% block title %}Bien-etre
-			{% endblock %}
+			{% block title %}{% endblock %}
 		</title>
 
-		{% block stylesheets %}{% endblock %}
-
-		{% block javascripts %}{% endblock %}
+		{% block stylesheets %}
+			<link rel="stylesheet" href="{{asset ('css/screen.css')}}">
+		{% endblock %}
 	</head>
 	<body>
+		{% block nav %}
+			<nav>
+				<div>Logo</div>
+				<ul>
+					<li><a href="">gferezg</a></li>
+					<li><a href="">fhfgthgfg</a></li>
+					<li><a href="">kuyg</a></li>
+					<li><a href="">uyfghg</a></li>
+				</ul>
+			</nav>
+
+
+		{% endblock %}
 		{% block body %}{% endblock %}
 	</body>
+	{% block footer %}{% endblock %}
+	{% block javascripts %}
+		<script src="{{asset ('js/main.js')}}"></script>
+	{% endblock %}
 </html>
