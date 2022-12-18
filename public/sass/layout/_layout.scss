@@ -9,9 +9,14 @@ body {
 
 
   .l-main-logo{
-    width: 12rem;
+
+    img{
+    border-radius: 12px 12px 12px 50px;
+    width: 9rem;
     position: relative;
     left: 65%;
+    top: 1rem;
+  }
   }
 
   
@@ -21,8 +26,25 @@ body {
   @media screen and (min-width: $tablet-break){
 
     .l-main-logo{
-      width: 12rem;
+      width: 8rem;
+      position: relative;
+      left: 60%;
+      top: 2rem;
+    }
+  }
+
+
+
+
+
+//************************************************************************************************
+
+  @media screen and (min-width: $laptop-break){
+
+    .l-main-logo{
+      width: 8rem;
       position: relative;
       left: 75%;
+      top: 0;
     }
   }

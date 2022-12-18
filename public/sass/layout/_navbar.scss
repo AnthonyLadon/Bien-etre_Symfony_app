@@ -9,7 +9,7 @@
     top: 50%;
     width: 32px;
     height: 3px;
-    background-color: black;
+    background-color: #1b6866;
     transition: all 400ms cubic-bezier(.84,.06,.52,1.8);
 }
 
@@ -27,7 +27,7 @@
   position: absolute;
   height: 60px;
   width: 60px;
-  top: 5%;
+  top: 3%;
   left: 3%;
   z-index: 1000;
   cursor: pointer;
@@ -56,9 +56,13 @@
 }
 
 
+.wrap-menu{
+  height: 32rem;
+}
+
 // Menu 
 .l-main-nav {
-  background: #0288D1;
+  background: #4e9b7a;
   position: absolute;
   top: 0;
   left: 0;
@@ -72,12 +76,12 @@
   ul {
     margin: 0;
     position: absolute;
-    top: 30%;
-    left: 25%;
+    top: 20%;
+    left: 35%;
     a{
       list-style: none;
       font-size: 24px;
-      color: #fff;
+      color: #ffd960;
       line-height: 2.2;
       text-transform: uppercase;
       letter-spacing: 1.7px;
@@ -86,7 +90,7 @@
 }
 
  nav.show {
-   width: 50%;
+   width: 60%;
    opacity: 1;
 }
 
@@ -95,7 +99,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  background: #64B5F6;
+  background: #1b6866;
   height: 100%;
   width: 0%;
   transition: all 500ms cubic-bezier(.62,.04,.3,1.8);
@@ -105,7 +109,7 @@
 }
 
 .dark-blue.slide {
-  width: 50%;
+  width: 60%;
   opacity: 1;
 }
 
@@ -115,6 +119,11 @@
 
 
 @media screen and (min-width: $tablet-break) {
+
+
+  .wrap-menu{
+    max-width: 700px;
+  }
 
     .hamburger-icon{
       display: none;
@@ -128,24 +137,30 @@
       background: unset;
       opacity: 100%;
       transition: unset;
+      
 
       ul {
         top: 0%;
-        margin: 0 0 0 3rem;
+        left: 0%;
+        margin: 0 0 0 1rem;
         display: flex;
         flex-wrap: nowrap;
         justify-content: space-evenly;
 
         li{
-          margin: 0 1rem;
+          padding: 0 0.5rem;
         }
 
         a{
           list-style: none;
-          font-size: 1rem;
-          color: black;
-          line-height: 2.2;
-          text-transform: uppercase;
+          font-size: 0.8rem;
+          color: #1b6866;
+          text-transform: unset;
+          letter-spacing: 1px;
+          }
+
+          a:hover{
+            color: #4e9b7a;
           }
         }
       }
@@ -155,4 +170,17 @@
      }
 
 
+    }
+
+
+
+    // ****************************************************************
+
+
+    @media screen and (min-width: $tablet-break){
+
+      .wrap-menu{
+        max-width: 1000px;
+        margin: 0 auto;
+      }
     }
