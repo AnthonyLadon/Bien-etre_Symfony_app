@@ -1,0 +1,31 @@
+
+
+// navbar menu hmaburger
+
+@keyframes slideIn {
+    0% {
+      width: 0%;
+      opacity: 0;
+    }
+    
+    100% {
+      width: 50%;
+      opacity: 1;
+    }
+  }
+
+  // Titre h1 ease-in 
+
+  @keyframes shotup {
+    0% {
+      transform: translateY(300%) ;
+      opacity: 0;
+    }
+    90% {
+      transform: translateY(-50px);
+    }
+    100% {
+      transform: translateY(0%) ;
+      opacity: 1;
+    }
+  }

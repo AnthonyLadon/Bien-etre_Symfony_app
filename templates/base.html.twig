@@ -8,26 +8,40 @@
 
 		{% block stylesheets %}
 			<link rel="stylesheet" href="{{asset ('css/screen.css')}}">
+			<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 		{% endblock %}
 	</head>
 	<body>
 		{% block nav %}
-			<nav>
-				<div>Logo</div>
+			<div class="hamburger-icon" id="icon">
+				<div class="icon-1" id="a"></div>
+				<div class="icon-2" id="b"></div>
+				<div class="icon-3" id="c"></div>
+				<div class="clear"></div>
+			</div>
+
+			<nav class="l-main-nav" id="nav">
 				<ul>
-					<li><a href="">gferezg</a></li>
-					<li><a href="">fhfgthgfg</a></li>
-					<li><a href="">kuyg</a></li>
-					<li><a href="">uyfghg</a></li>
+					<li><a href="#">Home</a></li>
+					<li><a href="#">catégories</a></li>
+					<li><a href="#">Stages</a></li>
+					<li><a href="#">contact</a></li>
 				</ul>
 			</nav>
-
-
+			<div class='l-main-logo'>
+				<img src="{{asset ('images/logo1.png')}}" alt="image-logo">
+			</div>
+			<div class="dark-blue" id="blue"></div>
 		{% endblock %}
-		{% block body %}{% endblock %}
-	</body>
-	{% block footer %}{% endblock %}
-	{% block javascripts %}
-		<script src="{{asset ('js/main.js')}}"></script>
-	{% endblock %}
-</html>
+
+		<div class="ease-in-title"> {% block titreh1 %}{% endblock %}
+
+			</div>
+		</body>
+	</html>
+</div>
+{% block body %}{% endblock %}
+{% block footer %}{% endblock %}
+{% block javascripts %}
+	<script src="{{asset ('js/main.js')}}"></script>
+{% endblock %}</body></html>

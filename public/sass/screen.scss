@@ -3,7 +3,11 @@
 // Base
 @import "base/reset";
 @import "base/variables";
+@import "base/annimations";
 
 // Layout
 @import "layout/layout";
 @import "layout/navbar";
+
+// modules
+@import "modules/home-title";

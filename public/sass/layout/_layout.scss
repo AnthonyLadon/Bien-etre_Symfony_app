@@ -1,1 +1,28 @@
 
+
+@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
+
+
+body {
+    font-family: 'montserrat',roboto;
+  }
+
+
+  .l-main-logo{
+    width: 12rem;
+    position: relative;
+    left: 65%;
+  }
+
+  
+
+//************************************************************************************************
+
+  @media screen and (min-width: $tablet-break){
+
+    .l-main-logo{
+      width: 12rem;
+      position: relative;
+      left: 75%;
+    }
+  }
