@@ -9,7 +9,7 @@
     top: 50%;
     width: 32px;
     height: 3px;
-    background-color: #1b6866;
+    background-color: $main-color;
     transition: all 400ms cubic-bezier(.84,.06,.52,1.8);
 }
 
@@ -62,7 +62,7 @@
 
 // Menu 
 .l-main-nav {
-  background: #4e9b7a;
+  background: $secondary-color;
   position: absolute;
   top: 0;
   left: 0;
@@ -99,7 +99,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  background: #1b6866;
+  background: $main-color;
   height: 100%;
   width: 0%;
   transition: all 500ms cubic-bezier(.62,.04,.3,1.8);
@@ -154,13 +154,13 @@
         a{
           list-style: none;
           font-size: 0.8rem;
-          color: #1b6866;
+          color: $main-color;
           text-transform: unset;
           letter-spacing: 1px;
           }
 
           a:hover{
-            color: #4e9b7a;
+            color: $secondary-color;
           }
         }
       }
