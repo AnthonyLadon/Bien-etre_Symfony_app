@@ -3,21 +3,30 @@
 namespace App\Entity;
 
 use App\Repository\UtilisateurRepository;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: UtilisateurRepository::class)]
-class Utilisateur
+class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
+    #[ORM\Column(length: 180, unique: true)]
     private ?string $email = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $motDePasse = null;
+    #[ORM\Column]
+    private array $roles = [];
+
+    /**
+     * @var string The hashed password
+     */
+    #[ORM\Column]
+    private ?string $password = null;
 
     #[ORM\Column(nullable: true)]
     private ?int $adresseNum = null;
@@ -25,25 +34,20 @@ class Utilisateur
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $adresseRue = null;
 
+    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    private ?\DateTimeInterface $dateInscription = null;
+
     #[ORM\Column(length: 255)]
-    private ?string $dateInscription = null;
+    private ?string $typeUtilisateur = null;
 
     #[ORM\Column]
-    private ?int $typeUtilisateur = null;
-
-    #[ORM\Column]
-    private ?int $NbEssais = null;
+    private ?int $nbEssais = null;
 
     #[ORM\Column]
     private ?bool $banni = null;
 
     #[ORM\Column]
-    private ?bool $confirmationInscription = null;
-
-    #[ORM\OneToOne(mappedBy: 'utilisateurID', cascade: ['persist', 'remove'])]
-    private ?Prestataire $prestataire = null;
-
-
+    private ?bool $confirmationInscription = false;
 
     public function getId(): ?int
     {
@@ -55,23 +59,83 @@ class Utilisateur
         return $this->email;
     }
 
-    public function setEmail(?string $email): self
+    public function setEmail(string $email): self
     {
         $this->email = $email;
 
         return $this;
     }
 
-    public function getMotDePasse(): ?string
+    /**
+     * A visual identifier that represents this user.
+     *
+     * @see UserInterface
+     */
+    public function getUserIdentifier(): string
     {
-        return $this->motDePasse;
+        return (string) $this->email;
     }
 
-    public function setMotDePasse(?string $motDePasse): self
+    /**
+     * @deprecated since Symfony 5.3, use getUserIdentifier instead
+     */
+    public function getUsername(): string
     {
-        $this->motDePasse = $motDePasse;
+        return (string) $this->email;
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function getRoles(): array
+    {
+        $roles = $this->roles;
+        // guarantee every user at least has ROLE_USER
+        $roles[] = 'ROLE_USER';
+
+        return array_unique($roles);
+    }
+
+    public function setRoles(array $roles): self
+    {
+        $this->roles = $roles;
 
         return $this;
+    }
+
+    /**
+     * @see PasswordAuthenticatedUserInterface
+     */
+    public function getPassword(): string
+    {
+        return $this->password;
+    }
+
+    public function setPassword(string $password): self
+    {
+        $this->password = $password;
+
+        return $this;
+    }
+
+    /**
+     * Returning a salt is only needed, if you are not using a modern
+     * hashing algorithm (e.g. bcrypt or sodium) in your security.yaml.
+     *
+     * @see UserInterface
+     */
+    public function getSalt(): ?string
+    {
+        return null;
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function eraseCredentials()
+    {
+        // If you store any temporary, sensitive data on the user, clear it here
+        // $this->plainPassword = null;
     }
 
     public function getAdresseNum(): ?int
@@ -98,24 +162,24 @@ class Utilisateur
         return $this;
     }
 
-    public function getDateInscription(): ?string
+    public function getDateInscription(): ?\DateTimeInterface
     {
         return $this->dateInscription;
     }
 
-    public function setDateInscription(string $dateInscription): self
+    public function setDateInscription(\DateTimeInterface $dateInscription): self
     {
         $this->dateInscription = $dateInscription;
 
         return $this;
     }
 
-    public function getTypeUtilisateur(): ?int
+    public function getTypeUtilisateur(): ?string
     {
         return $this->typeUtilisateur;
     }
 
-    public function setTypeUtilisateur(int $typeUtilisateur): self
+    public function setTypeUtilisateur(string $typeUtilisateur): self
     {
         $this->typeUtilisateur = $typeUtilisateur;
 
@@ -124,12 +188,12 @@ class Utilisateur
 
     public function getNbEssais(): ?int
     {
-        return $this->NbEssais;
+        return $this->nbEssais;
     }
 
-    public function setNbEssais(int $NbEssais): self
+    public function setNbEssais(int $nbEssais): self
     {
-        $this->NbEssais = $NbEssais;
+        $this->nbEssais = $nbEssais;
 
         return $this;
     }
@@ -154,23 +218,6 @@ class Utilisateur
     public function setConfirmationInscription(bool $confirmationInscription): self
     {
         $this->confirmationInscription = $confirmationInscription;
-
-        return $this;
-    }
-
-    public function getPrestataire(): ?Prestataire
-    {
-        return $this->prestataire;
-    }
-
-    public function setPrestataire(Prestataire $prestataire): self
-    {
-        // set the owning side of the relation if necessary
-        if ($prestataire->getUtilisateurID() !== $this) {
-            $prestataire->setUtilisateurID($this);
-        }
-
-        $this->prestataire = $prestataire;
 
         return $this;
     }
