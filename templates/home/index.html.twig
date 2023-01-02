@@ -13,68 +13,67 @@
 			<input type="search" placeholder="Recherche">
 		</form>
 	</div>
-	<div class="carousel">
-		<p>Images gérées par l'admin:
-		</p>
-		<ul class="slides">
-			<input type="radio" name="radio-buttons" id="img-1" checked/>
-			<li class="slide-container">
-				<div class="slide-image">
-					<img src="{{asset ('images/wellness/wellness1.jpeg')}}">
-				</div>
-				<div class="carousel-controls">
-					<label for="img-3" class="prev-slide">
-						<span>&lsaquo;</span>
-					</label>
-					<label for="img-2" class="next-slide">
-						<span>&rsaquo;</span>
-					</label>
-				</div>
-			</li>
-			<input type="radio" name="radio-buttons" id="img-2"/>
-			<li class="slide-container">
-				<div class="slide-image">
-					<img src="{{asset ('images/wellness/wellness2.jpeg')}}">
-				</div>
-				<div class="carousel-controls">
-					<label for="img-1" class="prev-slide">
-						<span>&lsaquo;</span>
-					</label>
-					<label for="img-3" class="next-slide">
-						<span>&rsaquo;</span>
-					</label>
-				</div>
-			</li>
-			<input type="radio" name="radio-buttons" id="img-3"/>
-			<li class="slide-container">
-				<div class="slide-image">
-					<img src="{{asset ('images/wellness/wellness3.jpeg')}}">
-				</div>
-				<div class="carousel-controls">
-					<label for="img-2" class="prev-slide">
-						<span>&lsaquo;</span>
-					</label>
-					<label for="img-1" class="next-slide">
-						<span>&rsaquo;</span>
-					</label>
-				</div>
-			</li>
-			<div class="carousel-dots">
-				<label for="img-1" class="carousel-dot" id="img-dot-1"></label>
-				<label for="img-2" class="carousel-dot" id="img-dot-2"></label>
-				<label for="img-3" class="carousel-dot" id="img-dot-3"></label>
+	<div
+		class="carousel">{# Images gérées par l'admin #}
+	</p>
+	<ul class="slides">
+		<input type="radio" name="radio-buttons" id="img-1" checked/>
+		<li class="slide-container">
+			<div class="slide-image">
+				<img src="{{asset ('images/wellness/wellness1.jpeg')}}">
 			</div>
-		</ul>
-	</div>
-	<article class="last-4-registrated">
-		<p>Les 4 derniers prestataires enregistrés</p>
+			<div class="carousel-controls">
+				<label for="img-3" class="prev-slide">
+					<span>&lsaquo;</span>
+				</label>
+				<label for="img-2" class="next-slide">
+					<span>&rsaquo;</span>
+				</label>
+			</div>
+		</li>
+		<input type="radio" name="radio-buttons" id="img-2"/>
+		<li class="slide-container">
+			<div class="slide-image">
+				<img src="{{asset ('images/wellness/wellness2.jpeg')}}">
+			</div>
+			<div class="carousel-controls">
+				<label for="img-1" class="prev-slide">
+					<span>&lsaquo;</span>
+				</label>
+				<label for="img-3" class="next-slide">
+					<span>&rsaquo;</span>
+				</label>
+			</div>
+		</li>
+		<input type="radio" name="radio-buttons" id="img-3"/>
+		<li class="slide-container">
+			<div class="slide-image">
+				<img src="{{asset ('images/wellness/wellness3.jpeg')}}">
+			</div>
+			<div class="carousel-controls">
+				<label for="img-2" class="prev-slide">
+					<span>&lsaquo;</span>
+				</label>
+				<label for="img-1" class="next-slide">
+					<span>&rsaquo;</span>
+				</label>
+			</div>
+		</li>
+		<div class="carousel-dots">
+			<label for="img-1" class="carousel-dot" id="img-dot-1"></label>
+			<label for="img-2" class="carousel-dot" id="img-dot-2"></label>
+			<label for="img-3" class="carousel-dot" id="img-dot-3"></label>
+		</div>
+	</ul>
+</div>
+<article class="last-4-registrated">
+	<p>Les 4 derniers prestataires enregistrés</p>
+</article>
+<asside>
+	<article class="highlight-service">
+		<p>Affichage asside (sauf en mode smartphone) du service du mois</p>
 	</article>
-	<asside>
-		<article class="highlight-service">
-			<p>Affichage asside (sauf en mode smartphone) du service du mois</p>
-		</article>
-		<article class="google-maps">
-			<p>Affichage aussi dans l'asside de la recherche google maps</p>
-		</article>
-	</asside>
-{% endblock %}
+	<article class="google-maps">
+		<p>Affichage aussi dans l'asside de la recherche google maps</p>
+	</article>
+</asside>{% endblock %}
