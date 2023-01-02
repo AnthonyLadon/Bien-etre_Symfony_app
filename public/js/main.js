@@ -4,7 +4,7 @@ let icon1 = document.getElementById("a");
 let icon2 = document.getElementById("b");
 let icon3 = document.getElementById("c");
 let nav = document.getElementById("nav");
-let blue = document.getElementById("blue");
+let blue = document.getElementById("pink");
 
 icon.addEventListener("click", function () {
   icon1.classList.toggle("a");

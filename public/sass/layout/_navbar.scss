@@ -57,12 +57,16 @@
 
 
 .wrap-menu{
-  height: 32rem;
+  height: 50rem;
+}
+
+.sticky-menu{
+  position: sticky;
 }
 
 // Menu 
 .l-main-nav {
-  background: $secondary-color;
+  background: $third-color;
   position: absolute;
   top: 0;
   left: 0;
@@ -77,11 +81,11 @@
     margin: 0;
     position: absolute;
     top: 20%;
-    left: 35%;
+    left: 20%;
     a{
       list-style: none;
-      font-size: 24px;
-      color: #ffd960;
+      font-size: 20px;
+      color: $secondary-color;
       line-height: 2.2;
       text-transform: uppercase;
       letter-spacing: 1.7px;
@@ -95,11 +99,11 @@
 }
 
 
-.dark-blue {
+.dark-pink {
   position: absolute;
   top: 0;
   left: 0;
-  background: $main-color;
+  background: $dark-third-color;
   height: 100%;
   width: 0%;
   transition: all 500ms cubic-bezier(.62,.04,.3,1.8);
@@ -108,7 +112,7 @@
   opacity: 1;
 }
 
-.dark-blue.slide {
+.dark-pink.slide {
   width: 60%;
   opacity: 1;
 }
@@ -129,7 +133,7 @@
       display: none;
     }
 
-    .dark-blue{
+    .dark-pink{
       display: none;
     }
 

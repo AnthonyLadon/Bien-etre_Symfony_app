@@ -8,10 +8,10 @@
 
 		{% block stylesheets %}
 			<link rel="stylesheet" href="{{asset ('css/screen.css')}}">
-			<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css"/>
 		{% endblock %}
 	</head>
-	<body>
+	<header>
 		{% block nav %}
 			<div class="hamburger-icon" id="icon">
 				<div class="icon-1" id="a"></div>
@@ -22,7 +22,7 @@
 			<div class="wrap-menu">
 				<nav class="l-main-nav" id="nav">
 					<ul>
-						<li><a href="#">Home</a></li>
+						<li><a id="home"href="{{path('home')}}">Home</a></li>
 						<li><a href="#">à propos</a></li>
 						<li><a href="#">partenaires</a></li>
 						<li><a href="#">par région</a></li>
@@ -30,23 +30,28 @@
 						<li><a href="#">contact</a></li>
 					</ul>
 				</nav>
+				<div class="dark-pink" id="pink"></div>
 				<div class='l-main-logo'>
-					<img src="{{asset ('images/logo-main.png')}}" alt="image-logo">
+					<a href="{{path ('home')}}"><img src="{{asset ('images/main-logo.png')}}" alt="image-logo"></a>
 				</div>
 			</div>
-			<div class="dark-blue" id="blue"></div>
 		{% endblock %}
 
 		<div class="ease-in-title"> {% block titreh1 %}{% endblock %}
 
 			</div>
-		</body>
+		</header>
+		<body></body>
 	</html>
 </div>
-{% block body %}{% endblock %}
-{% block footer %}
-	<p>Affichage des reseaux sociaux (footer) + crédits et copyright</p>
-{% endblock %}
-{% block javascripts %}
-	<script src="{{asset ('js/main.js')}}"></script>
-{% endblock %}</body></html>
+<div class="l-main-wrap"> {% block body %}{% endblock %}
+	</div>
+	{% block footer %}
+		<footer class="l-footer">
+			<p>Affichage des reseaux sociaux (footer) + crédits et copyright</p>
+		</footer>
+	{% endblock %}
+	{% block javascripts %}
+		<script src="{{asset ('js/main.js')}}"></script>
+	{% endblock %}
+</body></html>

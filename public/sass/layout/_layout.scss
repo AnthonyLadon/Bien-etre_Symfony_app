@@ -5,19 +5,64 @@
 
 body {
     font-family: 'montserrat',roboto;
+    background-image: url('../images/wallpaper1.jpeg');
+    background-size: cover;
+    background-attachment: fixed;
   }
 
 
   .l-main-logo{
+    position: absolute;
+    top: 6.5rem;
+    left: 35%;
+    margin: auto;
 
     img{
-    border-radius: 12px 12px 12px 50px;
+    border-radius: 65px;
     width: 9rem;
-    position: relative;
-    left: 65%;
-    top: 1rem;
   }
   }
+
+
+// titre principal
+.ease-in-title {
+  position: absolute;
+  top: 43%;
+  left: 50%;
+  width: 100%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  h1 {
+    color:$secondary-color;
+    text-shadow: 1px 4px #a493926c;
+    font-size: 3.5rem;
+    animation: shotup 1100ms ease-in-out;
+    animation-delay: 400ms;
+  }
+}
+
+.l-main-wrap{
+  padding: 0 1rem;
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+
+.l-footer{
+  margin: 4rem 0 2rem 0;
+}
+
+
+
+@media screen and (min-width: $tablet-break){
+
+  .ease-in-title {
+
+    h1 {
+      font-size: 4rem;
+    }
+  }
+}
 
   
 
