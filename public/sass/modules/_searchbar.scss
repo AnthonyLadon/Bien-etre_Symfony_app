@@ -3,7 +3,7 @@
 // largeur de la barre de recherche
 .main-search-bar-wrap{
     width: 85%;
-    margin: 0 auto 5rem auto;
+    margin: 2rem auto 3rem auto;
 }
 
 .main-search-bar{
@@ -15,7 +15,7 @@
 // input de la barre 
 .main-search-input{
     width: 100%;
-    border: 3px solid $third-color;
+    border: 3px solid $dark-third-color;
     border-right: none;
     padding: 5px;
     height: 2rem;
@@ -38,8 +38,8 @@
 .main-search-button{
     width: 40px;
     height: 2rem;
-    border: 1px solid $third-color;
-    background: $third-color;
+    border: 1px solid $dark-third-color;
+    background: $dark-third-color;
     text-align: center;
     color: #fff;
     border-radius: 0 10px 10px 0;

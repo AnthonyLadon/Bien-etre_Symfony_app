@@ -94,7 +94,7 @@
 }
 
  nav.show {
-   width: 65%;
+   width: 80%;
    height: 35rem;
    opacity: 1;
    border-radius: 10px;
@@ -116,7 +116,7 @@
 }
 
 .dark-pink.slide {
-  width: 60%;
+  width: 80%;
   opacity: 1;
 }
 
@@ -129,11 +129,11 @@
 
   nav.show {
     width: 50%;
-    height: 30rem;
+    height: 40rem;
  }
 
  .dark-pink {
-  height: 30rem;
+  height: 40rem;
 
 }
 
@@ -177,6 +177,7 @@
           position: relative;
           top: 0%;
           left: 0%;
+          max-width: 55rem;
           margin: 1rem auto 0 auto;
           display: flex;
           justify-content: space-evenly;
@@ -186,7 +187,7 @@
   
           a{
             list-style: none;
-            font-size: 0.8rem;
+            font-size: 1rem;
             color: $main-color;
             text-transform: unset;
             letter-spacing: 1px;

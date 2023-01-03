@@ -53,6 +53,10 @@ a {
 }
 body {
   font-family: "montserrat", roboto;
+  background-color: #d2a1a3;
+}
+
+.l-background-image-wrap {
   background-image: url("../images/wallpaper/wallpaper-main.jpeg");
   background-size: cover;
   background-attachment: fixed;
@@ -102,7 +106,7 @@ body {
   }
 }
 @media screen and (min-width: 992px) {
-  body {
+  .l-background-image-wrap {
     background-image: url("../images/wallpaper/wallpaper-main2.jpeg");
   }
 }
@@ -195,7 +199,7 @@ body {
 }
 
 nav.show {
-  width: 65%;
+  width: 80%;
   height: 35rem;
   opacity: 1;
   border-radius: 10px;
@@ -216,17 +220,17 @@ nav.show {
 }
 
 .dark-pink.slide {
-  width: 60%;
+  width: 80%;
   opacity: 1;
 }
 
 @media screen and (min-width: 576px) {
   nav.show {
     width: 50%;
-    height: 30rem;
+    height: 40rem;
   }
   .dark-pink {
-    height: 30rem;
+    height: 40rem;
   }
   .dark-pink.slide {
     width: 50%;
@@ -253,6 +257,7 @@ nav.show {
     position: relative;
     top: 0%;
     left: 0%;
+    max-width: 55rem;
     margin: 1rem auto 0 auto;
     display: flex;
     justify-content: space-evenly;
@@ -260,7 +265,7 @@ nav.show {
   }
   .l-main-nav ul a {
     list-style: none;
-    font-size: 0.8rem;
+    font-size: 1rem;
     color: #a0541c;
     text-transform: unset;
     letter-spacing: 1px;
@@ -464,27 +469,95 @@ input:checked + .slide-container .nav label {
     right: 20%;
   }
 }
-.google-maps {
-  height: 10rem;
-  margin: 5rem 0.5rem;
-  border: solid 1px black;
+.google-maps-wrap {
+  margin: 5rem 0 0 0;
+}
+.google-maps-wrap h2 {
+  text-transform: uppercase;
+  margin: 0 auto 2rem auto;
+  text-align: center;
+  color: #def5f6;
+  border-bottom: solid 4px #def5f6;
+  width: 100%;
 }
 
-.last-4-registrated {
-  height: 10rem;
-  margin: 5rem 0.5rem;
+.google-maps {
+  margin: 1rem 0 0 0;
+  display: flex;
+  justify-content: center;
+  height: 12rem;
   border: solid 1px black;
+  border-radius: 10px;
+}
+
+@media screen and (min-width: 576px) {
+  .google-maps-wrap h2 {
+    text-transform: uppercase;
+    margin: 0 auto 2rem auto;
+    max-width: 45%;
+  }
+}
+.last-4-registrated {
+  margin: 4rem 0 0 0;
+}
+.last-4-registrated h2 {
+  text-transform: uppercase;
+  margin: 0 auto 2rem auto;
+  text-align: center;
+  color: #def5f6;
+  border-bottom: solid 4px #def5f6;
+  width: 100%;
+}
+
+.last-4-registrated-wrap {
+  display: flex;
+  justify-content: space-evenly;
+  height: 10rem;
+}
+.last-4-registrated-wrap div {
+  width: 6rem;
+  border: solid 1px black;
+  border-radius: 10px;
+}
+
+@media screen and (min-width: 576px) {
+  .last-4-registrated h2 {
+    text-transform: uppercase;
+    margin: 0 auto 2rem auto;
+    max-width: 45%;
+  }
+}
+.highlight-service-wrap {
+  margin: 5rem 0 0 0;
+}
+.highlight-service-wrap h2 {
+  text-transform: uppercase;
+  margin: 0 auto 2rem auto;
+  text-align: center;
+  color: #def5f6;
+  border-bottom: solid 4px #def5f6;
+  width: 100%;
 }
 
 .highlight-service {
-  height: 10rem;
-  margin: 5rem 0.5rem;
+  margin: 1rem 0 0 0;
+  display: flex;
+  justify-content: center;
+  height: 12rem;
   border: solid 1px black;
+  border-radius: 10px;
 }
 
+@media screen and (min-width: 576px) {
+  .highlight-service-wrap h2 {
+    text-transform: uppercase;
+    margin: 0 auto 2rem auto;
+    max-width: 45%;
+  }
+}
 .main-search-bar-wrap {
   width: 85%;
-  margin: 0 auto 5rem auto;
+  margin: 2rem auto 3rem auto;
 }
 
 .main-search-bar {
@@ -495,7 +568,7 @@ input:checked + .slide-container .nav label {
 
 .main-search-input {
   width: 100%;
-  border: 3px solid #d2a1a3;
+  border: 3px solid #c0898b;
   border-right: none;
   padding: 5px;
   height: 2rem;
@@ -515,8 +588,8 @@ input:checked + .slide-container .nav label {
 .main-search-button {
   width: 40px;
   height: 2rem;
-  border: 1px solid #d2a1a3;
-  background: #d2a1a3;
+  border: 1px solid #c0898b;
+  background: #c0898b;
   text-align: center;
   color: #fff;
   border-radius: 0 10px 10px 0;

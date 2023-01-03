@@ -69,15 +69,28 @@
 			</div>
 		</ul>
 	</div>
-	<article class="last-4-registrated">
-		<p>Les 4 derniers prestataires enregistrés</p>
-	</article>
-	<asside>
-		<article class="highlight-service">
-			<p>Affichage asside (sauf en mode smartphone) du service du mois</p>
+	<div class="l-articles-wrap">
+		<article class="last-4-registrated">
+			<h2>Les derniers prestataires</h2>
+			<div class="last-4-registrated-wrap">
+				<div>photo de profil</div>
+				<div>photo de profil</div>
+				<div>photo de profil</div>
+				<div>photo de profil</div>
+			</div>
 		</article>
-		<article class="google-maps">
-			<p>Affichage aussi dans l'asside de la recherche google maps</p>
-		</article>
-	</asside>
+		<asside>
+			<article
+				class="highlight-service-wrap">
+				{# media queries: affichage asside en mode laptop #}
+				<h2>Le service du mois</h2>
+				<div class="highlight-service">
+					Affichage de photo et description du service</div>
+			</article>
+			<article class="google-maps-wrap">
+				<h2>Google maps</h2>
+				<div class="google-maps">Affichage aussi dans l'asside de la recherche google maps</div>
+			</article>
+		</asside>
+	</div>
 {% endblock %}

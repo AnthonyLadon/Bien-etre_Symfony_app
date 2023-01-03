@@ -5,6 +5,10 @@
 
 body {
     font-family: 'montserrat',roboto;
+    background-color: $third-color;
+  }
+
+  .l-background-image-wrap{
     background-image: url('../images/wallpaper/wallpaper-main.jpeg');
     background-size: cover;
     background-attachment: fixed;
@@ -77,7 +81,7 @@ body {
 
   @media screen and (min-width: $laptop-break){
 
-    body {
+    .l-background-image-wrap {
       background-image: url('../images/wallpaper/wallpaper-main2.jpeg');
 
     }
