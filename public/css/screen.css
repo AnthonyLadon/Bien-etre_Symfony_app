@@ -486,8 +486,9 @@ input:checked + .slide-container .nav label {
   display: flex;
   justify-content: center;
   height: 12rem;
-  border: solid 1px black;
+  background-color: #def5f6;
   border-radius: 10px;
+  box-shadow: 0px 29px 38px -15px rgba(0, 0, 0, 0.43);
 }
 
 @media screen and (min-width: 576px) {
@@ -515,9 +516,10 @@ input:checked + .slide-container .nav label {
   height: 10rem;
 }
 .last-4-registrated-wrap div {
-  width: 6rem;
-  border: solid 1px black;
+  width: 6.5rem;
+  background-color: #def5f6;
   border-radius: 10px;
+  box-shadow: 0px 29px 38px -15px rgba(0, 0, 0, 0.43);
 }
 
 @media screen and (min-width: 576px) {
@@ -544,8 +546,9 @@ input:checked + .slide-container .nav label {
   display: flex;
   justify-content: center;
   height: 12rem;
-  border: solid 1px black;
+  background-color: #def5f6;
   border-radius: 10px;
+  box-shadow: 0px 29px 38px -15px rgba(0, 0, 0, 0.43);
 }
 
 @media screen and (min-width: 576px) {
