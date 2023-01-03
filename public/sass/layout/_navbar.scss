@@ -127,67 +127,22 @@
 
 @media screen and (min-width: $tablet-break) {
 
+  nav.show {
+    width: 50%;
+    height: 30rem;
+ }
 
-  .wrap-menu{
-    max-width: 700px;
+ .dark-pink {
+  height: 30rem;
+
+}
+
+.dark-pink.slide {
+  width: 50%;
+}
+  
   }
 
-    .hamburger-icon{
-      display: none;
-    }
-
-    .dark-pink{
-      display: none;
-    }
-
-    .l-main-nav {
-      background: unset;
-      opacity: 100%;
-      transition: unset;
-      width: 100%;     
-
-      ul {
-        position: relative;
-        top: 0%;
-        left: 0%;
-        margin: 0 auto;
-        display: flex;
-        justify-content: space-evenly;
-
-
-        a{
-          list-style: none;
-          font-size: 0.8rem;
-          color: $main-color;
-          text-transform: unset;
-          letter-spacing: 1px;
-          }
-
-          a:hover{
-            color: $secondary-color;
-          }
-        }
-      }
-
-      nav.show {
-        width: 0%;
-     }
-
-
-    }
-
-
-
-    // ****************************************************************
-
-
-    @media screen and (min-width: $tablet-break){
-
-      .wrap-menu{
-        max-width: 1000px;
-        margin: 0 auto;
-      }
-    }
 
 
 
@@ -196,10 +151,63 @@
   @media screen and (min-width: $laptop-break){
 
 
-    .l-main-nav{
 
-      ul{
-        width: 70%;
-      }
+    .wrap-menu{
+      max-width: 1020px;
     }
+  
+      .hamburger-icon{
+        display: none;
+      }
+  
+      .dark-pink{
+        display: none;
+      }
+  
+      .l-main-nav {
+        background: unset;
+        opacity: 100%;
+        transition: unset;
+        width: 100%;   
+  
+        ul {
+          position: relative;
+          top: 0%;
+          left: 0%;
+          margin: 1rem auto 0 auto;
+          display: flex;
+          justify-content: space-evenly;
+          border-bottom: solid 1px $main-color;
+  
+  
+          a{
+            list-style: none;
+            font-size: 0.8rem;
+            color: $main-color;
+            text-transform: unset;
+            letter-spacing: 1px;
+            }
+  
+            a:hover{
+              color: $dark-third-color;
+            }
+          }
+        }
+  
+        nav.show {
+          width: 0%;
+       }
+  
+  
+       .wrap-menu{
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+  
+      .l-main-nav{
+  
+        ul{
+          width: 90%;
+        }
+      }
   }

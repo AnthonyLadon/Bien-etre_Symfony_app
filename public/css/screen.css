@@ -221,8 +221,20 @@ nav.show {
 }
 
 @media screen and (min-width: 576px) {
+  nav.show {
+    width: 50%;
+    height: 30rem;
+  }
+  .dark-pink {
+    height: 30rem;
+  }
+  .dark-pink.slide {
+    width: 50%;
+  }
+}
+@media screen and (min-width: 992px) {
   .wrap-menu {
-    max-width: 700px;
+    max-width: 1020px;
   }
   .hamburger-icon {
     display: none;
@@ -240,9 +252,10 @@ nav.show {
     position: relative;
     top: 0%;
     left: 0%;
-    margin: 0 auto;
+    margin: 1rem auto 0 auto;
     display: flex;
     justify-content: space-evenly;
+    border-bottom: solid 1px #a0541c;
   }
   .l-main-nav ul a {
     list-style: none;
@@ -252,21 +265,17 @@ nav.show {
     letter-spacing: 1px;
   }
   .l-main-nav ul a:hover {
-    color: #def5f6;
+    color: #c0898b;
   }
   nav.show {
     width: 0%;
   }
-}
-@media screen and (min-width: 576px) {
   .wrap-menu {
     max-width: 1000px;
     margin: 0 auto;
   }
-}
-@media screen and (min-width: 992px) {
   .l-main-nav ul {
-    width: 70%;
+    width: 90%;
   }
 }
 .carousel {
@@ -463,7 +472,7 @@ input:checked + .slide-container .nav label {
   border-right: none;
   padding: 5px;
   height: 2rem;
-  border-radius: 5px 0 0 5px;
+  border-radius: 10px 0 0 10px;
   outline: none;
   color: #d2a1a3;
 }
@@ -483,7 +492,7 @@ input:checked + .slide-container .nav label {
   background: #d2a1a3;
   text-align: center;
   color: #fff;
-  border-radius: 0 5px 5px 0;
+  border-radius: 0 10px 10px 0;
   cursor: pointer;
   font-size: 20px;
 }
