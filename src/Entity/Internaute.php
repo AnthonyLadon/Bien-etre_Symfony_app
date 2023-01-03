@@ -2,11 +2,11 @@
 
 namespace App\Entity;
 
-use App\Repository\InernauteRepository;
+use App\Repository\InternauteRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: InernauteRepository::class)]
-class Inernaute
+#[ORM\Entity(repositoryClass: InternauteRepository::class)]
+class Internaute
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]

@@ -2,26 +2,26 @@
 
 namespace App\Repository;
 
-use App\Entity\Inernaute;
+use App\Entity\Internaute;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<Inernaute>
+ * @extends ServiceEntityRepository<Internaute>
  *
- * @method Inernaute|null find($id, $lockMode = null, $lockVersion = null)
- * @method Inernaute|null findOneBy(array $criteria, array $orderBy = null)
- * @method Inernaute[]    findAll()
- * @method Inernaute[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Internaute|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Internaute|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Internaute[]    findAll()
+ * @method Internaute[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class InernauteRepository extends ServiceEntityRepository
+class InternauteRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Inernaute::class);
+        parent::__construct($registry, Internaute::class);
     }
 
-    public function save(Inernaute $entity, bool $flush = false): void
+    public function save(Internaute $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
 
@@ -30,7 +30,7 @@ class InernauteRepository extends ServiceEntityRepository
         }
     }
 
-    public function remove(Inernaute $entity, bool $flush = false): void
+    public function remove(Internaute $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);
 
@@ -40,7 +40,7 @@ class InernauteRepository extends ServiceEntityRepository
     }
 
 //    /**
-//     * @return Inernaute[] Returns an array of Inernaute objects
+//     * @return Internaute[] Returns an array of Internaute objects
 //     */
 //    public function findByExampleField($value): array
 //    {
@@ -54,7 +54,7 @@ class InernauteRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?Inernaute
+//    public function findOneBySomeField($value): ?Internaute
 //    {
 //        return $this->createQueryBuilder('i')
 //            ->andWhere('i.exampleField = :val')
