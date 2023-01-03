@@ -1,0 +1,53 @@
+
+
+// largeur de la barre de recherche
+.main-search-bar-wrap{
+    width: 75%;
+    margin: 0 auto 5rem auto;
+}
+
+.main-search-bar{
+    width: 100%;
+    position: relative;
+    display: flex;
+}
+
+// input de la barre 
+.main-search-input{
+    width: 100%;
+    border: 3px solid $third-color;
+    border-right: none;
+    padding: 5px;
+    height: 2rem;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+    color: $third-color;
+}
+
+// couleur du texte dans le placeholder
+.main-search-input::placeholder{
+    color: $dark-third-color;
+}
+
+// couleur du texte ecrit dans la barre de recherche
+.main-search-input:focus{
+    color: $main-color;
+}
+
+// gestion du bouton
+.main-search-button{
+    width: 40px;
+    height: 2rem;
+    border: 1px solid $third-color;
+    background: $third-color;
+    text-align: center;
+    color: #fff;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+// couleur bouton lorsqu'on a cliqué dessus
+.main-search-button:focus{
+    color:$dark-third-color;
+}

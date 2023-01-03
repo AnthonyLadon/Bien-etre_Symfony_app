@@ -57,7 +57,7 @@
 
 
 .wrap-menu{
-  height: 50rem;
+  height: 40rem;
 }
 
 .sticky-menu{
@@ -94,8 +94,10 @@
 }
 
  nav.show {
-   width: 60%;
+   width: 65%;
+   height: 35rem;
    opacity: 1;
+   border-radius: 10px;
 }
 
 
@@ -104,12 +106,13 @@
   top: 0;
   left: 0;
   background: $dark-third-color;
-  height: 100%;
+  height: 35rem;
   width: 0%;
   transition: all 500ms cubic-bezier(.62,.04,.3,1.8);
   transition-delay: 50ms;
   z-index: 5;
   opacity: 1;
+  border-radius: 10px;
 }
 
 .dark-pink.slide {

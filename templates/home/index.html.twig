@@ -8,10 +8,13 @@
 {% endblock %}
 
 {% block body %}
-	<div "main-search-bar">
-		<form action="">
-			<input type="search" placeholder="Recherche">
-		</form>
+	<div class="main-search-bar-wrap">
+		<div class="main-search-bar">
+			<input type="text" class="main-search-input" placeholder="Rechercher sur le site..">
+			<button type="submit" class="main-search-button">
+				<i class="fa fa-search"></i>
+			</button>
+		</div>
 	</div>
 	<div
 		class="carousel">{# Images gérées par l'admin #}
