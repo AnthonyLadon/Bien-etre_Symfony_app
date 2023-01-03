@@ -12,32 +12,31 @@ body {
 
 
   .l-main-logo{
-    position: absolute;
-    top: 6.5rem;
-    left: 35%;
-    margin: auto;
+    display: flex;
+    justify-content: center;
+    margin: 6rem auto 0 auto;
 
     img{
-    border-radius: 65px;
-    width: 9rem;
-  }
+    width: 12rem;
+    }
   }
 
 
 // titre principal
 .ease-in-title {
   position: absolute;
-  top: 43%;
+  top: 20rem;
   left: 50%;
   width: 100%;
   transform: translate(-50%, -50%);
   text-align: center;
+  // annimation du titre (voir annimation slide-in)
   h1 {
-    color:$secondary-color;
-    text-shadow: 1px 4px #a493926c;
-    font-size: 3.5rem;
-    animation: shotup 1100ms ease-in-out;
-    animation-delay: 400ms;
+    color:$main-color;
+    text-shadow: 1px 1px $secondary-color;
+    font-size: 3rem;
+    animation: slide-in 900ms ease-in-out;
+    animation-delay: 300ms;
   }
 }
 

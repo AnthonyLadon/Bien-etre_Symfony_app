@@ -16,13 +16,14 @@
 
   // Titre h1 ease-in 
 
-  @keyframes shotup {
+  @keyframes slide-in {
     0% {
-      transform: translateY(300%) ;
+      transform: translateY(200%) ;
       opacity: 0;
     }
     90% {
-      transform: translateY(-50px);
+      transform: translateY(-10px);
+      opacity: 0.6;
     }
     100% {
       transform: translateY(0%) ;

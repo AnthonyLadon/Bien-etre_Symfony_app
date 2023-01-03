@@ -37,13 +37,14 @@ a {
     opacity: 1;
   }
 }
-@keyframes shotup {
+@keyframes slide-in {
   0% {
-    transform: translateY(300%);
+    transform: translateY(200%);
     opacity: 0;
   }
   90% {
-    transform: translateY(-50px);
+    transform: translateY(-10px);
+    opacity: 0.6;
   }
   100% {
     transform: translateY(0%);
@@ -58,30 +59,28 @@ body {
 }
 
 .l-main-logo {
-  position: absolute;
-  top: 6.5rem;
-  left: 35%;
-  margin: auto;
+  display: flex;
+  justify-content: center;
+  margin: 6rem auto 0 auto;
 }
 .l-main-logo img {
-  border-radius: 65px;
-  width: 9rem;
+  width: 12rem;
 }
 
 .ease-in-title {
   position: absolute;
-  top: 43%;
+  top: 20rem;
   left: 50%;
   width: 100%;
   transform: translate(-50%, -50%);
   text-align: center;
 }
 .ease-in-title h1 {
-  color: #def5f6;
-  text-shadow: 1px 4px rgba(164, 147, 146, 0.4235294118);
-  font-size: 3.5rem;
-  animation: shotup 1100ms ease-in-out;
-  animation-delay: 400ms;
+  color: #a0541c;
+  text-shadow: 1px 1px #def5f6;
+  font-size: 3rem;
+  animation: slide-in 900ms ease-in-out;
+  animation-delay: 300ms;
 }
 
 .l-main-wrap {
@@ -169,7 +168,7 @@ body {
 }
 
 .wrap-menu {
-  height: 40rem;
+  height: 25rem;
 }
 
 .sticky-menu {
@@ -276,8 +275,7 @@ nav.show {
   }
 }
 .carousel {
-  margin-left: 5%;
-  margin-right: 5%;
+  margin: 0 5%;
 }
 
 ul.slides {
@@ -312,7 +310,7 @@ ul.slides input {
   display: block;
   position: absolute;
   width: 100%;
-  height: 100%;
+  height: 80%;
   top: 0;
   opacity: 0;
   transition: all 0.7s ease-in-out;
@@ -425,7 +423,7 @@ input:checked + .slide-container .nav label {
 }
 
 .main-search-bar-wrap {
-  width: 75%;
+  width: 85%;
   margin: 0 auto 5rem auto;
 }
 
