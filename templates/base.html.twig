@@ -8,8 +8,9 @@
 
 		{% block stylesheets %}
 			<link rel="stylesheet" href="{{asset ('css/screen.css')}}">
-			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css"/>
+			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
 		{% endblock %}
+
 	</head>
 	<header>
 		{% block nav %}
@@ -22,12 +23,13 @@
 			<div class="wrap-menu">
 				<nav class="l-main-nav" id="nav">
 					<ul>
-						<li><a id="home"href="{{path('home')}}">Home</a></li>
+						<li><a id="home"href="{{path('home')}}"><i class="fa-solid fa-house"></i></a></li>
 						<li><a href="#">à propos</a></li>
 						<li><a href="#">partenaires</a></li>
 						<li><a href="#">par région</a></li>
 						<li><a href="#">stages</a></li>
 						<li><a href="#">contact</a></li>
+						<li><a href="#"><i class="fa-solid fa-user"></i></a></li>
 					</ul>
 				</nav>
 				<div class="dark-pink" id="pink"></div>
@@ -48,10 +50,26 @@
 	</div>
 	{% block footer %}
 		<footer class="l-footer">
-			<p>Affichage des reseaux sociaux (footer) + crédits et copyright</p>
-		</footer>
-	{% endblock %}
-	{% block javascripts %}
-		<script src="{{asset ('js/main.js')}}"></script>
-	{% endblock %}
-</body></html>
+			<div class="footer-social">
+				<a href="#">
+					<i class="fa-brands fa-facebook"></i>
+				</a>
+				<a href="#">
+					<i class="fa-brands fa-instagram"></i>
+				</a>
+				<a href="#">
+					<i class="fa-brands fa-twitter"></i>
+				</a>
+				<a href="#">
+					<i class="fa-brands fa-youtube"></i>
+				</a>
+				<div class="footer-copyright">
+					<p>2023 A.L. all rights reserved</p>
+				</div>
+			</footer>
+		{% endblock %}
+		{% block javascripts %}
+			<script src="{{asset ('js/main.js')}}"></script>
+		{% endblock %}
+	</body>
+</html>

@@ -164,11 +164,14 @@
         display: none;
       }
   
+      // pour afficher en permanence la navbar et eviter que la div ne descende trop bas et ne gene la searchbar
       .l-main-nav {
+        height: 10rem;
         background: unset;
         opacity: 100%;
         transition: unset;
-        width: 100%;   
+        width: 100%;
+
   
         ul {
           position: relative;
@@ -178,6 +181,7 @@
           display: flex;
           justify-content: space-evenly;
           border-bottom: solid 1px $main-color;
+
   
   
           a{
@@ -194,18 +198,14 @@
           }
         }
   
-        nav.show {
-          width: 0%;
-       }
-  
-  
+
        .wrap-menu{
         max-width: 1000px;
         margin: 0 auto;
       }
   
       .l-main-nav{
-  
+
         ul{
           width: 90%;
         }

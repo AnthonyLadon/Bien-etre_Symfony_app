@@ -243,6 +243,7 @@ nav.show {
     display: none;
   }
   .l-main-nav {
+    height: 10rem;
     background: unset;
     opacity: 100%;
     transition: unset;
@@ -267,9 +268,6 @@ nav.show {
   .l-main-nav ul a:hover {
     color: #c0898b;
   }
-  nav.show {
-    width: 0%;
-  }
   .wrap-menu {
     max-width: 1000px;
     margin: 0 auto;
@@ -278,6 +276,35 @@ nav.show {
     width: 90%;
   }
 }
+.l-footer {
+  display: flex;
+  justify-content: center;
+  padding: 5rem 0 0 0;
+}
+
+.footer-social a {
+  display: inline-flex;
+  justify-content: space-evenly;
+  width: 3rem;
+  margin: 0 0.5rem;
+}
+
+.fa-brands {
+  color: rgb(25, 25, 25);
+  font-size: 2.5rem;
+}
+
+.fa-brands:hover {
+  color: #def5f6;
+}
+
+.footer-copyright {
+  display: flex;
+  justify-content: center;
+  margin: 1rem 0 0 0;
+  color: rgb(25, 25, 25);
+}
+
 .carousel {
   margin: 0 5%;
 }
