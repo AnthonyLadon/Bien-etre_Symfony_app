@@ -94,24 +94,16 @@ body {
 }
 
 @media screen and (min-width: 576px) {
+  .l-main-logo {
+    margin: 7.5rem auto 0 auto;
+  }
   .ease-in-title h1 {
     font-size: 4rem;
   }
 }
-@media screen and (min-width: 576px) {
-  .l-main-logo {
-    width: 8rem;
-    position: relative;
-    left: 60%;
-    top: 2rem;
-  }
-}
 @media screen and (min-width: 992px) {
-  .l-main-logo {
-    width: 8rem;
-    position: relative;
-    left: 75%;
-    top: 0;
+  body {
+    background-image: url("../images/wallpaper/wallpaper-main2.jpeg");
   }
 }
 .icon-1, .icon-2, .icon-3 {
@@ -242,17 +234,15 @@ nav.show {
     background: unset;
     opacity: 100%;
     transition: unset;
+    width: 100%;
   }
   .l-main-nav ul {
+    position: relative;
     top: 0%;
     left: 0%;
-    margin: 0 0 0 1rem;
+    margin: 0 auto;
     display: flex;
-    flex-wrap: nowrap;
     justify-content: space-evenly;
-  }
-  .l-main-nav ul li {
-    padding: 0 0.5rem;
   }
   .l-main-nav ul a {
     list-style: none;
@@ -272,6 +262,11 @@ nav.show {
   .wrap-menu {
     max-width: 1000px;
     margin: 0 auto;
+  }
+}
+@media screen and (min-width: 992px) {
+  .l-main-nav ul {
+    width: 70%;
   }
 }
 .carousel {
@@ -310,7 +305,7 @@ ul.slides input {
   display: block;
   position: absolute;
   width: 100%;
-  height: 80%;
+  height: 100%;
   top: 0;
   opacity: 0;
   transition: all 0.7s ease-in-out;
@@ -320,6 +315,7 @@ ul.slides input {
   width: auto;
   min-width: 100%;
   height: 100%;
+  object-fit: contain;
 }
 
 .carousel-controls {
@@ -404,6 +400,34 @@ input:checked + .slide-container .nav label {
   display: block;
 }
 
+@media screen and (min-width: 576px) {
+  .slide-image {
+    width: 100%;
+    height: 100%;
+  }
+  .carousel-controls .prev-slide {
+    width: 49%;
+    text-align: left;
+    left: 10%;
+  }
+  .carousel-controls .next-slide {
+    width: 49%;
+    text-align: right;
+    right: 10%;
+  }
+}
+@media screen and (min-width: 992px) {
+  .carousel-controls .prev-slide {
+    width: 49%;
+    text-align: left;
+    left: 20%;
+  }
+  .carousel-controls .next-slide {
+    width: 49%;
+    text-align: right;
+    right: 20%;
+  }
+}
 .google-maps {
   height: 10rem;
   margin: 5rem 0.5rem;
@@ -466,6 +490,12 @@ input:checked + .slide-container .nav label {
 
 .main-search-button:focus {
   color: #c0898b;
+}
+
+@media screen and (min-width: 992px) {
+  .main-search-bar-wrap {
+    width: 65%;
+  }
 }
 
 /*# sourceMappingURL=screen.css.map */

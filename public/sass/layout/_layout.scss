@@ -51,18 +51,6 @@ body {
   margin: 4rem 0 2rem 0;
 }
 
-
-
-@media screen and (min-width: $tablet-break){
-
-  .ease-in-title {
-
-    h1 {
-      font-size: 4rem;
-    }
-  }
-}
-
   
 
 //************************************************************************************************
@@ -70,14 +58,18 @@ body {
   @media screen and (min-width: $tablet-break){
 
     .l-main-logo{
-      width: 8rem;
-      position: relative;
-      left: 60%;
-      top: 2rem;
+      margin: 7.5rem auto 0 auto;
     }
+
+    .ease-in-title {
+
+      h1 {
+        font-size: 4rem;
+      }
+    }
+  
+
   }
-
-
 
 
 
@@ -85,10 +77,8 @@ body {
 
   @media screen and (min-width: $laptop-break){
 
-    .l-main-logo{
-      width: 8rem;
-      position: relative;
-      left: 75%;
-      top: 0;
+    body {
+      background-image: url('../images/wallpaper/wallpaper-main2.jpeg');
+
     }
   }
