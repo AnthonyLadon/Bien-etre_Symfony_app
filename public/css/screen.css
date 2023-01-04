@@ -56,22 +56,6 @@ body {
   background-color: #d2a1a3;
 }
 
-.l-background-image-wrap {
-  background-image: url("../images/wallpaper/wallpaper-main.jpeg");
-  background-size: cover;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.l-main-logo {
-  display: flex;
-  justify-content: center;
-  margin: 6rem auto 0 auto;
-}
-.l-main-logo img {
-  width: 12rem;
-}
-
 .ease-in-title {
   position: absolute;
   top: 20rem;
@@ -308,6 +292,22 @@ nav.show {
   justify-content: center;
   margin: 1rem 0 0 0;
   color: #def5f6;
+}
+
+.l-background-image-wrap {
+  background-image: url("../images/wallpaper/wallpaper-main.jpeg");
+  background-size: cover;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.l-main-logo {
+  display: flex;
+  justify-content: center;
+  margin: 6rem auto 0 auto;
+}
+.l-main-logo img {
+  width: 12rem;
 }
 
 .carousel {
@@ -599,8 +599,10 @@ input:checked + .slide-container .nav label {
   }
 }
 .main-search-bar-wrap {
-  width: 85%;
-  margin: 2rem auto 3rem auto;
+  width: 70%;
+  position: relative;
+  left: 25%;
+  top: 2.5rem;
 }
 
 .main-search-bar {
@@ -611,7 +613,7 @@ input:checked + .slide-container .nav label {
 
 .main-search-input {
   width: 100%;
-  border: 3px solid #c0898b;
+  border: 3px solid #d2a1a3;
   border-right: none;
   padding: 5px;
   height: 2rem;
@@ -631,8 +633,8 @@ input:checked + .slide-container .nav label {
 .main-search-button {
   width: 40px;
   height: 2rem;
-  border: 1px solid #c0898b;
-  background: #c0898b;
+  border: 1px solid #d2a1a3;
+  background: #d2a1a3;
   text-align: center;
   color: #fff;
   border-radius: 0 10px 10px 0;
@@ -641,10 +643,6 @@ input:checked + .slide-container .nav label {
 }
 .main-search-button:hover {
   color: #a0541c;
-}
-
-.main-search-button:focus {
-  color: #c0898b;
 }
 
 @media screen and (min-width: 992px) {

@@ -24,16 +24,26 @@
 				<div class="wrap-menu">
 					<nav class="l-main-nav" id="nav">
 						<ul>
-							<li><a id="home"href="{{path('home')}}"><i class="fa-solid fa-house"></i></a></li>
-							<li><a href="#">à propos</a></li>
-							<li><a href="#">partenaires</a></li>
-							<li><a href="#">par région</a></li>
+							<li><a id="home"href="{{path('home')}}"><i class="fa-solid fa-house"></i>Accueil</a></li>
+							<li><a id="partenaires"href="{{path ("listePartenaires")}}">partenaires</a></li>
+							<li><a href="#">services</a></li>
 							<li><a href="#">stages</a></li>
+							<li><a href="#">à propos</a></li>
 							<li><a href="#">contact</a></li>
-							<li><a href="#"><i class="fa-solid fa-user"></i></a></li>
+							<li><a href="#"><i class="fa-solid fa-user"></i>Mon compte</a></li>
 						</ul>
 					</nav>
 					<div class="dark-pink" id="pink"></div>
+
+					<div class="main-search-bar-wrap">
+						<div class="main-search-bar">
+							<input type="text" class="main-search-input" placeholder="Service, prestataire, lieu..">
+							<button type="submit" class="main-search-button">
+								<i class="fa fa-search"></i>
+							</button>
+						</div>
+					</div>
+
 					<div class='l-main-logo'>
 						<a href="{{path ('home')}}"><img src="{{asset ('images/main-logo.png')}}" alt="image-logo"></a>
 					</div>
