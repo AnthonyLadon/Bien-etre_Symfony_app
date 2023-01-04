@@ -66,7 +66,7 @@
 
 // Menu 
 .l-main-nav {
-  background: $third-color;
+  background: $dark-third-color;
   position: absolute;
   top: 0;
   left: 0;
@@ -105,7 +105,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  background: $dark-third-color;
+  background: $darker-third-color;
   height: 35rem;
   width: 0%;
   transition: all 500ms cubic-bezier(.62,.04,.3,1.8);

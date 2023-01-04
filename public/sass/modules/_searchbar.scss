@@ -45,6 +45,10 @@
     border-radius: 0 10px 10px 0;
     cursor: pointer;
     font-size: 20px;
+
+    &:hover{
+        color: $main-color;
+    }
 }
 
 // couleur bouton lorsqu'on a cliqué dessus
