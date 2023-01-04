@@ -10,7 +10,7 @@
 {% block body %}
 	<div class="main-search-bar-wrap">
 		<div class="main-search-bar">
-			<input type="text" class="main-search-input" placeholder="Rechercher sur le site..">
+			<input type="text" class="main-search-input" placeholder="Service, prestataire, lieu..">
 			<button type="submit" class="main-search-button">
 				<i class="fa fa-search"></i>
 			</button>
@@ -69,8 +69,8 @@
 			</div>
 		</ul>
 	</div>
-	<div class="l-articles-wrap">
 
+	<div class="parallax-container">
 		<article class="last-4-registrated">
 			<h2>Les derniers prestataires</h2>
 
@@ -101,19 +101,27 @@
 				</div>
 			</div>
 		</article>
+	</div>
+
+	<div class="blank"></div>
+
+	<div class="parallax-container second">
+		<article
+			class="highlight-service-wrap">
+			{# media queries: affichage asside en mode laptop #}
+			<h2>Le service du mois</h2>
+			<div class="highlight-service">
+				<img src="" alt="photo du service">
+				<h3>Nom du service</h3>
+			</div>
+		</article>
+	</div>
+	<div class="l-articles-wrap">
+
 		<asside>
-			<article
-				class="highlight-service-wrap">
-				{# media queries: affichage asside en mode laptop #}
-				<h2>Le service du mois</h2>
-				<div class="highlight-service">
-					<img src="" alt="photo du service">
-					<h3>Nom du service</h3>
-				</div>
-			</article>
 			<article class="google-maps-wrap">
 				<h2>Google maps</h2>
-				<div class="google-maps">Affichage aussi dans l'asside de la recherche google maps</div>
+				<img src="{{asset ('images/google-maps.jpg')}}" alt="google maps">
 			</article>
 		</asside>
 	</div>

@@ -11,7 +11,8 @@ body {
   .l-background-image-wrap{
     background-image: url('../images/wallpaper/wallpaper-main.jpeg');
     background-size: cover;
-    background-attachment: fixed;
+    max-width: 1200px;
+    margin: 0 auto;
   }
 
 
@@ -45,7 +46,6 @@ body {
 }
 
 .l-main-wrap{
-  padding: 0 1rem;
   margin: 0 auto;
   max-width: 1200px;
 }
@@ -55,7 +55,9 @@ body {
   margin: 4rem 0 2rem 0;
 }
 
-  
+
+
+
 
 //************************************************************************************************
 
