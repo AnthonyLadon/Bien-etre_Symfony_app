@@ -231,7 +231,7 @@ nav.show {
     display: none;
   }
   .l-main-nav {
-    height: 10rem;
+    height: 5rem;
     background: unset;
     opacity: 100%;
     transition: unset;
@@ -607,7 +607,6 @@ input:checked + .slide-container .nav label {
 
 .main-search-bar {
   width: 100%;
-  position: relative;
   display: flex;
 }
 
@@ -647,7 +646,9 @@ input:checked + .slide-container .nav label {
 
 @media screen and (min-width: 992px) {
   .main-search-bar-wrap {
-    width: 65%;
+    width: 50%;
+    position: relative;
+    top: 4.5rem;
   }
 }
 .parallax-container {

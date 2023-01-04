@@ -10,7 +10,6 @@
 
 .main-search-bar{
     width: 100%;
-    position: relative;
     display: flex;
 }
 
@@ -58,9 +57,11 @@
 
   @media screen and (min-width: $laptop-break){
 
-// largeur de la barre de recherche
+
 .main-search-bar-wrap{
-    width: 65%;
+    width: 50%;
+    position: relative;
+    top: 4.5rem;
 }
 
   }
