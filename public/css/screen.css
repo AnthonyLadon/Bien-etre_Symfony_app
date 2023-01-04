@@ -512,14 +512,60 @@ input:checked + .slide-container .nav label {
 
 .last-4-registrated-wrap {
   display: flex;
+  width: 100%;
   justify-content: space-evenly;
-  height: 10rem;
+  align-items: center;
+  perspective: 1000px;
 }
-.last-4-registrated-wrap div {
-  width: 6.5rem;
-  background-color: #def5f6;
-  border-radius: 10px;
+
+.card {
+  position: relative;
+  width: 8rem;
+  height: 8rem;
+  margin: 0.5rem;
+  text-align: center;
+  line-height: 8rem;
+  color: #def5f6;
+  border-radius: 0.8rem;
+  transform-style: preserve-3d;
+}
+
+.face {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 0.8rem;
+  background-size: cover;
+  background-position: center center;
+  backface-visibility: hidden;
+  transition: transform 0.5s ease-in-out;
+}
+
+.face--front img {
+  object-fit: cover;
+  width: 8rem;
+  height: 8rem;
+  border-radius: 0.8rem;
   box-shadow: 0px 29px 38px -15px rgba(0, 0, 0, 0.43);
+}
+
+.face--back {
+  background: #c0898b;
+  font-size: 0.5rem;
+  transform: rotateY(180deg);
+  color: #def5f6;
+  box-shadow: 0px 29px 38px -15px rgba(0, 0, 0, 0.43);
+}
+
+.card:hover .face--front {
+  transform: rotateY(-180deg);
+}
+
+.card:hover .face--back {
+  transform: rotateY(0deg);
 }
 
 @media screen and (min-width: 576px) {
