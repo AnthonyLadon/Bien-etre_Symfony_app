@@ -1,27 +1,43 @@
 
 .highlight-service-wrap{
 
-    margin: 5rem 0 0 0;
+    margin: 0 1rem;
 
     h2{
         text-transform: uppercase;
         margin: 0 auto 2rem auto;
         text-align: center;
-        color: $secondary-color;
-        border-bottom: solid 4px $secondary-color;
+        color: $dark-third-color;
+        border-bottom: solid 4px $dark-third-color;
         width: 100%;
     }
 }
 
-.highlight-service{
-    margin: 1rem 0 0 0;
-    display: flex;
-    justify-content: center;
-    height : 12rem;
-    background-color: $secondary-color;
+
+.highlight-service-card{
+    margin: 0 2rem;
+    max-width: 22rem;
+    background-color: $secondary-tansparent;
+    padding:  0.5rem 0.5rem 1.5rem 0.5rem;
     border-radius: 10px;
     box-shadow: 0px 29px 38px -15px rgba(0,0,0,0.43);
+    
+    img{
+        border-radius: 5px;
+    }
 }
+
+.highlight-service-card-title{
+
+    h4{
+        font-size: 1.2rem;
+        text-align: center;
+        text-decoration: none;
+        color: $darker-third-color;
+    }
+}
+
+
 
 
 
@@ -36,6 +52,19 @@
             text-transform: uppercase;
             margin: 0 auto 2rem auto;
             max-width: 45%;
+        }
+    }
+
+    .highlight-service-card{
+        margin: 0 2rem;
+        max-width: 30rem;
+        background-color: $secondary-tansparent;
+        padding:  0.5rem 0.5rem 1.5rem 0.5rem;
+        border-radius: 10px;
+        box-shadow: 0px 29px 38px -15px rgba(0,0,0,0.43);
+        
+        img{
+            border-radius: 5px;
         }
     }
 

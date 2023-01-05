@@ -1,13 +1,13 @@
 
 .last-4-registrated{
-    margin: 4rem 0 0 0;
+    max-width: 90%;
 
     h2{
         text-transform: uppercase;
         margin: 0 auto 2rem auto;
         text-align: center;
-        color: $secondary-color;
-        border-bottom: solid 4px $secondary-color;
+        color: $dark-third-color;
+        border-bottom: solid 4px $dark-third-color;
         width: 100%;
     }
 }

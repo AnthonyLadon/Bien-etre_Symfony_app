@@ -89,11 +89,6 @@ body {
     font-size: 4rem;
   }
 }
-@media screen and (min-width: 62rem) {
-  .l-background-image-wrap {
-    background-image: url("../images/wallpaper/wallpaper-main2.jpeg");
-  }
-}
 .icon-1, .icon-2, .icon-3 {
   position: absolute;
   left: 25%;
@@ -181,12 +176,15 @@ body {
   text-transform: uppercase;
   letter-spacing: 1.7px;
 }
+.l-main-nav ul a:hover {
+  color: #bd797b;
+}
 
 nav.show {
   width: 80%;
   height: 35rem;
   opacity: 1;
-  border-radius: 10px;
+  border-radius: 0 0 15px 0;
 }
 
 .dark-pink {
@@ -310,6 +308,17 @@ nav.show {
   width: 12rem;
 }
 
+@media screen and (min-width: 43rem) {
+  .l-background-image-wrap {
+    background-image: url("../images/wallpaper/wallpaper-main2.jpeg");
+    background-size: cover;
+  }
+}
+@media screen and (min-width: 62rem) {
+  .l-background-image-wrap {
+    background-image: url("../images/wallpaper/wallpaper-main2.jpeg");
+  }
+}
 .carousel {
   margin: 0 5%;
 }
@@ -470,7 +479,7 @@ input:checked + .slide-container .nav label {
   }
 }
 .google-maps-wrap {
-  margin: 5rem 0 0 0;
+  margin: 5rem 1.5rem 0 1.5rem;
 }
 .google-maps-wrap h2 {
   text-transform: uppercase;
@@ -486,6 +495,9 @@ input:checked + .slide-container .nav label {
 }
 
 @media screen and (min-width: 43rem) {
+  .google-maps-wrap {
+    margin: 5rem 2rem 0 2rem;
+  }
   .google-maps-wrap h2 {
     text-transform: uppercase;
     margin: 0 auto 2rem auto;
@@ -493,14 +505,14 @@ input:checked + .slide-container .nav label {
   }
 }
 .last-4-registrated {
-  margin: 4rem 0 0 0;
+  max-width: 90%;
 }
 .last-4-registrated h2 {
   text-transform: uppercase;
   margin: 0 auto 2rem auto;
   text-align: center;
-  color: #def5f6;
-  border-bottom: solid 4px #def5f6;
+  color: #c0898b;
+  border-bottom: solid 4px #c0898b;
   width: 100%;
 }
 
@@ -570,25 +582,34 @@ input:checked + .slide-container .nav label {
   }
 }
 .highlight-service-wrap {
-  margin: 5rem 0 0 0;
+  margin: 0 1rem;
 }
 .highlight-service-wrap h2 {
   text-transform: uppercase;
   margin: 0 auto 2rem auto;
   text-align: center;
-  color: #def5f6;
-  border-bottom: solid 4px #def5f6;
+  color: #c0898b;
+  border-bottom: solid 4px #c0898b;
   width: 100%;
 }
 
-.highlight-service {
-  margin: 1rem 0 0 0;
-  display: flex;
-  justify-content: center;
-  height: 12rem;
-  background-color: #def5f6;
+.highlight-service-card {
+  margin: 0 2rem;
+  max-width: 22rem;
+  background-color: rgba(222, 245, 246, 0.6470588235);
+  padding: 0.5rem 0.5rem 1.5rem 0.5rem;
   border-radius: 10px;
   box-shadow: 0px 29px 38px -15px rgba(0, 0, 0, 0.43);
+}
+.highlight-service-card img {
+  border-radius: 5px;
+}
+
+.highlight-service-card-title h4 {
+  font-size: 1.2rem;
+  text-align: center;
+  text-decoration: none;
+  color: #bd797b;
 }
 
 @media screen and (min-width: 43rem) {
@@ -596,6 +617,17 @@ input:checked + .slide-container .nav label {
     text-transform: uppercase;
     margin: 0 auto 2rem auto;
     max-width: 45%;
+  }
+  .highlight-service-card {
+    margin: 0 2rem;
+    max-width: 30rem;
+    background-color: rgba(222, 245, 246, 0.6470588235);
+    padding: 0.5rem 0.5rem 1.5rem 0.5rem;
+    border-radius: 10px;
+    box-shadow: 0px 29px 38px -15px rgba(0, 0, 0, 0.43);
+  }
+  .highlight-service-card img {
+    border-radius: 5px;
   }
 }
 .main-search-bar-wrap {
@@ -660,10 +692,10 @@ input:checked + .slide-container .nav label {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-image: url(https://images.unsplash.com/photo-1519120944692-1a8d8cfc107f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=872&q=80);
+  background-image: url("../images/wallpaper/wallpaper4.jpg");
   background-size: cover;
   background-position: center;
-  /*  C'est ce qui rend le truc cool :  */
+  /*  C'est ce qui donne cet effet si cool :  */
   background-attachment: fixed;
 }
 
@@ -673,7 +705,7 @@ input:checked + .slide-container .nav label {
 }
 
 .second {
-  background-image: url(https://images.unsplash.com/photo-1514496959998-c01c40915c5f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80);
+  background-image: url("../images/wallpaper/wallpaper1.jpeg");
   background-attachment: fixed;
   height: 40rem;
 }

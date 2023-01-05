@@ -11,11 +11,11 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-image: url(https://images.unsplash.com/photo-1519120944692-1a8d8cfc107f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=872&q=80);
+    background-image: url('../images/wallpaper/wallpaper4.jpg');
     background-size: cover;
     background-position: center;
     
-  /*  C'est ce qui rend le truc cool :  */
+  /*  C'est ce qui donne cet effet si cool :  */
     background-attachment: fixed;
   }
   
@@ -25,7 +25,8 @@
   }
   
   .second {
-    background-image:url(https://images.unsplash.com/photo-1514496959998-c01c40915c5f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80);
+    background-image:url('../images/wallpaper/wallpaper1.jpeg');
     background-attachment: fixed;
+  
     height: 40rem;
   }

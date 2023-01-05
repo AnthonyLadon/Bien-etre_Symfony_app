@@ -17,3 +17,29 @@
     width: 12rem;
     }
   }
+
+
+
+  //************************************************************************************************
+
+  @media screen and (min-width: $tablet-break){
+
+
+    .l-background-image-wrap{
+      background-image: url('../images/wallpaper/wallpaper-main2.jpeg');
+      background-size: cover;
+    }
+
+  }
+
+
+
+  //************************************************************************************************
+
+  @media screen and (min-width: $laptop-break){
+
+    .l-background-image-wrap {
+      background-image: url('../images/wallpaper/wallpaper-main2.jpeg');
+
+    }
+  }

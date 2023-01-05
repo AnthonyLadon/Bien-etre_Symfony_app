@@ -64,7 +64,7 @@
   position: sticky;
 }
 
-// Menu 
+// Menu
 .l-main-nav {
   background: $dark-third-color;
   position: absolute;
@@ -89,6 +89,9 @@
       line-height: 2.2;
       text-transform: uppercase;
       letter-spacing: 1.7px;
+      &:hover{
+        color: $darker-third-color;
+      }
     }
   }
 }
@@ -97,10 +100,10 @@
    width: 80%;
    height: 35rem;
    opacity: 1;
-   border-radius: 10px;
+   border-radius: 0 0 15px 0;
 }
 
-
+// arriere plan du menu
 .dark-pink {
   position: absolute;
   top: 0;
