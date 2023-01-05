@@ -81,7 +81,7 @@ body {
   margin: 4rem 0 2rem 0;
 }
 
-@media screen and (min-width: 576px) {
+@media screen and (min-width: 43rem) {
   .l-main-logo {
     margin: 7.5rem auto 0 auto;
   }
@@ -89,7 +89,7 @@ body {
     font-size: 4rem;
   }
 }
-@media screen and (min-width: 992px) {
+@media screen and (min-width: 62rem) {
   .l-background-image-wrap {
     background-image: url("../images/wallpaper/wallpaper-main2.jpeg");
   }
@@ -208,7 +208,7 @@ nav.show {
   opacity: 1;
 }
 
-@media screen and (min-width: 576px) {
+@media screen and (min-width: 43rem) {
   nav.show {
     width: 50%;
     height: 40rem;
@@ -220,7 +220,7 @@ nav.show {
     width: 50%;
   }
 }
-@media screen and (min-width: 992px) {
+@media screen and (min-width: 62rem) {
   .wrap-menu {
     max-width: 1020px;
   }
@@ -441,7 +441,7 @@ input:checked + .slide-container .nav label {
   display: block;
 }
 
-@media screen and (min-width: 576px) {
+@media screen and (min-width: 43rem) {
   .slide-image {
     width: 100%;
     height: 100%;
@@ -457,7 +457,7 @@ input:checked + .slide-container .nav label {
     right: 10%;
   }
 }
-@media screen and (min-width: 992px) {
+@media screen and (min-width: 62rem) {
   .carousel-controls .prev-slide {
     width: 49%;
     text-align: left;
@@ -485,7 +485,7 @@ input:checked + .slide-container .nav label {
   box-shadow: 0px 29px 38px -15px rgba(0, 0, 0, 0.43);
 }
 
-@media screen and (min-width: 576px) {
+@media screen and (min-width: 43rem) {
   .google-maps-wrap h2 {
     text-transform: uppercase;
     margin: 0 auto 2rem auto;
@@ -562,7 +562,7 @@ input:checked + .slide-container .nav label {
   transform: rotateY(0deg);
 }
 
-@media screen and (min-width: 576px) {
+@media screen and (min-width: 43rem) {
   .last-4-registrated h2 {
     text-transform: uppercase;
     margin: 0 auto 2rem auto;
@@ -591,7 +591,7 @@ input:checked + .slide-container .nav label {
   box-shadow: 0px 29px 38px -15px rgba(0, 0, 0, 0.43);
 }
 
-@media screen and (min-width: 576px) {
+@media screen and (min-width: 43rem) {
   .highlight-service-wrap h2 {
     text-transform: uppercase;
     margin: 0 auto 2rem auto;
@@ -644,7 +644,7 @@ input:checked + .slide-container .nav label {
   color: #a0541c;
 }
 
-@media screen and (min-width: 992px) {
+@media screen and (min-width: 62rem) {
   .main-search-bar-wrap {
     width: 50%;
     position: relative;
