@@ -320,7 +320,7 @@ nav.show {
   }
 }
 .carousel {
-  margin: 0 5%;
+  margin: 2rem 5%;
 }
 
 ul.slides {
@@ -451,6 +451,9 @@ input:checked + .slide-container .nav label {
 }
 
 @media screen and (min-width: 43rem) {
+  .carousel {
+    margin: 4rem 5%;
+  }
   .slide-image {
     width: 100%;
     height: 100%;
