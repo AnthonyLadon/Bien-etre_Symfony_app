@@ -2,29 +2,9 @@
 
 body {
     font-family: 'montserrat',roboto;
-    background-color: $third-color;
+    background-color: $third-color-light;
   }
 
-
-
-// titre principal
-.ease-in-title {
-  position: absolute;
-  top: 20rem;
-  left: 50%;
-  width: 100%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-
-  // annimation du titre (voir fichier scss annimations: slide-in)
-  h1 {
-    color:$main-color;
-    text-shadow: 1px 1px $secondary-color;
-    font-size: 3rem;
-    animation: slide-in 900ms ease-in-out;
-    animation-delay: 300ms;
-  }
-}
 
 .l-main-wrap{
   margin: 0 auto;
@@ -44,14 +24,5 @@ body {
 
   @media screen and (min-width: $tablet-break){
 
-    .l-main-logo{
-      margin: 7.5rem auto 0 auto;
-    }
 
-    .ease-in-title {
-
-      h1 {
-        font-size: 4rem;
-      }
-    }
   }

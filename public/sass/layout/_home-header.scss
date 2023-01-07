@@ -8,15 +8,39 @@
   }
 
 
+// titre principal
+.ease-in-title {
+  position: absolute;
+  top: 27.2rem;
+  left: 50%;
+  width: 100%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  text-shadow: 5px 4px 14px rgba(237,217,218,0.91);
+
+  // annimation du titre (voir fichier scss annimations: slide-in)
+  h1 {
+    color:$secondary-color;
+    font-size: 3rem;
+    animation: slide-in 900ms ease-in-out;
+    animation-delay: 300ms;
+  }
+}
+
+
   .l-main-logo{
     display: flex;
     justify-content: center;
-    margin: 6rem auto 0 auto;
+    padding: 6rem 0 8rem 0;
+    margin: 0 auto 0 auto;
 
     img{
     width: 12rem;
+    border-radius: 45%;
+    box-shadow: 0px 29px 38px -15px rgba(0,0,0,0.43);
     }
   }
+
 
 
 
@@ -30,6 +54,20 @@
       background-size: cover;
     }
 
+
+    .l-main-logo{
+      padding: 6rem auto 0 auto;
+    }
+
+    .ease-in-title {
+
+      top: 27.5rem;
+
+      h1 {
+        font-size: 4rem;
+      }
+    }
+
   }
 
 
@@ -38,8 +76,10 @@
 
   @media screen and (min-width: $laptop-break){
 
+
     .l-background-image-wrap {
       background-image: url('../images/wallpaper/wallpaper-main2.jpeg');
-
+      max-width: 2000px;
     }
+
   }

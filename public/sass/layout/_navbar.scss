@@ -1,6 +1,10 @@
 
 
 // gestion de la navbar en mode smartphone
+// .fixed-navbar{
+//   position: fixed;
+//   top: 1rem;
+// }
 
 // Icone hamburger
 .icon-1, .icon-2, .icon-3 {
@@ -9,7 +13,7 @@
     top: 50%;
     width: 32px;
     height: 3px;
-    background-color: $main-color;
+    background-color: $darker-pink;
     transition: all 400ms cubic-bezier(.84,.06,.52,1.8);
 }
 
@@ -33,7 +37,7 @@
   cursor: pointer;
   border-radius: 50%;
   transition: all 0.2s ease-in-out;
-  background: rgba(255,255,255,0.2);
+  background: #edd9da7d;
 
   &:hover {
     transform: scale(1.2);
@@ -57,12 +61,9 @@
 
 
 .wrap-menu{
-  height: 25rem;
+  height: 8rem;
 }
 
-.sticky-menu{
-  position: sticky;
-}
 
 // Menu
 .l-main-nav {
@@ -85,12 +86,12 @@
     a{
       list-style: none;
       font-size: 20px;
-      color: $secondary-color;
+      color: $smooth-minth;
       line-height: 2.2;
       text-transform: uppercase;
       letter-spacing: 1.7px;
       &:hover{
-        color: $darker-third-color;
+        color: $darker-pink;
       }
     }
   }
@@ -108,7 +109,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  background: $darker-third-color;
+  background: $darker-pink;
   height: 35rem;
   width: 0%;
   transition: all 500ms cubic-bezier(.62,.04,.3,1.8);
@@ -184,14 +185,14 @@
           margin: 1rem auto 0 auto;
           display: flex;
           justify-content: space-evenly;
-          border-bottom: solid 1px $main-color;
+          border-bottom: solid 1px $darker-pink;
 
   
   
           a{
             list-style: none;
             font-size: 1rem;
-            color: $main-color;
+            color:$darker-pink;
             text-transform: unset;
             letter-spacing: 1px;
             }

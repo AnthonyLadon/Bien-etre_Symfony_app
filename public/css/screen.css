@@ -53,23 +53,7 @@ a {
 }
 body {
   font-family: "montserrat", roboto;
-  background-color: #d2a1a3;
-}
-
-.ease-in-title {
-  position: absolute;
-  top: 20rem;
-  left: 50%;
-  width: 100%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-}
-.ease-in-title h1 {
-  color: #a0541c;
-  text-shadow: 1px 1px #def5f6;
-  font-size: 3rem;
-  animation: slide-in 900ms ease-in-out;
-  animation-delay: 300ms;
+  background-color: #edd9da;
 }
 
 .l-main-wrap {
@@ -81,21 +65,13 @@ body {
   margin: 4rem 0 2rem 0;
 }
 
-@media screen and (min-width: 43rem) {
-  .l-main-logo {
-    margin: 7.5rem auto 0 auto;
-  }
-  .ease-in-title h1 {
-    font-size: 4rem;
-  }
-}
 .icon-1, .icon-2, .icon-3 {
   position: absolute;
   left: 25%;
   top: 50%;
   width: 32px;
   height: 3px;
-  background-color: #a0541c;
+  background-color: #b96d70;
   transition: all 400ms cubic-bezier(0.84, 0.06, 0.52, 1.8);
 }
 
@@ -119,7 +95,7 @@ body {
   cursor: pointer;
   border-radius: 50%;
   transition: all 0.2s ease-in-out;
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(237, 217, 218, 0.4901960784);
 }
 .hamburger-icon:hover {
   transform: scale(1.2);
@@ -143,11 +119,7 @@ body {
 }
 
 .wrap-menu {
-  height: 25rem;
-}
-
-.sticky-menu {
-  position: sticky;
+  height: 8rem;
 }
 
 .l-main-nav {
@@ -171,13 +143,13 @@ body {
 .l-main-nav ul a {
   list-style: none;
   font-size: 20px;
-  color: #def5f6;
+  color: #a1d2d0;
   line-height: 2.2;
   text-transform: uppercase;
   letter-spacing: 1.7px;
 }
 .l-main-nav ul a:hover {
-  color: #bd797b;
+  color: #b96d70;
 }
 
 nav.show {
@@ -191,7 +163,7 @@ nav.show {
   position: absolute;
   top: 0;
   left: 0;
-  background: #bd797b;
+  background: #b96d70;
   height: 35rem;
   width: 0%;
   transition: all 500ms cubic-bezier(0.62, 0.04, 0.3, 1.8);
@@ -243,12 +215,12 @@ nav.show {
     margin: 1rem auto 0 auto;
     display: flex;
     justify-content: space-evenly;
-    border-bottom: solid 1px #a0541c;
+    border-bottom: solid 1px #b96d70;
   }
   .l-main-nav ul a {
     list-style: none;
     font-size: 1rem;
-    color: #a0541c;
+    color: #b96d70;
     text-transform: unset;
     letter-spacing: 1px;
   }
@@ -299,13 +271,32 @@ nav.show {
   margin: 0 auto;
 }
 
+.ease-in-title {
+  position: absolute;
+  top: 27.2rem;
+  left: 50%;
+  width: 100%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  text-shadow: 5px 4px 14px rgba(237, 217, 218, 0.91);
+}
+.ease-in-title h1 {
+  color: #def5f6;
+  font-size: 3rem;
+  animation: slide-in 900ms ease-in-out;
+  animation-delay: 300ms;
+}
+
 .l-main-logo {
   display: flex;
   justify-content: center;
-  margin: 6rem auto 0 auto;
+  padding: 6rem 0 8rem 0;
+  margin: 0 auto 0 auto;
 }
 .l-main-logo img {
   width: 12rem;
+  border-radius: 45%;
+  box-shadow: 0px 29px 38px -15px rgba(0, 0, 0, 0.43);
 }
 
 @media screen and (min-width: 43rem) {
@@ -313,10 +304,20 @@ nav.show {
     background-image: url("../images/wallpaper/wallpaper-main2.jpeg");
     background-size: cover;
   }
+  .l-main-logo {
+    padding: 6rem auto 0 auto;
+  }
+  .ease-in-title {
+    top: 27.5rem;
+  }
+  .ease-in-title h1 {
+    font-size: 4rem;
+  }
 }
 @media screen and (min-width: 62rem) {
   .l-background-image-wrap {
     background-image: url("../images/wallpaper/wallpaper-main2.jpeg");
+    max-width: 2000px;
   }
 }
 .carousel {
