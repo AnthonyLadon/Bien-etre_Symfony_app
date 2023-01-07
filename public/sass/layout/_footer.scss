@@ -18,17 +18,17 @@
 
 
 .fa-brands{
-    color: $secondary-color;
+    color: $darker-third-color;
     font-size: 2.5rem;
 }
 
 .fa-brands:hover{
-    color: $darker-third-color;
+    color: $smooth-minth;
 }
 
 .footer-copyright{
     display: flex;
     justify-content: center;
     margin: 1rem 0 0 0;
-    color: $secondary-color;
+    color: $darker-third-color;
 }

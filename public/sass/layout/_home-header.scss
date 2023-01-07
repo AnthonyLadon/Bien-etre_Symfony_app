@@ -8,6 +8,7 @@
     background-image: url('../images/wallpaper/wallpaper-main.jpeg');
     background-size: cover;
     max-width: 1200px;
+    height: 42rem;
     margin: 0 auto;
   }
 
@@ -20,13 +21,13 @@
   width: 100%;
   transform: translate(-50%, -50%);
   text-align: center;
-  text-shadow: 5px 4px 14px rgba(237,217,218,0.91);
+  text-shadow: 5px 4px 14px $darker-third-color;
 
   // annimation du titre (voir fichier scss annimations: slide-in)
   h1 {
-    color:$secondary-color;
+    color:$smooth-minth;
     font-size: 3rem;
-    animation: slide-in 900ms ease-in-out;
+    animation: slide-in 800ms ease-in-out;
     animation-delay: 300ms;
   }
 }
@@ -35,7 +36,7 @@
   .l-main-logo{
     display: flex;
     justify-content: center;
-    padding: 6rem 0 8rem 0;
+    padding: 5rem 0 8rem 0;
     margin: 0 auto 0 auto;
 
     img{

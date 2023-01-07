@@ -7,11 +7,14 @@
         text-transform: uppercase;
         margin: 0 auto 2rem auto;
         text-align: center;
-        color: $dark-third-color;
+        background-color: $third-color-light;
+        color: $darker-third-color;
         border-bottom: solid 4px $dark-third-color;
+        border-radius: 15px;
         width: 100%;
     }
 }
+
 
 
 .highlight-service-card{

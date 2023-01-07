@@ -2,14 +2,16 @@
 
 .google-maps-wrap{
 
-    margin: 5rem 1.5rem 0 1.5rem;
+    margin: 9rem 1.5rem 0 1.5rem;
 
     h2{
         text-transform: uppercase;
         margin: 0 auto 2rem auto;
         text-align: center;
-        color: $secondary-color;
-        border-bottom: solid 4px $secondary-color;
+        background-color: $third-color-light;
+        color: $darker-third-color;
+        border-bottom: solid 4px $dark-third-color;
+        border-radius: 15px;
         width: 100%;
     }
 

@@ -44,7 +44,7 @@ a {
   }
   90% {
     transform: translateY(-10px);
-    opacity: 0.6;
+    opacity: 0.5;
   }
   100% {
     transform: translateY(0%);
@@ -225,7 +225,7 @@ nav.show {
     letter-spacing: 1px;
   }
   .l-main-nav ul a:hover {
-    color: #c0898b;
+    color: #a1d2d0;
   }
   .wrap-menu {
     max-width: 1000px;
@@ -249,25 +249,26 @@ nav.show {
 }
 
 .fa-brands {
-  color: #def5f6;
+  color: #bd797b;
   font-size: 2.5rem;
 }
 
 .fa-brands:hover {
-  color: #bd797b;
+  color: #a1d2d0;
 }
 
 .footer-copyright {
   display: flex;
   justify-content: center;
   margin: 1rem 0 0 0;
-  color: #def5f6;
+  color: #bd797b;
 }
 
 .l-background-image-wrap {
   background-image: url("../images/wallpaper/wallpaper-main.jpeg");
   background-size: cover;
   max-width: 1200px;
+  height: 42rem;
   margin: 0 auto;
 }
 
@@ -278,19 +279,19 @@ nav.show {
   width: 100%;
   transform: translate(-50%, -50%);
   text-align: center;
-  text-shadow: 5px 4px 14px rgba(237, 217, 218, 0.91);
+  text-shadow: 5px 4px 14px #bd797b;
 }
 .ease-in-title h1 {
-  color: #def5f6;
+  color: #a1d2d0;
   font-size: 3rem;
-  animation: slide-in 900ms ease-in-out;
+  animation: slide-in 800ms ease-in-out;
   animation-delay: 300ms;
 }
 
 .l-main-logo {
   display: flex;
   justify-content: center;
-  padding: 6rem 0 8rem 0;
+  padding: 5rem 0 8rem 0;
   margin: 0 auto 0 auto;
 }
 .l-main-logo img {
@@ -321,7 +322,7 @@ nav.show {
   }
 }
 .carousel {
-  margin: 2rem 5%;
+  margin: 3rem 2%;
 }
 
 ul.slides {
@@ -483,14 +484,16 @@ input:checked + .slide-container .nav label {
   }
 }
 .google-maps-wrap {
-  margin: 5rem 1.5rem 0 1.5rem;
+  margin: 9rem 1.5rem 0 1.5rem;
 }
 .google-maps-wrap h2 {
   text-transform: uppercase;
   margin: 0 auto 2rem auto;
   text-align: center;
-  color: #def5f6;
-  border-bottom: solid 4px #def5f6;
+  background-color: #edd9da;
+  color: #bd797b;
+  border-bottom: solid 4px #c0898b;
+  border-radius: 15px;
   width: 100%;
 }
 .google-maps-wrap img {
@@ -514,9 +517,12 @@ input:checked + .slide-container .nav label {
 .last-4-registrated h2 {
   text-transform: uppercase;
   margin: 0 auto 2rem auto;
+  background-color: #edd9da;
   text-align: center;
-  color: #c0898b;
+  color: #bd797b;
   border-bottom: solid 4px #c0898b;
+  border-radius: 15px;
+  border-radius: 0.8rem;
   width: 100%;
 }
 
@@ -608,8 +614,10 @@ input:checked + .slide-container .nav label {
   text-transform: uppercase;
   margin: 0 auto 2rem auto;
   text-align: center;
-  color: #c0898b;
+  background-color: #edd9da;
+  color: #bd797b;
   border-bottom: solid 4px #c0898b;
+  border-radius: 15px;
   width: 100%;
 }
 
@@ -664,7 +672,7 @@ input:checked + .slide-container .nav label {
 
 .main-search-input {
   width: 100%;
-  border: 3px solid #d2a1a3;
+  border: 1px solid #d2a1a3;
   border-right: none;
   padding: 5px;
   height: 2rem;
@@ -674,11 +682,11 @@ input:checked + .slide-container .nav label {
 }
 
 .main-search-input::placeholder {
-  color: #c0898b;
+  color: #d2a1a3;
 }
 
 .main-search-input:focus {
-  color: #a0541c;
+  color: #bd797b;
 }
 
 .main-search-button {
@@ -693,7 +701,7 @@ input:checked + .slide-container .nav label {
   font-size: 20px;
 }
 .main-search-button:hover {
-  color: #a0541c;
+  color: #b96d70;
 }
 
 @media screen and (min-width: 62rem) {
@@ -704,7 +712,6 @@ input:checked + .slide-container .nav label {
   }
 }
 .parallax-container {
-  margin: 3rem 0 0 0;
   text-align: center;
   width: 100%;
   height: 50rem;
@@ -721,7 +728,21 @@ input:checked + .slide-container .nav label {
 
 .parallax-separtator {
   width: 100%;
-  min-height: 12rem;
+  height: 20rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.parallax-separtator .separator-quote {
+  padding: 0.5rem;
+}
+.parallax-separtator .separator-quote p {
+  text-align: center;
+  color: #c0898b;
+  font-size: 1.5rem;
+}
+.parallax-separtator .separator-quote p:last-child {
+  margin: 1rem 0 0 0;
 }
 
 .second {

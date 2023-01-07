@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Services
+{% endblock %}
+
+{% block body %}
+	<h1>Liste des Services</h1>
+	{% for categorie in categories %}
+		<h3>{{categorie.nom}}</h3>
+		<p>{{categorie.description}}</p>
+	{% endfor %}
+{% endblock %}

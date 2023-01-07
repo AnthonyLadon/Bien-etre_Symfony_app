@@ -3,7 +3,6 @@
 // gestion de l'effet parralax 
 
 .parallax-container {
-    margin: 3rem 0 0 0;
     text-align: center;
     width: 100%;
     height: 50rem;
@@ -21,7 +20,22 @@
   
   .parallax-separtator{
     width: 100%;
-    min-height: 12rem;
+    height: 20rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .separator-quote{
+      padding: 0.5rem;
+      p{
+        text-align: center;
+        color: $dark-third-color;
+        font-size: 1.5rem;
+      }
+      p:last-child{
+        margin: 1rem 0 0 0;
+      }
+    }
   }
   
   .second {

@@ -5,9 +5,12 @@
     h2{
         text-transform: uppercase;
         margin: 0 auto 2rem auto;
+        background-color: $third-color-light;
         text-align: center;
-        color: $dark-third-color;
+        color: $darker-third-color;
         border-bottom: solid 4px $dark-third-color;
+        border-radius: 15px;
+        border-radius: 0.8rem;
         width: 100%;
     }
 }
