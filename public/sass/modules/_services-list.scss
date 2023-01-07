@@ -1,22 +1,11 @@
 
 
-
 .service-list-wrap{
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
 
-.service-list-title{
-    text-align: center;
-    margin: 4rem auto;
-    text-transform: uppercase;
-    text-align: center;
-    background-color: $third-color-light;
-    color: $darker-third-color;
-    border-bottom: solid 4px $dark-third-color;
-    border-radius: 15px;
-    width: 90%;
-}
+
 
 .service-card{
 

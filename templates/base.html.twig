@@ -53,36 +53,35 @@
 			</div>
 		{% endblock %}
 
-		<div class="ease-in-title"> {% block titreh1 %}{% endblock %}
-			</div>
-		</body>
-	</html>
-</header>
-
-<div class="l-main-wrap"> {% block body %}{% endblock %}
-	</div>
-	{% block footer %}
-		<footer class="l-footer">
-			<div class="footer-social">
-				<a href="#">
-					<i class="fa-brands fa-facebook"></i>
-				</a>
-				<a href="#">
-					<i class="fa-brands fa-instagram"></i>
-				</a>
-				<a href="#">
-					<i class="fa-brands fa-twitter"></i>
-				</a>
-				<a href="#">
-					<i class="fa-brands fa-youtube"></i>
-				</a>
-				<div class="footer-copyright">
-					<p>2023 A.L. all rights reserved</p>
-				</div>
-			</footer>
-		{% endblock %}
-		{% block javascripts %}
-			<script src="{{asset ('js/main.js')}}"></script>
-		{% endblock %}
+		<div class="ease-in-title">
+			{% block titreh1 %}
+				<div class="ease-in-title"></div>
+			{% endblock %}
+		</div>
 	</body>
-</body></html>
+</html></header><div class="l-main-wrap"> {% block body %}{% endblock %}
+</div>
+{% block footer %}
+	<footer class="l-footer">
+		<div class="footer-social">
+			<a href="#">
+				<i class="fa-brands fa-facebook"></i>
+			</a>
+			<a href="#">
+				<i class="fa-brands fa-instagram"></i>
+			</a>
+			<a href="#">
+				<i class="fa-brands fa-twitter"></i>
+			</a>
+			<a href="#">
+				<i class="fa-brands fa-youtube"></i>
+			</a>
+			<div class="footer-copyright">
+				<p>2023 A.L. all rights reserved</p>
+			</div>
+		</footer>
+	{% endblock %}
+	{% block javascripts %}
+		<script src="{{asset ('js/main.js')}}"></script>
+	{% endblock %}
+</body></body></html>

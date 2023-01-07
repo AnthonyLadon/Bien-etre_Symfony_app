@@ -42,9 +42,9 @@ a {
     transform: translateY(200%);
     opacity: 0;
   }
-  90% {
+  50% {
     transform: translateY(-10px);
-    opacity: 0.5;
+    opacity: 0.8;
   }
   100% {
     transform: translateY(0%);
@@ -284,8 +284,8 @@ nav.show {
 .ease-in-title h1 {
   color: #a1d2d0;
   font-size: 3rem;
-  animation: slide-in 800ms ease-in-out;
-  animation-delay: 300ms;
+  animation: slide-in 2000ms ease-in-out;
+  animation-delay: 0ms;
 }
 
 .l-main-logo {
@@ -754,18 +754,6 @@ input:checked + .slide-container .nav label {
 .service-list-wrap {
   display: grid;
   grid-template-columns: 1fr 1fr;
-}
-
-.service-list-title {
-  text-align: center;
-  margin: 4rem auto;
-  text-transform: uppercase;
-  text-align: center;
-  background-color: #edd9da;
-  color: #bd797b;
-  border-bottom: solid 4px #c0898b;
-  border-radius: 15px;
-  width: 90%;
 }
 
 .service-card {
