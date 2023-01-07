@@ -4,9 +4,13 @@
 {% endblock %}
 
 {% block body %}
-	<h1>Liste des Services</h1>
-	{% for categorie in categories %}
-		<h3>{{categorie.nom}}</h3>
-		<p>{{categorie.description}}</p>
-	{% endfor %}
+	<h1 class="service-list-title">Nos services proposés</h1>
+	<div class="service-list-wrap">
+		{% for categorie in categories %}
+			<a class="service-card" href="">
+				<h3>{{categorie.nom}}</h3>
+				<img src="{{asset ('images/service-kine.jpg')}}" alt="photo service">
+			</a>
+		{% endfor %}
+	</div>
 {% endblock %}

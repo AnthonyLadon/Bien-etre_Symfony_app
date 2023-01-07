@@ -751,4 +751,47 @@ input:checked + .slide-container .nav label {
   height: 50rem;
 }
 
+.service-list-wrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.service-list-title {
+  text-align: center;
+  margin: 4rem auto;
+  text-transform: uppercase;
+  text-align: center;
+  background-color: #edd9da;
+  color: #bd797b;
+  border-bottom: solid 4px #c0898b;
+  border-radius: 15px;
+  width: 90%;
+}
+
+.service-card {
+  margin: 1rem;
+  max-width: 22rem;
+  background-color: #c9e9eb;
+  padding: 0.5rem 0.5rem 1.5rem 0.5rem;
+  border-radius: 10px;
+  box-shadow: 0px 29px 38px -15px rgba(0, 0, 0, 0.43);
+}
+.service-card h3 {
+  margin: 0 0 0.5rem 0;
+  text-align: center;
+  color: #b96d70;
+  font-size: 1rem;
+  font-weight: bold;
+}
+.service-card img {
+  border-radius: 5px;
+}
+
+@media screen and (min-width: 43rem) {
+  .service-list-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
 /*# sourceMappingURL=screen.css.map */
