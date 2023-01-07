@@ -12,35 +12,37 @@
 		{% endblock %}
 
 	</head>
-	<div class="l-background-image-wrap">
-		<header>
-			{% block nav %}
-				<div class="l-main-header-wrap">
-					<div class="hamburger-icon" id="icon">
-						<div class="icon-1" id="a"></div>
-						<div class="icon-2" id="b"></div>
-						<div class="icon-3" id="c"></div>
-						<div class="clear"></div>
-					</div>
-					<div class="wrap-menu">
-						<nav class="l-main-nav" id="nav">
-							<ul>
-								<li><a id="home"href="{{path('home')}}"><i class="fa-solid fa-house"></i>&nbsp Accueil</a></li>
-								<li><a id="partenaires"href="{{path ("listePartenaires")}}">partenaires</a></li>
-								<li><a href="#">services</a></li>
-								<li><a href="#">stages</a></li>
-								<li><a href="#">à propos</a></li>
-								<li><a href="#">contact</a></li>
-								<li><a href="#"><i class="fa-solid fa-user"></i>&nbsp Mon compte</a></li>
-							</ul>
-						</nav>
-						<div class="dark-pink" id="pink"></div>
-						<div class="main-search-bar-wrap">
-							<div class="main-search-bar">
-								<input type="text" class="main-search-input" placeholder="Service, prestataire, lieu..">
-								<button type="submit" class="main-search-button">
-									<i class="fa fa-search"></i>
-								</button>
+	<body>
+		<div class="l-background-image-wrap">
+			<header>
+				{% block nav %}
+					<div class="l-main-header-wrap">
+						<div class="hamburger-icon" id="icon">
+							<div class="icon-1" id="a"></div>
+							<div class="icon-2" id="b"></div>
+							<div class="icon-3" id="c"></div>
+							<div class="clear"></div>
+						</div>
+						<div class="wrap-menu">
+							<nav class="l-main-nav" id="nav">
+								<ul>
+									<li><a id="home"href="{{path('home')}}"><i class="fa-solid fa-house"></i>&nbsp Accueil</a></li>
+									<li><a id="partenaires"href="{{path ("listePartenaires")}}">partenaires</a></li>
+									<li><a href="#">services</a></li>
+									<li><a href="#">stages</a></li>
+									<li><a href="#">à propos</a></li>
+									<li><a href="#">contact</a></li>
+									<li><a href="#"><i class="fa-solid fa-user"></i>&nbsp Mon compte</a></li>
+								</ul>
+							</nav>
+							<div class="dark-pink" id="pink"></div>
+							<div class="main-search-bar-wrap">
+								<div class="main-search-bar">
+									<input type="text" class="main-search-input" placeholder="Service, prestataire, lieu..">
+									<button type="submit" class="main-search-button">
+										<i class="fa fa-search"></i>
+									</button>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -48,16 +50,15 @@
 						<a href="{{path ('home')}}"><img src="{{asset ('images/logo.png')}}" alt="image-logo"></a>
 					</div>
 				</div>
-			{% endblock %}
+			</div>
+		{% endblock %}
 
-			<div class="ease-in-title"> {% block titreh1 %}{% endblock %}
-
-				</div>
-			</header>
-		</div>
-		<body></body>
+		<div class="ease-in-title"> {% block titreh1 %}{% endblock %}
+			</div>
+		</body>
 	</html>
-</div>
+</header>
+
 <div class="l-main-wrap"> {% block body %}{% endblock %}
 	</div>
 	{% block footer %}
@@ -84,4 +85,4 @@
 			<script src="{{asset ('js/main.js')}}"></script>
 		{% endblock %}
 	</body>
-</html>
+</body></html>

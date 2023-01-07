@@ -374,7 +374,7 @@ ul.slides input {
   top: 0;
   left: 0;
   right: 0;
-  z-index: 999;
+  z-index: 100;
   font-size: 100px;
   line-height: 400px;
   color: #fff;
@@ -414,7 +414,7 @@ ul.slides input {
   left: 0;
   right: 0;
   bottom: 5px;
-  z-index: 999;
+  z-index: 100;
   text-align: center;
 }
 
