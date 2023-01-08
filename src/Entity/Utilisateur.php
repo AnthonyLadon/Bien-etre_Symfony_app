@@ -49,6 +49,10 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?bool $confirmationInscription = false;
 
+    #[ORM\ManyToOne(inversedBy: 'utilisateurs')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Localite $localite = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -218,6 +222,18 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     public function setConfirmationInscription(bool $confirmationInscription): self
     {
         $this->confirmationInscription = $confirmationInscription;
+
+        return $this;
+    }
+
+    public function getLocalite(): ?Localite
+    {
+        return $this->localite;
+    }
+
+    public function setLocalite(?Localite $localite): self
+    {
+        $this->localite = $localite;
 
         return $this;
     }
