@@ -38,6 +38,10 @@ class Stage
     #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $affichageJusque = null;
 
+    #[ORM\ManyToOne(inversedBy: 'stage')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Prestataire $prestataire = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -135,6 +139,18 @@ class Stage
     public function setAffichageJusque(?\DateTimeInterface $affichageJusque): self
     {
         $this->affichageJusque = $affichageJusque;
+
+        return $this;
+    }
+
+    public function getPrestataire(): ?Prestataire
+    {
+        return $this->prestataire;
+    }
+
+    public function setPrestataire(?Prestataire $prestataire): self
+    {
+        $this->prestataire = $prestataire;
 
         return $this;
     }

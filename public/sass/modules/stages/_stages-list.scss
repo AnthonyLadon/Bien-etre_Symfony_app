@@ -1,6 +1,6 @@
 
 
-    .service-list-wrap{
+    .stage-list-wrap{
         margin: 2rem 1rem 1rem 1rem;
         display: flex;
         flex-direction: row;
@@ -11,7 +11,7 @@
 
 
 
-.service-card{
+.stage-card{
     margin: 3rem 0 0 0;
     max-width: 25rem;
     background-color: #c9e9eb;
@@ -39,7 +39,7 @@
 
 @media screen and (min-width: $tablet-break) {
 
-    .service-list-wrap{
+    .stage-list-wrap{
         margin: 2rem 1rem 1rem 1rem;
         display: flex;
         flex-direction: row;
@@ -48,7 +48,7 @@
         justify-items: center;
     }
 
-    .service-card{
+    .stage-card{
         margin: 3rem 0 0 0;
         max-width: 20rem;
     }
@@ -62,13 +62,13 @@
 
 @media screen and (min-width: $laptop-break) {
 
+
     .service-list-wrap{
         margin: 2rem 3rem 1rem 3rem;
     }
 
     .service-card{
         margin: 3rem 0 0 0;
-        min-width: 24rem;
-        max-width: 28rem;
+        max-width: 18rem;
     }
 }

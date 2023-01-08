@@ -4,6 +4,7 @@ namespace App\DataFixtures;
 
 use App\Entity\CategorieService;
 use App\Entity\Internaute;
+use App\Entity\Stage;
 use Faker\Factory;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
@@ -38,6 +39,26 @@ class AppFixtures extends Fixture
             $manager->persist($internaute);
         };
 
+        // creation des Stages
+        // for ($i = 0; $i < 20; $i++) {
+        //     $stage = new Stage();
+        //     $stage->setNom($faker->catchPhrase);
+        //     $stage->setDescription($faker->sentence);
+        //     $stage->setTarif($faker->randomNumber(3, true));
+        //     $stage->setInfoComplementaire($faker->paragraph);
+        //     $stage->setDebut($faker->dateTimeAD);
+        //     $stage->setFin($faker->dateTime);
+        //     $stage->setAffichageDe($faker->dateTimeAD);
+        //     $stage->setAffichageJusque($faker->dateTime);
+        //     $stage->setPrestataire(1);
+
+        //     $manager->persist($stage);
+        // };
+
         $manager->flush();
     }
 }
+
+
+// Pour executer les fixtures ->
+//-------------- php bin/console doctrine:fixtures:load ----------------------

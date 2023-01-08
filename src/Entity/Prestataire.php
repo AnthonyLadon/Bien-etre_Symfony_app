@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\PrestataireRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: PrestataireRepository::class)]
@@ -28,6 +30,14 @@ class Prestataire
     #[ORM\OneToOne(inversedBy: 'prestataire', cascade: ['persist', 'remove'])]
     #[ORM\JoinColumn(nullable: false)]
     private ?Utilisateur $utilisateurID = null;
+
+    #[ORM\OneToMany(mappedBy: 'prestataire', targetEntity: stage::class, orphanRemoval: true)]
+    private Collection $stage;
+
+    public function __construct()
+    {
+        $this->stage = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -90,6 +100,36 @@ class Prestataire
     public function setUtilisateurID(Utilisateur $utilisateurID): self
     {
         $this->utilisateurID = $utilisateurID;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, stage>
+     */
+    public function getStage(): Collection
+    {
+        return $this->stage;
+    }
+
+    public function addStage(stage $stage): self
+    {
+        if (!$this->stage->contains($stage)) {
+            $this->stage->add($stage);
+            $stage->setPrestataire($this);
+        }
+
+        return $this;
+    }
+
+    public function removeStage(stage $stage): self
+    {
+        if ($this->stage->removeElement($stage)) {
+            // set the owning side to null (unless already changed)
+            if ($stage->getPrestataire() === $this) {
+                $stage->setPrestataire(null);
+            }
+        }
 
         return $this;
     }
