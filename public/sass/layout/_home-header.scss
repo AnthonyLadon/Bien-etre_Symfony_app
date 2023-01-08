@@ -21,7 +21,7 @@
   width: 100%;
   transform: translate(-50%, -50%);
   text-align: center;
-  text-shadow: 5px 4px 14px $darker-third-color;
+  text-shadow: 5px 4px 14px $black-pink;
 
   // annimation du titre (voir fichier scss annimations: slide-in)
   h1 {
@@ -83,8 +83,24 @@
 
 
     .l-background-image-wrap {
-      background-image: url('../images/wallpaper/wallpaper-main2.jpeg');
+      background-image: url('../images/wallpaper/wallpaper-main3.png');
       max-width: 2000px;
+      height: 30rem;
+    }
+
+    .l-main-logo{
+      padding: 3rem 0 8rem 0;
+
+  
+      img{
+      width: 7rem;
+      }
+    }
+
+    .ease-in-title {
+      position: absolute;
+      top: 20.2rem;
+   text-shadow: -1px 1px 27px rgba(210,161,163,1);
     }
 
   }
