@@ -16,6 +16,16 @@
 }
 
 
+.highlight-service-card:hover{
+    
+background-color:$dark-third-color;
+
+    h4{
+        color: $dark-third-color;
+        border: solid 1px $darker-third-color;
+    }
+}
+
 
 .highlight-service-card{
     margin: 0 2rem;
@@ -30,13 +40,15 @@
     }
 }
 
+
 .highlight-service-card-title{
 
     h4{
-        font-size: 1.2rem;
-        text-align: center;
-        text-decoration: none;
         color: $darker-third-color;
+        font-size: 1.2rem;
+        background-color: $third-color-light;
+        border: solid 1px $darker-third-color;
+        border-radius: 10px;
     }
 }
 
