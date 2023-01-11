@@ -10,6 +10,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class PartenaireController extends AbstractController
 {
+
+    // Affichage de tous les Prestataires
+
     /**
      * @Route("/partenaires",name="listePartenaires")
      */
@@ -25,42 +28,22 @@ class PartenaireController extends AbstractController
 
 
 
+    // Affichage detail d'un Prestataire
 
-    //! Faire la route pour afficher le Detail du presataire choisi (ID)
+    /**
+     * @Route("partenaires/detail/{id}", name="detailPartenaire")
+     */
 
-    // /**
-    //  * @Route("article/detail/{id}", name="afficher_article")
-    //  */
+    public function detailArticles($id, EntityManagerInterface $entityManager)
+    {
+        $repository = $entityManager->getRepository(Prestataire::class);
+        $partenaire = $repository->find($id);
 
-    //  public function detailArticles($id, EntityManagerInterface $entityManager)
-    //  {
-    //      $repository = $entityManager->getRepository(Article::class);
-    //      // Pour utiliser ma requete DQL personnalisée:
-    //      // $repository2 = $entityManager->getRepository(Categorie::class);
-
-    //      $article = $repository->find($id);
-    //      // $categorie = $repository2->findCategByArticleId($id);
-
-    //      return $this->render(
-    //          'article/detail.html.twig',
-    //          [
-    //              'article' => $article,
-    //              // 'categ' => $categorie
-    //          ]
-    //      );
-    //  }
-
-
-    // /**
-    //  * @Route("/partenaires",name="listePartenaires")
-    //  */
-    // public function PartenaireDetail(EntityManagerInterface $entityManager): Response
-    // {
-    //     $repository = $entityManager->getRepository(Prestataire::class);
-    //     $partenaires = $repository->findAll();
-
-    //     return $this->render('partenaire/detail.html.twig', [
-    //         "partenaires" => $partenaires,
-    //     ]);
-    // }
+        return $this->render(
+            'partenaire/detail.html.twig',
+            [
+                'partenaire' => $partenaire,
+            ]
+        );
+    }
 }

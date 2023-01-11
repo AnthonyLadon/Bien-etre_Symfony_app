@@ -24,7 +24,7 @@ class AppFixtures extends Fixture
         for ($i = 0; $i < 20; $i++) {
             $service = new CategorieService();
             $service->setNom($faker->jobTitle);
-            $service->setDescription($faker->sentence);
+            $service->setDescription($faker->paragraph);
             $service->setEnAvant(0);
             $service->setValide(1);
             $manager->persist($service);
