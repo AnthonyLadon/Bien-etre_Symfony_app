@@ -3,7 +3,18 @@
 {% block title %}Nos partenaires
 {% endblock %}
 
-{% block body %}
+{% block titreh1 %}
+	<h1>Nos partenaires</h1>
+{% endblock %}
 
-	<h1>Liste des partenaires</h1>
+
+{% block body %}
+	<div class="partenaires-list-wrap">
+		{% for partenaire in partenaires %}
+			<a class="partenaires-card" href="">
+				<h3>{{partenaire.nom}}</h3>
+				<img src="{{asset ('images/service-kine.jpg')}}" alt="photo service">
+			</a>
+		{% endfor %}
+	</div>
 {% endblock %}

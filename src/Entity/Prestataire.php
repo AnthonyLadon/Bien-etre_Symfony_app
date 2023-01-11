@@ -88,18 +88,6 @@ class Prestataire
         return $this;
     }
 
-    public function getUtilisateurID(): ?Utilisateur
-    {
-        return $this->utilisateurID;
-    }
-
-    public function setUtilisateurID(Utilisateur $utilisateurID): self
-    {
-        $this->utilisateurID = $utilisateurID;
-
-        return $this;
-    }
-
     /**
      * @return Collection<int, stage>
      */
