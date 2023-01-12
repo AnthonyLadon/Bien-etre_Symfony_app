@@ -10,7 +10,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class PartenaireController extends AbstractController
 {
-
     // Affichage de tous les Prestataires
 
     /**
@@ -22,11 +21,9 @@ class PartenaireController extends AbstractController
         $partenaires = $repository->findAll();
 
         return $this->render('partenaire/liste.html.twig', [
-            "partenaires" => $partenaires,
+            'partenaires' => $partenaires,
         ]);
     }
-
-
 
     // Affichage detail d'un Prestataire
 
@@ -39,11 +36,8 @@ class PartenaireController extends AbstractController
         $repository = $entityManager->getRepository(Prestataire::class);
         $partenaire = $repository->find($id);
 
-        return $this->render(
-            'partenaire/detail.html.twig',
-            [
-                'partenaire' => $partenaire,
-            ]
-        );
+        return $this->render('partenaire/detail.html.twig', [
+            'partenaire' => $partenaire,
+        ]);
     }
 }

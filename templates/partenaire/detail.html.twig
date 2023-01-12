@@ -1,22 +1,31 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{% endblock %}
-
-{% block titreh1 %}
-	<h1>Fiche prestataire</h1>
+{% block title %}
 {% endblock %}
 
+{% block titreh1 %}
+  <h1>
+    Fiche prestataire
+  </h1>
+{% endblock %}
 
 {% block body %}
-	<article>
-		<h2>{{partenaire.nom}}</h2>
-		<p>Site web:
-			{{partenaire.siteWeb}}</p>
-		<p>Tel:
-			{{partenaire.tel}}</p>
-		<p>N° TVA:
-			{{partenaire.tvaNum}}</p>
+  <article>
+    <h2>
+      {{ partenaire.nom }}
+    </h2>
+    <p>
+      Site web:
 
-	</article>
-
+      {{ partenaire.siteWeb }}
+    </p>
+    <p>
+      Tel:
+      {{ partenaire.tel }}
+    </p>
+    <p>
+      N° TVA:
+      {{ partenaire.tvaNum }}
+    </p>
+  </article>
 {% endblock %}

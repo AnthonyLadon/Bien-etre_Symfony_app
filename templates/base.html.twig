@@ -39,19 +39,19 @@
 
 							<div class="main-search-bar-wrap">
 								<div class="main-search-bar">
-									<input type="text" class="main-search-input" placeholder="Par service">
+									<input type="text" class="main-search-input" placeholder="Service">
 									<button type="submit" class="main-search-button">
 										<i class="fa fa-search"></i>
 									</button>
 								</div>
 								<div class="main-search-bar">
-									<input type="text" class="main-search-input" placeholder="Par prestataire">
+									<input type="text" class="main-search-input" placeholder="Prestataire">
 									<button type="submit" class="main-search-button">
 										<i class="fa fa-search"></i>
 									</button>
 								</div>
 								<div class="main-search-bar">
-									<input type="text" class="main-search-input" placeholder="Par lieu">
+									<input type="text" class="main-search-input" placeholder="Lieu">
 									<button type="submit" class="main-search-button">
 										<i class="fa fa-search"></i>
 									</button>
@@ -72,29 +72,30 @@
 			{% endblock %}
 		</div>
 	</body>
-</html></header><div class="l-main-wrap"> {% block body %}{% endblock %}
-</div>
-{% block footer %}
-	<footer class="l-footer">
-		<div class="footer-social">
-			<a href="#">
-				<i class="fa-brands fa-facebook"></i>
-			</a>
-			<a href="#">
-				<i class="fa-brands fa-instagram"></i>
-			</a>
-			<a href="#">
-				<i class="fa-brands fa-twitter"></i>
-			</a>
-			<a href="#">
-				<i class="fa-brands fa-youtube"></i>
-			</a>
-			<div class="footer-copyright">
-				<p>2023 A.L. all rights reserved</p>
-			</div>
-		</footer>
-	{% endblock %}
-	{% block javascripts %}
-		<script src="{{asset ('js/main.js')}}"></script>
-	{% endblock %}
-</body></body></html>
+		</header><div class="l-main-wrap"> {% block body %}{% endblock %}
+		</div>
+		{% block footer %}
+			<footer class="l-footer">
+				<div class="footer-social">
+					<a href="#">
+						<i class="fa-brands fa-facebook"></i>
+					</a>
+					<a href="#">
+						<i class="fa-brands fa-instagram"></i>
+					</a>
+					<a href="#">
+						<i class="fa-brands fa-twitter"></i>
+					</a>
+					<a href="#">
+						<i class="fa-brands fa-youtube"></i>
+					</a>
+					<div class="footer-copyright">
+						<p>2023 A.L. all rights reserved</p>
+					</div>
+			</footer>
+		{% endblock %}s
+		{% block javascripts %}
+			<script src="{{asset ('js/main.js')}}"></script>
+		{% endblock %}
+	</body>
+</html>

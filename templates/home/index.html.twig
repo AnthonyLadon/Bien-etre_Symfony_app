@@ -1,129 +1,133 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Bien-être
+{% block title %}
+  Bien-être
 {% endblock %}
 
 {% block titreh1 %}
-	<h1>Bien-être</h1>
+  <h1>
+    Bien-être
+  </h1>
 {% endblock %}
 
 {% block body %}
-	<div
-		class="carousel">
-		{# Images gérées par l'admin #}
-		<ul class="slides">
-			<input type="radio" name="radio-buttons" id="img-1" checked/>
-			<li class="slide-container">
-				<div class="slide-image">
-					<img src="{{asset ('images/wellness/wellness1.jpeg')}}">
-				</div>
-				<div class="carousel-controls">
-					<label for="img-3" class="prev-slide">
-						<span>&lsaquo;</span>
-					</label>
-					<label for="img-2" class="next-slide">
-						<span>&rsaquo;</span>
-					</label>
-				</div>
-			</li>
-			<input type="radio" name="radio-buttons" id="img-2"/>
-			<li class="slide-container">
-				<div class="slide-image">
-					<img src="{{asset ('images/wellness/wellness2.jpeg')}}">
-				</div>
-				<div class="carousel-controls">
-					<label for="img-1" class="prev-slide">
-						<span>&lsaquo;</span>
-					</label>
-					<label for="img-3" class="next-slide">
-						<span>&rsaquo;</span>
-					</label>
-				</div>
-			</li>
-			<input type="radio" name="radio-buttons" id="img-3"/>
-			<li class="slide-container">
-				<div class="slide-image">
-					<img src="{{asset ('images/wellness/wellness3.jpeg')}}">
-				</div>
-				<div class="carousel-controls">
-					<label for="img-2" class="prev-slide">
-						<span>&lsaquo;</span>
-					</label>
-					<label for="img-1" class="next-slide">
-						<span>&rsaquo;</span>
-					</label>
-				</div>
-			</li>
-			<div class="carousel-dots">
-				<label for="img-1" class="carousel-dot" id="img-dot-1"></label>
-				<label for="img-2" class="carousel-dot" id="img-dot-2"></label>
-				<label for="img-3" class="carousel-dot" id="img-dot-3"></label>
-			</div>
-		</ul>
-	</div>
-	<div class="parallax-container">
-		<article class="last-4-registrated">
-			<h2>Nos nouveaux prestataires</h2>
+  <div class="carousel">
+    {# Images gérées par l'admin #}
+    <ul class="slides">
+      <input type="radio" name="radio-buttons" id="img-1" checked />
+      <li class="slide-container">
+        <div class="slide-image">
+          <img src="{{ asset('images/wellness/wellness1.jpeg') }}" />
+        </div>
+        <div class="carousel-controls">
+          <label for="img-3" class="prev-slide"><span>&lsaquo;</span></label>
+          <label for="img-2" class="next-slide"><span>&rsaquo;</span></label>
+        </div>
+      </li>
+      <input type="radio" name="radio-buttons" id="img-2" />
+      <li class="slide-container">
+        <div class="slide-image">
+          <img src="{{ asset('images/wellness/wellness2.jpeg') }}" />
+        </div>
+        <div class="carousel-controls">
+          <label for="img-1" class="prev-slide"><span>&lsaquo;</span></label>
+          <label for="img-3" class="next-slide"><span>&rsaquo;</span></label>
+        </div>
+      </li>
+      <input type="radio" name="radio-buttons" id="img-3" />
+      <li class="slide-container">
+        <div class="slide-image">
+          <img src="{{ asset('images/wellness/wellness3.jpeg') }}" />
+        </div>
+        <div class="carousel-controls">
+          <label for="img-2" class="prev-slide"><span>&lsaquo;</span></label>
+          <label for="img-1" class="next-slide"><span>&rsaquo;</span></label>
+        </div>
+      </li>
+      <div class="carousel-dots">
+        <label for="img-1" class="carousel-dot" id="img-dot-1"></label>
+        <label for="img-2" class="carousel-dot" id="img-dot-2"></label>
+        <label for="img-3" class="carousel-dot" id="img-dot-3"></label>
+      </div>
+    </ul>
+  </div>
+  <div class="parallax-container">
+    <article class="last-4-registrated">
+      <h2>
+        Nos nouveaux prestataires
+      </h2>
 
-			<div class="last-4-registrated-wrap">
-				<div class="card">
-					<div class="face face--front">
-						<img src="{{asset ('images/avatars/avatar1.jpeg')}}" alt="photo prestataire">
-					</div>
-					<a class="face face--back" href="#">Bob Marley</a>
-				</div>
-				<div class="card">
-					<div class="face face--front">
-						<img src="{{asset ('images/avatars/avatar2.webp')}}" alt="photo prestataire">
-					</div>
-					<a class="face face--back" href="#">Jimi Hendrix</a>
-				</div>
-				<div class="card">
-					<div class="face face--front">
-						<img src="{{asset ('images/avatars/avatar3.webp')}}" alt="photo prestataire">
-					</div>
-					<a class="face face--back" href="#">Janice Joplin</a>
-				</div>
-				<div class="card">
-					<div class="face face--front">
-						<img src="{{asset ('images/avatars/avatar4.webp')}}" alt="photo prestataire">
-					</div>
-					<a class="face face--back" href="#">Eric Clapton</a>
-				</div>
-			</div>
-		</article>
-	</div>
+      <div class="last-4-registrated-wrap">
+        <div class="card">
+          <div class="face face--front">
+            <img src="{{ asset('images/avatars/avatar1.jpeg') }}"
+              alt="photo prestataire" />
+          </div>
+          <a class="face face--back" href="#">Bob Marley</a>
+        </div>
+        <div class="card">
+          <div class="face face--front">
+            <img src="{{ asset('images/avatars/avatar2.webp') }}"
+              alt="photo prestataire" />
+          </div>
+          <a class="face face--back" href="#">Jimi Hendrix</a>
+        </div>
+        <div class="card">
+          <div class="face face--front">
+            <img src="{{ asset('images/avatars/avatar3.webp') }}"
+              alt="photo prestataire" />
+          </div>
+          <a class="face face--back" href="#">Janice Joplin</a>
+        </div>
+        <div class="card">
+          <div class="face face--front">
+            <img src="{{ asset('images/avatars/avatar4.webp') }}"
+              alt="photo prestataire" />
+          </div>
+          <a class="face face--back" href="#">Eric Clapton</a>
+        </div>
+      </div>
+    </article>
+  </div>
 
-	<div class="parallax-separtator">
-		<div class="separator-quote">
-			<p>"Le bonheur de toute société commence avec le bien-être des familles qui y vivent"</p>
-			<p>- Kofi Annan -</p>
-		</div>
-	</div>
+  <div class="parallax-separtator">
+    <div class="separator-quote">
+      <p>
+        "Le bonheur de toute société commence avec le bien-être des familles qui
+        y vivent"
+      </p>
+      <p>
+        - Kofi Annan -
+      </p>
+    </div>
+  </div>
 
-	<div class="parallax-container second">
-		<article class="highlight-service-wrap">
-			<h2>Le service du mois</h2>
-			<a href="#">
-				<div class="highlight-service-card">
-					<img src="{{asset ('images/service-kine.jpg')}}" alt="photo service à la une">
-					<div class="highlight-service-card-title">
-						<h4>
-							Service Kinésiethérapie
-						</h4>
-					</div>
-				</div>
-			</a>
-
-		</article>
-	</div>
-	<div class="l-articles-wrap">
-
-		<asside>
-			<article class="google-maps-wrap">
-				<h2>Google maps</h2>
-				<img src="{{asset ('images/google-maps.jpg')}}" alt="google maps">
-			</article>
-		</asside>
-	</div>
+  <div class="parallax-container second">
+    <article class="highlight-service-wrap">
+      <h2>
+        Le service du mois
+      </h2>
+      <a href="#">
+        <div class="highlight-service-card">
+          <img src="{{ asset('images/service-kine.jpg') }}"
+            alt="photo service à la une" />
+          <div class="highlight-service-card-title">
+            <h4>
+              Service Kinésiethérapie
+            </h4>
+          </div>
+        </div>
+      </a>
+    </article>
+  </div>
+  <div class="l-articles-wrap">
+    <asside>
+      <article class="google-maps-wrap">
+        <h2>
+          Google maps
+        </h2>
+        <img src="{{ asset('images/google-maps.jpg') }}" alt="google maps" />
+      </article>
+    </asside>
+  </div>
 {% endblock %}
