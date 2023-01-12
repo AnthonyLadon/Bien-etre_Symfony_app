@@ -1,5 +1,3 @@
-
-
 // Base
 @import "base/reset";
 @import "base/variables";
@@ -10,17 +8,17 @@
 @import "layout/navbar";
 @import "layout/footer";
 @import "layout/home-header";
+@import "layout/main-search-zone";
 
 // modules
 @import "modules/carrousel";
 @import "modules/google-maps";
 @import "modules/last-4-registrated";
 @import "modules/highlight-service";
-@import "modules/searchbar";
+@import "modules/searchzone";
 @import "modules/parallax";
 
 // modules pages
 @import "modules/services/services-list";
 @import "modules/stages/stages-list";
 @import "modules/partenaires/partenaires";
-

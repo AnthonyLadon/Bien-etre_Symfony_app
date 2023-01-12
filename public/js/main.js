@@ -13,3 +13,15 @@ icon.addEventListener("click", function () {
   nav.classList.toggle("show");
   blue.classList.toggle("slide");
 });
+
+// Permet d'afficher et de masquer le zone de recherche sur les autres pages
+const targetDiv = document.getElementById("search-bar-wrap");
+const btn = document.getElementById("search-button-toggle");
+targetDiv.style.display = "none";
+btn.onclick = function () {
+  if (targetDiv.style.display !== "none") {
+    targetDiv.style.display = "none";
+  } else {
+    targetDiv.style.display = "block";
+  }
+};
