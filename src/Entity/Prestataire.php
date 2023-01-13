@@ -30,9 +30,13 @@ class Prestataire
     #[ORM\OneToMany(mappedBy: 'prestataire', targetEntity: Stage::class, orphanRemoval: true)]
     private Collection $stage;
 
+    #[ORM\OneToMany(mappedBy: 'Prestataire', targetEntity: Stage::class)]
+    private Collection $stages;
+
     public function __construct()
     {
         $this->stage = new ArrayCollection();
+        $this->stages = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -116,5 +120,13 @@ class Prestataire
         }
 
         return $this;
+    }
+
+    /**
+     * @return Collection<int, Stage>
+     */
+    public function getStages(): Collection
+    {
+        return $this->stages;
     }
 }

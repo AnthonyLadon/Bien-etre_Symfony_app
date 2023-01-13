@@ -42,6 +42,7 @@ class Stage
     #[ORM\JoinColumn(nullable: false)]
     private ?Prestataire $prestataire = null;
 
+
     public function getId(): ?int
     {
         return $this->id;
