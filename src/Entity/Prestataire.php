@@ -33,10 +33,14 @@ class Prestataire
     #[ORM\OneToMany(mappedBy: 'Prestataire', targetEntity: Stage::class)]
     private Collection $stages;
 
+    #[ORM\OneToMany(mappedBy: 'prestataire', targetEntity: Promotion::class)]
+    private Collection $promotion;
+
     public function __construct()
     {
         $this->stage = new ArrayCollection();
         $this->stages = new ArrayCollection();
+        $this->promotion = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -128,5 +132,35 @@ class Prestataire
     public function getStages(): Collection
     {
         return $this->stages;
+    }
+
+    /**
+     * @return Collection<int, Promotion>
+     */
+    public function getPromotion(): Collection
+    {
+        return $this->promotion;
+    }
+
+    public function addPromotion(Promotion $promotion): self
+    {
+        if (!$this->promotion->contains($promotion)) {
+            $this->promotion->add($promotion);
+            $promotion->setPrestataire($this);
+        }
+
+        return $this;
+    }
+
+    public function removePromotion(Promotion $promotion): self
+    {
+        if ($this->promotion->removeElement($promotion)) {
+            // set the owning side to null (unless already changed)
+            if ($promotion->getPrestataire() === $this) {
+                $promotion->setPrestataire(null);
+            }
+        }
+
+        return $this;
     }
 }

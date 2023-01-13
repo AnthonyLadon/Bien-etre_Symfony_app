@@ -56,6 +56,9 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\ManyToOne(inversedBy: 'utilisateurs')]
     private ?CodePostal $codePostal = null;
 
+    #[ORM\ManyToOne(inversedBy: 'utilisateurs')]
+    private ?Commune $commune = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -249,6 +252,18 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     public function setCodePostal(?CodePostal $codePostal): self
     {
         $this->codePostal = $codePostal;
+
+        return $this;
+    }
+
+    public function getCommune(): ?Commune
+    {
+        return $this->commune;
+    }
+
+    public function setCommune(?Commune $commune): self
+    {
+        $this->commune = $commune;
 
         return $this;
     }
