@@ -53,6 +53,9 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\JoinColumn(nullable: false)]
     private ?Localite $localite = null;
 
+    #[ORM\ManyToOne(inversedBy: 'utilisateurs')]
+    private ?CodePostal $codePostal = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -234,6 +237,18 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     public function setLocalite(?Localite $localite): self
     {
         $this->localite = $localite;
+
+        return $this;
+    }
+
+    public function getCodePostal(): ?CodePostal
+    {
+        return $this->codePostal;
+    }
+
+    public function setCodePostal(?CodePostal $codePostal): self
+    {
+        $this->codePostal = $codePostal;
 
         return $this;
     }
