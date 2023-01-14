@@ -33,10 +33,14 @@ class Internaute
     #[ORM\OneToOne(cascade: ['persist', 'remove'])]
     private ?Bloc $bloc = null;
 
+    #[ORM\ManyToMany(targetEntity: Prestataire::class, mappedBy: 'favori')]
+    private Collection $prestataires;
+
     public function __construct()
     {
         $this->commentaires = new ArrayCollection();
         $this->abuses = new ArrayCollection();
+        $this->prestataires = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -148,6 +152,33 @@ class Internaute
     public function setBloc(?Bloc $bloc): self
     {
         $this->bloc = $bloc;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Prestataire>
+     */
+    public function getPrestataires(): Collection
+    {
+        return $this->prestataires;
+    }
+
+    public function addPrestataire(Prestataire $prestataire): self
+    {
+        if (!$this->prestataires->contains($prestataire)) {
+            $this->prestataires->add($prestataire);
+            $prestataire->addFavori($this);
+        }
+
+        return $this;
+    }
+
+    public function removePrestataire(Prestataire $prestataire): self
+    {
+        if ($this->prestataires->removeElement($prestataire)) {
+            $prestataire->removeFavori($this);
+        }
 
         return $this;
     }

@@ -14,7 +14,7 @@ final class Version20230114124412 extends AbstractMigration
 {
     public function getDescription(): string
     {
-        return 'realtion ManyToOne: images -> prestataire (images_photo)';
+        return 'relation ManyToOne: images -> prestataire (images_photo)';
     }
 
     public function up(Schema $schema): void

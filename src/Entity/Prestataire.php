@@ -48,6 +48,12 @@ class Prestataire
     #[ORM\OneToMany(mappedBy: 'images_photo', targetEntity: Images::class)]
     private Collection $images_photo;
 
+    #[ORM\ManyToMany(targetEntity: CategorieService::class, inversedBy: 'prestataires')]
+    private Collection $proposer;
+
+    #[ORM\ManyToMany(targetEntity: Internaute::class, inversedBy: 'prestataires')]
+    private Collection $favori;
+
     public function __construct()
     {
         $this->stage = new ArrayCollection();
@@ -56,6 +62,8 @@ class Prestataire
         $this->commentaires = new ArrayCollection();
         $this->images = new ArrayCollection();
         $this->images_photo = new ArrayCollection();
+        $this->proposer = new ArrayCollection();
+        $this->favori = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -277,6 +285,54 @@ class Prestataire
                 $imagesPhoto->setImagesPhoto(null);
             }
         }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, CategorieService>
+     */
+    public function getProposer(): Collection
+    {
+        return $this->proposer;
+    }
+
+    public function addProposer(CategorieService $proposer): self
+    {
+        if (!$this->proposer->contains($proposer)) {
+            $this->proposer->add($proposer);
+        }
+
+        return $this;
+    }
+
+    public function removeProposer(CategorieService $proposer): self
+    {
+        $this->proposer->removeElement($proposer);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Internaute>
+     */
+    public function getFavori(): Collection
+    {
+        return $this->favori;
+    }
+
+    public function addFavori(Internaute $favori): self
+    {
+        if (!$this->favori->contains($favori)) {
+            $this->favori->add($favori);
+        }
+
+        return $this;
+    }
+
+    public function removeFavori(Internaute $favori): self
+    {
+        $this->favori->removeElement($favori);
 
         return $this;
     }
