@@ -19,6 +19,9 @@ class Images
     #[ORM\Column(nullable: true)]
     private ?int $image = null;
 
+    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
+    private ?CategorieService $categorieService = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -44,6 +47,18 @@ class Images
     public function setImage(?int $image): self
     {
         $this->image = $image;
+
+        return $this;
+    }
+
+    public function getCategorieService(): ?CategorieService
+    {
+        return $this->categorieService;
+    }
+
+    public function setCategorieService(?CategorieService $categorieService): self
+    {
+        $this->categorieService = $categorieService;
 
         return $this;
     }

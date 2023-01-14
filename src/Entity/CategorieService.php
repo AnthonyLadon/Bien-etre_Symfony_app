@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\CategorieServiceRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: CategorieServiceRepository::class)]
@@ -24,6 +26,14 @@ class CategorieService
 
     #[ORM\Column]
     private ?bool $valide = false;
+
+    #[ORM\OneToMany(mappedBy: 'categorieService', targetEntity: Promotion::class)]
+    private Collection $promotions;
+
+    public function __construct()
+    {
+        $this->promotions = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -74,6 +84,36 @@ class CategorieService
     public function setValide(bool $valide): self
     {
         $this->valide = $valide;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Promotion>
+     */
+    public function getPromotions(): Collection
+    {
+        return $this->promotions;
+    }
+
+    public function addPromotion(Promotion $promotion): self
+    {
+        if (!$this->promotions->contains($promotion)) {
+            $this->promotions->add($promotion);
+            $promotion->setCategorieService($this);
+        }
+
+        return $this;
+    }
+
+    public function removePromotion(Promotion $promotion): self
+    {
+        if ($this->promotions->removeElement($promotion)) {
+            // set the owning side to null (unless already changed)
+            if ($promotion->getCategorieService() === $this) {
+                $promotion->setCategorieService(null);
+            }
+        }
 
         return $this;
     }
