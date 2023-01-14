@@ -59,6 +59,9 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\ManyToOne(inversedBy: 'utilisateurs')]
     private ?Commune $commune = null;
 
+    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
+    private ?Internaute $internaute = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -264,6 +267,18 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     public function setCommune(?Commune $commune): self
     {
         $this->commune = $commune;
+
+        return $this;
+    }
+
+    public function getInternaute(): ?Internaute
+    {
+        return $this->internaute;
+    }
+
+    public function setInternaute(?Internaute $internaute): self
+    {
+        $this->internaute = $internaute;
 
         return $this;
     }

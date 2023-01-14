@@ -42,12 +42,20 @@ class Prestataire
     #[ORM\OneToOne(cascade: ['persist', 'remove'])]
     private ?Utilisateur $utilisateur = null;
 
+    #[ORM\OneToMany(mappedBy: 'images_Logo', targetEntity: Images::class)]
+    private Collection $images;
+
+    #[ORM\OneToMany(mappedBy: 'images_photo', targetEntity: Images::class)]
+    private Collection $images_photo;
+
     public function __construct()
     {
         $this->stage = new ArrayCollection();
         $this->stages = new ArrayCollection();
         $this->promotion = new ArrayCollection();
         $this->commentaires = new ArrayCollection();
+        $this->images = new ArrayCollection();
+        $this->images_photo = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -209,6 +217,66 @@ class Prestataire
     public function setUtilisateur(?Utilisateur $utilisateur): self
     {
         $this->utilisateur = $utilisateur;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Images>
+     */
+    public function getImages(): Collection
+    {
+        return $this->images;
+    }
+
+    public function addImage(Images $image): self
+    {
+        if (!$this->images->contains($image)) {
+            $this->images->add($image);
+            $image->setImagesLogo($this);
+        }
+
+        return $this;
+    }
+
+    public function removeImage(Images $image): self
+    {
+        if ($this->images->removeElement($image)) {
+            // set the owning side to null (unless already changed)
+            if ($image->getImagesLogo() === $this) {
+                $image->setImagesLogo(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Images>
+     */
+    public function getImagesPhoto(): Collection
+    {
+        return $this->images_photo;
+    }
+
+    public function addImagesPhoto(Images $imagesPhoto): self
+    {
+        if (!$this->images_photo->contains($imagesPhoto)) {
+            $this->images_photo->add($imagesPhoto);
+            $imagesPhoto->setImagesPhoto($this);
+        }
+
+        return $this;
+    }
+
+    public function removeImagesPhoto(Images $imagesPhoto): self
+    {
+        if ($this->images_photo->removeElement($imagesPhoto)) {
+            // set the owning side to null (unless already changed)
+            if ($imagesPhoto->getImagesPhoto() === $this) {
+                $imagesPhoto->setImagesPhoto(null);
+            }
+        }
 
         return $this;
     }

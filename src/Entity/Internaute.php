@@ -27,9 +27,16 @@ class Internaute
     #[ORM\OneToMany(mappedBy: 'internaute', targetEntity: Commentaire::class)]
     private Collection $commentaires;
 
+    #[ORM\OneToMany(mappedBy: 'internaute', targetEntity: Abus::class)]
+    private Collection $abuses;
+
+    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
+    private ?Bloc $bloc = null;
+
     public function __construct()
     {
         $this->commentaires = new ArrayCollection();
+        $this->abuses = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -99,6 +106,48 @@ class Internaute
                 $commentaire->setInternaute(null);
             }
         }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Abus>
+     */
+    public function getAbuses(): Collection
+    {
+        return $this->abuses;
+    }
+
+    public function addAbuse(Abus $abuse): self
+    {
+        if (!$this->abuses->contains($abuse)) {
+            $this->abuses->add($abuse);
+            $abuse->setInternaute($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAbuse(Abus $abuse): self
+    {
+        if ($this->abuses->removeElement($abuse)) {
+            // set the owning side to null (unless already changed)
+            if ($abuse->getInternaute() === $this) {
+                $abuse->setInternaute(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getBloc(): ?Bloc
+    {
+        return $this->bloc;
+    }
+
+    public function setBloc(?Bloc $bloc): self
+    {
+        $this->bloc = $bloc;
 
         return $this;
     }

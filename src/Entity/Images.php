@@ -22,6 +22,15 @@ class Images
     #[ORM\OneToOne(cascade: ['persist', 'remove'])]
     private ?CategorieService $categorieService = null;
 
+    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
+    private ?Internaute $image_avatar = null;
+
+    #[ORM\ManyToOne(inversedBy: 'images')]
+    private ?Prestataire $images_Logo = null;
+
+    #[ORM\ManyToOne(inversedBy: 'images_photo')]
+    private ?Prestataire $images_photo = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -59,6 +68,42 @@ class Images
     public function setCategorieService(?CategorieService $categorieService): self
     {
         $this->categorieService = $categorieService;
+
+        return $this;
+    }
+
+    public function getImageAvatar(): ?Internaute
+    {
+        return $this->image_avatar;
+    }
+
+    public function setImageAvatar(?Internaute $image_avatar): self
+    {
+        $this->image_avatar = $image_avatar;
+
+        return $this;
+    }
+
+    public function getImagesLogo(): ?Prestataire
+    {
+        return $this->images_Logo;
+    }
+
+    public function setImagesLogo(?Prestataire $images_Logo): self
+    {
+        $this->images_Logo = $images_Logo;
+
+        return $this;
+    }
+
+    public function getImagesPhoto(): ?Prestataire
+    {
+        return $this->images_photo;
+    }
+
+    public function setImagesPhoto(?Prestataire $images_photo): self
+    {
+        $this->images_photo = $images_photo;
 
         return $this;
     }

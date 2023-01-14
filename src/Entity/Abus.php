@@ -23,6 +23,9 @@ class Abus
     #[ORM\ManyToOne(inversedBy: 'abuses')]
     private ?Commentaire $commentaire = null;
 
+    #[ORM\ManyToOne(inversedBy: 'abuses')]
+    private ?Internaute $internaute = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -60,6 +63,18 @@ class Abus
     public function setCommentaire(?Commentaire $commentaire): self
     {
         $this->commentaire = $commentaire;
+
+        return $this;
+    }
+
+    public function getInternaute(): ?Internaute
+    {
+        return $this->internaute;
+    }
+
+    public function setInternaute(?Internaute $internaute): self
+    {
+        $this->internaute = $internaute;
 
         return $this;
     }
