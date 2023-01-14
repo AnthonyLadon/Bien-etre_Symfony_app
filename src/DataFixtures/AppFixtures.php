@@ -2,10 +2,13 @@
 
 namespace App\DataFixtures;
 
-use App\Entity\CategorieService;
-use App\Entity\Internaute;
-use App\Entity\Stage;
 use Faker\Factory;
+use App\Entity\Stage;
+use App\Entity\Localite;
+use App\Entity\Internaute;
+use App\Entity\Prestataire;
+use App\Entity\Utilisateur;
+use App\Entity\CategorieService;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 
@@ -21,7 +24,7 @@ class AppFixtures extends Fixture
         $faker = Factory::create('fr_BE');
 
         // Creation des catégories de services
-        for ($i = 0; $i < 20; $i++) {
+        for ($i = 0; $i < 15; $i++) {
             $service = new CategorieService();
             $service->setNom($faker->jobTitle);
             $service->setDescription($faker->paragraph);
@@ -30,14 +33,41 @@ class AppFixtures extends Fixture
             $manager->persist($service);
         };
 
+
+
         // creation des internautes
-        for ($i = 0; $i < 20; $i++) {
+        for ($i = 0; $i < 40; $i++) {
             $internaute = new Internaute();
             $internaute->setPrenom($faker->firstName);
             $internaute->setNom($faker->lastName);
             $internaute->setNewsletter(0);
             $manager->persist($internaute);
         };
+
+
+        for ($i = 0; $i < 20; $i++){
+            $localite = new Localite();
+            $localite->setLocalite('Liege');
+            $manager->persist($localite);
+        }
+
+
+        for ($i = 0; $i < 20; $i++) {
+            $utilisateur = new Utilisateur();
+            $utilisateur->setConfirmationInscription(1);
+            $utilisateur->setEmail($faker->email());
+            $utilisateur->setPassword('fsdfsdfdsfds');
+            $utilisateur->setDateInscription($faker->dateTime());
+            $utilisateur->setTypeUtilisateur("Utilisateur");
+            $utilisateur->setNbEssais(0);
+            $utilisateur->setBanni(0);
+            $utilisateur->setConfirmationInscription(1);
+            $utilisateur->setLocalite($localite);
+            $manager->persist($utilisateur);
+        };
+
+
+
 
         // creation des Stages
         // for ($i = 0; $i < 20; $i++) {
@@ -50,7 +80,7 @@ class AppFixtures extends Fixture
         //     $stage->setFin($faker->dateTime);
         //     $stage->setAffichageDe($faker->dateTimeAD);
         //     $stage->setAffichageJusque($faker->dateTime);
-        //     $stage->setPrestataire(1);
+        //     $stage->setPrestataire();
 
         //     $manager->persist($stage);
         // };
