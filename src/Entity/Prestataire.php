@@ -39,6 +39,9 @@ class Prestataire
     #[ORM\OneToMany(mappedBy: 'prestataire', targetEntity: Commentaire::class)]
     private Collection $commentaires;
 
+    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
+    private ?Utilisateur $utilisateur = null;
+
     public function __construct()
     {
         $this->stage = new ArrayCollection();
@@ -194,6 +197,18 @@ class Prestataire
                 $commentaire->setPrestataire(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getUtilisateur(): ?Utilisateur
+    {
+        return $this->utilisateur;
+    }
+
+    public function setUtilisateur(?Utilisateur $utilisateur): self
+    {
+        $this->utilisateur = $utilisateur;
 
         return $this;
     }
