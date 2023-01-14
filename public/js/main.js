@@ -14,14 +14,16 @@ icon.addEventListener("click", function () {
   blue.classList.toggle("slide");
 });
 
-// Permet d'afficher et de masquer le zone de recherche sur les autres pages
+// Permet, sur les autres pages qu'accueil, d'afficher et de masquer le zone de recherche
 const targetDiv = document.getElementById("search-bar-wrap");
 const btn = document.getElementById("search-button-toggle");
 targetDiv.style.display = "none";
 btn.onclick = function () {
   if (targetDiv.style.display !== "none") {
     targetDiv.style.display = "none";
+    btn.innerHTML = '<i class="fa fa-search"></i>';
   } else {
     targetDiv.style.display = "block";
+    btn.innerHTML = '<i class="fa-solid fa-xmark"></i>';
   }
 };

@@ -363,10 +363,10 @@ nav.show {
 }
 
 .main-search-button {
-  width: 15%;
+  width: 49%;
   padding: 0rem;
-  margin: 0 auto;
-  height: 1.5rem;
+  margin: 0 0 0.5rem 0;
+  height: 2rem;
   border: 1px solid #d2a1a3;
   background: #d2a1a3;
   text-align: center;
@@ -756,12 +756,13 @@ input:checked + .slide-container .nav label {
   }
 }
 .search-bar-wrap {
+  position: relative;
+  left: 25%;
+  top: 40%;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   width: 65%;
-  padding: 1.5rem 0 0 0;
-  margin: 5% 0 0 30%;
   transition-timing-function: ease-in;
   transition: 1s;
 }
@@ -770,7 +771,7 @@ input:checked + .slide-container .nav label {
   position: relative;
   left: 80%;
   top: 35%;
-  width: 5rem;
+  width: 4rem;
   padding: 2px 0 0 0;
   margin: 0 auto;
   height: 1.5rem;

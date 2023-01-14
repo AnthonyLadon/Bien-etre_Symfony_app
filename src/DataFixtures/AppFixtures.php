@@ -68,6 +68,8 @@ class AppFixtures extends Fixture
 
 
 
+        // Voir pour creer prestataires + récupéréer leur ID et l'injecter à la voléé
+        // dans les stages
 
         // creation des Stages
         // for ($i = 0; $i < 20; $i++) {
