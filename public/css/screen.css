@@ -236,21 +236,40 @@ nav.show {
   }
 }
 .l-footer {
-  display: flex;
-  justify-content: center;
   padding: 5rem 0 0 0;
 }
 
+.l-footer-links {
+  margin: 0 auto 1rem auto;
+  text-align: center;
+}
+.l-footer-links a {
+  text-transform: uppercase;
+  color: #bd797b;
+  display: inline-flex;
+  justify-content: center;
+  width: 6rem;
+  margin: 0 0.5rem;
+}
+.l-footer-links a:hover {
+  color: #a1d2d0;
+}
+
+.footer-social {
+  margin: 0 auto 2rem auto;
+  text-align: center;
+}
 .footer-social a {
   display: inline-flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
   width: 3rem;
+  padding: 0 2rem;
   margin: 0 0.5rem;
 }
 
 .fa-brands {
   color: #bd797b;
-  font-size: 2.5rem;
+  font-size: 3.5rem;
 }
 
 .fa-brands:hover {
@@ -260,8 +279,8 @@ nav.show {
 .footer-copyright {
   display: flex;
   justify-content: center;
-  margin: 1rem 0 0 0;
-  color: #bd797b;
+  margin: 3rem 0 0 0;
+  color: #d2a1a3;
 }
 
 .l-background-image-wrap {
@@ -956,6 +975,38 @@ input:checked + .slide-container .nav label {
     max-width: 28rem;
   }
 }
+.presataire-detail-wrap {
+  margin: 2rem;
+  height: 10rem;
+  border: solid 1px #b96d6f;
+}
+.presataire-detail-wrap h2 {
+  color: #b96d6f;
+  font-size: 1.5rem;
+}
+.presataire-detail-wrap p {
+  color: #995557;
+  margin: 1rem 0 0 0;
+}
+
+.prestaire-last-registrated-wrap {
+  margin: 2rem;
+  height: 10rem;
+  border: solid 1px #b96d6f;
+}
+.prestaire-last-registrated-wrap h3 {
+  color: #b96d6f;
+  font-size: 1.5rem;
+}
+
+.prestaire-last-registrated {
+  color: #995557;
+}
+
+.prestaire-last-registrated-cards-wrap {
+  margin: 1rem 0 0 0;
+}
+
 .stage-list-wrap {
   margin: 2rem 1rem 1rem 1rem;
   display: flex;

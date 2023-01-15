@@ -6,63 +6,61 @@
 	<h1>{{service.nom}}</h1>
 {% endblock %}
 
-				{% block nav %}
-					<div class="l-main-header-wrap">
-						<div class="hamburger-icon" id="icon">
-							<div class="icon-1" id="a"></div>
-							<div class="icon-2" id="b"></div>
-							<div class="icon-3" id="c"></div>
-							<div class="clear"></div>
-						</div>
-						<div class="wrap-menu">
-							<nav class="l-main-nav" id="nav">
-								<ul>
-									<li><a id="home"href="{{path('home')}}"><i class="fa-solid fa-house"></i>&nbsp</a></li>
-									<li><a id="partenaires"href="{{path ("listePartenaires")}}">partenaires</a></li>
-									<li><a id="services"href="{{path ("listeServices")}}">services</a></li>
-									<li><a id="services"href="{{path ("listeStages")}}">stages</a></li>
-									<li><a href="#">à propos</a></li>
-									<li><a href="#">contact</a></li>
-									<li><a href="#"><i class="fa-solid fa-user"></i>&nbsp</a></li>
-								</ul>
-							</nav>
-							<div class="dark-pink" id="pink"></div>
+{% block nav %}
+	<div class="l-main-header-wrap">
+		<div class="hamburger-icon" id="icon">
+			<div class="icon-1" id="a"></div>
+			<div class="icon-2" id="b"></div>
+			<div class="icon-3" id="c"></div>
+			<div class="clear"></div>
+		</div>
+		<div class="wrap-menu">
+			<nav class="l-main-nav" id="nav">
+				<ul>
+					<li><a id="home"href="{{path('home')}}"><i class="fa-solid fa-house"></i>&nbsp;Accueil</a></li>
+					<li><a id="partenaires"href="{{path ("listePartenaires")}}"><i class="fa-solid fa-handshake-simple"></i>&nbsp;Partenaires</a></li>
+					<li><a id="services"href="{{path ("listeServices")}}"><i class="fa-solid fa-bell-concierge"></i>&nbsp;Services</a></li>
+					<li><a id="services"href="{{path ("listeStages")}}"><i class="fa-solid fa-person-chalkboard"></i>&nbsp;Stages</a></li>
+					<li><a href="#"><i class="fa-solid fa-user"></i>&nbsp;Se Connecter</a></li>
+				</ul>
+			</nav>
+			<div class="dark-pink" id="pink"></div>
 
-							<button id="search-button-toggle"><i class="fa fa-search"></i></button>
-							<div class="search-bar-wrap" id="search-bar-wrap">
-								<input type="text" class="main-search-input" placeholder="Prestataire">
-								<input type="text" class="main-search-input" placeholder="Catégorie de Service">
-								<input type="text" class="main-search-input" placeholder="Commune">
-								<input type="text" class="main-search-input" placeholder="Localité">
-								<input type="text" class="main-search-input" placeholder="Code Postal">
-								<button type="submit" class="main-search-button">
-									<i class="fa fa-search"></i>&nbsp;Rechercher
-								</button>
-							</div>
-						</div>
-					</div>
-					<div class='l-main-logo'>
-						<a href="{{path ('home')}}"><img src="{{asset ('images/logo.png')}}" alt="image-logo"></a>
-					</div>
-				</div>
+			<button id="search-button-toggle"><i class="fa fa-search"></i></button>
+			<div class="search-bar-wrap" id="search-bar-wrap">
+				<input type="text" class="main-search-input" placeholder="Prestataire">
+				<input type="text" class="main-search-input" placeholder="Catégorie de Service">
+				<input type="text" class="main-search-input" placeholder="Commune">
+				<input type="text" class="main-search-input" placeholder="Localité">
+				<input type="text" class="main-search-input" placeholder="Code Postal">
+				<button type="submit" class="main-search-button">
+					<i class="fa fa-search"></i>&nbsp;Rechercher
+				</button>
 			</div>
-		{% endblock %}
+		</div>
+	</div>
+	<div class='l-main-logo'>
+		<a href="{{path ('home')}}"><img src="{{asset ('images/logo.png')}}" alt="image-logo"></a>
+	</div>
+</div>
+</div>
+{% endblock %}
 
 {% block body %}
 	<article>
-	<div class="presataire-detail-wrap">		
-		<h2>{{service.nom}}</h2>
-		<p>{{service.description}}</p>
-	</div>
-	<div class="prestaire-last-registrated-wrap">
-	<h3>Dans la meme catégorie de service: (4 derniers presatataires inscrits)</h3>
-		<div class="prestaire-last-registrated"><p>ici cartes prestataire</p></div>
-		<div class="prestaire-last-registrated"><p>ici cartes prestataire</p></div>
-		<div class="prestaire-last-registrated"><p>ici cartes prestataire</p></div>
-		<div class="prestaire-last-registrated"><p>ici cartes prestataire</p></div>
-	</div>
-
-
+		<div class="presataire-detail-wrap">		
+			<h2>{{service.nom}}</h2>
+			<p>{{service.description}}</p>
+		</div>
+		<div class="prestaire-last-registrated-wrap">
+			<h3>Dans la meme catégorie de service: (4 derniers presatataires inscrits)</h3>
+			<div class="prestaire-last-registrated-cards-wrap">
+				<div class="prestaire-last-registrated"><p>ici cartes prestataire</p></div>
+				<div class="prestaire-last-registrated"><p>ici cartes prestataire</p></div>
+				<div class="prestaire-last-registrated"><p>ici cartes prestataire</p></div>
+				<div class="prestaire-last-registrated"><p>ici cartes prestataire</p></div>
+			</div>
+		</div>
 	</article>
 
 {% endblock %}
