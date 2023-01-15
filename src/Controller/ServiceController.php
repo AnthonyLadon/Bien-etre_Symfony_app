@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\CategorieService;
+use App\Entity\Prestataire;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -41,10 +42,18 @@ class ServiceController extends AbstractController
         $repository = $entityManager->getRepository(CategorieService::class);
         $service = $repository->find($id);
 
+        // recupérer l'Id du service
+        $serviceId = $service->getId();
+
+        // trouver les 4 derniers presatataires inscrit pour ce service
+        // $repository2 = $entityManager->getRepository(Prestataire::class);
+        // $lastPrestataires = $repository2->last4Prestataires($serviceId);
+
         return $this->render(
             'service/detail.html.twig',
             [
                 'service' => $service,
+                // 'lastPrestataires' => $lastPrestataires
             ]
         );
     }

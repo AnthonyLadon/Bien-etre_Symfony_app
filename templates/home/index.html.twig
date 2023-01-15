@@ -107,13 +107,16 @@
       <h2>
         Le service du mois
       </h2>
-      <a href="#">
+        
+      {% for s in highlightServices %}
+      <a href="{{path('detailService',{id : s.id})}}">
         <div class="highlight-service-card">
           <img src="{{ asset('images/service-kine.jpg') }}"
             alt="photo service à la une" />
           <div class="highlight-service-card-title">
             <h4>
-              Service Kinésiethérapie
+              {{s.nom}}
+      {% endfor %}
             </h4>
           </div>
         </div>

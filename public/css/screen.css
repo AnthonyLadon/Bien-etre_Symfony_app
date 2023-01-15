@@ -977,8 +977,9 @@ input:checked + .slide-container .nav label {
 }
 .presataire-detail-wrap {
   margin: 2rem;
-  height: 10rem;
+  padding: 1rem;
   border: solid 1px #b96d6f;
+  border-radius: 5px;
 }
 .presataire-detail-wrap h2 {
   color: #b96d6f;
@@ -991,8 +992,9 @@ input:checked + .slide-container .nav label {
 
 .prestaire-last-registrated-wrap {
   margin: 2rem;
-  height: 10rem;
+  padding: 1rem;
   border: solid 1px #b96d6f;
+  border-radius: 5px;
 }
 .prestaire-last-registrated-wrap h3 {
   color: #b96d6f;

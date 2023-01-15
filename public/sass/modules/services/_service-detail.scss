@@ -1,7 +1,8 @@
 .presataire-detail-wrap {
   margin: 2rem;
-  height: 10rem;
+  padding: 1rem;
   border: solid 1px $darker-pink;
+  border-radius: 5px;
 
   h2 {
     color: $darker-pink;
@@ -16,8 +17,9 @@
 
 .prestaire-last-registrated-wrap {
   margin: 2rem;
-  height: 10rem;
+  padding: 1rem;
   border: solid 1px $darker-pink;
+  border-radius: 5px;
 
   h3 {
     color: $darker-pink;

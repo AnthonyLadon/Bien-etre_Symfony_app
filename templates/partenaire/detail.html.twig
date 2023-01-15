@@ -54,6 +54,16 @@
     <h2>
       {{ partenaire.nom }}
     </h2>
+	<p>
+      Service(s) proposé(s):
+	  <ul>
+		{% for service in partenaire.proposer %}
+		<li>
+			{{ service.nom}}
+		</li>
+		{% endfor %}
+	  </ul>
+    </p>
     <p>
       Site web:
 

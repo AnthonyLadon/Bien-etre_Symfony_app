@@ -39,6 +39,17 @@ class CategorieServiceRepository extends ServiceEntityRepository
         }
     }
 
+
+    public function findHighlightService(): array
+   {
+       return $this->createQueryBuilder('c')
+           ->andWhere('c.enAvant = 1')
+           ->setMaxResults(1)
+           ->getQuery()
+           ->getResult()
+       ;
+   }
+
 //    /**
 //     * @return CategorieService[] Returns an array of CategorieService objects
 //     */
