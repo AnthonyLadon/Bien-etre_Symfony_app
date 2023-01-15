@@ -1,123 +1,121 @@
-
 .carousel {
-    margin: 5rem 0;
+  margin: 5rem 0;
 }
 
 ul.slides {
-    display: block;
-    border-radius: 5px;
-    position: relative;
-    height: 350px;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    list-style: none;
+  display: block;
+  border-radius: 5px;
+  position: relative;
+  height: 22.5rem;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  list-style: none;
 }
 
 .slides * {
-    user-select: none;
-    -ms-user-select: none;
-    -moz-user-select: none;
-    -khtml-user-select: none;
-    -webkit-user-select: none;
-    -webkit-touch-callout: none;
+  user-select: none;
 }
 
 ul.slides input {
-    display: none; 
+  display: none;
 }
 
-
-.slide-container { 
-    display: block; 
+.slide-container {
+  display: block;
 }
 
 // taille de chaque image et transition
 .slide-image {
-    display: block;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    opacity: 0;
-    transition: all .7s ease-in-out;
-}   
-
-.slide-image img {
-    width: auto;
-    min-width: 100%;
-    height: 100%;
-    // l'image remplit le container
-    object-fit:fill;
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  opacity: 0;
+  transition: all 0.7s ease-in-out;
 }
 
+// taille de l'image
+.slide-image img {
+  width: 100%;
+  height: 22rem;
+  // l'image remplit le container
+  object-fit: cover;
+}
+
+// position/taille des controleurs du carousel
 .carousel-controls {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 100;
-    font-size: 100px;
-    line-height: 400px;
-    color: $smooth-minth;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  font-size: 6rem;
+  // hauteur des controleurs previous et next
+  line-height: 400px;
+  color: $darker-third-color;
 }
 
 .carousel-controls label {
-    display: none;
-    position: absolute;
-    padding: 0 20px;
-    opacity: 0;
-    transition: opacity .2s;
-    cursor: pointer;
+  display: none;
+  position: absolute;
+  padding: 0 20px;
+  opacity: 0;
+  transition: opacity 0.2s;
+  cursor: pointer;
 }
 
-.slide-image:hover + .carousel-controls label{
-    opacity: 0.5;
+.slide-image:hover + .carousel-controls label {
+  opacity: 0.5;
 }
 
 .carousel-controls label:hover {
-    opacity: 1;
+  opacity: 1;
 }
 
+// bouton previous slide
 .carousel-controls .prev-slide {
-    width: 49%;
-    text-align: left;
-    left: 0;
+  width: 49%;
+  text-align: left;
+  left: 0;
 }
 
+// bouton next slide
 .carousel-controls .next-slide {
-    width: 49%;
-    text-align: right;
-    right: 0;
+  width: 49%;
+  text-align: right;
+  right: 0;
 }
 
+// points progression dans le carousel
 .carousel-dots {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 5px;
-    z-index: 100;
-    text-align: center;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 5px;
+  z-index: 100;
+  text-align: center;
 }
 
 .carousel-dots .carousel-dot {
-    display: inline-block;
-    width: 15px;
-    height: 15px;
-    border-radius: 50%;
-    background-color: $smooth-minth;
-    opacity: 0.5;
-    margin: 10px;
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: $darker-third-color;
+  opacity: 0.5;
+  margin: 10px;
 }
 
 input:checked + .slide-container .slide-image {
-    opacity: 1;
-    transform: scale(1);
-    transition: opacity 1s ease-in-out;
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 1s ease-in-out;
 }
 
 input:checked + .slide-container .carousel-controls label {
-     display: block; 
+  display: block;
 }
 
 input#img-1:checked ~ .carousel-dots label#img-dot-1,
@@ -126,67 +124,91 @@ input#img-3:checked ~ .carousel-dots label#img-dot-3,
 input#img-4:checked ~ .carousel-dots label#img-dot-4,
 input#img-5:checked ~ .carousel-dots label#img-dot-5,
 input#img-6:checked ~ .carousel-dots label#img-dot-6 {
-	opacity: 1;
+  opacity: 1;
 }
 
-
-input:checked + .slide-container .nav label { display: block; }
-
-
-
-
-
-// ********************************************************  
-
-
-@media screen and (min-width: $tablet-break){
-
-    .carousel {
-        margin: 4rem 5%;
-    }
-
-    .slide-image {
-        width: 100%;
-        height: 100%;
-    }
-    .slide-image img {
-        width: auto;
-        min-width: 100%;
-        height: 100%;
-        // permet a l'image de ne pas se déformer
-        object-fit:contain;
-    }
-
-    .carousel-controls .prev-slide {
-        width: 49%;
-        text-align: left;
-        left: 10%;
-    }
-    
-    .carousel-controls .next-slide {
-        width: 49%;
-        text-align: right;
-        right: 10%;
-    }
-
+input:checked + .slide-container .nav label {
+  display: block;
 }
 
+// ********************************************************
 
-// ********************************************************  
+@media screen and (min-width: $tablet-break) {
+  .carousel {
+    margin: 5rem 5%;
+  }
 
+  // position/taille des controleurs du carousel
+  .carousel-controls {
+    font-size: 7rem;
+    // hauteur des controleurs previous et next
+    line-height: 500px;
+  }
 
-@media screen and (min-width: $laptop-break){
+  ul.slides {
+    height: 28rem;
+  }
 
-    .carousel-controls .prev-slide {
-        width: 49%;
-        text-align: left;
-        left: 20%;
-    }
-    
-    .carousel-controls .next-slide {
-        width: 49%;
-        text-align: right;
-        right: 20%;
-    }
+  .slide-image {
+    width: 100%;
+    height: 100%;
+  }
+  .slide-image img {
+    width: auto;
+    min-width: 100%;
+    height: 30rem;
+    // permet a l'image de ne pas se déformer
+    object-fit: cover;
+  }
 
+  .carousel-controls .prev-slide {
+    width: 49%;
+    text-align: left;
+    left: 0%;
+  }
+
+  .carousel-controls .next-slide {
+    width: 49%;
+    text-align: right;
+    right: 0%;
+  }
+}
+
+// ********************************************************
+
+@media screen and (min-width: $laptop-break) {
+  .carousel {
+    margin: 4rem 5%;
+  }
+
+  // position/taille des controleurs du carousel
+  .carousel-controls {
+    font-size: 8rem;
+    // hauteur des controleurs previous et next
+    line-height: 700px;
+  }
+
+  ul.slides {
+    height: 42.5rem;
+  }
+
+  .slide-image img {
+    width: auto;
+    min-width: 100%;
+    height: 45rem;
+    // permet a l'image de ne pas se déformer
+    object-fit: cover;
+  }
+
+  .carousel-controls .prev-slide {
+    width: 49%;
+    text-align: left;
+    left: 0%;
+  }
+
+  .carousel-controls .next-slide {
+    width: 49%;
+    text-align: right;
+    right: 0%;
+  }
 }

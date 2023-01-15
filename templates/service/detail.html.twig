@@ -3,7 +3,7 @@
 {% block title %}{% endblock %}
 
 {% block titreh1 %}
-	<h1>Fiche service</h1>
+	<h1>{{service.nom}}</h1>
 {% endblock %}
 
 				{% block nav %}
@@ -50,8 +50,18 @@
 
 {% block body %}
 	<article>
+	<div class="presataire-detail-wrap">		
 		<h2>{{service.nom}}</h2>
 		<p>{{service.description}}</p>
+	</div>
+	<div class="prestaire-last-registrated-wrap">
+	<h3>Dans la meme catégorie de service: (4 derniers presatataires inscrits)</h3>
+		<div class="prestaire-last-registrated"><p>ici cartes prestataire</p></div>
+		<div class="prestaire-last-registrated"><p>ici cartes prestataire</p></div>
+		<div class="prestaire-last-registrated"><p>ici cartes prestataire</p></div>
+		<div class="prestaire-last-registrated"><p>ici cartes prestataire</p></div>
+	</div>
+
 
 	</article>
 
