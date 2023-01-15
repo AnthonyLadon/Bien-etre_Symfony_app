@@ -54,28 +54,25 @@
 
 @media screen and (min-width: $laptop-break) {
   .main-search-bar-wrap {
-    display: grid;
-    grid-template-rows: 1fr 1fr 1fr;
-    width: 40%;
-    padding: 4.5rem 0 0 0;
-    margin: 0 auto;
-  }
-
-  .main-search-bar {
-    width: 100%;
+    position: relative;
+    top: 4rem;
     display: flex;
-    margin: 0 0 0.5rem 0;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 60%;
+    padding: 0;
+    margin: 1rem auto 0 auto;
   }
 
-  // input de la barre et bordures
   .main-search-input {
+    width: 39%;
     height: 1.5rem;
-    background-color: $secondary-transparent2;
+    margin: 0 1rem 0.5rem 0;
   }
 
   .main-search-button {
-    width: 35px;
+    width: 39%;
     height: 1.5rem;
-    font-size: 1rem;
+    margin: 0 1rem 0.5rem 0;
   }
 }

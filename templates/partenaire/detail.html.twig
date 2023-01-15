@@ -1,11 +1,12 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
+Fiche {{partenaire.nom}}
 {% endblock %}
 
 {% block titreh1 %}
   <h1>
-    Fiche prestataire
+    {{partenaire.nom}}
   </h1>
 {% endblock %}
 
@@ -51,9 +52,9 @@
 
 {% block body %}
   <article>
-    <h2>
+    <h3>
       {{ partenaire.nom }}
-    </h2>
+    </h3>
 	<p>
       Service(s) proposé(s):
 	  <ul>
@@ -66,7 +67,6 @@
     </p>
     <p>
       Site web:
-
       {{ partenaire.siteWeb }}
     </p>
     <p>

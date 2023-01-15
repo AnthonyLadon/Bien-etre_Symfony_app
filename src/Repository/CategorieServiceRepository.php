@@ -39,7 +39,7 @@ class CategorieServiceRepository extends ServiceEntityRepository
         }
     }
 
-
+    // permet de récupérer le service mis à la une (et limite le resultat à 1)
     public function findHighlightService(): array
    {
        return $this->createQueryBuilder('c')
