@@ -21,4 +21,23 @@ class StageController extends AbstractController
             "stages" => $stages
         ]);
     }
+
+    /**
+     * @Route("stages/detail/{id}", name="detailStage")
+     */
+
+     public function detailStage($id, EntityManagerInterface $entityManager)
+     {
+         $repository = $entityManager->getRepository(Stage::class);
+         $stage = $repository->find($id);
+ 
+         return $this->render(
+             'stage/detail.html.twig',
+             [
+                 'stage' => $stage,
+             ]
+         );
+     }
+
+
 }
