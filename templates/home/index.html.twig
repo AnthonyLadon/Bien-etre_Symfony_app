@@ -56,37 +56,19 @@
       <h2>
         Nos nouveaux prestataires
       </h2>
-
       <div class="last-4-registrated-wrap">
-        <div class="card">
-          <div class="face face--front">
-            <img src="{{ asset('images/avatars/avatar1.jpeg') }}"
-              alt="photo prestataire" />
+      
+        {% for p in lastPrestataires %}
+          <div class="card">
+            <div class="face face--front">
+              <img src="{{ asset('images/avatars/avatar1.jpeg') }}"
+                alt="photo prestataire" />
+            </div>
+            <a class="face face--back" href="#">{{p.nom }}</a>
           </div>
-          <a class="face face--back" href="#">Bob Marley</a>
-        </div>
-        <div class="card">
-          <div class="face face--front">
-            <img src="{{ asset('images/avatars/avatar2.webp') }}"
-              alt="photo prestataire" />
-          </div>
-          <a class="face face--back" href="#">Jimi Hendrix</a>
-        </div>
-        <div class="card">
-          <div class="face face--front">
-            <img src="{{ asset('images/avatars/avatar3.webp') }}"
-              alt="photo prestataire" />
-          </div>
-          <a class="face face--back" href="#">Janice Joplin</a>
-        </div>
-        <div class="card">
-          <div class="face face--front">
-            <img src="{{ asset('images/avatars/avatar4.webp') }}"
-              alt="photo prestataire" />
-          </div>
-          <a class="face face--back" href="#">Eric Clapton</a>
-        </div>
+        {% endfor %}
       </div>
+    
     </article>
   </div>
 

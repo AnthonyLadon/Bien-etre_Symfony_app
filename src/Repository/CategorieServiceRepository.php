@@ -3,8 +3,8 @@
 namespace App\Repository;
 
 use App\Entity\CategorieService;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 /**
  * @extends ServiceEntityRepository<CategorieService>
@@ -49,6 +49,22 @@ class CategorieServiceRepository extends ServiceEntityRepository
            ->getResult()
        ;
    }
+
+
+       //! fonction pour trouver les 4 derniers presataires inscrit dans un service
+       public function last4Prestataires($serviceId): ?array
+   {
+       return $this->createQueryBuilder('c')
+           ->leftJoin('c.prestataires', 'prest')
+           ->andWhere('c.id = :val')
+           ->andWhere('c = prest.id')
+           ->setParameter('val', $serviceId)
+           ->setMaxResults(4)
+           ->getQuery()
+           ->getResult();
+       ;
+   }
+
 
 //    /**
 //     * @return CategorieService[] Returns an array of CategorieService objects

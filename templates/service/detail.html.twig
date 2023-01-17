@@ -50,7 +50,14 @@ Service {{service.nom}}
 
 {% block body %}
 	<article>
-		<div class="presataire-detail-wrap">		
+		<div class="presataire-detail-wrap">
+
+	{% for l in lastPrestataires %}
+		<h1>Prestataire trouvé: {{l.nom}}<h1>
+	{% endfor %}		
+
+
+
 			<h2>Service {{service.nom}}</h2>
 			<p>{{service.description}}</p>
 		</div>
