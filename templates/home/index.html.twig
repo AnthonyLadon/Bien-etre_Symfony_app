@@ -64,7 +64,7 @@
               <img src="{{ asset('images/avatars/avatar1.jpeg') }}"
                 alt="photo prestataire" />
             </div>
-            <a class="face face--back" href="#">{{p.nom }}</a>
+            <a class="face face--back" href="{{path('detailPartenaire',{id : p.id})}}">{{p.nom }}</a>
           </div>
         {% endfor %}
       </div>
