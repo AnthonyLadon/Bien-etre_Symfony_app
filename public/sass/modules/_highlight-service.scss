@@ -1,86 +1,71 @@
+.highlight-service-wrap {
+  margin: 0 1rem;
 
-.highlight-service-wrap{
-
-    margin: 0 1rem;
-
-    h2{
-        text-transform: uppercase;
-        margin: 0 auto 2rem auto;
-        text-align: center;
-        background-color: $third-color-light;
-        color: $darker-third-color;
-        border-bottom: solid 4px $dark-third-color;
-        border-radius: 15px;
-        width: 100%;
-    }
+  h2 {
+    text-transform: uppercase;
+    margin: 0 auto 2rem auto;
+    text-align: center;
+    background-color: $third-color-light;
+    color: $darker-third-color;
+    border-bottom: solid 4px $dark-third-color;
+    border-radius: 15px;
+    width: 100%;
+  }
 }
 
+.highlight-service-card:hover {
+  background-color: $dark-third-color;
 
-.highlight-service-card:hover{
-    
-background-color:$dark-third-color;
-
-    h4{
-        color: $dark-third-color;
-        border: solid 1px $darker-third-color;
-    }
+  h4 {
+    color: $dark-third-color;
+    border: solid 1px $darker-third-color;
+  }
 }
 
+.highlight-service-card {
+  margin: 0 2rem;
+  max-width: 22rem;
+  background-color: $secondary-transparent;
+  padding: 0.5rem 0.5rem 1.5rem 0.5rem;
+  border-radius: 10px;
+  box-shadow: 0px 29px 38px -15px rgba(0, 0, 0, 0.43);
 
-.highlight-service-card{
-    margin: 0 2rem;
-    max-width: 22rem;
-    background-color: $secondary-transparent;
-    padding:  0.5rem 0.5rem 1.5rem 0.5rem;
+  img {
+    border-radius: 5px;
+  }
+}
+
+.highlight-service-card-title {
+  h4 {
+    color: $darker-third-color;
+    font-size: 1.2rem;
+    background-color: $third-color-light;
+    border: solid 1px $darker-third-color;
     border-radius: 10px;
-    box-shadow: 0px 29px 38px -15px rgba(0,0,0,0.43);
-    
-    img{
-        border-radius: 5px;
-    }
+  }
 }
-
-
-.highlight-service-card-title{
-
-    h4{
-        color: $darker-third-color;
-        font-size: 1.2rem;
-        background-color: $third-color-light;
-        border: solid 1px $darker-third-color;
-        border-radius: 10px;
-    }
-}
-
-
-
-
 
 // ****************************************************************
 
-
 @media screen and (min-width: $tablet-break) {
-
-    .highlight-service-wrap{
-    
-        h2{
-            text-transform: uppercase;
-            margin: 0 auto 2rem auto;
-            max-width: 45%;
-        }
+  .highlight-service-wrap {
+    h2 {
+      text-transform: uppercase;
+      margin: 0 auto 2rem auto;
+      max-width: 45%;
     }
+  }
 
-    .highlight-service-card{
-        margin: 0 2rem;
-        max-width: 30rem;
-        background-color: $secondary-transparent;
-        padding:  0.5rem 0.5rem 1.5rem 0.5rem;
-        border-radius: 10px;
-        box-shadow: 0px 29px 38px -15px rgba(0,0,0,0.43);
-        
-        img{
-            border-radius: 5px;
-        }
+  .highlight-service-card {
+    margin: 0 2rem;
+    max-width: 30rem;
+    background-color: $secondary-transparent;
+    padding: 0.5rem 0.5rem 1.5rem 0.5rem;
+    border-radius: 10px;
+    box-shadow: 0px 29px 38px -15px rgba(0, 0, 0, 0.43);
+
+    img {
+      border-radius: 5px;
     }
-
+  }
 }

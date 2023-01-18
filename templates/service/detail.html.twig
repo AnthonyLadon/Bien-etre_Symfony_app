@@ -51,49 +51,20 @@ Service {{service.nom}}
 {% block body %}
 	<article>
 		<div class="presataire-detail-wrap">
-
-	{% for l in lastPrestataires %}
-		<h1>Prestataire trouvé: {{l.nom}}<h1>
-	{% endfor %}		
-
-
-
 			<h2>Service {{service.nom}}</h2>
 			<p>{{service.description}}</p>
 		</div>
-		{# {% for prestataire in lastPrestataires %}
-			{{prestataire.nom }}
-		{% endfor %} #}
+	
 		<div class="prestaire-last-registrated-wrap">
-			<h3>Dans la meme catégorie de service: (4 derniers presatataires inscrits)</h3>
-
-			{# Afficher les 4 derniers prestataires  #}
-			{# {% for prestataire in lastPrestataires %}
-				{{prestataire.nom}}
-			{% endfor %} #}
-
-			<div class="prestaire-last-registrated-cards-wrap">
-				<div class="prestaire-last-registrated">
-					<a class="" href="">
-					<h3>Nom prestataire</h3>
-					<img src="{{asset ('images/service-kine.jpg')}}" alt="photo service"></a>
+		<h3>Dans la meme catégorie de service: (4 derniers presatataires inscrits)</h3>
+			{% for prest in lastPrestataires %}
+				<div class="prestaire-last-registrated-cards-wrap">
+					<a class="" href="{{path('detailPartenaire',{id : prest.id})}}">
+						<h3>{{prest.nom}}</h3>
+						<img src="{{asset ('images/service-kine.jpg')}}" alt="photo service">
+					</a>
 				</div>
-				<div class="prestaire-last-registrated">
-					<a class="" href="">
-					<h3>Nom prestataire</h3>
-					<img src="{{asset ('images/service-kine.jpg')}}" alt="photo service"></a>
-				</div>
-				<div class="prestaire-last-registrated">
-					<a class="" href="">
-					<h3>Nom prestataire</h3>
-					<img src="{{asset ('images/service-kine.jpg')}}" alt="photo service"></a>
-					</div>
-				<div class="prestaire-last-registrated">
-				<a class="" href="">
-				<h3>Nom prestataire</h3>
-				<img src="{{asset ('images/service-kine.jpg')}}" alt="photo service">
-			</a></div>
-			</div>
+			{% endfor %}
 		</div>
 	</article>
 

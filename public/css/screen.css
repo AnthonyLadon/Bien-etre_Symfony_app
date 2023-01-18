@@ -727,7 +727,7 @@ input:checked + .slide-container .nav label {
     height: 10rem;
   }
   .face--back {
-    font-size: 1rem;
+    font-size: 0.6rem;
   }
 }
 .highlight-service-wrap {

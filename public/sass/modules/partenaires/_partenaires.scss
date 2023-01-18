@@ -1,75 +1,61 @@
-
-
-    .partenaires-list-wrap{
-        margin: 2rem 1rem 1rem 1rem;
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: space-evenly;
-        justify-items: center;
-    }
-
-
-
-.partenaires-card{
-    margin: 3rem 0 0 0;
-    max-width: 25rem;
-    background-color: #c9e9eb;
-    padding:  0.5rem 0.5rem 1.5rem 0.5rem;
-    border-radius: 10px;
-    box-shadow: 0px 29px 38px -15px rgba(0,0,0,0.43);
-
-    h3{
-        margin: 0 0 0.5rem 0;
-        text-align: center;
-        color: $darker-pink;
-        font-size: 1rem;
-        font-weight: bold;
-    
-    }
-    
-    img{
-        border-radius: 5px;
-    }
+.partenaires-list-wrap {
+  margin: 2rem 1rem 1rem 1rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  justify-items: center;
 }
 
+.partenaires-card {
+  margin: 3rem 0 0 0;
+  max-width: 25rem;
+  background-color: #c9e9eb;
+  padding: 0.5rem 0.5rem 1.5rem 0.5rem;
+  border-radius: 10px;
+  box-shadow: 0px 29px 38px -15px rgba(0, 0, 0, 0.43);
 
+  h3 {
+    margin: 0 0 0.5rem 0;
+    text-align: center;
+    color: $darker-pink;
+    font-size: 1rem;
+    font-weight: bold;
+  }
+
+  img {
+    border-radius: 5px;
+  }
+}
 
 // ****************************************************************
-
 
 @media screen and (min-width: $tablet-break) {
+  .partenaires-list-wrap {
+    margin: 2rem 1rem 1rem 1rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    justify-items: center;
+  }
 
-    .partenaires-list-wrap{
-        margin: 2rem 1rem 1rem 1rem;
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: space-evenly;
-        justify-items: center;
-    }
-
-    .partenaires-card{
-        margin: 3rem 0 0 0;
-        max-width: 20rem;
-    }
-    
+  .partenaires-card {
+    margin: 3rem 0 0 0;
+    max-width: 20rem;
+  }
 }
-
-
 
 // ****************************************************************
 
-
 @media screen and (min-width: $laptop-break) {
+  .partenaires-list-wrap {
+    margin: 2rem 3rem 1rem 3rem;
+  }
 
-    .partenaires-list-wrap{
-        margin: 2rem 3rem 1rem 3rem;
-    }
-
-    .partenaires-card{
-        margin: 3rem 0 0 0;
-        min-width: 24rem;
-        max-width: 28rem;
-    }
+  .partenaires-card {
+    margin: 3rem 0 0 0;
+    min-width: 24rem;
+    max-width: 28rem;
+  }
 }

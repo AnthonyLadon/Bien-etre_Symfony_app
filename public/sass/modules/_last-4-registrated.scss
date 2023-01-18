@@ -1,120 +1,111 @@
+.last-4-registrated {
+  max-width: 90%;
 
-.last-4-registrated{
-    max-width: 90%;
-
-    h2{
-        text-transform: uppercase;
-        margin: 0 auto 2rem auto;
-        background-color: $third-color-light;
-        text-align: center;
-        color: $darker-third-color;
-        border-bottom: solid 4px $dark-third-color;
-        border-radius: 15px;
-        border-radius: 0.8rem;
-        width: 100%;
-    }
+  h2 {
+    text-transform: uppercase;
+    margin: 0 auto 2rem auto;
+    background-color: $third-color-light;
+    text-align: center;
+    color: $darker-third-color;
+    border-bottom: solid 4px $dark-third-color;
+    border-radius: 15px;
+    border-radius: 0.8rem;
+    width: 100%;
+  }
 }
-
 
 // gestion des flip cards
 
 .last-4-registrated-wrap {
-    display: flex;
-    width: 100%;
-    justify-content: space-evenly;
-    align-items: center;
-    perspective: 1000px;
-  }
-  
-  .card {
-    position: relative;
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+  align-items: center;
+  perspective: 1000px;
+}
+
+.card {
+  position: relative;
+  width: 8rem;
+  height: 8rem;
+  margin: 0.5rem;
+  text-align: center;
+  line-height: 8rem;
+  color: $secondary-color;
+  border-radius: 0.8rem;
+  transform-style: preserve-3d;
+}
+
+.face {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 0.8rem;
+  background-size: cover;
+  background-position: center center;
+  backface-visibility: hidden;
+  transition: transform 0.5s ease-in-out;
+}
+
+.face--front {
+  img {
+    object-fit: cover;
     width: 8rem;
     height: 8rem;
-    margin: 0.5rem;
-    text-align: center;
-    line-height: 8rem;
-    color: $secondary-color;
     border-radius: 0.8rem;
-    transform-style: preserve-3d;
+    box-shadow: 0px 29px 38px -15px rgba(0, 0, 0, 0.43);
   }
-  
-  .face {
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: 0.8rem;
-    background-size: cover;
-    background-position: center center;
-    backface-visibility: hidden;
-    transition: transform 0.5s ease-in-out;
-  }
-  
-  .face--front {
-    img{
-        object-fit: cover;
-        width: 8rem;
-        height: 8rem;
-        border-radius: 0.8rem;
-        box-shadow: 0px 29px 38px -15px rgba(0,0,0,0.43);
-    }
-  }
-  
-  .face--back {
-    display: flex;
-    justify-content: center;
-    background: $darker-third-color;
-    font-size: 0.6rem;
-    transform: rotateY(180deg);
-    color: $smooth-minth;
-    text-transform: uppercase;
-    box-shadow: 0px 29px 38px -15px rgba(0,0,0,0.43);
-  }
-  
-  .card:hover .face--front {
-    transform: rotateY(-180deg);
-  }
-  
-  .card:hover .face--back {
-    transform: rotateY(0deg);
-  }
+}
 
+.face--back {
+  display: flex;
+  justify-content: center;
+  background: $darker-third-color;
+  font-size: 0.6rem;
+  transform: rotateY(180deg);
+  color: $smooth-minth;
+  text-transform: uppercase;
+  box-shadow: 0px 29px 38px -15px rgba(0, 0, 0, 0.43);
+}
 
+.card:hover .face--front {
+  transform: rotateY(-180deg);
+}
+
+.card:hover .face--back {
+  transform: rotateY(0deg);
+}
 
 // ****************************************************************
 
-
 @media screen and (min-width: $tablet-break) {
-
-    .last-4-registrated{
-    
-        h2{
-            text-transform: uppercase;
-            margin: 0 auto 2rem auto;
-            max-width: 45%;
-        }
+  .last-4-registrated {
+    h2 {
+      text-transform: uppercase;
+      margin: 0 auto 2rem auto;
+      max-width: 45%;
     }
+  }
 
-    .card {
+  .card {
+    width: 10rem;
+    height: 10rem;
+    margin: 0.5rem;
+    text-align: center;
+    line-height: 8rem;
+  }
+
+  .face--front {
+    img {
       width: 10rem;
       height: 10rem;
-      margin: 0.5rem;
-      text-align: center;
-      line-height: 8rem;
     }
+  }
 
-    .face--front {
-      img{
-          width: 10rem;
-          height: 10rem;
-      }
-    }
-
-
-    .face--back {
-      font-size: 1rem;
-    }
-
+  .face--back {
+    font-size: 0.6rem;
+  }
 }

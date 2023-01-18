@@ -57,6 +57,22 @@ class PrestataireRepository extends ServiceEntityRepository
        ;
    }
 
+
+
+    //! fonction pour trouver les 4 derniers presataires inscrit dans un service
+    public function last4Prestataires($serviceId): ?array
+    {
+        return $this->createQueryBuilder('p')
+            ->leftJoin('p.proposer', 'categ')
+            ->andWhere('categ = :val')
+            ->setParameter('val', $serviceId)
+            ->orderBy('p.nom')
+            ->setMaxResults(4)
+            ->getQuery()
+            ->getResult();
+        ;
+    }
+
 //    public function findOneBySomeField($value): ?Prestataire
 //    {
 //        return $this->createQueryBuilder('p')

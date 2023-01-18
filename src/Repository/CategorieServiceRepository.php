@@ -51,20 +51,6 @@ class CategorieServiceRepository extends ServiceEntityRepository
    }
 
 
-       //! fonction pour trouver les 4 derniers presataires inscrit dans un service
-       public function last4Prestataires($serviceId): ?array
-   {
-       return $this->createQueryBuilder('c')
-           ->leftJoin('c.prestataires', 'prest')
-           ->andWhere('c.id = :val')
-           ->andWhere('c = prest.id')
-           ->setParameter('val', $serviceId)
-           ->setMaxResults(4)
-           ->getQuery()
-           ->getResult();
-       ;
-   }
-
 
 //    /**
 //     * @return CategorieService[] Returns an array of CategorieService objects
