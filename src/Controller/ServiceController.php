@@ -19,7 +19,7 @@ class ServiceController extends AbstractController
     /**
      * @Route("/services",name="listeServices")
      */
-    public function listeCategories(EntityManagerInterface $entityManager): Response
+    public function listeCategoriesService(EntityManagerInterface $entityManager): Response
     {
         $repository = $entityManager->getRepository(CategorieService::class);
         $categories = $repository->findAll();
@@ -37,7 +37,7 @@ class ServiceController extends AbstractController
      * @Route("services/detail/{id}", name="detailService")
      */
 
-    public function detailcategorie($id, EntityManagerInterface $entityManager)
+    public function detailcategorieService($id, EntityManagerInterface $entityManager)
     {
         // trouve le detail catégorie
         $repository = $entityManager->getRepository(CategorieService::class);

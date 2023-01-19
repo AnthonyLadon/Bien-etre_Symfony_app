@@ -40,26 +40,26 @@ class PrestataireRepository extends ServiceEntityRepository
     }
 
 
-//    /**
-//     * @return Prestataire[] Returns an array of Prestataire objects
-//     */
+    //    /**
+    //     * @return Prestataire[] Returns an array of Prestataire objects
+    //     */
 
 
-// permet de selectionner les ID les plus grands (donc les dernerèes entrées 
-// et de limiter le resultat à 4)
-   public function findLastPrestataires(): array
-   {
-       return $this->createQueryBuilder('p')
-           ->orderBy('p.id', 'DESC')
-           ->setMaxResults(4)
-           ->getQuery()
-           ->getResult()
-       ;
-   }
+    // permet de selectionner les ID les plus grands (donc les dernerèes entrées 
+    // et de limiter le resultat à 4)
+    public function findLastPrestataires(): array
+    {
+        return $this->createQueryBuilder('p')
+            ->orderBy('p.id', 'DESC')
+            ->setMaxResults(4)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 
 
 
-    //! fonction pour trouver les 4 derniers presataires inscrit dans un service
+    // Trouve les 4 derniers prestataires inscrits dans la catégorie de service
     public function last4Prestataires($serviceId): ?array
     {
         return $this->createQueryBuilder('p')
@@ -73,13 +73,14 @@ class PrestataireRepository extends ServiceEntityRepository
         ;
     }
 
-//    public function findOneBySomeField($value): ?Prestataire
-//    {
-//        return $this->createQueryBuilder('p')
-//            ->andWhere('p.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
-}
+
+    //    public function findOneBySomeField($value): ?Prestataire
+    //    {
+    //        return $this->createQueryBuilder('p')
+    //            ->andWhere('p.exampleField = :val')
+    //            ->setParameter('val', $value)
+    //            ->getQuery()
+    //            ->getOneOrNullResult()
+    //        ;
+    //    }
+    }

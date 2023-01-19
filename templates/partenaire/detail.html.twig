@@ -59,9 +59,9 @@ Fiche {{partenaire.nom}}
       Service(s) proposé(s):
 	  <ul>
 		{% for service in partenaire.proposer %}
-		<li>
-			{{ service.nom}}
-		</li>
+		<li><a href="{{path('detailService',{id : service.id} )}}"></li><a href="{{path('detailService',{id : service.id} )}}">
+		{{ service.nom}}
+		</a>
 		{% endfor %}
 	  </ul>
     </p>
