@@ -45,7 +45,7 @@ class PrestataireRepository extends ServiceEntityRepository
     //     */
 
 
-    // permet de selectionner les ID les plus grands (donc les dernerèes entrées 
+    // permet de selectionner les ID les plus grands (donc les dernières entrées 
     // et de limiter le resultat à 4)
     public function findLastPrestataires(): array
     {
@@ -74,13 +74,23 @@ class PrestataireRepository extends ServiceEntityRepository
     }
 
 
-    //    public function findOneBySomeField($value): ?Prestataire
-    //    {
-    //        return $this->createQueryBuilder('p')
-    //            ->andWhere('p.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->getQuery()
-    //            ->getOneOrNullResult()
-    //        ;
-    //    }
+    // Requete envoyée via la barre de recherche pour trouver un ou plusieurs prestataires 
+
+
+    //! Tester--->  findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+       public function SearchBar($nomPrestataire): ?array
+       {
+           return $this->createQueryBuilder('p')
+                ->andWhere('p.nom LIKE :nom')
+                ->setParameter('nom', '%'.$nomPrestataire.'%')
+            //    ->setParameter('localite', $localite)
+            //    ->setParameter('categorie', $categorie)
+            //    ->setParameter('cp', $codePostal)
+            //    ->setParameter('commune', $commune)
+                ->orderBy('p.nom', 'ASC')
+               ->getQuery()
+               ->getResult();
+           ;
+       }
+
     }

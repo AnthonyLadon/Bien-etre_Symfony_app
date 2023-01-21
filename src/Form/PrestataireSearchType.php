@@ -19,49 +19,36 @@ class PrestataireSearchType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('prestataire', TextType::class, [
+            ->add('prestataire',TextType::class, [
                 'required' => false,
                 'attr' =>[
                     'placeholder' => 'Nom du prestataire',
                     ]
                 ])
+                /** L'object peut s'afficher dans la liste déroulante grace à la 
+                 * methode __ToString déclarée dans l'entity */
             ->add ('localite', EntityType::class,[
                 'class' => Localite::class,
-                'required' => false,
-                'choice_label' => function ($localite) {
-                    return $localite->getLocalite();
-                },
-                'attr' =>[
-                    'placeholder'=> 'Localité'
-                    ]
+                'required' => false
                 ])
             ->add ('categorie', EntityType::class,[
                 'class' => CategorieService:: class,
-                'required' => false,
-                'choice_label' => function ($categorie) {
-                    return $categorie->getNom();
-                },
-                'attr' =>[
-                    'placeholder'=> 'Catégorie'
-                    ]
+                // permet de selectionner plusieurs choix dans la liste déroulante
+                'multiple' => true,
+                'required' => false
                 ])
             ->add ('cp', EntityType:: class,
             [
                 'class' => CodePostal::class,
-                'required' => false,
-                'choice_label' => function ($cp) {
-                    return $cp->getCodePostal();
-                }
+                'required' => false
             ])
             ->add ('commune', EntityType::class, 
             [
                 'class' => Commune:: class,
-                'required'=> false,
-                'choice_label' => function ($commune) {
-                    return $commune->getCommune();
-                },
+                'required'=> false
             ])
-            ->add('Recherche', SubmitType::class
+            ->add('Recherche', SubmitType::class, 
+            ['label' => 'recherche']
             )
         ;
     }
@@ -69,10 +56,14 @@ class PrestataireSearchType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Prestataire::class,
+     
+            'data_type' => Prestataire::class
+            /* J'ai supprimé  'data_type' => Prestataire::class
+            Sans ce parametre les réponses dans $form->getData() sont un tableau
+            associatif plus simple à manipuler.
+            */
         ]);
     }
-
 }
 
 

@@ -63,6 +63,7 @@ class AppFixtures extends Fixture
             $utilisateur->setBanni(0);
             $utilisateur->setConfirmationInscription(1);
             $utilisateur->setLocalite($localite);
+            // $utilisateur->setCodePostal();
             $manager->persist($utilisateur);
         };
 
