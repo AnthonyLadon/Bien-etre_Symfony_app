@@ -40,16 +40,18 @@ class HomeController extends AbstractController
 
             // récupération des données envoyées via le formulaire
             $nomPrestataire = $receivedDatas['prestataire'];
-            // pour envoyer l'id de la catégorie au repository
-            $categorieId = $receivedDatas['categorie']->getId();
-            // pour ne pas executer ->getLocalites() si la valeur récupérée vaut null
+
+            // pour ne pas executer de ->get() si la valeur récupérée vaut null
+            !is_null($receivedDatas['categorie']) ? $categorieId = $receivedDatas['categorie']->getId(): $categorieId = null;
             !is_null($receivedDatas['localite']) ? $localite = $receivedDatas['localite']->getId(): $localite = null;
             !is_null($receivedDatas['cp']) ? $codePostal = $receivedDatas['cp']->getId(): $codePostal = null;
             !is_null($receivedDatas['commune']) ? $commune = $receivedDatas['commune']->getId(): $commune = null;
+            //verif des données envoyées au repository
             //dd($nomPrestataire, $categorieId, $localite, $codePostal, $commune);
 
             $repositoryPrestataires = $entityManager->getRepository(Prestataire::class);
             $partenaires = $repositoryPrestataires->SearchBar($nomPrestataire, $categorieId, $localite, $codePostal, $commune);
+            // verif des données recues de la DB
             //dd($partenaires);
 
             // envoi les données reçues par la DB à la vue liste de prestataires

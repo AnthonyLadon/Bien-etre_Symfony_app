@@ -11,7 +11,6 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Validator\Constraints\Length;
-use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -35,10 +34,7 @@ class PrestataireSearchType extends AbstractType
                 ])
             ->add ('categorie', EntityType::class,[
                 'class' => CategorieService:: class,
-                // empeche le champ select de choisir une valeur nulle
-                'constraints' => [
-                        new NotBlank()
-                    ]
+                'required' => false
                 ])
             ->add ('cp', EntityType:: class,
             [
