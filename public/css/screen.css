@@ -293,7 +293,7 @@ nav.show {
 
 .ease-in-title {
   position: absolute;
-  top: 27.2rem;
+  top: 36.2rem;
   left: 50%;
   width: 100%;
   transform: translate(-50%, -50%);
@@ -310,11 +310,11 @@ nav.show {
 .l-main-logo {
   display: flex;
   justify-content: center;
-  padding: 5rem 0 8rem 0;
+  padding: 17rem 0 8rem 0;
   margin: 0 auto 0 auto;
 }
 .l-main-logo img {
-  width: 12rem;
+  width: 10rem;
   border-radius: 45%;
   box-shadow: 0px 29px 38px -15px rgba(0, 0, 0, 0.43);
 }
@@ -362,7 +362,7 @@ nav.show {
 }
 
 .main-search-input {
-  width: 49%;
+  width: 100%;
   margin: 0 0 0.5rem 0;
   border: 1px solid #d2a1a3;
   height: 2rem;
@@ -379,6 +379,10 @@ nav.show {
 
 .main-search-input:focus {
   color: #bd797b;
+}
+
+.main-search-label {
+  color: #995557;
 }
 
 .main-search-button {

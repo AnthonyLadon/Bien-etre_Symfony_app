@@ -2,7 +2,9 @@
 
 namespace App\Repository;
 
+use App\Entity\CodePostal;
 use App\Entity\Prestataire;
+use App\Entity\Utilisateur;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -76,23 +78,24 @@ class PrestataireRepository extends ServiceEntityRepository
 
     // Requete envoyée via la barre de recherche pour trouver un ou plusieurs prestataires 
 
-       public function SearchBar($nomPrestataire, $categorieId): ?array
+       public function SearchBar($nomPrestataire, $categorieId, $localite, $codePostal, $commune): ?array
        {
            return $this->createQueryBuilder('p')
                 ->andWhere('p.nom LIKE :nom')
                 ->andWhere('proposer = :categorieId')
-                // liaison prestataire-catégorie via les Id
+                ->andWhere('user.codePostal = :cp')
+                ->andWhere('user.commune = :com')
+                ->andWhere('user.localite = :loc')
+                // liaison prestataire-catégorie 'proposer' via les Id
                 ->leftJoin('p.proposer', 'proposer')
-                // ->andWhere('localite = :localite')
-                // ->leftJoin('p.utilisateur', 'util')
-                // ->leftJoin('util.localite', 'localite')
+                ->leftJoin('p.utilisateur', 'user')
+
                 ->setParameter('nom', '%'.$nomPrestataire.'%' )
                 ->setParameter('categorieId', $categorieId)
-                // ->setParameter('loc', $localite)
-                // ->setParameter('localite', $localite)
-            //    ->setParameter('categorie', $categorie)
-            //    ->setParameter('cp', $codePostal)
-            //    ->setParameter('commune', $commune)
+                ->setParameter('loc' , $localite)
+                ->setParameter('cp', $codePostal)
+                ->setParameter('com', $commune)
+
                 ->orderBy('p.nom', 'ASC')
                ->getQuery()
                ->getResult();

@@ -1,22 +1,19 @@
-
-
 // .l-main-header-wrap{
 //   position: fixed;
 // }
 
-  .l-background-image-wrap{
-    background-image: url('../images/wallpaper/wallpaper-main.jpeg');
-    background-size: cover;
-    max-width: 1200px;
-    height: 42rem;
-    margin: 0 auto;
-  }
-
+.l-background-image-wrap {
+  background-image: url("../images/wallpaper/wallpaper-main.jpeg");
+  background-size: cover;
+  max-width: 1200px;
+  height: 42rem;
+  margin: 0 auto;
+}
 
 // titre principal
 .ease-in-title {
   position: absolute;
-  top: 27.2rem;
+  top: 36.2rem;
   left: 50%;
   width: 100%;
   transform: translate(-50%, -50%);
@@ -25,82 +22,67 @@
 
   // annimation du titre (voir fichier scss annimations: slide-in)
   h1 {
-    color:$smooth-minth;
+    color: $smooth-minth;
     font-size: 3rem;
     animation: slide-in 2000ms ease-in-out;
     animation-delay: 0ms;
   }
 }
 
+.l-main-logo {
+  display: flex;
+  justify-content: center;
+  padding: 17rem 0 8rem 0;
+  margin: 0 auto 0 auto;
 
-  .l-main-logo{
-    display: flex;
-    justify-content: center;
-    padding: 5rem 0 8rem 0;
-    margin: 0 auto 0 auto;
-
-    img{
-    width: 12rem;
+  img {
+    width: 10rem;
     border-radius: 45%;
-    box-shadow: 0px 29px 38px -15px rgba(0,0,0,0.43);
-    }
+    box-shadow: 0px 29px 38px -15px rgba(0, 0, 0, 0.43);
+  }
+}
+
+//************************************************************************************************
+
+@media screen and (min-width: $tablet-break) {
+  .l-background-image-wrap {
+    background-image: url("../images/wallpaper/wallpaper-main2.jpeg");
+    background-size: cover;
   }
 
-
-
-
-  //************************************************************************************************
-
-  @media screen and (min-width: $tablet-break){
-
-
-    .l-background-image-wrap{
-      background-image: url('../images/wallpaper/wallpaper-main2.jpeg');
-      background-size: cover;
-    }
-
-
-    .l-main-logo{
-      padding: 6rem auto 0 auto;
-    }
-
-    .ease-in-title {
-
-      top: 27.5rem;
-
-      h1 {
-        font-size: 4rem;
-      }
-    }
-
+  .l-main-logo {
+    padding: 6rem auto 0 auto;
   }
 
+  .ease-in-title {
+    top: 27.5rem;
 
-
-  //************************************************************************************************
-
-  @media screen and (min-width: $laptop-break){
-
-
-    .l-background-image-wrap {
-      background-image: url('../images/wallpaper/wallpaper-main3.png');
-      max-width: 2000px;
-      height: 30rem;
+    h1 {
+      font-size: 4rem;
     }
+  }
+}
 
-    .l-main-logo{
-      padding: 3rem 0 8rem 0;
+//************************************************************************************************
 
-  
-      img{
+@media screen and (min-width: $laptop-break) {
+  .l-background-image-wrap {
+    background-image: url("../images/wallpaper/wallpaper-main3.png");
+    max-width: 2000px;
+    height: 30rem;
+  }
+
+  .l-main-logo {
+    padding: 3rem 0 8rem 0;
+
+    img {
       width: 7rem;
-      }
     }
-
-    .ease-in-title {
-      position: absolute;
-      top: 20.2rem;
-   text-shadow: -1px 1px 27px rgba(210,161,163,1);
-    }
-
   }
+
+  .ease-in-title {
+    position: absolute;
+    top: 20.2rem;
+    text-shadow: -1px 1px 27px rgba(210, 161, 163, 1);
+  }
+}

@@ -34,23 +34,22 @@ class HomeController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $form->getData(); // stocke les valeurs envoyées
-            
+
             $receivedDatas = $form->getData('viewData');
 
 
             // récupération des données envoyées via le formulaire
             $nomPrestataire = $receivedDatas['prestataire'];
-            // pour ne pas executer ->getLocalites() si la valeur récupérée vaut null
-            !is_null($receivedDatas['localite']) ? $localite = $receivedDatas['localite']->getLocalite(): $localite = null;
             // pour envoyer l'id de la catégorie au repository
-            !is_null($receivedDatas['categorie']) ? $categorieId = $receivedDatas['categorie']->getId(): $categorieId = null;
-            $codePostal = $form->getData('CodePostal');
-            $commune = $form->getData('commune');
-            // pour verifier les données recues du form
-                 //dd($form->getData());
+            $categorieId = $receivedDatas['categorie']->getId();
+            // pour ne pas executer ->getLocalites() si la valeur récupérée vaut null
+            !is_null($receivedDatas['localite']) ? $localite = $receivedDatas['localite']->getId(): $localite = null;
+            !is_null($receivedDatas['cp']) ? $codePostal = $receivedDatas['cp']->getId(): $codePostal = null;
+            !is_null($receivedDatas['commune']) ? $commune = $receivedDatas['commune']->getId(): $commune = null;
+            //dd($nomPrestataire, $categorieId, $localite, $codePostal, $commune);
 
             $repositoryPrestataires = $entityManager->getRepository(Prestataire::class);
-            $partenaires = $repositoryPrestataires->SearchBar($nomPrestataire, $categorieId);
+            $partenaires = $repositoryPrestataires->SearchBar($nomPrestataire, $categorieId, $localite, $codePostal, $commune);
             //dd($partenaires);
 
             // envoi les données reçues par la DB à la vue liste de prestataires

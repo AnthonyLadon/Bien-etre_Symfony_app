@@ -10,7 +10,7 @@
 
 // input de la barre et bordures
 .main-search-input {
-  width: 49%;
+  width: 100%;
   margin: 0 0 0.5rem 0;
   border: 1px solid $third-color;
   height: 2rem;
@@ -29,6 +29,10 @@
 // couleur du texte ecrit dans la barre de recherche
 .main-search-input:focus {
   color: $darker-third-color;
+}
+
+.main-search-label {
+  color: $black-pink;
 }
 
 // gestion du bouton
