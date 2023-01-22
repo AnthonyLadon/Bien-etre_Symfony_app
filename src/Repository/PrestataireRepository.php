@@ -61,7 +61,7 @@ class PrestataireRepository extends ServiceEntityRepository
 
 
 
-    // Trouve les 4 derniers prestataires inscrits dans la catégorie de service
+    // Trouve les 4 derniers prestataires inscrits dans une même catégorie
     public function last4Prestataires($serviceId): ?array
     {
         return $this->createQueryBuilder('p')
@@ -81,24 +81,32 @@ class PrestataireRepository extends ServiceEntityRepository
        public function SearchBar($nomPrestataire, $categorieId, $localite, $codePostal, $commune): ?array
        {
            return $this->createQueryBuilder('p')
-                ->andWhere('p.nom LIKE :nom')
-                ->andWhere('proposer = :categorieId')
-                ->andWhere('user.codePostal = :cp')
-                ->andWhere('user.commune = :com')
-                ->andWhere('user.localite = :loc')
                 // liaison prestataire-catégorie 'proposer' via les Id
-                ->leftJoin('p.proposer', 'proposer')
-                ->leftJoin('p.utilisateur', 'user')
-
-                ->setParameter('nom', '%'.$nomPrestataire.'%' )
-                ->setParameter('categorieId', $categorieId)
-                ->setParameter('loc' , $localite)
-                ->setParameter('cp', $codePostal)
-                ->setParameter('com', $commune)
-
-                ->orderBy('p.nom', 'ASC')
-               ->getQuery()
-               ->getResult();
+                ->join('p.proposer', 'proposer')
+                ->join('p.utilisateur', 'user');
+                if($nomPrestataire){
+                    $this->andWhere('p.nom LIKE :nom')
+                    ->setParameter('nom', '%'.$nomPrestataire.'%');
+                }
+                if($categorieId){
+                    $this->andWhere('proposer = :categorieId')
+                    ->setParameter('categorieId', $categorieId);
+                }
+                if($localite){
+                    $this->andWhere('user.localite = :loc')
+                    ->setParameter('loc' , $localite);
+                }
+                if($codePostal){
+                    $this->andWhere('user.codePostal = :cp')
+                    ->setParameter('cp', $codePostal);
+                }
+                if($commune){
+                    $this->andWhere('user.commune = :com')
+                    ->setParameter('com', $commune);
+                }
+                $this->createQueryBuilder('p')->orderBy('p.nom', 'ASC')
+                ->getQuery()
+                ->getResult();
            ;
        }
 

@@ -92,16 +92,13 @@
       <h2>
         Le service du mois
       </h2>
-        
-      {% for s in highlightServices %}
-      <a href="{{path('detailService',{id : s.id})}}">
+      <a href="{{path('detailService',{id : highlightService.id})}}">
         <div class="highlight-service-card">
           <img src="{{ asset('images/service-kine.jpg') }}"
             alt="photo service à la une" />
           <div class="highlight-service-card-title">
             <h4>
-              {{s.nom}}
-      {% endfor %}
+              {{highlightService.nom}}
             </h4>
           </div>
         </div>

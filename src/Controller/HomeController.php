@@ -60,13 +60,13 @@ class HomeController extends AbstractController
         
         $repositoryCategorie = $entityManager->getRepository(CategorieService::class);
         $repositoryPrestataires = $entityManager->getRepository(Prestataire::class);
-        // Permet de récupérer la liste des services en avant (limité a 1 résultat)
-        $highlightServices = $repositoryCategorie->findHighlightService();
+        // Permet de récupérer le service qui a le champ en avant = 1
+        $highlightService = $repositoryCategorie->findOneBy(['enAvant' => 1]);
         // Récupère les derniers prestataires à partir du plus grand ID et limite à 4 resultats
         $lastPrestataires = $repositoryPrestataires->findLastPrestataires();
 
         return $this->render('home/index.html.twig', [
-            "highlightServices" => $highlightServices,
+            "highlightService" => $highlightService,
             "lastPrestataires" => $lastPrestataires,
             'form' => $formView
         ]);
