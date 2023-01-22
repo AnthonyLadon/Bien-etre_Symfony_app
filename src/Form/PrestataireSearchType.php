@@ -10,9 +10,11 @@ use App\Entity\CategorieService;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class PrestataireSearchType extends AbstractType
 {
@@ -22,7 +24,7 @@ class PrestataireSearchType extends AbstractType
             ->add('prestataire',TextType::class, [
                 'required' => false,
                 'attr' =>[
-                    'placeholder' => 'Nom du prestataire',
+                    'placeholder' => 'Saisissez un nom',
                     ]
                 ])
                 /** L'object peut s'afficher dans la liste déroulante grace à la 
@@ -33,9 +35,10 @@ class PrestataireSearchType extends AbstractType
                 ])
             ->add ('categorie', EntityType::class,[
                 'class' => CategorieService:: class,
-                // permet de selectionner plusieurs choix dans la liste déroulante
-                'multiple' => true,
-                'required' => false
+                // empeche le champ select de choisir une valeur nulle
+                'constraints' => [
+                        new NotBlank()
+                    ]
                 ])
             ->add ('cp', EntityType:: class,
             [
@@ -47,8 +50,8 @@ class PrestataireSearchType extends AbstractType
                 'class' => Commune:: class,
                 'required'=> false
             ])
-            ->add('Recherche', SubmitType::class, 
-            ['label' => 'recherche']
+            ->add('recherche', SubmitType::class, 
+            ['label' => 'Rechercher']
             )
         ;
     }

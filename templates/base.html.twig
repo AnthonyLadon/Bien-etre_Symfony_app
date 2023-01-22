@@ -36,14 +36,26 @@
 							<div class="dark-pink" id="pink"></div>
 
 							<div class="main-search-bar-wrap">
-								<input type="text" class="main-search-input" placeholder="Prestataire">
-								<input type="text" class="main-search-input" placeholder="Catégorie de Service">
-								<input type="text" class="main-search-input" placeholder="Commune">
-								<input type="text" class="main-search-input" placeholder="Localité">
-								<input type="text" class="main-search-input" placeholder="Code Postal">
-								<button type="submit" class="main-search-button">
-									<i class="fa fa-search"></i>
-								</button>
+								{{ form_start(form) }}
+									<div>
+									{{ form_row(form.prestataire, {'label': 'Prestataire'}) }}
+									</div>
+									<div>
+									{{ form_row(form.categorie, {'label': 'Catégorie'}) }}
+									</div>
+									<div>
+									{{ form_row(form.localite, {'label': 'Localité'}) }}
+									</div>
+									<div>
+									{{ form_row(form.cp, {'label': 'Code Postal'}) }}
+									</div>
+									<div>
+									{{ form_row(form.commune, {'label': 'Commune'}) }}
+									</div>
+									<div>
+									{{ form_row(form.recherche) }}
+									</div>
+								{{ form_end(form) }}
 							</div>
 						</div>
 					</div>

@@ -76,14 +76,20 @@ class PrestataireRepository extends ServiceEntityRepository
 
     // Requete envoyée via la barre de recherche pour trouver un ou plusieurs prestataires 
 
-
-    //! Tester--->  findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
-       public function SearchBar($nomPrestataire): ?array
+       public function SearchBar($nomPrestataire, $categorieId): ?array
        {
            return $this->createQueryBuilder('p')
                 ->andWhere('p.nom LIKE :nom')
-                ->setParameter('nom', '%'.$nomPrestataire.'%')
-            //    ->setParameter('localite', $localite)
+                ->andWhere('proposer = :categorieId')
+                // liaison prestataire-catégorie via les Id
+                ->leftJoin('p.proposer', 'proposer')
+                // ->andWhere('localite = :localite')
+                // ->leftJoin('p.utilisateur', 'util')
+                // ->leftJoin('util.localite', 'localite')
+                ->setParameter('nom', '%'.$nomPrestataire.'%' )
+                ->setParameter('categorieId', $categorieId)
+                // ->setParameter('loc', $localite)
+                // ->setParameter('localite', $localite)
             //    ->setParameter('categorie', $categorie)
             //    ->setParameter('cp', $codePostal)
             //    ->setParameter('commune', $commune)

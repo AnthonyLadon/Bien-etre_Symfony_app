@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Validator\Constraints\NotNull;
 
 class HomeController extends AbstractController
 {
@@ -29,23 +30,27 @@ class HomeController extends AbstractController
 
         $formView = $form->createView();
 
+
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $form->getData(); // garde les valeurs envoyées 
-
+            $form->getData(); // stocke les valeurs envoyées
+            
             $receivedDatas = $form->getData('viewData');
+
 
             // récupération des données envoyées via le formulaire
             $nomPrestataire = $receivedDatas['prestataire'];
-            $localite = $receivedDatas['localite'];
-            $categorie = $form->getData('categorie');
+            // pour ne pas executer ->getLocalites() si la valeur récupérée vaut null
+            !is_null($receivedDatas['localite']) ? $localite = $receivedDatas['localite']->getLocalite(): $localite = null;
+            // pour envoyer l'id de la catégorie au repository
+            !is_null($receivedDatas['categorie']) ? $categorieId = $receivedDatas['categorie']->getId(): $categorieId = null;
             $codePostal = $form->getData('CodePostal');
             $commune = $form->getData('commune');
             // pour verifier les données recues du form
                  //dd($form->getData());
 
             $repositoryPrestataires = $entityManager->getRepository(Prestataire::class);
-            $partenaires = $repositoryPrestataires->SearchBar($nomPrestataire);
+            $partenaires = $repositoryPrestataires->SearchBar($nomPrestataire, $categorieId);
             //dd($partenaires);
 
             // envoi les données reçues par la DB à la vue liste de prestataires
