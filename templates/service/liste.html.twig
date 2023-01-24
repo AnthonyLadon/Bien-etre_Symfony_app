@@ -26,17 +26,49 @@
 							</nav>
 							<div class="dark-pink" id="pink"></div>
 
+						  {# Bouton affichage/masquage du formulaire  #}
 							<button id="search-button-toggle"><i class="fa fa-search"></i></button>
+
 							<div class="search-bar-wrap" id="search-bar-wrap">
-								<input type="text" class="main-search-input" placeholder="Prestataire">
-								<input type="text" class="main-search-input" placeholder="Catégorie de Service">
-								<input type="text" class="main-search-input" placeholder="Commune">
-								<input type="text" class="main-search-input" placeholder="Localité">
-								<input type="text" class="main-search-input" placeholder="Code Postal">
-								<button type="submit" class="main-search-button">
-									<i class="fa fa-search"></i>&nbsp;Rechercher
-								</button>
+								{{ form_start(form) }}
+								
+									{{ form_row(form.prestataire, {
+										'attr': {'class': 'main-search-input'},
+										'label': 'Prestataire', 
+										'label_attr': {'class': 'main-search-label'}}) 
+									}}
+
+									{{ form_row(form.categorie, {
+										'attr': {'class': 'main-search-input'},
+										'label': 'Catégorie',
+										'label_attr': {'class': 'main-search-label'}}) 
+									}}
+
+									{{ form_row(form.localite, {
+										'attr': {'class': 'main-search-input'},
+										'label': 'Localité',
+										'label_attr': {'class': 'main-search-label'}}) 
+									}}
+
+									{{ form_row(form.cp, {
+										'attr': {'class': 'main-search-input'},
+										'label': 'Code Postal',
+										'label_attr': {'class': 'main-search-label'}}) 
+										}}
+
+									{{ form_row(form.commune, {
+										'attr': {'class': 'main-search-input'},
+										'label': 'Commune',
+										'label_attr': {'class': 'main-search-label'}}) 
+										}}
+
+									{{ form_row(form.recherche, {
+										'attr': {'class': 'main-search-button'}
+									}) }}
+
+								{{ form_end(form) }}
 							</div>
+						
 						</div>
 					</div>
 					<div class='l-main-logo'>

@@ -10,7 +10,6 @@ use App\Entity\CategorieService;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
-use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -26,8 +25,6 @@ class PrestataireSearchType extends AbstractType
                     'placeholder' => 'Saisissez un nom',
                     ]
                 ])
-                /** L'object peut s'afficher dans la liste déroulante grace à la 
-                 * methode __ToString déclarée dans l'entity */
             ->add ('localite', EntityType::class,[
                 'class' => Localite::class,
                 'required' => false
@@ -57,10 +54,6 @@ class PrestataireSearchType extends AbstractType
         $resolver->setDefaults([
      
             'data_type' => Prestataire::class
-            /* J'ai supprimé  'data_type' => Prestataire::class
-            Sans ce parametre les réponses dans $form->getData() sont un tableau
-            associatif plus simple à manipuler.
-            */
         ]);
     }
 }
