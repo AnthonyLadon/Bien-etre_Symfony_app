@@ -34,65 +34,33 @@
 								</ul>
 							</nav>
 							<div class="dark-pink" id="pink"></div>
+				
+							{% endblock %}
 
-							<div class="main-search-bar-wrap">
+							{% block searchForm %}{% endblock %}
 
-								{{ form_start(form) }}
-								
-									{{ form_row(form.prestataire, {
-										'attr': {'class': 'main-search-input'},
-										'label': 'Prestataire', 
-										'label_attr': {'class': 'main-search-label'}}) 
-									}}
-
-									{{ form_row(form.categorie, {
-										'attr': {'class': 'main-search-input'},
-										'label': 'Catégorie',
-										'label_attr': {'class': 'main-search-label'}}) 
-									}}
-
-									{{ form_row(form.localite, {
-										'attr': {'class': 'main-search-input'},
-										'label': 'Localité',
-										'label_attr': {'class': 'main-search-label'}}) 
-									}}
-
-									{{ form_row(form.cp, {
-										'attr': {'class': 'main-search-input'},
-										'label': 'Code Postal',
-										'label_attr': {'class': 'main-search-label'}}) 
-										}}
-
-									{{ form_row(form.commune, {
-										'attr': {'class': 'main-search-input'},
-										'label': 'Commune',
-										'label_attr': {'class': 'main-search-label'}}) 
-										}}
-
-									{{ form_row(form.recherche, {
-										'attr': {'class': 'main-search-button'}
-									}) }}
-
-								{{ form_end(form) }}
-	
-							</div>
 						</div>
 					</div>
-					<div class='l-main-logo'>
-						<a href="{{path ('home')}}"><img src="{{asset ('images/logo.png')}}" alt="image-logo"></a>
-					</div>
-				</div>
-			</div>
-		{% endblock %}
 
-		<div class="ease-in-title">
-			{% block titreh1 %}
-				<div class="ease-in-title"></div>
-			{% endblock %}
+
+						<div class='l-main-logo'>
+							<a href="{{path ('home')}}"><img src="{{asset ('images/logo.png')}}" alt="image-logo"></a>
+						</div>
+
+						<div class="ease-in-title">
+							<h1>{% block titreh1 %}{% endblock %}</h1>
+						</div>
 		</div>
+			</header>
+					
+		<div class="l-main-wrap"> 
+		
+		{% block body %}{% endblock %}
+		
 	</body>
-		</header><div class="l-main-wrap"> {% block body %}{% endblock %}
+
 		</div>
+
 		{% block footer %}
 			<footer class="l-footer">
 				<div class="l-footer-links">

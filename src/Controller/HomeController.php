@@ -49,6 +49,7 @@ class HomeController extends AbstractController
             //verif des données envoyées au repository
             //dd($nomPrestataire, $categorieId, $localite, $codePostal, $commune);
 
+
             $repositoryPrestataires = $entityManager->getRepository(Prestataire::class);
             $partenaires = $repositoryPrestataires->SearchBar($nomPrestataire, $categorieId, $localite, $codePostal, $commune);
             // verif des données recues de la DB
