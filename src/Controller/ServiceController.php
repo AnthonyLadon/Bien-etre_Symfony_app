@@ -57,6 +57,7 @@ class ServiceController extends AbstractController
                 // envoi les données reçues par la DB à la vue liste de prestataires
                 return $this->render('partenaire/liste.html.twig', [
                     'partenaires' => $partenaires,
+                    'form' => $formView
                 ]);
             }
                 
@@ -115,6 +116,7 @@ class ServiceController extends AbstractController
             // envoi les données reçues par la DB à la vue liste de prestataires
             return $this->render('partenaire/liste.html.twig', [
                 'partenaires' => $partenaires,
+                'form' => $formView
             ]);
         }
 

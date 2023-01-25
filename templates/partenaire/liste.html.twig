@@ -12,12 +12,21 @@
 {% endblock %}
 
 {% block body %}
-	<div class="partenaires-list-wrap">
-		{% for partenaire in partenaires %}
-			<a class="partenaires-card" href="{{path('detailPartenaire',{id : partenaire.id})}}">
-				<h3>{{partenaire.nom}}</h3>
-				<img src="{{asset ('images/service-kine.jpg')}}" alt="photo service">
-			</a>
-		{% endfor %}
-	</div>
+
+	{% if partenaires %}
+		<div class="partenaires-list-wrap">
+			{% for partenaire in partenaires %}
+				<a class="partenaires-card" href="{{path('detailPartenaire',{id : partenaire.id})}}">
+					<h3>{{partenaire.nom}}</h3>
+					<img src="{{asset ('images/service-kine.jpg')}}" alt="photo service">
+				</a>
+			{% endfor %}
+		</div>
+		{% else %}
+			<div>
+				<p>Désolé, il n'y a pas de prestataire correspondant à votre recherche</p>
+			</div>
+	{% endif %}
+		
+
 {% endblock %}
