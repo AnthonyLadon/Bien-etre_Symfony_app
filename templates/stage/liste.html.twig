@@ -3,51 +3,12 @@
 {% block title %}Stages proposés
 {% endblock %}
 {% block titreh1 %}
-	<h1>Stages proposés</h1>
+	Stages proposés
 {% endblock %}
 
-{# {% block searchForm %}
-  
-	<div class="main-search-bar-wrap">
-				{{ form_start(form) }}
-				
-					{{ form_row(form.prestataire, {
-						'attr': {'class': 'main-search-input'},
-						'label': 'Prestataire', 
-						'label_attr': {'class': 'main-search-label'}}) 
-					}}
-
-					{{ form_row(form.categorie, {
-						'attr': {'class': 'main-search-input'},
-						'label': 'Catégorie',
-						'label_attr': {'class': 'main-search-label'}}) 
-					}}
-
-					{{ form_row(form.localite, {
-						'attr': {'class': 'main-search-input'},
-						'label': 'Localité',
-						'label_attr': {'class': 'main-search-label'}}) 
-					}}
-
-					{{ form_row(form.cp, {
-						'attr': {'class': 'main-search-input'},
-						'label': 'Code Postal',
-						'label_attr': {'class': 'main-search-label'}}) 
-						}}
-
-					{{ form_row(form.commune, {
-						'attr': {'class': 'main-search-input'},
-						'label': 'Commune',
-						'label_attr': {'class': 'main-search-label'}}) 
-						}}
-
-					{{ form_row(form.recherche, {
-						'attr': {'class': 'main-search-button'}
-					}) }}
-
-				{{ form_end(form) }}
-          </div>
-{% endblock %} #}
+{% block searchForm %}
+	{% embed "_searchFormToggle.html.twig" %}{% endembed %}
+{% endblock %}
 
 {% block body %}
 	<div class="stage-list-wrap">

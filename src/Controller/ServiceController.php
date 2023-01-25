@@ -78,8 +78,47 @@ class ServiceController extends AbstractController
      * @Route("services/detail/{id}", name="detailService")
      */
 
-    public function detailcategorieService($id, EntityManagerInterface $entityManager)
+    public function detailcategorieService($id, EntityManagerInterface $entityManager, Request $request)
     {
+
+        // creation du formulaire de recherche de prestataire
+        $form = $this->createForm(PrestataireSearchType::class, null, [
+            'method' => 'GET',
+            // retire le token de l'url généré (GET)
+            'csrf_protection' => false
+        ]);
+
+        $formView = $form->createView();
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $form->getData(); // stocke les valeurs envoyées
+
+            $receivedDatas = $form->getData('viewData');
+
+            // récupération des données envoyées via le formulaire
+            $nomPrestataire = $receivedDatas['prestataire'];
+
+            // pour ne pas executer de ->get() si la valeur récupérée vaut null
+            !is_null($receivedDatas['categorie']) ? $categorieId = $receivedDatas['categorie']->getId(): $categorieId = null;
+            !is_null($receivedDatas['localite']) ? $localite = $receivedDatas['localite']->getId(): $localite = null;
+            !is_null($receivedDatas['cp']) ? $codePostal = $receivedDatas['cp']->getId(): $codePostal = null;
+            !is_null($receivedDatas['commune']) ? $commune = $receivedDatas['commune']->getId(): $commune = null;
+            //verif des données envoyées au repository
+            //dd($nomPrestataire, $categorieId, $localite, $codePostal, $commune);
+
+            $repositoryPrestataires = $entityManager->getRepository(Prestataire::class);
+            $partenaires = $repositoryPrestataires->SearchBar($nomPrestataire, $categorieId, $localite, $codePostal, $commune);
+            // verif des données recues de la DB
+            //dd($partenaires);
+
+            // envoi les données reçues par la DB à la vue liste de prestataires
+            return $this->render('partenaire/liste.html.twig', [
+                'partenaires' => $partenaires,
+            ]);
+        }
+
+
         // trouve le detail catégorie
         $repository = $entityManager->getRepository(CategorieService::class);
         $service = $repository->find($id);
@@ -92,7 +131,8 @@ class ServiceController extends AbstractController
             'service/detail.html.twig',
             [
                 'service' => $service,
-                'lastPrestataires' => $lastPrestataires
+                'lastPrestataires' => $lastPrestataires,
+                'form' => $formView
             ]
         );
     }
