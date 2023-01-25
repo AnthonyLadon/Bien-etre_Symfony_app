@@ -26,10 +26,10 @@
 						<div class="wrap-menu">
 							<nav class="l-main-nav" id="nav">
 								<ul>
-									<li><a id="home"href="{{path('home')}}"><i class="fa-solid fa-house"></i>&nbsp;Accueil</a></li>
-									<li><a id="partenaires"href="{{path ("listePartenaires")}}"><i class="fa-solid fa-handshake-simple"></i>&nbsp;Partenaires</a></li>
-									<li><a id="services"href="{{path ("listeServices")}}"><i class="fa-solid fa-bell-concierge"></i>&nbsp;Services</a></li>
-									<li><a id="services"href="{{path ("listeStages")}}"><i class="fa-solid fa-person-chalkboard"></i>&nbsp;Stages</a></li>
+									<li><a id="home" href="{{path('home')}}"><i class="fa-solid fa-house"></i>&nbsp;Accueil</a></li>
+									<li><a id="partenaires" href="{{path ("listePartenaires")}}"><i class="fa-solid fa-handshake-simple"></i>&nbsp;Partenaires</a></li>
+									<li><a id="services" href="{{path ("listeServices")}}"><i class="fa-solid fa-bell-concierge"></i>&nbsp;Services</a></li>
+									<li><a id="services" href="{{path ("listeStages")}}"><i class="fa-solid fa-person-chalkboard"></i>&nbsp;Stages</a></li>
 									<li><a href="#"><i class="fa-solid fa-user"></i>&nbsp;Se Connecter</a></li>
 								</ul>
 							</nav>
@@ -64,8 +64,8 @@
 		{% block footer %}
 			<footer class="l-footer">
 				<div class="l-footer-links">
-					<a href="#">à propos</a>
-					<a href="#">contact</a>
+					<a href="{{path ("aPropos")}}">à propos</a>
+					<a href="{{path ("contact")}}">contact</a>
 				</div>
 				<div class="footer-social">
 					<a href="#">
