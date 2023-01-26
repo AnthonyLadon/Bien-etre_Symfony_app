@@ -21,9 +21,17 @@ class Commune
     #[ORM\OneToMany(mappedBy: 'commune', targetEntity: Utilisateur::class)]
     private Collection $utilisateurs;
 
+    #[ORM\OneToMany(mappedBy: 'commune', targetEntity: CodePostal::class)]
+    private Collection $codePostaux;
+
+    #[ORM\ManyToOne(inversedBy: 'communes')]
+    private ?Localite $localite = null;
+
+
     public function __construct()
     {
         $this->utilisateurs = new ArrayCollection();
+        $this->codePostaux = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -77,4 +85,47 @@ class Commune
     {
         return $this->commune;
     }
+
+    /**
+     * @return Collection<int, CodePostal>
+     */
+    public function getCodePostaux(): Collection
+    {
+        return $this->codePostaux;
+    }
+
+    public function addCodePostaux(CodePostal $codePostaux): self
+    {
+        if (!$this->codePostaux->contains($codePostaux)) {
+            $this->codePostaux->add($codePostaux);
+            $codePostaux->setCommune($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCodePostaux(CodePostal $codePostaux): self
+    {
+        if ($this->codePostaux->removeElement($codePostaux)) {
+            // set the owning side to null (unless already changed)
+            if ($codePostaux->getCommune() === $this) {
+                $codePostaux->setCommune(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getLocalite(): ?Localite
+    {
+        return $this->localite;
+    }
+
+    public function setLocalite(?Localite $localite): self
+    {
+        $this->localite = $localite;
+
+        return $this;
+    }
+
 }

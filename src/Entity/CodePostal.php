@@ -21,6 +21,10 @@ class CodePostal
     #[ORM\OneToMany(mappedBy: 'codePostal', targetEntity: Utilisateur::class)]
     private Collection $utilisateurs;
 
+    #[ORM\ManyToOne(inversedBy: 'codePostaux')]
+    private ?Commune $commune = null;
+
+
     public function __construct()
     {
         $this->utilisateurs = new ArrayCollection();
@@ -77,4 +81,17 @@ class CodePostal
     {
         return $this->codePostal;
     }
+
+    public function getCommune(): ?Commune
+    {
+        return $this->commune;
+    }
+
+    public function setCommune(?Commune $commune): self
+    {
+        $this->commune = $commune;
+
+        return $this;
+    }
+
 }

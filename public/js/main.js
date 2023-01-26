@@ -14,7 +14,13 @@ icon.addEventListener("click", function () {
   blue.classList.toggle("slide");
 });
 
-//requete AJAX formulaire de recherche pour récupérer villes et codes postaux de Belgique
+//******************/
+
+// Requete AJAX formulaire de recherche pour récupérer villes et code postaux de Belgique
+// depuis un fichier json
+
+// malheuresement j'ai abandonné l'idée de l'utiliser donc il ne fait qu'afficher
+// en console les communes correspondant au codepostal selectionné
 const LOCALITE = document.getElementById("prestataire_search_localite");
 const CODEPOSTAL = document.getElementById("prestataire_search_cp");
 const COMMUNE = document.getElementById("prestataire_search_commune");
@@ -44,16 +50,21 @@ CODEPOSTAL.addEventListener("change", function () {
   };
 });
 
-// Permet, sur les autres pages qu'accueil, d'afficher et de masquer le zone de recherche
+//******************/
+
+// Permet, sur les autres pages que l'accueil, d'afficher et de masquer le zone de recherche
 const TargetDiv = document.getElementById("search-bar-wrap");
 const BTN = document.getElementById("search-button-toggle");
-TargetDiv.style.display = "none";
-BTN.onclick = function () {
-  if (TargetDiv.style.display !== "none") {
-    TargetDiv.style.display = "none";
-    BTN.innerHTML = '<i class="fa fa-search"></i>';
-  } else {
-    TargetDiv.style.display = "block";
-    BTN.innerHTML = '<i class="fa-solid fa-xmark"></i>';
-  }
-};
+// condition pour éviter les erreurs sur la page home (TargetDiv n'existe pas sur cette page)
+if (TargetDiv) {
+  TargetDiv.style.display = "none";
+  BTN.onclick = function () {
+    if (TargetDiv.style.display !== "none") {
+      TargetDiv.style.display = "none";
+      BTN.innerHTML = '<i class="fa fa-search"></i>';
+    } else {
+      TargetDiv.style.display = "block";
+      BTN.innerHTML = '<i class="fa-solid fa-xmark"></i>';
+    }
+  };
+}
