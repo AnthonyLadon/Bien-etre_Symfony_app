@@ -84,6 +84,7 @@ class PrestataireRepository extends ServiceEntityRepository
                 // liaison prestataire-catégorie 'proposer' via les Id
                 ->join('p.proposer', 'proposer')
                 ->join('p.utilisateur', 'user')
+                ->join('user.commune', 'commune')
                 ;
                 if($nomPrestataire){
                     $query->andWhere('p.nom LIKE :nom')
@@ -97,13 +98,13 @@ class PrestataireRepository extends ServiceEntityRepository
                     $query->andWhere('user.localite = :loc')
                     ->setParameter('loc' , $localite);
                 }
+                if($commune){
+                    $query->andWhere('commune.commune = :com')
+                    ->setParameter('com', $commune);
+                }
                 if($codePostal){
                     $query->andWhere('user.codePostal = :cp')
                     ->setParameter('cp', $codePostal);
-                }
-                if($commune){
-                    $query->andWhere('user.commune = :com')
-                    ->setParameter('com', $commune);
                 }
                 $query->orderBy('p.nom', 'ASC');
                 $query = $query->getQuery();

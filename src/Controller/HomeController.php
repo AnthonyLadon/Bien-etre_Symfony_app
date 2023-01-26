@@ -44,8 +44,8 @@ class HomeController extends AbstractController
             // pour ne pas executer de ->get() si la valeur récupérée vaut null
             !is_null($receivedDatas['categorie']) ? $categorieId = $receivedDatas['categorie']->getId(): $categorieId = null;
             !is_null($receivedDatas['localite']) ? $localite = $receivedDatas['localite']->getId(): $localite = null;
-            !is_null($receivedDatas['cp']) ? $codePostal = $receivedDatas['cp']->getId(): $codePostal = null;
-            !is_null($receivedDatas['commune']) ? $commune = $receivedDatas['commune']->getId(): $commune = null;
+            $codePostal= $receivedDatas['cp'];
+            $commune = strtoupper($receivedDatas['commune']);
             //verif des données envoyées au repository
             //dd($nomPrestataire, $categorieId, $localite, $codePostal, $commune);
 

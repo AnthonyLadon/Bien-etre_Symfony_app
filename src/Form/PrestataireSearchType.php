@@ -25,22 +25,20 @@ class PrestataireSearchType extends AbstractType
                     'placeholder' => 'Saisissez un nom',
                     ]
                 ])
-            ->add ('localite', EntityType::class,[
-                'class' => Localite::class,
-                'required' => false
-                ])
             ->add ('categorie', EntityType::class,[
                 'class' => CategorieService:: class,
                 'required' => false
                 ])
-            ->add ('cp', EntityType:: class,
+            ->add ('localite', EntityType::class,[
+                'class' => Localite::class,
+                'required' => false
+                ])
+            ->add ('cp', TextType::class,
             [
-                'class' => CodePostal::class,
                 'required' => false
             ])
-            ->add ('commune', EntityType::class, 
+            ->add ('commune', TextType::class, 
             [
-                'class' => Commune:: class,
                 'required'=> false
             ])
             ->add('recherche', SubmitType::class, 
