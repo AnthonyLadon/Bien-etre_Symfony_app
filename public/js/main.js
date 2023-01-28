@@ -23,7 +23,77 @@ const LOCALITE = document.getElementById("prestataire_search_localite");
 const CODEPOSTAL = document.getElementById("prestataire_search_cp");
 const COMMUNE = document.getElementById("prestataire_search_commune");
 
-LOCALITE.addEventListener("change", function () {});
+LOCALITE.addEventListener("change", function () {
+  let url = "../zipcode-belgium.json";
+
+  // Pour récupérer le texte du champ selectioné
+  let selectedIndex = LOCALITE.options.selectedIndex;
+  let selectedtText = LOCALITE.options[selectedIndex].firstChild.data;
+
+  // Définition de la plage de code postal selon la localité selectionnée
+  switch (selectedtText) {
+    case "région Bruxelles capitale":
+      zipCodeRange = "";
+      break;
+    case "province du hainaut":
+      // code block
+      break;
+    case "province du brabant wallon":
+      // code block
+      break;
+    case "province d'anvers":
+      // code block
+      break;
+    case "province de flandre occidentale":
+      // code block
+      break;
+    case "province de flandre orientale":
+      // code block
+      break;
+    case "province du brabant flamand":
+      // code block
+      break;
+    case "province du brabant flamand (Louvain)":
+      // code block
+      break;
+    case "province de liège":
+      // code block
+      break;
+    case "province du luxembourg":
+      // code block
+      break;
+    case "province du limbourg":
+      // code block
+      break;
+    case "province de namur":
+      // code block
+      break;
+  }
+});
+
+let xhr = new XMLHttpRequest();
+xhr.open("GET", url);
+xhr.send(null);
+xhr.onreadystatechange = function () {
+  if (xhr.readyState === xhr.DONE && xhr.status === 200) {
+    // traitement des données reçues
+    let datas = JSON.parse(xhr.response);
+
+    for (data of datas) {
+      let city = data.city
+        .normalize("NFD")
+        .replace(/([\u0300-\u036f]|[^0-9a-zA-Z])/g, "")
+        .toUpperCase();
+
+      let zipCode = data.zip;
+    }
+  }
+
+  // let selectOptions = "";
+  // for (i = 0; i < zipCodes.length; i++) {
+  //   selectOptions += `<option>${zipCodes[i]}</option>`;
+  // }
+};
 
 COMMUNE.addEventListener("change", function () {
   let url = "../zipcode-belgium.json";
