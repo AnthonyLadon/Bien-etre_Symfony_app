@@ -24,19 +24,19 @@ const CODEPOSTAL = document.getElementById("prestataire_search_cp");
 const COMMUNE = document.getElementById("prestataire_search_commune");
 
 LOCALITE.addEventListener("change", function () {
-  let url = "../zipcode-belgium.json";
-
   // Pour récupérer le texte du champ selectioné
   let selectedIndex = LOCALITE.options.selectedIndex;
-  let selectedtText = LOCALITE.options[selectedIndex].firstChild.data;
+  let selectedText = LOCALITE.options[selectedIndex].firstChild.data;
 
   // Définition de la plage de code postal selon la localité selectionnée
-  switch (selectedtText) {
+  switch (selectedText) {
     case "région Bruxelles capitale":
-      zipCodeRange = "";
+      minZipCode = 1000;
+      maxZipCode = 1299;
       break;
     case "province du hainaut":
-      // code block
+      minZipCode = 7000;
+      maxZipCode = 7999;
       break;
     case "province du brabant wallon":
       // code block
@@ -57,7 +57,8 @@ LOCALITE.addEventListener("change", function () {
       // code block
       break;
     case "province de liège":
-      // code block
+      minZipCode = 4000;
+      maxZipCode = 4999;
       break;
     case "province du luxembourg":
       // code block
@@ -69,34 +70,48 @@ LOCALITE.addEventListener("change", function () {
       // code block
       break;
   }
+
+  let url = "../zipcode-belgium.json";
+
+  let xhr = new XMLHttpRequest();
+  xhr.open("GET", url);
+  xhr.send(null);
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === xhr.DONE && xhr.status === 200) {
+      // traitement des données reçues
+      let datas = JSON.parse(xhr.response);
+
+      let cities = [];
+      let city = "";
+
+      for (data of datas) {
+        if (data.zip > minZipCode && data.zip < maxZipCode) {
+          city = data.city
+            .normalize("NFD")
+            .replace(/([\u0300-\u036f]|[^0-9a-zA-Z])/g, "")
+            .toUpperCase();
+          cities.push(data.city);
+        }
+      }
+
+      let citiesOptions = "";
+      for (i = 0; i < cities.length; i++) {
+        citiesOptions += `<option>${cities[i]}</option>`;
+      }
+
+      // modification du champ text en select avec les code postaux correspondants
+
+      COMMUNE.outerHTML = `<select type="text" id="prestataire_search_commune" name="prestataire_search[commune]" class="main-search-input">${citiesOptions}</select>`;
+    }
+  };
 });
 
-let xhr = new XMLHttpRequest();
-xhr.open("GET", url);
-xhr.send(null);
-xhr.onreadystatechange = function () {
-  if (xhr.readyState === xhr.DONE && xhr.status === 200) {
-    // traitement des données reçues
-    let datas = JSON.parse(xhr.response);
-
-    for (data of datas) {
-      let city = data.city
-        .normalize("NFD")
-        .replace(/([\u0300-\u036f]|[^0-9a-zA-Z])/g, "")
-        .toUpperCase();
-
-      let zipCode = data.zip;
-    }
-  }
-
-  // let selectOptions = "";
-  // for (i = 0; i < zipCodes.length; i++) {
-  //   selectOptions += `<option>${zipCodes[i]}</option>`;
-  // }
-};
+console.log(COMMUNE.outerHTML);
 
 COMMUNE.addEventListener("change", function () {
   let url = "../zipcode-belgium.json";
+
+  console.log("change");
 
   let xhr = new XMLHttpRequest();
   xhr.open("GET", url);
@@ -133,9 +148,7 @@ COMMUNE.addEventListener("change", function () {
       }
 
       // modification du champ text en select avec les code postaux correspondants
-      zipCodes.length > 1
-        ? (CODEPOSTAL.outerHTML = `<select type="select" id="prestataire_search_cp" name="prestataire_search[cp]" class="main-search-input">${selectOptions}</select>`)
-        : (CODEPOSTAL.outerHTML = `<input type="text" value="${zipCodes[0]}" id="prestataire_search_cp" name="prestataire_search[cp]" class="main-search-input">`);
+      CODEPOSTAL.outerHTML = `<select type="select" id="prestataire_search_cp" name="prestataire_search[cp]" class="main-search-input">${selectOptions}</select>`;
     }
   };
 });
