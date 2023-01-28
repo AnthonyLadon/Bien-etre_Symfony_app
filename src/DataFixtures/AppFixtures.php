@@ -44,10 +44,24 @@ class AppFixtures extends Fixture
             $manager->persist($internaute);
         };
 
+        // liste des provinces et région de Belgique
+        $provinces = array('région Bruxelles capitale',
+        'province du hainaut',
+        'province du brabant wallon',
+        'province d\'anvers',
+        'province de flandre occidentale',
+        'province de flandre orientale',
+        'province du brabant flamand',
+        'province du brabant flamand (Louvain)',
+        'province de liège',
+        'province du luxembourg',
+        'province du limbourg',
+        'province de namur');
+        $prinvincesLength = sizeof($provinces);
 
-        for ($i = 0; $i < 20; $i++){
+        for ($i = 0; $i < $prinvincesLength; $i++){
             $localite = new Localite();
-            $localite->setLocalite('Liege');
+            $localite->setLocalite($provinces[$i]);
             $manager->persist($localite);
         }
 

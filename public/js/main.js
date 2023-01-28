@@ -19,13 +19,13 @@ icon.addEventListener("click", function () {
 // Requete AJAX formulaire de recherche pour récupérer villes et code postaux de Belgique
 // depuis un fichier json
 
-// malheuresement j'ai abandonné l'idée de l'utiliser donc il ne fait qu'afficher
-// en console les communes correspondant au codepostal selectionné
 const LOCALITE = document.getElementById("prestataire_search_localite");
 const CODEPOSTAL = document.getElementById("prestataire_search_cp");
 const COMMUNE = document.getElementById("prestataire_search_commune");
 
-CODEPOSTAL.addEventListener("change", function () {
+LOCALITE.addEventListener("change", function () {});
+
+COMMUNE.addEventListener("change", function () {
   let url = "../zipcode-belgium.json";
 
   let xhr = new XMLHttpRequest();
@@ -33,19 +33,39 @@ CODEPOSTAL.addEventListener("change", function () {
   xhr.send(null);
   xhr.onreadystatechange = function () {
     if (xhr.readyState === xhr.DONE && xhr.status === 200) {
-      // récupération de la valeur (Numéro du select) du code postal selectionné
-      let num = CODEPOSTAL.value;
-      // Puis la valeur du texte dans le select
-      let selectedZip = CODEPOSTAL[num].innerText;
+      // Remplacer les caractères spéciaux de la string reçue etla mettre en majuscules
+      let selectedCityNormalized = COMMUNE.value
+        .normalize("NFD")
+        .replace(/([\u0300-\u036f]|[^0-9a-zA-Z])/g, "")
+        .toUpperCase();
 
       // traitement des données reçues
       let datas = JSON.parse(xhr.response);
 
+      let zipCodes = [];
+      // Remplacer les caractères spéciaux de la liste JSON et les mettre en majuscules
       for (data of datas) {
-        if (selectedZip == data.zip) {
-          console.log(selectedZip + " -> " + data.city);
+        let city = data.city
+          .normalize("NFD")
+          .replace(/([\u0300-\u036f]|[^0-9a-zA-Z])/g, "")
+          .toUpperCase();
+
+        // si la string entrée correspond a une ville on récupére les code postaux de celle-ci
+        if (selectedCityNormalized == city) {
+          zipCodes.push(data.zip);
         }
       }
+
+      // creation des champs options avec les code postaux
+      let selectOptions = "";
+      for (i = 0; i < zipCodes.length; i++) {
+        selectOptions += `<option>${zipCodes[i]}</option>`;
+      }
+
+      // modification du champ text en select avec les code postaux correspondants
+      zipCodes.length > 1
+        ? (CODEPOSTAL.outerHTML = `<select type="select" id="prestataire_search_cp" name="prestataire_search[cp]" class="main-search-input">${selectOptions}</select>`)
+        : (CODEPOSTAL.outerHTML = `<input type="text" value="${zipCodes[0]}" id="prestataire_search_cp" name="prestataire_search[cp]" class="main-search-input">`);
     }
   };
 });

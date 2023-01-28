@@ -84,6 +84,7 @@ class PrestataireRepository extends ServiceEntityRepository
                 // liaison prestataire-catégorie 'proposer' via les Id
                 ->join('p.proposer', 'proposer')
                 ->join('p.utilisateur', 'user')
+                ->join('user.codePostal', 'codePostal')
                 ->join('user.commune', 'commune')
                 ;
                 if($nomPrestataire){
@@ -103,7 +104,7 @@ class PrestataireRepository extends ServiceEntityRepository
                     ->setParameter('com', $commune);
                 }
                 if($codePostal){
-                    $query->andWhere('user.codePostal = :cp')
+                    $query->andWhere('codePostal.codePostal = :cp')
                     ->setParameter('cp', $codePostal);
                 }
                 $query->orderBy('p.nom', 'ASC');
