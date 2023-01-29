@@ -33,12 +33,14 @@ class PrestataireSearchType extends AbstractType
                 'class' => Localite::class,
                 'required' => false
                 ])
-            ->add ('cp', TextType::class,
+            ->add ('cp', EntityType::class,
             [
+                'class' => CodePostal::class,
                 'required' => false
             ])
-            ->add ('commune', TextType::class, 
+            ->add ('commune', EntityType::class, 
             [
+                'class' => Commune::class,
                 'required'=> false
             ])
             ->add('recherche', SubmitType::class, 

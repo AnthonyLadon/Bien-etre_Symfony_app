@@ -27,47 +27,60 @@ LOCALITE.addEventListener("change", function () {
   // Pour récupérer le texte du champ selectioné
   let selectedIndex = LOCALITE.options.selectedIndex;
   let selectedText = LOCALITE.options[selectedIndex].firstChild.data;
+  let selectedLocaliteNormalized = selectedText
+    .normalize("NFD")
+    .replace(/([\u0300-\u036f]|[^0-9a-zA-Z])/g, "")
+    .toUpperCase();
 
-  // Définition de la plage de code postal selon la localité selectionnée
-  switch (selectedText) {
-    case "région Bruxelles capitale":
+  // Définition de la plage de codes postaux selon la localité selectionnée
+  switch (selectedLocaliteNormalized) {
+    case "REGIONBRUXELLESCAPITALE":
       minZipCode = 1000;
       maxZipCode = 1299;
       break;
-    case "province du hainaut":
+    case "PROVINCEDUHAINAUT":
       minZipCode = 7000;
       maxZipCode = 7999;
       break;
-    case "province du brabant wallon":
-      // code block
+    case "BRABANTWALLON":
+      minZipCode = 1300;
+      maxZipCode = 1499;
       break;
-    case "province d'anvers":
-      // code block
+    case "PROVINCEDANVERS":
+      minZipCode = 2000;
+      maxZipCode = 2999;
       break;
-    case "province de flandre occidentale":
-      // code block
+    case "PROVINCEDEFLANDREOCCIDENTALE":
+      minZipCode = 8000;
+      maxZipCode = 8999;
       break;
-    case "province de flandre orientale":
-      // code block
+    case "PROVINCEDEFLANDREORIENTALE":
+      minZipCode = 9000;
+      maxZipCode = 9999;
       break;
-    case "province du brabant flamand":
-      // code block
+    case "PROVINCEDUBRABANTFLAMAND":
+      minZipCode = 1500;
+      maxZipCode = 1999;
       break;
-    case "province du brabant flamand (Louvain)":
-      // code block
+    case "BRABANTFLAMMANDLOUVAIN":
+      minZipCode = 3000;
+      maxZipCode = 3499;
       break;
-    case "province de liège":
+    case "PROVINCEDELIEGE":
       minZipCode = 4000;
       maxZipCode = 4999;
       break;
-    case "province du luxembourg":
-      // code block
+    case "PROVINCEDULUXEMBOURG":
+      minZipCode = 6600;
+      maxZipCode = 6999;
       break;
-    case "province du limbourg":
-      // code block
+    case "PROVINCEDULIMBOURG":
+      minZipCode = 3500;
+      maxZipCode = 3999;
       break;
-    case "province de namur":
-      // code block
+    case "PROVINCEDENAMUR":
+      minZipCode = 5000;
+      maxZipCode = 5680;
       break;
   }
 
@@ -90,36 +103,35 @@ LOCALITE.addEventListener("change", function () {
             .normalize("NFD")
             .replace(/([\u0300-\u036f]|[^0-9a-zA-Z])/g, "")
             .toUpperCase();
-          cities.push(data.city);
+          cities.push(city);
         }
       }
 
       let citiesOptions = "";
       for (i = 0; i < cities.length; i++) {
-        citiesOptions += `<option>${cities[i]}</option>`;
+        citiesOptions += `<option value="">${cities[i]}</option>`;
       }
 
-      // modification du champ text en select avec les code postaux correspondants
-
-      COMMUNE.outerHTML = `<select type="text" id="prestataire_search_commune" name="prestataire_search[commune]" class="main-search-input">${citiesOptions}</select>`;
+      COMMUNE.innerHTML = citiesOptions;
     }
   };
 });
 
-console.log(COMMUNE.outerHTML);
-
 COMMUNE.addEventListener("change", function () {
   let url = "../zipcode-belgium.json";
 
-  console.log("change");
+  // récupération de la string de la commune selectionnée
+  let selectedIndex = COMMUNE.options.selectedIndex;
+  let selectedText = COMMUNE.options[selectedIndex].firstChild.data;
 
   let xhr = new XMLHttpRequest();
   xhr.open("GET", url);
   xhr.send(null);
   xhr.onreadystatechange = function () {
     if (xhr.readyState === xhr.DONE && xhr.status === 200) {
-      // Remplacer les caractères spéciaux de la string reçue etla mettre en majuscules
-      let selectedCityNormalized = COMMUNE.value
+      // Remplacer les caractères spéciaux de la string slectionnée dans le formulaire
+      // et la mettre en majuscules
+      let selectedCityNormalized = selectedText
         .normalize("NFD")
         .replace(/([\u0300-\u036f]|[^0-9a-zA-Z])/g, "")
         .toUpperCase();
@@ -144,11 +156,11 @@ COMMUNE.addEventListener("change", function () {
       // creation des champs options avec les code postaux
       let selectOptions = "";
       for (i = 0; i < zipCodes.length; i++) {
-        selectOptions += `<option>${zipCodes[i]}</option>`;
+        selectOptions += `<option value="">${zipCodes[i]}</option>`;
       }
 
-      // modification du champ text en select avec les code postaux correspondants
-      CODEPOSTAL.outerHTML = `<select type="select" id="prestataire_search_cp" name="prestataire_search[cp]" class="main-search-input">${selectOptions}</select>`;
+      // modification des options du select
+      CODEPOSTAL.innerHTML = selectOptions;
     }
   };
 });

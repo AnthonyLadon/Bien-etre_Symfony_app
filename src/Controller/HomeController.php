@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Messenger\Stamp\ReceivedStamp;
 use Symfony\Component\Validator\Constraints\NotNull;
 
 class HomeController extends AbstractController
@@ -36,18 +37,18 @@ class HomeController extends AbstractController
             $form->getData(); // stocke les valeurs envoyées
 
             $receivedDatas = $form->getData('viewData');
+            //dd($receivedDatas);
 
 
             // récupération des données envoyées via le formulaire
             $nomPrestataire = $receivedDatas['prestataire'];
-
             // pour ne pas executer de ->get() si la valeur récupérée vaut null
             !is_null($receivedDatas['categorie']) ? $categorieId = $receivedDatas['categorie']->getId(): $categorieId = null;
             !is_null($receivedDatas['localite']) ? $localite = $receivedDatas['localite']->getId(): $localite = null;
-            $codePostal= $receivedDatas['cp'];
-            $commune = ($receivedDatas['commune']);
+            !is_null($receivedDatas['cp']) ? $codePostal= $receivedDatas['cp']->getCodePostal(): $codePostal = null;
+            !is_null($receivedDatas['commune']) ? $commune = $receivedDatas['commune']->getCommune(): $commune = null;
             //verif des données envoyées au repository
-            //dd($nomPrestataire, $categorieId, $localite, $codePostal, $commune);
+            dd("prestataire: ".$nomPrestataire, "catégorie :".$categorieId, "localité: ".$localite, "code postal: ".$codePostal, "commune: ".$commune);
 
 
             $repositoryPrestataires = $entityManager->getRepository(Prestataire::class);
