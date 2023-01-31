@@ -33,12 +33,13 @@ class HomeController extends AbstractController
 
 
         $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
+
+       // dd($request);
+
+        if ($form->isSubmitted()) {
             $form->getData(); // stocke les valeurs envoyées
-
-            $receivedDatas = $form->getData('viewData');
-            //dd($receivedDatas);
-
+            //dd($form);
+            $receivedDatas = $form->getData('viewData'); //dd($receivedDatas);
 
             // récupération des données envoyées via le formulaire
             $nomPrestataire = $receivedDatas['prestataire'];
@@ -47,8 +48,9 @@ class HomeController extends AbstractController
             !is_null($receivedDatas['localite']) ? $localite = $receivedDatas['localite']->getId(): $localite = null;
             !is_null($receivedDatas['cp']) ? $codePostal= $receivedDatas['cp']->getCodePostal(): $codePostal = null;
             !is_null($receivedDatas['commune']) ? $commune = $receivedDatas['commune']->getCommune(): $commune = null;
+
             //verif des données envoyées au repository
-            dd("prestataire: ".$nomPrestataire, "catégorie :".$categorieId, "localité: ".$localite, "code postal: ".$codePostal, "commune: ".$commune);
+            //dd("prestataire: ".$nomPrestataire, "catégorie :".$categorieId, "localité: ".$localite, "code postal: ".$codePostal, "commune: ".$commune);
 
 
             $repositoryPrestataires = $entityManager->getRepository(Prestataire::class);
@@ -61,6 +63,7 @@ class HomeController extends AbstractController
                 'partenaires' => $partenaires,
                 'form' => $formView
             ]);
+            
         }
         
         $repositoryCategorie = $entityManager->getRepository(CategorieService::class);

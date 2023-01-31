@@ -12,6 +12,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class PrestataireSearchType extends AbstractType
@@ -33,15 +34,13 @@ class PrestataireSearchType extends AbstractType
                 'class' => Localite::class,
                 'required' => false
                 ])
-            ->add ('cp', EntityType::class,
-            [
+            ->add ('cp', EntityType::class, [
                 'class' => CodePostal::class,
-                'required' => false
+                'required' => false,
             ])
-            ->add ('commune', EntityType::class, 
-            [
+            ->add ('commune', EntityType::class, [
                 'class' => Commune::class,
-                'required'=> false
+                'required'=> false,
             ])
             ->add('recherche', SubmitType::class, 
             ['label' => 'Rechercher']
