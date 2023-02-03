@@ -56,5 +56,3 @@ class PrestataireSearchType extends AbstractType
         ]);
     }
 }
-
-

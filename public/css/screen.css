@@ -328,7 +328,7 @@ nav.show {
     padding: 6rem auto 0 auto;
   }
   .ease-in-title {
-    top: 27.5rem;
+    top: 36.5rem;
   }
   .ease-in-title h1 {
     font-size: 4rem;
@@ -341,14 +341,14 @@ nav.show {
     height: 30rem;
   }
   .l-main-logo {
-    padding: 3rem 0 8rem 0;
+    padding: 10rem 0 8rem 0;
   }
   .l-main-logo img {
     width: 7rem;
   }
   .ease-in-title {
     position: absolute;
-    top: 20.2rem;
+    top: 27.2rem;
     text-shadow: -1px 1px 27px rgb(210, 161, 163);
   }
 }
@@ -386,9 +386,9 @@ nav.show {
 }
 
 .main-search-button {
-  width: 49%;
+  width: 100%;
   padding: 0rem;
-  margin: 0 0 0.5rem 0;
+  margin: 1rem 0 0.5rem 0;
   height: 2rem;
   border: 1px solid #d2a1a3;
   background: #d2a1a3;
@@ -402,26 +402,41 @@ nav.show {
   color: #b96d6f;
 }
 
+@media screen and (min-width: 43rem) {
+  .main-search-bar-wrap {
+    display: block;
+    margin: 0 auto;
+    justify-content: center;
+    width: 50%;
+    padding: 1.5rem 0 0 0;
+  }
+}
 @media screen and (min-width: 62rem) {
   .main-search-bar-wrap {
     position: relative;
     top: 4rem;
-    display: flex;
-    flex-wrap: wrap;
     justify-content: center;
-    width: 60%;
+    width: 35rem;
     padding: 0;
     margin: 1rem auto 0 auto;
   }
+  .main-search-bar-wrap div {
+    display: grid;
+    grid-template-columns: 6.5rem 1fr;
+  }
   .main-search-input {
-    width: 39%;
-    height: 1.5rem;
+    width: 100%;
+    height: 2rem;
     margin: 0 1rem 0.5rem 0;
   }
   .main-search-button {
-    width: 39%;
-    height: 1.5rem;
-    margin: 0 1rem 0.5rem 0;
+    width: 100%;
+    padding: 0rem;
+    margin: 0 0 0.5rem 0;
+    height: 2rem;
+  }
+  .main-search-button:hover {
+    color: #b96d6f;
   }
 }
 .carousel {

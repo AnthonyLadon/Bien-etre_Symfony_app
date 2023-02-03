@@ -8,11 +8,11 @@
 {% endblock %}
 
 {% block searchForm %}
+	{# {{ render(path('searchForm')) }} #}
 	{% embed "_searchFormToggle.html.twig" %}{% endembed %}
 {% endblock %}
 
 {% block body %}
-
 	{% if partenaires %}
 		<div class="partenaires-list-wrap">
 			{% for partenaire in partenaires %}
@@ -28,5 +28,4 @@
 			</div>
 	{% endif %}
 		
-
 {% endblock %}

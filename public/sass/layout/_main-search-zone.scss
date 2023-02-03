@@ -37,9 +37,9 @@
 
 // gestion du bouton
 .main-search-button {
-  width: 49%;
+  width: 100%;
   padding: 0rem;
-  margin: 0 0 0.5rem 0;
+  margin: 1rem 0 0.5rem 0;
   height: 2rem;
   border: 1px solid $third-color;
   background: $third-color;
@@ -56,27 +56,49 @@
 
 // ****************************************************************
 
+@media screen and (min-width: $tablet-break) {
+  // largeur de la barre de recherche
+  .main-search-bar-wrap {
+    display: block;
+    margin: 0 auto;
+    justify-content: center;
+    width: 50%;
+    padding: 1.5rem 0 0 0;
+  }
+}
+
+// ****************************************************************
+
 @media screen and (min-width: $laptop-break) {
   .main-search-bar-wrap {
     position: relative;
     top: 4rem;
-    display: flex;
-    flex-wrap: wrap;
     justify-content: center;
-    width: 60%;
+    width: 35rem;
     padding: 0;
     margin: 1rem auto 0 auto;
+
+    div {
+      display: grid;
+      grid-template-columns: 6.5rem 1fr;
+    }
   }
 
   .main-search-input {
-    width: 39%;
-    height: 1.5rem;
+    width: 100%;
+    height: 2rem;
     margin: 0 1rem 0.5rem 0;
   }
 
+  // gestion du bouton
   .main-search-button {
-    width: 39%;
-    height: 1.5rem;
-    margin: 0 1rem 0.5rem 0;
+    width: 100%;
+    padding: 0rem;
+    margin: 0 0 0.5rem 0;
+    height: 2rem;
+
+    &:hover {
+      color: $darker-pink;
+    }
   }
 }
