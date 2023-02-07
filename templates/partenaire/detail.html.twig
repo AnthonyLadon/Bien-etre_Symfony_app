@@ -14,30 +14,29 @@
 
 {% block body %}
   <article>
-    <h3>
-      {{ partenaire.nom }}
-    </h3>
-	<p>
-      Service(s) proposé(s):
-	  <ul>
-		{% for service in partenaire.proposer %}
-		<li><a href="{{path('detailService',{id : service.id} )}}"></li><a href="{{path('detailService',{id : service.id} )}}">
-		{{ service.nom}}
-		</a>
-		{% endfor %}
-	  </ul>
-    </p>
-    <p>
-      Site web:
-      {{ partenaire.siteWeb }}
-    </p>
-    <p>
-      Tel:
-      {{ partenaire.tel }}
-    </p>
-    <p>
-      N° TVA:
-      {{ partenaire.tvaNum }}
-    </p>
+	<h3>Les servicesque je propose</h3>
+    <div class="prestataire-detail-services-list">
+      <ul>
+        {% for service in partenaire.proposer %}
+        <li><a href="{{path('detailService',{id : service.id} )}}"></li><a href="{{path('detailService',{id : service.id} )}}">
+        {{ service.nom}}
+        </a>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="prestataire-detail-contact">
+      <p>
+        Mon site web:
+        <a href="{{ partenaire.siteWeb }}">{{ partenaire.siteWeb }}</a>
+      </p>
+      <p>
+        Tél:
+        {{ partenaire.tel }}
+      </p>
+      <p>
+        N° TVA:
+        {{ partenaire.tvaNum }}
+      </p>
+    </div>
   </article>
 {% endblock %}

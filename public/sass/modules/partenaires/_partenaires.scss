@@ -28,6 +28,16 @@
   }
 }
 
+.aucun-resultat-prestataire {
+  margin: 4rem 2rem;
+  text-align: center;
+  height: 5rem;
+  p {
+    font-size: 1.2rem;
+    color: $black-pink;
+  }
+}
+
 // ****************************************************************
 
 @media screen and (min-width: $tablet-break) {

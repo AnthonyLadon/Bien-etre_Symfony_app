@@ -1113,6 +1113,16 @@ input:checked + .slide-container .nav label {
   border-radius: 5px;
 }
 
+.aucun-resultat-prestataire {
+  margin: 4rem 2rem;
+  text-align: center;
+  height: 5rem;
+}
+.aucun-resultat-prestataire p {
+  font-size: 1.2rem;
+  color: #995557;
+}
+
 @media screen and (min-width: 43rem) {
   .partenaires-list-wrap {
     margin: 2rem 1rem 1rem 1rem;

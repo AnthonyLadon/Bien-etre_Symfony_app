@@ -23,7 +23,7 @@ class PrestataireSearchType extends AbstractType
             ->add('prestataire',TextType::class, [
                 'required' => false,
                 'attr' =>[
-                    'placeholder' => 'Saisissez un nom',
+                    'placeholder' => 'Veuillez saisir un nom',
                     ]
                 ])
             ->add ('categorie', EntityType::class,[
