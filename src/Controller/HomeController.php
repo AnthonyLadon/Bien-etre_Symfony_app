@@ -28,25 +28,27 @@ class HomeController extends AbstractController
             'csrf_protection' => false
         ]);
 
+        //dd($form);
         $formView = $form->createView();
+        //dd($formView);
 
 
         $form->handleRequest($request);
+        //dd($request);
 
-       // dd($request);
-
-        if ($form->isSubmitted()) {
+        if ($form->isSubmitted() && $form->isValid()) {
             $form->getData(); // stocke les valeurs envoyées
             //dd($form);
-            $receivedDatas = $form->getData('viewData'); //dd($receivedDatas);
+            $receivedDatas = $form->getData('viewData'); 
+            //dd($receivedDatas);
 
             // récupération des données envoyées via le formulaire
             $nomPrestataire = $receivedDatas['prestataire'];
             // pour ne pas executer de ->get() si la valeur récupérée vaut null
             !is_null($receivedDatas['categorie']) ? $categorieId = $receivedDatas['categorie']->getId(): $categorieId = null;
             !is_null($receivedDatas['localite']) ? $localite = $receivedDatas['localite']->getId(): $localite = null;
-            !is_null($receivedDatas['cp']) ? $codePostal= $receivedDatas['cp']->getCodePostal(): $codePostal = null;
-            !is_null($receivedDatas['commune']) ? $commune = $receivedDatas['commune']->getCommune(): $commune = null;
+            $commune = $receivedDatas['commune'];
+            $codePostal= $receivedDatas['cp'];
 
             //verif des données envoyées au repository
             //dd("prestataire: ".$nomPrestataire, "catégorie :".$categorieId, "localité: ".$localite, "code postal: ".$codePostal, "commune: ".$commune);

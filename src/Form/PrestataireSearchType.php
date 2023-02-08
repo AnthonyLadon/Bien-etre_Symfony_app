@@ -7,7 +7,10 @@ use App\Entity\Localite;
 use App\Entity\CodePostal;
 use App\Entity\Prestataire;
 use App\Entity\CategorieService;
+use Symfony\Component\Form\FormEvent;
+use Symfony\Component\Form\FormEvents;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -34,19 +37,34 @@ class PrestataireSearchType extends AbstractType
                 'class' => Localite::class,
                 'required' => false
                 ])
-            ->add ('cp', EntityType::class, [
-                'class' => CodePostal::class,
-                'required' => false,
-            ])
-            ->add ('commune', EntityType::class, [
-                'class' => Commune::class,
+            ->add ('commune', ChoiceType::class, [
                 'required'=> false,
+                 ])
+            ->add ('cp', ChoiceType::class, [
+                'required' => false,
             ])
             ->add('recherche', SubmitType::class, 
             ['label' => 'Rechercher']
             )
         ;
-    }
+
+        $formModifier = function(FormInterface $form, Localite $localite = null){
+            $commune = (null === $localite) ? [] : $localite->getCommunes();
+            $form->add('communes', EntityType::class,[
+                'choices' => $commune,
+                'choice_label' => 'name'
+            ]);
+    };
+
+
+    $builder->get('localite')->addEventListener(
+        FormEvents::POST_SUBMIT, 
+        function(FormEvent $event) use ($formModifier){
+            $localite = $event->getForm()->getData();
+            $formModifier($event->getForm()->getParent(), $localite);
+        }
+    );
+}
 
     public function configureOptions(OptionsResolver $resolver): void
     {

@@ -16,6 +16,27 @@ icon.addEventListener("click", function () {
 
 //******************/
 
+// video ---> arretée à 29min !!!!!!!!!!!!
+
+window.onload = () => {
+  let localite = document.querySelector("#prestataire_search_localite");
+
+  localite.addEventListener("change", function () {
+    let form = this.closest("form");
+    let data = this.name + "=" + this.value;
+
+    fetch(form.action, {
+      method: form.getAttribute("method"),
+      body: data,
+      header: {
+        "content-type": "application/x-www-form-urlencoded",
+      },
+    });
+  });
+};
+
+//*****************************/
+
 // Requete AJAX formulaire de recherche pour récupérer villes et code postaux de Belgique
 // depuis un fichier json
 
@@ -26,7 +47,7 @@ icon.addEventListener("click", function () {
 // LOCALITE.addEventListener("change", function () {
 //   // Pour récupérer le texte du champ selectioné
 //   let selectedIndex = LOCALITE.options.selectedIndex;
-//   let selectedText = LOCALITE.options[selectedIndex].firstChild.data;
+//   let selectedText;
 //   let selectedLocaliteNormalized = selectedText
 //     .normalize("NFD")
 //     .replace(/([\u0300-\u036f]|[^0-9a-zA-Z])/g, "")
@@ -112,7 +133,7 @@ icon.addEventListener("click", function () {
 
 //       let citiesOptions = "";
 //       for (i = 0; i < cities.length; i++) {
-//         citiesOptions += `<option value='${cities[i]}'>${cities[i]}</option>`;
+//         citiesOptions += `<option value="${cities[i]}">${cities[i]}</option>`;
 //       }
 
 //       COMMUNE.innerHTML = citiesOptions;
