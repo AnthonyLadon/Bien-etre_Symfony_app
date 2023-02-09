@@ -14,27 +14,6 @@ icon.addEventListener("click", function () {
   blue.classList.toggle("slide");
 });
 
-//******************/
-
-// video ---> arretée à 29min !!!!!!!!!!!!
-
-window.onload = () => {
-  let localite = document.querySelector("#prestataire_search_localite");
-
-  localite.addEventListener("change", function () {
-    let form = this.closest("form");
-    let data = this.name + "=" + this.value;
-
-    fetch(form.action, {
-      method: form.getAttribute("method"),
-      body: data,
-      header: {
-        "content-type": "application/x-www-form-urlencoded",
-      },
-    });
-  });
-};
-
 //*****************************/
 
 // Requete AJAX formulaire de recherche pour récupérer villes et code postaux de Belgique

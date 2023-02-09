@@ -2,9 +2,11 @@
 
 namespace App\Controller;
 
+use App\Entity\Commune;
+use App\Entity\Localite;
+use App\Entity\CodePostal;
 use App\Entity\Prestataire;
 use App\Entity\CategorieService;
-use App\Entity\CodePostal;
 use App\Form\PrestataireSearchType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
