@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use Faker\Factory;
-use App\Entity\Localite;
 use App\Entity\Utilisateur;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
@@ -11,7 +10,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
-class UtilisateurController extends AbstractController
+class AjoutController extends AbstractController
 {
     /**
      * @Route("/ajout_user",name="ajoutUtilisateur")
@@ -47,7 +46,7 @@ class UtilisateurController extends AbstractController
    
         $entityManager->flush();
 
-        return $this->render('utilisateur/index.html.twig', [
+        return $this->render('ajout/insert.html.twig', [
         ]);
     }
 
@@ -83,7 +82,7 @@ class UtilisateurController extends AbstractController
         $entityManager->flush();
 
 
-        return $this->render('utilisateur/index.html.twig', [
+        return $this->render('ajout/insert.html.twig', [
             ]);
      }
 }
