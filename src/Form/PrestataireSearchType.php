@@ -28,18 +28,21 @@ class PrestataireSearchType extends AbstractType
                 ])
             ->add ('categorie', EntityType::class,[
                 'class' => CategorieService:: class,
-                'required' => false
+                'required' => false,
+                'placeholder' => '-- Veuillez choisir une catégorie --'
                 ])
             ->add ('localite', EntityType::class,[
                 'class' => Localite::class,
-                'required' => false
+                'required' => false,
+                'placeholder' => '-- Veuillez choisir une localité --'
                 ])
             ->add ('commune', EntityType::class, [
                 'class' => Commune::class,
                 'required'=> false,
                 'placeholder' => '-- Veuillez choisir une commune --'
                  ])
-            ->add ('cp', ChoiceType::class, [
+            ->add ('cp', EntityType::class, [
+                'class' => CodePostal::class,
                 'required' => false,
                 'placeholder' => '-- Veuillez choisir un code postal --'
             ])
