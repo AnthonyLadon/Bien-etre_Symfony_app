@@ -2,13 +2,14 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class LoginSecurityController extends AbstractController
 {
+
     // priority = 1 place la route en tete des routes (executée en 1ére) et donc evite
     // d'etre confondue avec un slug ou autre
     /**

@@ -3,9 +3,12 @@
 namespace App\Controller;
 
 use App\Entity\Prestataire;
+use Symfony\Component\Mime\Email;
 use App\Form\PrestataireSearchType;
+use Symfony\Component\Mime\Address;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -66,5 +69,23 @@ class ContactController extends AbstractController
         return $this->render('contact/index.html.twig', [
             'form' => $formView
         ]);
+        
+    }
+
+    /**
+     * @Route("/mail")
+     */
+    public function testMail(MailerInterface $mailer)
+    {
+        $email = new Email();
+        $email->from(new Address("from@example.com", "infos Bienêtre"))
+        ->to("toto@toto.com")
+        ->text("coucou ceci est un test")
+        ->subject("test envoi de mail")
+        ->html('<p>ça devrait marcher</p>');
+
+        $mailer->send($email);
+
+        return $this->render('insert/index.html.twig');
     }
 }
