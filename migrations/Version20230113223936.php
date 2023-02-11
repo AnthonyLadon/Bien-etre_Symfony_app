@@ -25,7 +25,7 @@ final class Version20230113223936 extends AbstractMigration
         $this->addSql('ALTER TABLE stage ADD prestataire_id INT NOT NULL');
         $this->addSql('ALTER TABLE stage ADD CONSTRAINT FK_C27C9369BE3DB2B7 FOREIGN KEY (prestataire_id) REFERENCES prestataire (id)');
         $this->addSql('CREATE INDEX IDX_C27C9369BE3DB2B7 ON stage (prestataire_id)');
-        $this->addSql('ALTER TABLE utilisateur ADD localite_id INT NOT NULL');
+        $this->addSql('ALTER TABLE utilisateur ADD localite_id');
         $this->addSql('ALTER TABLE utilisateur ADD CONSTRAINT FK_1D1C63B3924DD2B5 FOREIGN KEY (localite_id) REFERENCES localite (id)');
         $this->addSql('CREATE INDEX IDX_1D1C63B3924DD2B5 ON utilisateur (localite_id)');
     }

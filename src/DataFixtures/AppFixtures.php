@@ -5,21 +5,20 @@ namespace App\DataFixtures;
 use Faker\Factory;
 use App\Entity\Stage;
 use App\Entity\Localite;
-use App\Entity\Internaute;
-use App\Entity\Prestataire;
-use App\Entity\Utilisateur;
 use App\Entity\CategorieService;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 
+
+
 class AppFixtures extends Fixture
 {
-
 
     // Fixtures via Faker
 
     public function load(ObjectManager $manager): void
     {
+
 
         $faker = Factory::create('fr_BE');
 
@@ -54,54 +53,6 @@ class AppFixtures extends Fixture
             $localite->setLocalite($provinces[$i]);
             $manager->persist($localite);
         }
-
-        $admin = new Utilisateur();
-
-        $admin->setEmail('admin@admin.be');
-        $admin->setNomComplet("admin");
-        $admin->setPassword('admin');
-        $admin->setDateInscription($faker->dateTime());
-        $admin->setTypeUtilisateur('admin');
-        $admin->setNbEssais(0);
-        $admin->setBanni(0);
-        $admin->setConfirmationInscription(1);
-        $admin->setLocalite($localite);
-        $admin->setRoles(["ROLE_ADMIN"]);
-
-        $manager->persist($admin);
-
-        for ($i = 0; $i < 50; $i++) {
-            $utilisateur = new Utilisateur();
-            $utilisateur->setConfirmationInscription(1);
-            $utilisateur->setEmail('user'.$i.'@gmail.com');
-            $utilisateur->setNomComplet($faker->Name());
-            $utilisateur->setPassword('password');
-            $utilisateur->setRoles(['ROLE_USER']);
-            $utilisateur->setLocalite($localite);
-            $utilisateur->setDateInscription($faker->dateTime());
-            $utilisateur->setNbEssais(0);
-            $utilisateur->setBanni(0);
-            $utilisateur->setConfirmationInscription(1);
-            $utilisateur->setAdresseNum($faker->randomNumber(2, true));
-            $utilisateur->setAdresseRue($faker->streetName() );
-            $manager->persist($utilisateur);
-        };
-
-
-        //creation des Stages
-        // for ($i = 0; $i < 20; $i++) {
-        //     $stage = new Stage();
-        //     $stage->setNom($faker->catchPhrase);
-        //     $stage->setDescription($faker->sentence);
-        //     $stage->setTarif($faker->randomNumber(3, true));
-        //     $stage->setInfoComplementaire($faker->paragraph);
-        //     $stage->setDebut($faker->dateTimeAD);
-        //     $stage->setFin($faker->dateTime);
-        //     $stage->setAffichageDe($faker->dateTimeAD);
-        //     $stage->setAffichageJusque($faker->dateTime);
-
-        //     $manager->persist($stage);
-        // };
 
         $manager->flush();
     }

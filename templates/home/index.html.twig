@@ -134,17 +134,27 @@
       <h2>
         Le service du mois
       </h2>
-      <a href="{{path('detailService',{id : highlightService.id})}}">
-        <div class="highlight-service-card">
-          <img src="{{ asset('images/service-kine.jpg') }}"
-            alt="photo service à la une" />
-          <div class="highlight-service-card-title">
-            <h4>
-              {{highlightService.nom}}
-            </h4>
-          </div>
-        </div>
-      </a>
+      {% if highlightService %}
+          <a href="{{path('detailService',{id : highlightService.id})}}">
+            <div class="highlight-service-card">
+              <img src="{{ asset('images/service-kine.jpg') }}"
+                alt="photo service à la une" />
+              <div class="highlight-service-card-title">
+                <h4>
+                  {{highlightService.nom}}
+                </h4>
+              </div>
+            </div>
+          </a>
+        {% else %}
+            <div class="highlight-service-card">
+              <div class="highlight-service-card-title">
+                <h1>
+                  Il n'y a pas de service mis en avant pour le moment
+                </h1>
+              </div>
+            </div>
+      {% endif %}
     </article>
   </div>
   <div class="l-articles-wrap">

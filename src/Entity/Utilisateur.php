@@ -50,7 +50,7 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     private ?bool $confirmationInscription = false;
 
     #[ORM\ManyToOne(inversedBy: 'utilisateurs')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: true)]
     private ?Localite $localite = null;
 
     #[ORM\ManyToOne(inversedBy: 'utilisateurs')]
