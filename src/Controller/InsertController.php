@@ -32,13 +32,8 @@ class InsertController extends AbstractController
             $cp = new CodePostal();
 
             $localite->setLocalite($data[$i]['region']);
-
             $commune->setCommune($data[$i]['ville']);
-            $commune->setLocalite($localite);
-
             $cp->setCodePostal($data[$i]['codePostal']);
-            $cp->setCommune($commune);
-
 
             $entityManager->persist($localite);
             $entityManager->persist($commune);

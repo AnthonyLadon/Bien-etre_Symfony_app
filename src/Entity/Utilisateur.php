@@ -38,7 +38,7 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     private ?\DateTimeInterface $dateInscription = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $typeUtilisateur = null;
+    private ?string $typeUtilisateur = 'utilisateur';
 
     #[ORM\Column]
     private ?int $nbEssais = null;

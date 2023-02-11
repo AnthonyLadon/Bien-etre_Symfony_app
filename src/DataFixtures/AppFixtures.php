@@ -34,16 +34,6 @@ class AppFixtures extends Fixture
         };
 
 
-
-        // creation des internautes
-        for ($i = 0; $i < 40; $i++) {
-            $internaute = new Internaute();
-            $internaute->setPrenom($faker->firstName);
-            $internaute->setNom($faker->lastName);
-            $internaute->setNewsletter(0);
-            $manager->persist($internaute);
-        };
-
         // liste des provinces et région de Belgique
         $provinces = array('région Bruxelles capitale',
         'province du hainaut',
@@ -65,28 +55,40 @@ class AppFixtures extends Fixture
             $manager->persist($localite);
         }
 
+        $admin = new Utilisateur();
 
-        for ($i = 0; $i < 20; $i++) {
+        $admin->setEmail('admin@admin.be');
+        $admin->setNomComplet("admin");
+        $admin->setPassword('admin');
+        $admin->setDateInscription($faker->dateTime());
+        $admin->setTypeUtilisateur('admin');
+        $admin->setNbEssais(0);
+        $admin->setBanni(0);
+        $admin->setConfirmationInscription(1);
+        $admin->setLocalite($localite);
+        $admin->setRoles(["ROLE_ADMIN"]);
+
+        $manager->persist($admin);
+
+        for ($i = 0; $i < 50; $i++) {
             $utilisateur = new Utilisateur();
             $utilisateur->setConfirmationInscription(1);
-            $utilisateur->setEmail($faker->email());
-            $utilisateur->setPassword('fsdfsdfdsfds');
+            $utilisateur->setEmail('user'.$i.'@gmail.com');
+            $utilisateur->setNomComplet($faker->Name());
+            $utilisateur->setPassword('password');
+            $utilisateur->setRoles(['ROLE_USER']);
+            $utilisateur->setLocalite($localite);
             $utilisateur->setDateInscription($faker->dateTime());
-            $utilisateur->setTypeUtilisateur("Utilisateur");
             $utilisateur->setNbEssais(0);
             $utilisateur->setBanni(0);
             $utilisateur->setConfirmationInscription(1);
-            $utilisateur->setLocalite($localite);
-            // $utilisateur->setCodePostal();
+            $utilisateur->setAdresseNum($faker->randomNumber(2, true));
+            $utilisateur->setAdresseRue($faker->streetName() );
             $manager->persist($utilisateur);
         };
 
 
-
-        // Voir pour creer prestataires + récupéréer leur ID et l'injecter à la voléé
-        // dans les stages
-
-        // creation des Stages
+        //creation des Stages
         // for ($i = 0; $i < 20; $i++) {
         //     $stage = new Stage();
         //     $stage->setNom($faker->catchPhrase);
@@ -97,7 +99,6 @@ class AppFixtures extends Fixture
         //     $stage->setFin($faker->dateTime);
         //     $stage->setAffichageDe($faker->dateTimeAD);
         //     $stage->setAffichageJusque($faker->dateTime);
-        //     $stage->setPrestataire();
 
         //     $manager->persist($stage);
         // };
