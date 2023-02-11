@@ -62,6 +62,9 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToOne(cascade: ['persist', 'remove'])]
     private ?Internaute $internaute = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $nomComplet = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -279,6 +282,18 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     public function setInternaute(?Internaute $internaute): self
     {
         $this->internaute = $internaute;
+
+        return $this;
+    }
+
+    public function getNomComplet(): ?string
+    {
+        return $this->nomComplet;
+    }
+
+    public function setNomComplet(string $nomComplet): self
+    {
+        $this->nomComplet = $nomComplet;
 
         return $this;
     }
