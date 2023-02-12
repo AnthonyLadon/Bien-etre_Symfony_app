@@ -2,6 +2,10 @@
 
 {% block title %}Connection{% endblock %}
 
+{% block titreh1 %}
+    Connection
+{% endblock %}
+
 {% block body %}
 <form method="post">
     {% if error %}
@@ -10,11 +14,10 @@
 
     {% if app.user %}
         <div class="mb-3">
-            You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+            Vous etes connecté en tant que {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Se déconnecter</a>
         </div>
     {% endif %}
 
-    <h1 class="h3 mb-3 font-weight-normal">Connection</h1>
     <label for="inputEmail">Email</label>
     <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
     <label for="inputPassword">Mot de passe</label>
@@ -24,20 +27,20 @@
            value="{{ csrf_token('authenticate') }}"
     >
 
-    {#
-        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
-        See https://symfony.com/doc/current/security/remember_me.html
+    
+        {# Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+        See https://symfony.com/doc/current/security/remember_me.html #}
 
-        <div class="checkbox mb-3">
+        <div>
             <label>
-                <input type="checkbox" name="_remember_me"> Remember me
+                <input type="checkbox" name="_remember_me"> Se souvenir de moi
             </label>
         </div>
-    #}
+   
 
     <button class="" type="submit">
-        Sign in
+        Se connecter
     </button>
 </form>
-<a href="">S'inscrire</a>
+<a href="">Inscription</a>
 {% endblock %}
