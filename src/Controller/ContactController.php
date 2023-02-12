@@ -7,6 +7,7 @@ use Symfony\Component\Mime\Email;
 use App\Form\PrestataireSearchType;
 use Symfony\Component\Mime\Address;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,6 +16,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class ContactController extends AbstractController
 {
+
+    private $mailer;
+
+    public function __construct(MailerInterface $mailer){
+        $this->mailer = $mailer;
+    }
+
     
     /**
      * @Route("/contact",name="contact")
@@ -75,16 +83,16 @@ class ContactController extends AbstractController
     /**
      * @Route("/mail")
      */
-    public function testMail(MailerInterface $mailer)
+    public function testMail()
     {
-        $email = new Email();
+        $email = new TemplatedEmail();
         $email->from(new Address("from@example.com", "infos Bienêtre"))
         ->to("toto@toto.com")
         ->text("coucou ceci est un test")
         ->subject("test envoi de mail")
         ->html('<p>ça devrait marcher</p>');
 
-        $mailer->send($email);
+        $this->mailer->send($email);
 
         return $this->render('insert/index.html.twig');
     }
