@@ -102,16 +102,19 @@
         Nos nouveaux prestataires
       </h2>
       <div class="last-4-registrated-wrap">
-      
-        {% for p in lastPrestataires %}
-          <div class="card">
-            <div class="face face--front">
-              <img src="{{ asset('images/avatars/avatar2.webp') }}"
-                alt="photo prestataire" />
+      {% if lastPrestataires %}
+          {% for p in lastPrestataires %}
+            <div class="card">
+              <div class="face face--front">
+                <img src="{{ asset('images/avatars/avatar2.webp') }}"
+                  alt="photo prestataire" />
+              </div>
+              <a class="face face--back" href="{{path('detailPartenaire',{id : p.id})}}">{{p.nom }}</a>
             </div>
-            <a class="face face--back" href="{{path('detailPartenaire',{id : p.id})}}">{{p.nom }}</a>
-          </div>
-        {% endfor %}
+          {% endfor %}
+        {% else %}
+            <p>Il n'y a pas encore de presataire inscrit sur le site</p>
+      {% endif %}
       </div>
     
     </article>
@@ -156,15 +159,5 @@
             </div>
       {% endif %}
     </article>
-  </div>
-  <div class="l-articles-wrap">
-    <asside>
-      <article class="google-maps-wrap">
-        <h2>
-          Google maps
-        </h2>
-        <img src="{{ asset('images/google-maps.jpg') }}" alt="google maps" />
-      </article>
-    </asside>
   </div>
 {% endblock %}

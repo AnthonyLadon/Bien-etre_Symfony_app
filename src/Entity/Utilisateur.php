@@ -48,9 +48,6 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?bool $banni = null;
 
-    #[ORM\Column]
-    private ?bool $confirmationInscription = false;
-
     #[ORM\ManyToOne(inversedBy: 'utilisateurs')]
     #[ORM\JoinColumn(nullable: true)]
     private ?Localite $localite = null;
@@ -227,18 +224,6 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     public function setBanni(bool $banni): self
     {
         $this->banni = $banni;
-
-        return $this;
-    }
-
-    public function isConfirmationInscription(): ?bool
-    {
-        return $this->confirmationInscription;
-    }
-
-    public function setConfirmationInscription(bool $confirmationInscription): self
-    {
-        $this->confirmationInscription = $confirmationInscription;
 
         return $this;
     }

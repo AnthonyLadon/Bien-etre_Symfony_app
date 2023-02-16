@@ -3,9 +3,6 @@
 namespace App\Controller;
 
 use Faker\Factory;
-use App\Entity\Commune;
-use App\Entity\Localite;
-use App\Entity\CodePostal;
 use App\Entity\Utilisateur;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
@@ -23,17 +20,17 @@ class InsertController extends AbstractController
     {
         $faker = Factory::create('fr_BE');
 
-        for ($i = 0; $i < 35; $i++) {
+        for ($i = 0; $i < 25; $i++) {
             $utilisateur = new Utilisateur();
-            $utilisateur->setConfirmationInscription(1);
             $utilisateur->setEmail('user'.$i.'@gmail.com');
             $utilisateur->setNomComplet($faker->Name());
             $utilisateur->setPassword('password');
+            $utilisateur->setTypeUtilisateur('utilisateur');
             $utilisateur->setRoles(['ROLE_USER']);
             $utilisateur->setDateInscription($faker->dateTime());
             $utilisateur->setNbEssais(0);
             $utilisateur->setBanni(0);
-            $utilisateur->setConfirmationInscription(1);
+            $utilisateur->setIsVerified(1);
             $utilisateur->setAdresseNum($faker->randomNumber(2, true));
             $utilisateur->setAdresseRue($faker->streetName() );
             $entityManager->persist($utilisateur);
@@ -48,7 +45,7 @@ class InsertController extends AbstractController
     
         };
    
-        //$entityManager->flush();
+        $entityManager->flush();
 
         return $this->render('insert/index.html.twig', [
         ]);
@@ -71,7 +68,6 @@ class InsertController extends AbstractController
         $admin->setTypeUtilisateur('admin');
         $admin->setNbEssais(0);
         $admin->setBanni(0);
-        $admin->setConfirmationInscription(1);
         $admin->setRoles(["ROLE_ADMIN","ROLE_USER"]);
 
         $plaintextPassword = 'admin';
@@ -84,44 +80,11 @@ class InsertController extends AbstractController
         $admin->setPassword($hashedPassword);
 
         $entityManager->persist($admin);
-        // $entityManager->flush();
+        //$entityManager->flush();
 
 
         return $this->render('insert/index.html.twig', [
             ]);
      }
 
-
-     /**
-     * @Route("/insert",name="insert")
-     */
-
-    //  public function insert(EntityManagerInterface $entityManager){
-
-
-    //     $jsonData = file_get_contents("../public/Region-Ville-CodePostal.json");
-    //     $data = json_decode($jsonData, true);
-
-    //     $dataLength = sizeOf($data);
-
-    //     for ($i = 0; $i < $dataLength; $i++){
-
-    //         $localite = new Localite();
-    //         $commune = new Commune();
-    //         $cp = new CodePostal();
-
-    //         $localite->setLocalite($data[$i]['region']);
-    //         $commune->setCommune($data[$i]['ville']);
-    //         $cp->setCodePostal($data[$i]['codePostal']);
-
-    //         $entityManager->persist($localite);
-    //         $entityManager->persist($commune);
-    //         $entityManager->persist($cp);
-    //     }
-
-    //     $entityManager->flush();
-
-    //     return $this->render('insert/index.html.twig', [
-    //     ]);
-    //  }
 }

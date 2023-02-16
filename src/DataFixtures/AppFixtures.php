@@ -46,9 +46,9 @@ class AppFixtures extends Fixture
         'province du luxembourg',
         'province du limbourg',
         'province de namur');
-        $prinvincesLength = sizeof($provinces);
+        $pronvincesLength = sizeof($provinces);
 
-        for ($i = 0; $i < $prinvincesLength; $i++){
+        for ($i = 0; $i < $pronvincesLength; $i++){
             $localite = new Localite();
             $localite->setLocalite($provinces[$i]);
             $manager->persist($localite);

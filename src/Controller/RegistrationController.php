@@ -39,6 +39,7 @@ class RegistrationController extends AbstractController
         $user->setDateInscription($date);
         $user->setNbEssais(0);
         $user->setBanni(0);
+        $user->setRoles(['ROLE_USER']);
 
 
         if ($form->isSubmitted() && $form->isValid()) {

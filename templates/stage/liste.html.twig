@@ -12,10 +12,14 @@
 
 {% block body %}
 	<div class="stage-list-wrap">
-		{% for stage in stages %}
+	{% if stages %}
+			{% for stage in stages %}
 			<a class="stage-card" href="{{path('detailStage',{id : stage.id})}}">
 				<h3>{{stage.nom}}</h3>
 				<img src="{{asset ('images/service-kine.jpg')}}" alt="photo service">
 			</a>
 		{% endfor %}
+	{% else %}
+		<p>Il n'y a pas de stage proposé pour le moment</p>
+	{% endif %}
 	{% endblock %}

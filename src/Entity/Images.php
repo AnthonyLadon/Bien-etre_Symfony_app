@@ -17,7 +17,7 @@ class Images
     private ?int $ordre = null;
 
     #[ORM\Column(nullable: true)]
-    private ?int $image = null;
+    private ?string $image = null;
 
     #[ORM\OneToOne(cascade: ['persist', 'remove'])]
     private ?CategorieService $categorieService = null;

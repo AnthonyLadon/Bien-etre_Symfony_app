@@ -60,7 +60,6 @@ class PartenaireController extends AbstractController
             ]);
         }
             
-
         $repository = $entityManager->getRepository(Prestataire::class);
         $partenaires = $repository->findAll();
 
