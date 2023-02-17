@@ -5,7 +5,7 @@ Service {{stage.nom}}
 {% endblock %}
 
 {% block titreh1 %}
-	<h1>{{stage.nom}}</h1>
+	<h1>Details du stage</h1>
 {% endblock %}
 
 {% block searchForm %}
@@ -14,9 +14,12 @@ Service {{stage.nom}}
 
 {% block body %}
 	<article>
-		<div class="">		
-			<h2>Stage {{stage.nom}}</h2>
+		<div class="">	
+			<h2>{{stage.nom}}. Annimé par {{stage.prestataire.nom }}</h2>
+			<h4>Description du stage:</h4>
 			<p>{{stage.description}}</p>
+			<p>Informations complémentaires: {{stage.infoComplementaire}}</p>
+			<p>Tarif: {{stage.tarif}}</p>
 		</div>
 	</article>
 {% endblock %}
