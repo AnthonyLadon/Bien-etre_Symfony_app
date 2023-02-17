@@ -14,7 +14,7 @@ final class Version20230217083107 extends AbstractMigration
 {
     public function getDescription(): string
     {
-        return '';
+        return 'modification relation image -> catégorie: ajout OnetoOne avec un champ image dans catégorie';
     }
 
     public function up(Schema $schema): void

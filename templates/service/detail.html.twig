@@ -1,11 +1,11 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-{{service.nom}}
+{{categorie.nom}}
 {% endblock %}
 
 {% block titreh1 %}
-	<h1>{{service.nom}}</h1>
+	<h1>{{categorie.nom}}</h1>
 {% endblock %}
 
 {% block searchForm %}
@@ -15,20 +15,21 @@
 {% block body %}
 	<article>
 		<div class="presataire-detail-wrap">
-			<h2>Service {{service.nom}}</h2>
-			<p>{{service.description}}</p>
+			<h2>Service {{categorie.nom}}</h2>
+			<p>{{categorie.description}}</p>
+			<img src="{{asset ('images/services/' ~ categorie.image )}}" alt="photo service">
 		</div>
 
 
 		{% if lastPrestataires %}
 			<div class="prestaire-last-registrated-wrap">
-				<h3>Dans la meme catégorie de service:</h3>
+				<h3>Dans la meme catégorie de categorie:</h3>
 			
 				{% for prest in lastPrestataires %}
 					<div class="prestaire-last-registrated-cards-wrap">
 						<a class="" href="{{path('detailPartenaire',{id : prest.id})}}">
 							<h3>{{prest.nom}}</h3>
-							<img src="{{asset ('images/service-kine.jpg')}}" alt="photo service">
+							<img src="{{asset ('images/avatars/avatar1.jpeg')}}" alt="photo prestataire">
 						</a>
 					</div>
 				{% endfor %}

@@ -17,7 +17,7 @@
 				{% if categorie.valide == 1 %}
 					<a class="service-card" href="{{path('detailService',{id : categorie.id})}}">
 						<h3>{{categorie.nom}}</h3>
-						<img src="{{asset ('images/services/service2.png')}}" alt="photo service">
+						<img src="{{asset ('images/services/' ~ categorie.image )}}" alt="photo service">
 					</a>
 				{% endif %}
 		{% endfor %}

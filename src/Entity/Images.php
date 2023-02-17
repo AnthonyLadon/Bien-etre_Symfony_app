@@ -19,7 +19,6 @@ class Images
     #[ORM\Column(nullable: true)]
     private ?string $image = null;
 
-
     #[ORM\OneToOne(cascade: ['persist', 'remove'])]
     private ?Internaute $image_avatar = null;
 
@@ -117,5 +116,10 @@ class Images
         $this->categorieService = $categorieService;
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->image;
     }
 }

@@ -19,9 +19,7 @@
 			{% for partenaire in partenaires %}
 				<a class="partenaires-card" href="{{path('detailPartenaire',{id : partenaire.id})}}">
 					<h3>{{partenaire.nom}}</h3>
-						{% for part in partenaire.images %}
-						<img class="prestaire_img" src="{{ asset('images/avatars/' ~ part.image) }}" alt="avatar du prestataire"/>
-						{% endfor %}
+					<img class="prestaire_img" src="{{ asset('images/avatars/' ~ partenaire.images[0]) }}" alt="avatar du prestataire"/>
 				</a>
 			{% endfor %}
 		</div>

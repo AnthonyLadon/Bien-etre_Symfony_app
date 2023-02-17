@@ -106,8 +106,7 @@
           {% for p in lastPrestataires %}
             <div class="card">
               <div class="face face--front">
-                <img src="{{ asset('images/avatars/avatar2.webp') }}"
-                  alt="photo prestataire" />
+              <img src="{{asset ('images/avatars/' ~ p.images[0] )}}" alt="photo prestataire">
               </div>
               <a class="face face--back" href="{{path('detailPartenaire',{id : p.id})}}">{{p.nom }}</a>
             </div>
@@ -140,7 +139,7 @@
       {% if highlightService %}
           <a href="{{path('detailService',{id : highlightService.id})}}">
             <div class="highlight-service-card">
-              <img src="{{ asset('images/service-kine.jpg') }}"
+              <img src="{{asset ('images/services/' ~ highlightService.image )}}"
                 alt="photo service à la une" />
               <div class="highlight-service-card-title">
                 <h4>

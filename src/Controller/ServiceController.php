@@ -123,7 +123,7 @@ class ServiceController extends AbstractController
 
         // trouve le detail catégorie
         $repository = $entityManager->getRepository(CategorieService::class);
-        $service = $repository->find($id);
+        $categorie = $repository->find($id);
 
         // récupére les 4 derniers presatataires inscrits dans cette catégorie
         $repository = $entityManager->getRepository(Prestataire::class);
@@ -132,7 +132,7 @@ class ServiceController extends AbstractController
         return $this->render(
             'service/detail.html.twig',
             [
-                'service' => $service,
+                'categorie' => $categorie,
                 'lastPrestataires' => $lastPrestataires,
                 'form' => $formView
             ]
