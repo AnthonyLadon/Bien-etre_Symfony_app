@@ -19,8 +19,6 @@ class Images
     #[ORM\Column(nullable: true)]
     private ?string $image = null;
 
-    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
-    private ?CategorieService $categorieService = null;
 
     #[ORM\OneToOne(cascade: ['persist', 'remove'])]
     private ?Internaute $image_avatar = null;
@@ -30,6 +28,9 @@ class Images
 
     #[ORM\ManyToOne(inversedBy: 'images_photo')]
     private ?Prestataire $images_photo = null;
+
+    #[ORM\OneToOne(mappedBy: 'image', cascade: ['persist', 'remove'])]
+    private ?CategorieService $categorieService = null;
 
     public function getId(): ?int
     {
@@ -56,18 +57,6 @@ class Images
     public function setImage(?int $image): self
     {
         $this->image = $image;
-
-        return $this;
-    }
-
-    public function getCategorieService(): ?CategorieService
-    {
-        return $this->categorieService;
-    }
-
-    public function setCategorieService(?CategorieService $categorieService): self
-    {
-        $this->categorieService = $categorieService;
 
         return $this;
     }
@@ -104,6 +93,28 @@ class Images
     public function setImagesPhoto(?Prestataire $images_photo): self
     {
         $this->images_photo = $images_photo;
+
+        return $this;
+    }
+
+    public function getCategorieService(): ?CategorieService
+    {
+        return $this->categorieService;
+    }
+
+    public function setCategorieService(?CategorieService $categorieService): self
+    {
+        // unset the owning side of the relation if necessary
+        if ($categorieService === null && $this->categorieService !== null) {
+            $this->categorieService->setImage(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($categorieService !== null && $categorieService->getImage() !== $this) {
+            $categorieService->setImage($this);
+        }
+
+        $this->categorieService = $categorieService;
 
         return $this;
     }

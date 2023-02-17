@@ -33,6 +33,9 @@ class CategorieService
     #[ORM\ManyToMany(targetEntity: Prestataire::class, mappedBy: 'proposer')]
     private Collection $prestataires;
 
+    #[ORM\OneToOne(inversedBy: 'categorieService', cascade: ['persist', 'remove'])]
+    private ?Images $image = null;
+
     public function __construct()
     {
         $this->promotions = new ArrayCollection();
@@ -152,5 +155,17 @@ class CategorieService
     public function __toString()
     {
         return $this->nom;
+    }
+
+    public function getImage(): ?Images
+    {
+        return $this->image;
+    }
+
+    public function setImage(?Images $image): self
+    {
+        $this->image = $image;
+
+        return $this;
     }
 }
