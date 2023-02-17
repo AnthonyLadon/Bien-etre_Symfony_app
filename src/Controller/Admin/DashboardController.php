@@ -2,10 +2,14 @@
 
 namespace App\Controller\Admin;
 
-use App\Controller\Admin\AbusCrudController;
+use App\Entity\Abus;
+use App\Entity\Newsletter;
+use App\Entity\Utilisateur;
 use App\Entity\CategorieService;
+use App\Controller\Admin\AbusCrudController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Controller\Admin\NewsletterCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator;
@@ -23,8 +27,9 @@ class DashboardController extends AbstractDashboardController
     {
          //return parent::index();
 
+         // Genere une route pour afficher la page d'administration
          $url = $this->adminUrlGenerator
-         ->setController(CategorieServiceCrudController::class)
+         ->setController(UtilisateurCrudController::class)
          ->generateUrl();
          return $this->redirect($url);
 
@@ -53,10 +58,14 @@ class DashboardController extends AbstractDashboardController
             ->setTitle('Admin Bien-Être');
     }
 
+    // Gestion des onglets qui seront visibles dans l'interface d'admin
     public function configureMenuItems(): iterable
     {
-        yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
-        yield MenuItem::linkToCrud('Abus', 'fa fa-tags', Category::class)
-         ->setController(CommentaireCrudController::class);
+        yield MenuItem::linktoRoute('Retour sur le site', 'fas fa-home', 'home');
+        yield MenuItem::linkToCrud('Utilisateurs', 'fa fa-tags', Utilisateur::class);
+        yield MenuItem::linkToCrud('Catégories', 'fa fa-tags', CategorieService::class);
+        yield MenuItem::linkToCrud('Abus', 'fa fa-tags',Abus::class);
+        yield MenuItem::linkToCrud('Newsletter', 'fa fa-tags', Newsletter::class);
+
     }
 }

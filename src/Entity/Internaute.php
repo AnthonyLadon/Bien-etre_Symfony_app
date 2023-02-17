@@ -36,6 +36,9 @@ class Internaute
     #[ORM\ManyToMany(targetEntity: Prestataire::class, mappedBy: 'favori')]
     private Collection $prestataires;
 
+    #[ORM\OneToOne(mappedBy: 'internautes', cascade: ['persist', 'remove'])]
+    private ?Utilisateur $utilisateur = null;
+
     public function __construct()
     {
         $this->commentaires = new ArrayCollection();
@@ -179,6 +182,28 @@ class Internaute
         if ($this->prestataires->removeElement($prestataire)) {
             $prestataire->removeFavori($this);
         }
+
+        return $this;
+    }
+
+    public function getUtilisateur(): ?Utilisateur
+    {
+        return $this->utilisateur;
+    }
+
+    public function setUtilisateur(?Utilisateur $utilisateur): self
+    {
+        // unset the owning side of the relation if necessary
+        if ($utilisateur === null && $this->utilisateur !== null) {
+            $this->utilisateur->setInternautes(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($utilisateur !== null && $utilisateur->getInternautes() !== $this) {
+            $utilisateur->setInternautes($this);
+        }
+
+        $this->utilisateur = $utilisateur;
 
         return $this;
     }

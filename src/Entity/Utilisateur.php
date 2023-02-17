@@ -58,14 +58,14 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\ManyToOne(inversedBy: 'utilisateurs')]
     private ?Commune $commune = null;
 
-    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
-    private ?Internaute $internaute = null;
-
     #[ORM\Column(length: 255)]
     private ?string $nomComplet = null;
 
     #[ORM\Column(type: 'boolean')]
     private $isVerified = false;
+
+    #[ORM\OneToOne(inversedBy: 'utilisateur', cascade: ['persist', 'remove'])]
+    private ?Internaute $internautes = null;
 
     public function getId(): ?int
     {
@@ -264,18 +264,6 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getInternaute(): ?Internaute
-    {
-        return $this->internaute;
-    }
-
-    public function setInternaute(?Internaute $internaute): self
-    {
-        $this->internaute = $internaute;
-
-        return $this;
-    }
-
     public function getNomComplet(): ?string
     {
         return $this->nomComplet;
@@ -296,6 +284,18 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     public function setIsVerified(bool $isVerified): self
     {
         $this->isVerified = $isVerified;
+
+        return $this;
+    }
+
+    public function getInternautes(): ?Internaute
+    {
+        return $this->internautes;
+    }
+
+    public function setInternautes(?Internaute $internautes): self
+    {
+        $this->internautes = $internautes;
 
         return $this;
     }

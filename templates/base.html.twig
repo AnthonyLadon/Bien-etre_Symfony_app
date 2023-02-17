@@ -30,8 +30,14 @@
 									<li><a id="partenaires" href="{{path ("listePartenaires")}}"><i class="fa-solid fa-handshake-simple"></i>&nbsp;Partenaires</a></li>
 									<li><a id="services" href="{{path ("listeServices")}}"><i class="fa-solid fa-bell-concierge"></i>&nbsp;Services</a></li>
 									<li><a id="services" href="{{path ("listeStages")}}"><i class="fa-solid fa-person-chalkboard"></i>&nbsp;Stages</a></li>
-									<li><a href="{{path ("security_login")}}"><i class="fa-solid fa-user"></i>&nbsp;Connection</a></li>
-									<li><a href="{{path ("inscription")}}"><i class="fa-solid fa-user-plus"></i>&nbsp;S'inscrire</a></li>
+									<li><a href="{{path ("security_login")}}"><i class="fa-solid fa-right-to-bracket"></i>&nbsp;Connection</a></li>
+									<li><a href="{{path ("inscription")}}"><i class="fa-solid fa-user-plus"></i>&nbsp;Inscription</a></li>
+									{% if is_granted('ROLE_USER') %}
+    									<li><a href="{{path ("profil_user")}}"><i class="fa-solid fa-user"></i>&nbsp;Mon profil</a></li>
+									{% endif %}
+									{% if is_granted('ROLE_ADMIN') %}
+    									<li><a href="{{path ("admin")}}"><i class="fa-solid fa-screwdriver-wrench"></i>&nbsp;Admin</a></li>
+									{% endif %}
 								</ul>
 							</nav>
 							<div class="dark-pink" id="pink"></div>

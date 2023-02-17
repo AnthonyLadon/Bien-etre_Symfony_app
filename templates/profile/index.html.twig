@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{app.user.nomComplet}}{% endblock %}
+
+{% block titreh1 %}
+	<h1>Mon profil</h1>
+{% endblock %}
+
+{% block body %}
+<h1>{{app.user.nomComplet}}</h1>
+
+<div>
+    <p>{{app.user.email}}</p>
+    <p>{{app.user.adresseRue}}, {{app.user.adresseNum}}</p>
+    <p>{{app.user.localite}} {{app.user.commune}}, {{app.user.codePostal}}</p>
+    <p>Inscrit le {{app.user.dateInscription|date('d/m/Y')}}</p>
+</div>
+
+{% endblock %}
