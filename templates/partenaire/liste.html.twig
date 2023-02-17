@@ -13,7 +13,7 @@
 {% endblock %}
 
 {% block body %}
-<a href="#">Devenir prestataire</a>
+<a href="{{path ("prestataire_register")}}">Devenir prestataire</a>
 	{% if partenaires %}
 		<div class="partenaires-list-wrap">
 			{% for partenaire in partenaires %}

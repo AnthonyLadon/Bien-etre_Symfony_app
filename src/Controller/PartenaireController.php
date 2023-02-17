@@ -117,15 +117,23 @@ class PartenaireController extends AbstractController
             ]);
         }
 
-
         $repository = $entityManager->getRepository(Prestataire::class);
         $partenaire = $repository->find($id);
-
-        
 
         return $this->render('partenaire/detail.html.twig', [
             'partenaire' => $partenaire,
             'form' => $formView
         ]);
     }
+
+    /**
+     * @Route("/prestataire_inscription",name="prestataire_register")
+     */
+
+     public function register()
+     {
+        return $this->render('partenaire/inscription.html.twig', [
+
+        ]);
+     }
 }

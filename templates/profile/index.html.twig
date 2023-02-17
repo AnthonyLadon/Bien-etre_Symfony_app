@@ -7,13 +7,32 @@
 {% endblock %}
 
 {% block body %}
-<h1>{{app.user.nomComplet}}</h1>
+{% if app.user.internautes.prenom is defined and app.user.internautes.nom is defined %}
+    <h1>{{app.user.internautes.prenom}} {{app.user.internautes.nom}}<br></h1>
+{% endif %}
 
 <div>
-    <p>{{app.user.email}}</p>
-    <p>{{app.user.adresseRue}}, {{app.user.adresseNum}}</p>
-    <p>{{app.user.localite}} {{app.user.commune}}, {{app.user.codePostal}}</p>
+    <p>Mon Email: {{app.user.email}}</p>
+    <div>
+        <p>Mon adresse: <br>
+        {% if app.user.adresseRue != null and app.user.adresseNum != null %}
+            {{app.user.adresseRue}}, {{app.user.adresseNum}}</p>
+        {% endif %}
+        {% if app.user.localite != null and app.user.commune != null and app.user.codePostal != null %}
+            <p>{{app.user.localite}} {{app.user.commune}}, {{app.user.codePostal}}</p>
+        {% endif %}
+    </div>
     <p>Inscrit le {{app.user.dateInscription|date('d/m/Y')}}</p>
-</div>
+    <br>
+    {% if app.user.internautes.newsLetter is defined and app.user.internautes.newsLetter == 1 %}
+           Je suis inscrit à la newsLetter
+           {% else %}
+           Je ne suis pas encore inscrit à la newsLetter
+    {% endif %}
+    <br>
+    <a href="{{path ("edit_profile")}}">Modifier mon profil</a><br>
+    {% if app.user.internautes.image is defined %}
+        <img class="" src="{{ asset('images/avatars/' ~ app.user.internautes.image) }}" alt="photo profil internaute"/>
+    {% endif %}
 
 {% endblock %}

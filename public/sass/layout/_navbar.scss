@@ -1,14 +1,14 @@
-
-
 // Icone hamburger
-.icon-1, .icon-2, .icon-3 {
-    position: absolute;
-    left: 25%;
-    top: 50%;
-    width: 32px;
-    height: 3px;
-    background-color: $darker-pink;
-    transition: all 400ms cubic-bezier(.84,.06,.52,1.8);
+.icon-1,
+.icon-2,
+.icon-3 {
+  position: absolute;
+  left: 25%;
+  top: 50%;
+  width: 32px;
+  height: 3px;
+  background-color: $darker-pink;
+  transition: all 400ms cubic-bezier(0.84, 0.06, 0.52, 1.8);
 }
 
 .icon-1 {
@@ -35,7 +35,7 @@
 
   &:hover {
     transform: scale(1.2);
-    box-shadow: 0px 0px 30px rgba(0,0,0,0.1);
+    box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
   }
 }
 
@@ -53,11 +53,9 @@
   clear: both;
 }
 
-
-.wrap-menu{
+.wrap-menu {
   height: 8rem;
 }
-
 
 // Menu
 .l-main-nav {
@@ -69,33 +67,42 @@
   width: 0%;
   z-index: 10;
   opacity: 0;
- 
-   transition: all 600ms cubic-bezier(.62,.04,.3,1.56);
-   transition-delay: 100ms;
+
+  transition: all 600ms cubic-bezier(0.62, 0.04, 0.3, 1.56);
+  transition-delay: 100ms;
   ul {
     margin: 0;
     position: absolute;
     top: 20%;
     left: 20%;
-    a{
+    a {
       list-style: none;
       font-size: 20px;
       color: $darker-pink;
       line-height: 2.2;
       text-transform: uppercase;
       letter-spacing: 1.7px;
-      &:hover{
+      &:hover {
         color: $smooth-minth;
       }
+    }
+    .profile-avatar {
+      object-fit: cover;
+      height: 3.5rem;
+      width: 3.5rem;
+      border-radius: 100%;
+    }
+    .profile-avatar:hover {
+      border: solid 2px $smooth-minth;
     }
   }
 }
 
- nav.show {
-   width: 80%;
-   height: 35rem;
-   opacity: 1;
-   border-radius: 0 0 15px 0;
+nav.show {
+  width: 80%;
+  height: 35rem;
+  opacity: 1;
+  border-radius: 0 0 15px 0;
 }
 
 // arriere plan du menu
@@ -106,7 +113,7 @@
   background: $darker-pink;
   height: 35rem;
   width: 0%;
-  transition: all 500ms cubic-bezier(.62,.04,.3,1.8);
+  transition: all 500ms cubic-bezier(0.62, 0.04, 0.3, 1.8);
   transition-delay: 50ms;
   z-index: 5;
   opacity: 1;
@@ -118,95 +125,78 @@
   opacity: 1;
 }
 
-
-
 // ****************************************************************
 
-
 @media screen and (min-width: $tablet-break) {
-
   nav.show {
     width: 50%;
     height: 40rem;
- }
-
- .dark-pink {
-  height: 40rem;
-
-}
-
-.dark-pink.slide {
-  width: 50%;
-}
-  
   }
 
+  .dark-pink {
+    height: 40rem;
+  }
 
+  .dark-pink.slide {
+    width: 50%;
+  }
+}
 
+// ****************************************************************
 
-  // ****************************************************************
+@media screen and (min-width: $laptop-break) {
+  .wrap-menu {
+    max-width: 1020px;
+  }
 
-  @media screen and (min-width: $laptop-break){
+  .hamburger-icon {
+    display: none;
+  }
 
+  .dark-pink {
+    display: none;
+  }
 
+  // pour afficher en permanence la navbar et eviter que la div ne descende trop bas et ne gene la searchbar
+  .l-main-nav {
+    height: 5rem;
+    background: unset;
+    opacity: 100%;
+    transition: unset;
+    width: 100%;
 
-    .wrap-menu{
-      max-width: 1020px;
+    ul {
+      position: relative;
+      top: 0%;
+      left: 0%;
+      max-width: 55rem;
+      margin: 1rem auto 0 auto;
+      display: flex;
+      justify-content: space-evenly;
+      border-bottom: solid 1px $darker-pink;
+
+      a {
+        list-style: none;
+        font-size: 1rem;
+        color: $darker-pink;
+        text-transform: unset;
+        letter-spacing: 1px;
+      }
+
+      a:hover {
+        color: $smooth-minth;
+      }
     }
-  
-      .hamburger-icon{
-        display: none;
-      }
-  
-      .dark-pink{
-        display: none;
-      }
-  
-      // pour afficher en permanence la navbar et eviter que la div ne descende trop bas et ne gene la searchbar
-      .l-main-nav {
-        height: 5rem;
-        background: unset;
-        opacity: 100%;
-        transition: unset;
-        width: 100%;
-
-  
-        ul {
-          position: relative;
-          top: 0%;
-          left: 0%;
-          max-width: 55rem;
-          margin: 1rem auto 0 auto;
-          display: flex;
-          justify-content: space-evenly;
-          border-bottom: solid 1px $darker-pink;
-
-  
-  
-          a{
-            list-style: none;
-            font-size: 1rem;
-            color:$darker-pink;
-            text-transform: unset;
-            letter-spacing: 1px;
-            }
-  
-            a:hover{
-              color: $smooth-minth;
-            }
-          }
-        }
-  
-
-       .wrap-menu{
-        max-width: 1000px;
-        margin: 0 auto;
-      }
-  
-      .l-main-nav{
-
-        ul{
-          width: 90%;
-        }
-      }
   }
+
+  .wrap-menu {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .l-main-nav {
+    ul {
+      width: 90%;
+    }
+  }
+}

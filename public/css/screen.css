@@ -65,7 +65,9 @@ body {
   margin: 4rem 0 2rem 0;
 }
 
-.icon-1, .icon-2, .icon-3 {
+.icon-1,
+.icon-2,
+.icon-3 {
   position: absolute;
   left: 25%;
   top: 50%;
@@ -150,6 +152,15 @@ body {
 }
 .l-main-nav ul a:hover {
   color: #a1d2d0;
+}
+.l-main-nav ul .profile-avatar {
+  object-fit: cover;
+  height: 3.5rem;
+  width: 3.5rem;
+  border-radius: 100%;
+}
+.l-main-nav ul .profile-avatar:hover {
+  border: solid 2px #a1d2d0;
 }
 
 nav.show {

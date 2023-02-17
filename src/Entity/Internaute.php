@@ -39,6 +39,9 @@ class Internaute
     #[ORM\OneToOne(mappedBy: 'internautes', cascade: ['persist', 'remove'])]
     private ?Utilisateur $utilisateur = null;
 
+    #[ORM\OneToOne(mappedBy: 'image_internaute', cascade: ['persist', 'remove'])]
+    private ?Images $image = null;
+
     public function __construct()
     {
         $this->commentaires = new ArrayCollection();
@@ -204,6 +207,33 @@ class Internaute
         }
 
         $this->utilisateur = $utilisateur;
+
+        return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->nom;
+    }
+
+    public function getImage(): ?Images
+    {
+        return $this->image;
+    }
+
+    public function setImage(?Images $image): self
+    {
+        // unset the owning side of the relation if necessary
+        if ($image === null && $this->image !== null) {
+            $this->image->setImageInternaute(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($image !== null && $image->getImageInternaute() !== $this) {
+            $image->setImageInternaute($this);
+        }
+
+        $this->image = $image;
 
         return $this;
     }

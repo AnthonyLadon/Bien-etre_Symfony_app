@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Editer profil{% endblock %}
+
+{% block titreh1 %}
+	<h1>Modifier mon profil</h1>
+{% endblock %}
+
+{% block body %}
+
+{# <h1>{{app.user.internautes.prenom}} {{app.user.internautes.nom}}<br></h1>
+
+<div>
+    <p>Mon Email: {{app.user.email}}</p>
+    <div>
+        <p>Mon adresse: <br>
+        {{app.user.adresseRue}}, {{app.user.adresseNum}}</p>
+        <p>{{app.user.localite}} {{app.user.commune}}, {{app.user.codePostal}}</p>
+    </div>
+    <p>Inscrit le {{app.user.dateInscription|date('d/m/Y')}}</p>
+    <br>
+    {% if app.user.internautes.newsLetter == 1 %}
+           Je suis inscrit à la newsLetter
+           {% else %}
+           Je ne suis pas encore inscrit à la newsLetter
+    {% endif %}
+    <br>
+    <img class="" src="{{ asset('images/avatars/' ~ app.user.internautes.image) }}" alt="photo profil internaute"/>
+</div> #}
+
+{% endblock %}
