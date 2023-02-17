@@ -48,7 +48,7 @@ class Images
         return $this;
     }
 
-    public function getImage(): ?int
+    public function getImage(): ?string
     {
         return $this->image;
     }

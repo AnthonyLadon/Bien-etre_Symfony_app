@@ -121,6 +121,8 @@ class PartenaireController extends AbstractController
         $repository = $entityManager->getRepository(Prestataire::class);
         $partenaire = $repository->find($id);
 
+        
+
         return $this->render('partenaire/detail.html.twig', [
             'partenaire' => $partenaire,
             'form' => $formView

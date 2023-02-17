@@ -45,7 +45,7 @@ class InsertController extends AbstractController
     
         };
    
-        $entityManager->flush();
+        //$entityManager->flush();
 
         return $this->render('insert/index.html.twig', [
         ]);

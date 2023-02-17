@@ -27,7 +27,7 @@
     <div class="prestataire-detail-contact">
       <p>
         Mon site web:
-        <a href="{{ partenaire.siteWeb }}">{{ partenaire.siteWeb }}</a>
+        <a href="#">{{ partenaire.siteWeb }}</a>
       </p>
       <p>
         Tél:
@@ -37,6 +37,11 @@
         N° TVA:
         {{ partenaire.tvaNum }}
       </p>
+    </div>
+    <div>
+    {% for part in partenaire.images %}
+    <img class="prestaire_img" src="{{ asset('images/avatars/' ~ part.image) }}" alt="photo du prestataire"/>
+    {% endfor %}
     </div>
   </article>
 {% endblock %}

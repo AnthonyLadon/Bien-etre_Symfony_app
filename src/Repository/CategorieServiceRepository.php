@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\CategorieService;
+use App\Entity\Images;
 use Doctrine\Persistence\ManagerRegistry;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
@@ -49,6 +50,17 @@ class CategorieServiceRepository extends ServiceEntityRepository
            ->getResult()
        ;
    }
+
+
+    // Récupère les images liées au service
+    public function categorieImages(): array
+    {
+        return $this->createQueryBuilder('c')
+            ->join('p.images', 'images')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 
 
 

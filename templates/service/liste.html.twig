@@ -13,11 +13,13 @@
 
 {% block body %}
 	<div class="service-list-wrap">
-		{% for categorie in categories %}
-			<a class="service-card" href="{{path('detailService',{id : categorie.id})}}">
-				<h3>{{categorie.nom}}</h3>
-				<img src="{{asset ('images/services/service2.png')}}" alt="photo service">
-			</a>
+				{% for categorie in categories %}
+				{% if categorie.valide == 1 %}
+					<a class="service-card" href="{{path('detailService',{id : categorie.id})}}">
+						<h3>{{categorie.nom}}</h3>
+						<img src="{{asset ('images/services/service2.png')}}" alt="photo service">
+					</a>
+				{% endif %}
 		{% endfor %}
 	</div>
 {% endblock %}

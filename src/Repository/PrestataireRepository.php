@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\CodePostal;
+use App\Entity\Images;
 use App\Entity\Prestataire;
 use App\Entity\Utilisateur;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
@@ -59,7 +60,6 @@ class PrestataireRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
-
 
 
     // Trouve les 4 derniers prestataires inscrits dans une même catégorie

@@ -2,21 +2,22 @@
 
 namespace App\Controller;
 
+use App\Entity\Internaute;
 use App\Entity\Utilisateur;
-use App\Form\RegistrationFormType;
 use App\Security\EmailVerifier;
+use App\Form\RegistrationFormType;
+use Symfony\Component\Mime\Address;
 use App\Security\LoginAuthenticator;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Mime\Address;
-use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Http\Authentication\UserAuthenticatorInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use SymfonyCasts\Bundle\VerifyEmail\Exception\VerifyEmailExceptionInterface;
+use Symfony\Component\Security\Http\Authentication\UserAuthenticatorInterface;
 
 class RegistrationController extends AbstractController
 {
@@ -51,7 +52,14 @@ class RegistrationController extends AbstractController
                 )
             );
 
+            // Ajout d'une entrée dans la table internaute (enregistrement par défaut en tant qu'internaure)
+            $internaute = new Internaute();
+            $internaute->setNom($user->getNomComplet());
+            $internaute->setPrenom('');
+            $user->setInternaute($internaute);
+
             $entityManager->persist($user);
+            $entityManager->persist($internaute);
             $entityManager->flush();
 
             // generate a signed url and email it to the user
