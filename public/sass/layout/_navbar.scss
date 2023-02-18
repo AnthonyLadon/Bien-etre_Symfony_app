@@ -78,12 +78,12 @@
     a {
       list-style: none;
       font-size: 20px;
-      color: $darker-pink;
+      color: $smooth-minth;
       line-height: 2.2;
       text-transform: uppercase;
       letter-spacing: 1.7px;
       &:hover {
-        color: $smooth-minth;
+        color: $darker-pink;
       }
     }
     .profile-avatar {

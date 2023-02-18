@@ -13,10 +13,13 @@
 {% endblock %}
 
 {% block body %}
+<div class="count">
+    {{ pagination.getTotalItemCount }} prestataire(s) trouvé(s)
+</div>
 <a href="{{path ("prestataire_register")}}">Devenir prestataire</a>
 	{% if partenaires %}
 		<div class="partenaires-list-wrap">
-			{% for partenaire in partenaires %}
+			{% for partenaire in pagination %}
 				<a class="partenaires-card" href="{{path('detailPartenaire',{id : partenaire.id})}}">
 					<h3>{{partenaire.nom}}</h3>
 					<img class="prestaire_img" src="{{ asset('images/avatars/' ~ partenaire.images[0]) }}" alt="avatar du prestataire"/>
@@ -28,5 +31,11 @@
 				<p>Désolé, il n'y a aucun prestataire correspondant à votre recherche</p>
 			</div>
 	{% endif %}
-		
+	{# display navigation #}
+	<div class='l-main-pagination'>
+		<div class="navigation">
+			{{ knp_pagination_render(pagination) }}
+		</div>
+	</div>
 {% endblock %}
+

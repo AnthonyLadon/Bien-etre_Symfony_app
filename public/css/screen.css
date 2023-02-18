@@ -145,13 +145,13 @@ body {
 .l-main-nav ul a {
   list-style: none;
   font-size: 20px;
-  color: #b96d6f;
+  color: #a1d2d0;
   line-height: 2.2;
   text-transform: uppercase;
   letter-spacing: 1.7px;
 }
 .l-main-nav ul a:hover {
-  color: #a1d2d0;
+  color: #b96d6f;
 }
 .l-main-nav ul .profile-avatar {
   object-fit: cover;
