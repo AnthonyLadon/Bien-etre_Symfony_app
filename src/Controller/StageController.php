@@ -6,6 +6,7 @@ use App\Entity\Stage;
 use App\Entity\Prestataire;
 use App\Form\PrestataireSearchType;
 use Doctrine\ORM\EntityManagerInterface;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -16,7 +17,7 @@ class StageController extends AbstractController
     /**
      * @Route("/stages",name="listeStages")
      */
-    public function Stages(EntityManagerInterface $entityManager, Request $request): Response
+    public function Stages(EntityManagerInterface $entityManager, Request $request, PaginatorInterface $paginator): Response
     {
 
         // creation du formulaire
@@ -62,9 +63,18 @@ class StageController extends AbstractController
 
         $repository = $entityManager->getRepository(Stage::class);
         $stages = $repository->findAll();
+
+        // Utilise le bundle de pagination => https://github.com/KnpLabs/KnpPaginatorBundle
+        $pagination = $paginator->paginate(
+            $stages, /* query NOT result */
+            $request->query->getInt('page', 1), /*page number*/
+            8 /*limit par page*/
+        );
+
         return $this->render('stage/liste.html.twig', [
             "stages" => $stages,
-            "form" => $formView
+            "form" => $formView,
+            "pagination" => $pagination
         ]);
     }
 

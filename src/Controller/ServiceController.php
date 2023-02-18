@@ -6,9 +6,10 @@ use App\Entity\Prestataire;
 use App\Entity\CategorieService;
 use App\Form\PrestataireSearchType;
 use Doctrine\ORM\EntityManagerInterface;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use function Symfony\Component\DependencyInjection\Loader\Configurator\service;
@@ -21,7 +22,7 @@ class ServiceController extends AbstractController
     /**
      * @Route("/services",name="listeServices")
      */
-    public function listeCategoriesService(EntityManagerInterface $entityManager, Request $request): Response
+    public function listeCategoriesService(EntityManagerInterface $entityManager, Request $request, PaginatorInterface $paginator): Response
     {
             // creation du formulaire de recherche de prestataire
             $form = $this->createForm(PrestataireSearchType::class, null, [
@@ -65,9 +66,17 @@ class ServiceController extends AbstractController
         $repository = $entityManager->getRepository(CategorieService::class);
         $categories = $repository->findAll();
 
+        // Utilise le bundle de pagination => https://github.com/KnpLabs/KnpPaginatorBundle
+        $pagination = $paginator->paginate(
+            $categories, /* query NOT result */
+            $request->query->getInt('page', 1), /*page number*/
+            8 /*limit par page*/
+        );
+
         return $this->render('service/liste.html.twig', [
             "categories" => $categories,
-            'form' => $formView
+            'form' => $formView,
+            "pagination" => $pagination
         ]);
     }
 

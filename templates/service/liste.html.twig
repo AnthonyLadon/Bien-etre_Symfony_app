@@ -12,8 +12,11 @@
 			
 
 {% block body %}
+	<div class="count">
+    	{{ pagination.getTotalItemCount }} stage(s) trouvé(s)
+	</div>
 	<div class="service-list-wrap">
-				{% for categorie in categories %}
+				{% for categorie in pagination %}
 				{% if categorie.valide == 1 %}
 					<a class="service-card" href="{{path('detailService',{id : categorie.id})}}">
 						<h3>{{categorie.nom}}</h3>
@@ -21,5 +24,11 @@
 					</a>
 				{% endif %}
 		{% endfor %}
+	</div>
+	{# display navigation #}
+	<div class='l-main-pagination'>
+		<div class="navigation">
+			{{ knp_pagination_render(pagination) }}
+		</div>
 	</div>
 {% endblock %}

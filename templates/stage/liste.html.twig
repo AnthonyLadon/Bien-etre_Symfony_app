@@ -11,18 +11,27 @@
 {% endblock %}
 
 {% block body %}
+	<div class="count">
+    {{ pagination.getTotalItemCount }} stage(s) trouvé(s)
+	</div>
 	<div class="stage-list-wrap">
 	{% if stages %}
-			{% for stage in stages %}
-			<div class="stage-card">
-				<a href="{{path('detailStage',{id : stage.id})}}">
-					<h3>{{stage.nom}}</h3>
-				</a>
-				<p>Du {{stage.debut|date('d/m/y')}} au {{stage.fin|date('d/m/y')}}</p>
-				<p>Proposé par: <a href="{{path('detailPartenaire',{id : stage.prestataire.id})}}">{{stage.prestataire.nom}}</a></p>
-			</div>
+		{% for stage in pagination %}
+		<div class="stage-card">
+			<a href="{{path('detailStage',{id : stage.id})}}">
+				<h3>{{stage.nom}}</h3>
+			</a>
+			<p>Du {{stage.debut|date('d/m/y')}} au {{stage.fin|date('d/m/y')}}</p>
+			<p>Proposé par: <a href="{{path('detailPartenaire',{id : stage.prestataire.id})}}">{{stage.prestataire.nom}}</a></p>
+		</div>
 		{% endfor %}
 	{% else %}
 		<p>Il n'y a pas de stage proposé pour le moment</p>
 	{% endif %}
+		{# display navigation #}
+	<div class='l-main-pagination'>
+		<div class="navigation">
+			{{ knp_pagination_render(pagination) }}
+		</div>
+	</div>
 	{% endblock %}

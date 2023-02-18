@@ -14,7 +14,8 @@
 
 {% block body %}
   <article>
-	<h3>Les services que je propose</h3>
+  {% if partenaire.proposer is not empty %}
+    <h3>Les services que je propose</h3>
     <div class="prestataire-detail-services-list">
       <ul>
         {% for service in partenaire.proposer %}
@@ -24,6 +25,11 @@
         {% endfor %}
       </ul>
     </div>
+    {% else %}
+    <div class="prestataire-detail-services-list">
+    <h3>Je ne propose pas encore de service</h3>
+    </div>
+  {% endif %}
     <div class="prestataire-detail-contact">
       <p>
         Mon site web:
@@ -43,6 +49,9 @@
     <img class="prestaire_img" src="{{ asset('images/avatars/' ~ part.image) }}" alt="photo du prestataire"/>
     {% endfor %}
     </div>
+    <p>Pour me trouver: </p>
+    <p>{{ partenaire.utilisateur.adresseRue }} {{ partenaire.utilisateur.adresseNum }}</p>
+    <p>{{ partenaire.utilisateur.codePostal }} {{ partenaire.utilisateur.commune }}</p>
     <div id="map"></div>
   </article>
 {% endblock %}
