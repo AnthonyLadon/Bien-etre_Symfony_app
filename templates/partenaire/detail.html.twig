@@ -15,21 +15,31 @@
 {% block body %}
   <article>
   {% if partenaire.proposer is not empty %}
-    <h3>Les services que je propose</h3>
+    <h3>Mes catégories de service</h3>
     <div class="prestataire-detail-services-list">
       <ul>
         {% for service in partenaire.proposer %}
-        <li><a href="{{path('detailService',{id : service.id} )}}"></li><a href="{{path('detailService',{id : service.id} )}}">
+        <li><a href="{{path('detailService',{id : service.id} )}}">
         {{ service.nom}}
         </a>
         {% endfor %}
       </ul>
     </div>
-    {% else %}
-    <div class="prestataire-detail-services-list">
-    <h3>Je ne propose pas encore de service</h3>
-    </div>
+  {% else %}
+      <div class="prestataire-detail-services-list">
+        <h3>Je n'ai pas encore de catégorie de service</h3>
+      </div>
   {% endif %}
+
+    {% if partenaire.stage is not empty %}
+    <h3>Les stages que je propose</h3>
+        {% for st in partenaire.stage %}
+         <a href="{{path('detailStage',{id : st.id} )}}">{{st.nom}}</a>
+        {% endfor %}
+    {% else %}
+      <h3>Je ne propose pas encore de stage</h3>
+    {% endif %}
+
     <div class="prestataire-detail-contact">
       <p>
         Mon site web:
