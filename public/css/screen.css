@@ -65,6 +65,11 @@ body {
   margin: 4rem 0 2rem 0;
 }
 
+#map {
+  height: 20rem;
+  width: 40rem;
+}
+
 .icon-1,
 .icon-2,
 .icon-3 {

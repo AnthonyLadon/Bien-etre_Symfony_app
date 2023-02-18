@@ -145,23 +145,4 @@ class PartenaireController extends AbstractController
 
         ]);
      }
-
-     /**
-      * @Route("/prestataireList",name="prestataireList")
-      */
-     public function listAction(EntityManagerInterface $entityManager, PaginatorInterface $paginator, Request $request)
-{
-
-    $repository = $entityManager->getRepository(Prestataire::class);
-    $partenaires = $repository->findAll();
-
-    $pagination = $paginator->paginate(
-        $partenaires, /* query NOT result */
-        $request->query->getInt('page', 1), /*page number*/
-        10 /*limit per page*/
-    );
-
-    // parameters to template
-    return $this->render('partenaire/test.html.twig', ['pagination' => $pagination]);
-}
 }

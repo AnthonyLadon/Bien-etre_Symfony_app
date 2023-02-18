@@ -9,6 +9,8 @@
 		{% block stylesheets %}
 			<link rel="stylesheet" href="{{asset ('css/screen.css')}}">
 			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+			{# Style pour leaflet maps #}
+			<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin=""/>
 		{% endblock %}
 
 	</head>
@@ -99,7 +101,10 @@
 			</footer>
 		{% endblock %}
 		{% block javascript %}
-			<script src="{{asset ('js/main.js')}}"></script>
+			 <!-- Toujours mettre ce script aprés le CSS de Leaflet -->
+			 <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="crossorigin=""></script>
+			 {# Attention à bien appeler ce script aprés l'inclusion du script de Leaflet #}
+			 <script src="{{asset ('js/main.js')}}"></script>
 		{% endblock %}
 	</body>
 </html>

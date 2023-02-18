@@ -1,28 +1,23 @@
-
-
 body {
-    font-family: 'montserrat',roboto;
-    background-color: $third-color-light;
-  }
+  font-family: "montserrat", roboto;
+  background-color: $third-color-light;
+}
 
-
-.l-main-wrap{
+.l-main-wrap {
   margin: 0 auto;
   max-width: 1400px;
 }
 
-
-.l-footer{
+.l-footer {
   margin: 4rem 0 2rem 0;
 }
 
-
-
-
+#map {
+  height: 20rem;
+  width: 40rem;
+}
 
 //************************************************************************************************
 
-  @media screen and (min-width: $tablet-break){
-
-
-  }
+@media screen and (min-width: $tablet-break) {
+}
