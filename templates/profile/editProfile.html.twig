@@ -8,32 +8,45 @@
 
 {% block body %}
 
-{{form(formProfile)}}
+<h1>Informations de base</h1>
 
-{# try
-{
-	// On se connecte à MySQL
-	$mysqlClient = new PDO('mysql:host=localhost;dbname=my_recipes;charset=utf8', 'root', 'root');
-}
-catch(Exception $e)
-{
-	// En cas d'erreur, on affiche un message et on arrête tout
-        die('Erreur : '.$e->getMessage());
-}
+{{ form_start(formProfile) }}
+	{{ form_row(formProfile.email, {
+		'attr': {'class': 'main-search-input'},
+		'label': 'Email',
+		'label_attr': {'class': 'main-search-label'}}) 
+	}}
+	{{ form_row(formProfile.adresseNum, {
+		'attr': {'class': 'main-search-input'},
+		'label': 'Numéro',
+		'label_attr': {'class': 'main-search-label'}}) 
+	}}
+	{{ form_row(formProfile.adresseRue, {
+		'attr': {'class': 'main-search-input'},
+		'label': 'Rue',
+		'label_attr': {'class': 'main-search-label'}}) 
+	}}
+	{{ form_row(formProfile.localite, {
+		'attr': {'class': 'main-search-input'},
+		'label': 'localité',
+		'label_attr': {'class': 'main-search-label'}}) 
+	}}
+	{{ form_row(formProfile.codePostal, {
+		'attr': {'class': 'main-search-input'},
+		'label': 'code postal',
+		'label_attr': {'class': 'main-search-label'}}) 
+	}}
+	{{ form_row(formProfile.commune, {
+		'attr': {'class': 'main-search-input'},
+		'label': 'commune',
+		'label_attr': {'class': 'main-search-label'}}) 
+	}}
+	{{ form_row(formProfile.modifier, {
+		'attr': {'class': 'main-search-button'}
+	}) }}
 
-// Si tout va bien, on peut continuer
+{{form_end(formProfile)}}
 
-// On récupère tout le contenu de la table recipes
-$sqlQuery = 'SELECT * FROM recipes';
-$recipesStatement = $mysqlClient->prepare($sqlQuery);
-$recipesStatement->execute();
-$recipes = $recipesStatement->fetchAll();
-
-// On affiche chaque recette une à une
-foreach ($recipes as $recipe) {
-?>
-    <p><?php echo $recipe['author']; ?></p>
-<?php
-} #}
+ <h3>id internaute:{{app.user.internautes.id }}</h3><br>
 
 {% endblock %}

@@ -12,19 +12,17 @@
 {% endif %}
 
 <div>
-    <br><h3>id user:{{app.user.id }}</h3>
-    <h3>id internaute:{{app.user.internautes.id }}</h3><br>
-    <p>Mon Email: {{app.user.email}}</p>
+    <p>Email: {{app.user.email}}</p>
     <div>
-        <p>Mon adresse: <br>
         {% if app.user.adresseRue != null and app.user.adresseNum != null %}
             {{app.user.adresseRue}}, {{app.user.adresseNum}}</p>
         {% endif %}
         {% if app.user.localite != null and app.user.commune != null and app.user.codePostal != null %}
-            <p>{{app.user.localite}} {{app.user.commune}}, {{app.user.codePostal}}</p>
+            <p>{{app.user.commune}}, {{app.user.codePostal}}</p>
+            <p>{{app.user.localite}}</p>
         {% endif %}
     </div>
-    <p>Inscrit le {{app.user.dateInscription|date('d/m/Y')}}</p>
+    <p>Membre depuis le {{app.user.dateInscription|date('d/m/Y')}}</p>
     <br>
     {% if app.user.internautes.newsLetter is defined and app.user.internautes.newsLetter == 1 %}
            Je suis inscrit à la newsLetter
@@ -32,7 +30,7 @@
            Je ne suis pas encore inscrit à la newsLetter
     {% endif %}
     <br>
-    <a href="{{path('edit_profile', {id: app.user.id} )}}">Modifier mon profil</a><br>
+    <a href="{{path('edit_profile', {id: app.user.id} )}}">Modifier mes informations</a><br>
     {% if app.user.internautes.image is defined %}
         <img class="" src="{{ asset('images/avatars/' ~ app.user.internautes.image) }}" alt="photo profil internaute"/>
     {% endif %}
