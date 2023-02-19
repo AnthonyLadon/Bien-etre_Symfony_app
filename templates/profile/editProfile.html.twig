@@ -8,24 +8,32 @@
 
 {% block body %}
 
-{# <h1>{{app.user.internautes.prenom}} {{app.user.internautes.nom}}<br></h1>
+{{form(formProfile)}}
 
-<div>
-    <p>Mon Email: {{app.user.email}}</p>
-    <div>
-        <p>Mon adresse: <br>
-        {{app.user.adresseRue}}, {{app.user.adresseNum}}</p>
-        <p>{{app.user.localite}} {{app.user.commune}}, {{app.user.codePostal}}</p>
-    </div>
-    <p>Inscrit le {{app.user.dateInscription|date('d/m/Y')}}</p>
-    <br>
-    {% if app.user.internautes.newsLetter == 1 %}
-           Je suis inscrit à la newsLetter
-           {% else %}
-           Je ne suis pas encore inscrit à la newsLetter
-    {% endif %}
-    <br>
-    <img class="" src="{{ asset('images/avatars/' ~ app.user.internautes.image) }}" alt="photo profil internaute"/>
-</div> #}
+{# try
+{
+	// On se connecte à MySQL
+	$mysqlClient = new PDO('mysql:host=localhost;dbname=my_recipes;charset=utf8', 'root', 'root');
+}
+catch(Exception $e)
+{
+	// En cas d'erreur, on affiche un message et on arrête tout
+        die('Erreur : '.$e->getMessage());
+}
+
+// Si tout va bien, on peut continuer
+
+// On récupère tout le contenu de la table recipes
+$sqlQuery = 'SELECT * FROM recipes';
+$recipesStatement = $mysqlClient->prepare($sqlQuery);
+$recipesStatement->execute();
+$recipes = $recipesStatement->fetchAll();
+
+// On affiche chaque recette une à une
+foreach ($recipes as $recipe) {
+?>
+    <p><?php echo $recipe['author']; ?></p>
+<?php
+} #}
 
 {% endblock %}
