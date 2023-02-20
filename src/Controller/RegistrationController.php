@@ -55,7 +55,7 @@ class RegistrationController extends AbstractController
 
             // Ajout d'une entrée dans la table internaute (enregistrement par défaut en tant qu'internaure)
             $internaute = new Internaute();
-            $internaute->setNom($user->getNomComplet());
+            $internaute->setNom('');
             $internaute->setPrenom('');
             $user->setInternautes($internaute);
 
@@ -68,7 +68,7 @@ class RegistrationController extends AbstractController
                 (new TemplatedEmail())
                     ->from(new Address('bienetre@no-reply.com', 'BienEtre & Co'))
                     ->to($user->getEmail())
-                    ->subject('Veuillez confirmer votre adresse email')
+                    ->subject('Merci de confirmer votre adresse email')
                     ->htmlTemplate('registration/confirmation_email.html.twig')
             );
             // do anything else you need here, like send an email

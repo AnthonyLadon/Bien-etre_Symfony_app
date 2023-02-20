@@ -5,7 +5,6 @@ namespace App\Form;
 use App\Entity\Utilisateur;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\Validator\Constraints\Date;
 use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
@@ -15,6 +14,7 @@ use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 
 class RegistrationFormType extends AbstractType
 {
@@ -24,14 +24,22 @@ class RegistrationFormType extends AbstractType
             ->add('email', EmailType::class,[
                 'label' => 'Email'
             ])
-            ->add('nomComplet', TextType::class,[
-                'label' => 'Nom complet'
-                ])
             ->add('adresseRue', TextType::class, [
-                'label' => 'Rue'
+                'label' => 'rue'
                 ])
             ->add('adresseNum', NumberType::class,[
                 'label' => 'Numéro'
+            ])
+            ->add('commune', TextType::class,[
+                'label' => 'commune',
+            ])
+            ->add('codePostal', NumberType::class,[
+                'label' => 'code postal',
+                'mapped' => false,
+            ])
+            ->add('localite', TextType::class,[
+                'label' => 'localité',
+                'mapped' => false,
             ])
             ->add('agreeTerms', CheckboxType::class, [
                 'mapped' => false,
@@ -42,14 +50,18 @@ class RegistrationFormType extends AbstractType
                     ]),
                 ],
             ])
-            ->add('plainPassword', PasswordType::class, [
-                // instead of being set onto the object directly,
-                // this is read and encoded in the controller
+            // Utilisation du type RepeatedType afin de forcer l'utilisateur à entrer 2 fois
+            // son mot de passe (Et si match des 2 MDP -> envoi)
+            ->add('plainPassword', RepeatedType::class, [
+                'first_options'  => ['label' => 'Choisissez un mot de passe'],
+                'second_options' => ['label' => 'Veuillez repeter le mot de passe'],
+                'type' => PasswordType::class,
+                'invalid_message' => 'Les deux mots de passe doivent correspondre',
                 'mapped' => false,
                 'attr' => ['autocomplete' => 'new-password'],
                 'constraints' => [
                     new NotBlank([
-                        'message' => 'Veuillez entrer un mot de passe',
+                        'message' => 'Veuillez entrer un mot de passe'
                     ]),
                     new Length([
                         'min' => 6,

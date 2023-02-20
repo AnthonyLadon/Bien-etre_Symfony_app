@@ -19,11 +19,6 @@
 		'label': 'Rue',
 		'label_attr': {'class': 'main-search-label'}}) 
 	}}
-	{{ form_row(formProfile.localite, {
-		'attr': {'class': 'main-search-input'},
-		'label': 'localité',
-		'label_attr': {'class': 'main-search-label'}}) 
-	}}
 	{{ form_row(formProfile.codePostal, {
 		'attr': {'class': 'main-search-input'},
 		'label': 'code postal',
@@ -32,6 +27,11 @@
 	{{ form_row(formProfile.commune, {
 		'attr': {'class': 'main-search-input'},
 		'label': 'commune',
+		'label_attr': {'class': 'main-search-label'}}) 
+	}}
+		{{ form_row(formProfile.localite, {
+		'attr': {'class': 'main-search-input'},
+		'label': 'localité',
 		'label_attr': {'class': 'main-search-label'}}) 
 	}}
 	{{ form_row(formProfile.modifier, {

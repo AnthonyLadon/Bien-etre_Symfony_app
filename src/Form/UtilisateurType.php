@@ -2,8 +2,9 @@
 
 namespace App\Form;
 
-use App\Entity\CodePostal;
+use App\Entity\Commune;
 use App\Entity\Localite;
+use App\Entity\CodePostal;
 use App\Entity\Utilisateur;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -19,17 +20,24 @@ class UtilisateurType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('adresseRue', TextType::class)
-            ->add('adresseNum', NumberType::class)
-            ->add('localite', EntityType::class,[
+            ->add('adresseRue', TextType::class, [
+                'required' => false,
+            ])
+            ->add('adresseNum', NumberType::class, [
+                'required' => false,
+                ])
+            ->add('localite', EntityType::class, [
                 'class' => Localite::class,
                 'required' => false,
-                'placeholder' => '-- Veuillez choisir une catégorie --'])
-            ->add('codePostal', EntityType::class,[
+                ])
+            ->add('codePostal', EntityType::class, [
                 'class' => CodePostal::class,
                 'required' => false,
-                'placeholder' => '-- Veuillez choisir un code postal --'])
-            ->add('commune')
+                ])
+            ->add('commune', EntityType::class, [
+                'class' => Commune::class,
+                'required' => false,
+                ])
             ->add('modifier', SubmitType::class, 
             ['label' => 'Enregistrer modifications']
             );

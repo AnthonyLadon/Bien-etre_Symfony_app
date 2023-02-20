@@ -58,9 +58,6 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\ManyToOne(inversedBy: 'utilisateurs')]
     private ?Commune $commune = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $nomComplet = null;
-
     #[ORM\Column(type: 'boolean')]
     private $isVerified = false;
 
@@ -260,18 +257,6 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     public function setCommune(?Commune $commune): self
     {
         $this->commune = $commune;
-
-        return $this;
-    }
-
-    public function getNomComplet(): ?string
-    {
-        return $this->nomComplet;
-    }
-
-    public function setNomComplet(string $nomComplet): self
-    {
-        $this->nomComplet = $nomComplet;
 
         return $this;
     }

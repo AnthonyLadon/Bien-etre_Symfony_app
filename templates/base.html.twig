@@ -38,7 +38,11 @@
 									{% if app.user and is_granted('ROLE_USER') and not is_granted('ROLE_ADMIN') %}
 									{# affichage avatar si le user a une photo de profil (sinon icone) #}
 										{% if app.user.internautes.image is defined and app.user.roles[0] == 'ROLE_USER' %}
+										{% if app.user.internautes.image %}
 											<li><a href="{{path ("profil_user", {id: app.user.internautes.id})}}"><img class="profile-avatar" src="{{ asset('images/avatars/' ~ app.user.internautes.image) }}" alt="logo utilisateur"></a></li>
+											{% else %}
+											<li><a href="{{path ("profil_user", {id: app.user.internautes.id})}}"><img class="profile-avatar" src="{{ asset('images/avatars/blank_profile.webp') }}" alt="logo utilisateur"></a></li>
+										{% endif %}
 											{% else %}
 											<li><a href="{{path ("profil_user", {id: app.user.internautes.id})}}"><img class="profile-avatar" src="{{ asset('images/avatars/blank_profile.webp')}}" alt="logo utilisateur"></a></li>
 										{% endif %}

@@ -12,11 +12,12 @@
     {% endfor %}
 
     {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.nomComplet) }}
         <div>
-            <p>Adresse:</p>
             {{ form_row(registrationForm.adresseRue) }}
             {{ form_row(registrationForm.adresseNum) }}
+            {{ form_row(registrationForm.commune) }}
+            {{ form_row(registrationForm.codePostal) }}
+            {{ form_row(registrationForm.localite) }}
         </div>
         <div>
             <p>Informations de connection</p>
