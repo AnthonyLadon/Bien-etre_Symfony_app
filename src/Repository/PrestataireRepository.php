@@ -7,6 +7,7 @@ use App\Entity\Images;
 use App\Entity\Prestataire;
 use App\Entity\Utilisateur;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\EntityManager;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -75,7 +76,6 @@ class PrestataireRepository extends ServiceEntityRepository
             ->getResult();
         ;
     }
-
 
     // Requete envoyée via la barre de recherche pour trouver un ou plusieurs prestataires 
 

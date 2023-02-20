@@ -2,7 +2,10 @@
 
 namespace App\Controller;
 
+use PDO;
+use Exception;
 use Faker\Factory;
+use App\Entity\Localite;
 use App\Entity\Utilisateur;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
@@ -86,5 +89,15 @@ class InsertController extends AbstractController
         return $this->render('insert/index.html.twig', [
             ]);
      }
+
+     /**
+      * @Route("/test",name="name")
+      */
+
+      public function test(){
+
+        return $this->render('insert/index.html.twig', [
+            ]);
+      }
 
 }

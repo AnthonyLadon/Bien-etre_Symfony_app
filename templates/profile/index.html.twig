@@ -6,7 +6,14 @@
 	<h1>Mon profil</h1>
 {% endblock %}
 
+
+
 {% block body %}
+{% if app.user.roles[0] == 'ROLE_USER' or app.user.roles[1] == 'ROLE_USER' %}
+     <a href="{{path ("prestataire_register", {id: app.user.id})}}">Devenir prestataire</a>
+{% endif %}
+
+
 {% if app.user.internautes.prenom is defined and app.user.internautes.nom is defined %}
     <h1>{{app.user.internautes.prenom}} {{app.user.internautes.nom}}<br></h1>
 {% endif %}
@@ -14,25 +21,36 @@
 <div>
     <p>Email: {{app.user.email}}</p>
     <div>
-        {% if app.user.adresseRue != null and app.user.adresseNum != null %}
-            {{app.user.adresseRue}}, {{app.user.adresseNum}}</p>
+        <p>
+        {% if app.user.adresseRue != null %}
+            {{app.user.adresseRue}}
         {% endif %}
-        {% if app.user.localite != null and app.user.commune != null and app.user.codePostal != null %}
-            <p>{{app.user.commune}}, {{app.user.codePostal}}</p>
-            <p>{{app.user.localite}}</p>
+        {% if app.user.adresseNum != null %}
+            {{app.user.adresseNum}}
         {% endif %}
+        </p>
+        <p>
+        {% if app.user.commune != null %}
+            {{app.user.commune}}
+        {% endif %}
+        {% if app.user.codePostal %}
+            {{app.user.codePostal}}
+        {% endif %}
+        </p>
+        <p>
+        {% if app.user.localite != null%}
+            {{app.user.localite}}
+        {% endif %}
+        </p>
+        <a href="{{path('edit_adress', {id: app.user.id} )}}">Modifier mon adresse</a><br>
+        <a href="{{path('edit_infos', {id: app.user.id} )}}">Modifier mon profil</a><br>
     </div>
     <p>Membre depuis le {{app.user.dateInscription|date('d/m/Y')}}</p>
     <br>
-    {% if app.user.internautes.newsLetter is defined and app.user.internautes.newsLetter == 1 %}
-           Je suis inscrit à la newsLetter
-           {% else %}
-           Je ne suis pas encore inscrit à la newsLetter
-    {% endif %}
-    <br>
-    <a href="{{path('edit_profile', {id: app.user.id} )}}">Modifier mes informations</a><br>
     {% if app.user.internautes.image is defined %}
         <img class="" src="{{ asset('images/avatars/' ~ app.user.internautes.image) }}" alt="photo profil internaute"/>
+    {% else %}
+        <img class="" src="{{ asset('images/avatars/blank_profile.webp') }}" alt="photo profil internaute"/>
     {% endif %}
 
 {% endblock %}

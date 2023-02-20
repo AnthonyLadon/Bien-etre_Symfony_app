@@ -38,6 +38,8 @@ security:
     - { path: ^/admin, roles: ROLE_ADMIN }
     - { path: ^/profil, roles: ROLE_USER }
     - { path: ^/editer_profil, roles: ROLE_USER }
+    - { path: ^/editer_adresse, roles: ROLE_USER }
+    - { path: ^/editer_infos, roles: ROLE_USER }
 
 when@test:
   security:

@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use PDO;
+use Exception;
 use App\Entity\Commune;
 use App\Entity\Localite;
 use App\Entity\CodePostal;
@@ -9,6 +11,7 @@ use App\Entity\Prestataire;
 use App\Entity\CategorieService;
 use App\Form\PrestataireSearchType;
 use Doctrine\ORM\EntityManagerInterface;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -21,7 +24,7 @@ class HomeController extends AbstractController
      * @Route("/",name="home")
      */
 
-    public function homeAndSearchForm(EntityManagerInterface $entityManager ,Request $request){
+    public function homeAndSearchForm(EntityManagerInterface $entityManager ,Request $request, PaginatorInterface $paginator){
 
         // creation du formulaire
         $form = $this->createForm(PrestataireSearchType::class, null, [
@@ -40,9 +43,8 @@ class HomeController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $form->getData(); // stocke les valeurs envoyées
-            //dd($form);
             $receivedDatas = $form->getData('viewData'); 
-            //dd($receivedDatas);
+
 
             // récupération des données envoyées via le formulaire
             $nomPrestataire = $receivedDatas['prestataire'];
@@ -52,19 +54,22 @@ class HomeController extends AbstractController
             !is_null($receivedDatas['cp']) ? $codePostal = $receivedDatas['cp']->getCodePostal(): $codePostal = null;
             !is_null($receivedDatas['commune']) ? $commune = $receivedDatas['commune']->getCommune(): $commune = null;
 
-            //verif des données envoyées au repository
-            //dd("prestataire: ".$nomPrestataire, "catégorie :".$categorieId, "localité: ".$localite, "code postal: ".$codePostal, "commune: ".$commune);
-
 
             $repositoryPrestataires = $entityManager->getRepository(Prestataire::class);
             $partenaires = $repositoryPrestataires->SearchBar($nomPrestataire, $categorieId, $localite, $codePostal, $commune);
-            // verif des données recues de la DB
-            //dd($partenaires);
+
+            // Utilise le bundle de pagination => https://github.com/KnpLabs/KnpPaginatorBundle
+            $pagination = $paginator->paginate(
+                $partenaires, /* query NOT result */
+                $request->query->getInt('page', 1), /*page number*/
+                8 /*limit par page*/
+            );
 
             // envoi les données reçues par la DB à la vue liste de prestataires
             return $this->render('partenaire/liste.html.twig', [
+                'pagination' => $pagination,
                 'partenaires' => $partenaires,
-                'form' => $formView
+                'form' => $formView,
             ]);
             
         }
@@ -84,24 +89,3 @@ class HomeController extends AbstractController
     }
 
 }
-
-
-    // try
-    // {
-    //     // On se connecte à MySQL
-    //     $mysqlClient = new PDO('mysql:host=localhost;dbname=my_recipes;charset=utf8', 'root', 'root');
-    // }
-    // catch(Exception $e)
-    // {
-    //     // En cas d'erreur, on affiche un message et on arrête tout
-    //         die('Erreur : '.$e->getMessage());
-    // }
-    
-    // // Si tout va bien, on peut continuer
-    
-    // // On récupère tout le contenu de la table recipes
-    // $sqlQuery = 'SELECT * FROM recipes';
-    // $recipesStatement = $mysqlClient->prepare($sqlQuery);
-    // $recipesStatement->execute();
-    // $recipes = $recipesStatement->fetchAll();
-    

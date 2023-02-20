@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Internaute;
+use App\Entity\Prestataire;
 use App\Entity\Utilisateur;
 use App\Security\EmailVerifier;
 use App\Form\RegistrationFormType;
@@ -56,7 +57,7 @@ class RegistrationController extends AbstractController
             $internaute = new Internaute();
             $internaute->setNom($user->getNomComplet());
             $internaute->setPrenom('');
-            $user->setInternaute($internaute);
+            $user->setInternautes($internaute);
 
             $entityManager->persist($user);
             $entityManager->persist($internaute);

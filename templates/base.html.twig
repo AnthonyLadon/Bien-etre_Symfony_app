@@ -34,14 +34,17 @@
 									<li><a id="services" href="{{path ("listeStages")}}"><i class="fa-solid fa-person-chalkboard"></i>&nbsp;Stages</a></li>
 									<li><a href="{{path ("security_login")}}"><i class="fa-solid fa-right-to-bracket"></i>&nbsp;Connection</a></li>
 									<li><a href="{{path ("inscription")}}"><i class="fa-solid fa-user-plus"></i>&nbsp;Inscription</a></li>
-									{# accés au lien seulement si le user s'est log #}
-									{% if is_granted('ROLE_USER') %}
+									{# accés au lien seulement si le user est authentifié #}
+									{% if app.user and is_granted('ROLE_USER') and not is_granted('ROLE_ADMIN') %}
 									{# affichage avatar si le user a une photo de profil (sinon icone) #}
-										{% if app.user.internautes.image is defined %}
-											<li><a href="{{path ("profil_user")}}"><img class="profile-avatar" src="{{ asset('images/avatars/' ~ app.user.internautes.image) }}" alt="logo utilisateur"></a></li>
+										{% if app.user.internautes.image is defined and app.user.roles[0] == 'ROLE_USER' %}
+											<li><a href="{{path ("profil_user", {id: app.user.internautes.id})}}"><img class="profile-avatar" src="{{ asset('images/avatars/' ~ app.user.internautes.image) }}" alt="logo utilisateur"></a></li>
 											{% else %}
-											<li><a href="{{path ("profil_user")}}"><img class="profile-avatar" src="{{ asset('images/avatars/blank_profile.webp')}}" alt="logo utilisateur"></a></li>
+											<li><a href="{{path ("profil_user", {id: app.user.internautes.id})}}"><img class="profile-avatar" src="{{ asset('images/avatars/blank_profile.webp')}}" alt="logo utilisateur"></a></li>
 										{% endif %}
+									{% endif %}
+									{% if is_granted('ROLE_PREST') %}
+									<li><a href="">Profil prestataire</a></li>
 									{% endif %}
 									{% if is_granted('ROLE_ADMIN') %}
     									<li ><a href="{{path ("admin")}}"><i class="fa-solid fa-screwdriver-wrench"></i>&nbsp;Admin</a></li>

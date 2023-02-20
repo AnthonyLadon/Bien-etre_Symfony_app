@@ -19,14 +19,8 @@ class UtilisateurType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('email', EmailType::class)
-            // ->add('roles')
-            // ->add('password')
             ->add('adresseRue', TextType::class)
             ->add('adresseNum', NumberType::class)
-            // ->add('dateInscription')
-            // ->add('typeUtilisateur')
-            // ->add('nomComplet', TextType::class)
             ->add('localite', EntityType::class,[
                 'class' => Localite::class,
                 'required' => false,
@@ -35,7 +29,6 @@ class UtilisateurType extends AbstractType
                 'class' => CodePostal::class,
                 'required' => false,
                 'placeholder' => '-- Veuillez choisir un code postal --'])
-
             ->add('commune')
             ->add('modifier', SubmitType::class, 
             ['label' => 'Enregistrer modifications']

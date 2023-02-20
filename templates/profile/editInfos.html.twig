@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier Profil{% endblock %}
+
+{% block titreh1 %}
+	<h1>Modifier mon profil</h1>
+{% endblock %}
+
+{% block body %}
+
+{{form(form) }}
+
+<a href="{{path ("profil_user", {id: app.user.internautes.id})}}">Retour page profil</a><br>
+
+{% endblock %}

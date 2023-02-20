@@ -47,18 +47,22 @@ class ServiceController extends AbstractController
                 !is_null($receivedDatas['localite']) ? $localite = $receivedDatas['localite']->getId(): $localite = null;
                 !is_null($receivedDatas['cp']) ? $codePostal = $receivedDatas['cp']->getCodePostal(): $codePostal = null;
                 !is_null($receivedDatas['commune']) ? $commune = $receivedDatas['commune']->getCommune(): $commune = null;
-                //verif des données envoyées au repository
-                //dd($nomPrestataire, $categorieId, $localite, $codePostal, $commune);
     
                 $repositoryPrestataires = $entityManager->getRepository(Prestataire::class);
                 $partenaires = $repositoryPrestataires->SearchBar($nomPrestataire, $categorieId, $localite, $codePostal, $commune);
-                // verif des données recues de la DB
-                //dd($partenaires);
+
+                // Utilise le bundle de pagination => https://github.com/KnpLabs/KnpPaginatorBundle
+                $pagination = $paginator->paginate(
+                $partenaires, /* query NOT result */
+                $request->query->getInt('page', 1), /*page number*/
+                8 /*limit par page*/
+            );
     
                 // envoi les données reçues par la DB à la vue liste de prestataires
                 return $this->render('partenaire/liste.html.twig', [
                     'partenaires' => $partenaires,
-                    'form' => $formView
+                    'form' => $formView,
+                    'pagination' => $pagination
                 ]);
             }
                 
@@ -88,10 +92,10 @@ class ServiceController extends AbstractController
      * @Route("services/detail/{id}", name="detailService")
      */
 
-    public function detailcategorieService($id, EntityManagerInterface $entityManager, Request $request)
+    public function detailcategorieService($id, EntityManagerInterface $entityManager, Request $request, PaginatorInterface $paginator)
     {
 
-        // creation du formulaire de recherche de prestataire
+        // creation du formulaire
         $form = $this->createForm(PrestataireSearchType::class, null, [
             'method' => 'GET',
             // retire le token de l'url généré (GET)
@@ -99,6 +103,7 @@ class ServiceController extends AbstractController
         ]);
 
         $formView = $form->createView();
+
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
@@ -114,18 +119,23 @@ class ServiceController extends AbstractController
             !is_null($receivedDatas['localite']) ? $localite = $receivedDatas['localite']->getId(): $localite = null;
             !is_null($receivedDatas['cp']) ? $codePostal = $receivedDatas['cp']->getCodePostal(): $codePostal = null;
             !is_null($receivedDatas['commune']) ? $commune = $receivedDatas['commune']->getCommune(): $commune = null;
-            //verif des données envoyées au repository
-            //dd($nomPrestataire, $categorieId, $localite, $codePostal, $commune);
 
             $repositoryPrestataires = $entityManager->getRepository(Prestataire::class);
             $partenaires = $repositoryPrestataires->SearchBar($nomPrestataire, $categorieId, $localite, $codePostal, $commune);
-            // verif des données recues de la DB
-            //dd($partenaires);
+
+            // Utilise le bundle de pagination => https://github.com/KnpLabs/KnpPaginatorBundle
+            $pagination = $paginator->paginate(
+                $partenaires, /* query NOT result */
+                $request->query->getInt('page', 1), /*page number*/
+                8 /*limit par page*/
+            );
 
             // envoi les données reçues par la DB à la vue liste de prestataires
             return $this->render('partenaire/liste.html.twig', [
                 'partenaires' => $partenaires,
-                'form' => $formView
+                "form" => $formView,
+                'pagination' => $pagination
+
             ]);
         }
 

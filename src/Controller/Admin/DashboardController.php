@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Abus;
+use App\Entity\Images;
 use App\Entity\Newsletter;
 use App\Entity\Utilisateur;
 use App\Entity\CategorieService;
@@ -66,6 +67,5 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Catégories', 'fa fa-tags', CategorieService::class);
         yield MenuItem::linkToCrud('Abus', 'fa fa-tags',Abus::class);
         yield MenuItem::linkToCrud('Newsletter', 'fa fa-tags', Newsletter::class);
-
     }
 }

@@ -1,21 +1,14 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Editer profil{% endblock %}
+{% block title %}modifier Adresse{% endblock %}
 
 {% block titreh1 %}
-	<h1>Modifier mon profil</h1>
+	<h1>Modifier mon adresse</h1>
 {% endblock %}
 
 {% block body %}
 
-<h1>Informations de base</h1>
-
 {{ form_start(formProfile) }}
-	{{ form_row(formProfile.email, {
-		'attr': {'class': 'main-search-input'},
-		'label': 'Email',
-		'label_attr': {'class': 'main-search-label'}}) 
-	}}
 	{{ form_row(formProfile.adresseNum, {
 		'attr': {'class': 'main-search-input'},
 		'label': 'Numéro',
@@ -47,6 +40,5 @@
 
 {{form_end(formProfile)}}
 
- <h3>id internaute:{{app.user.internautes.id }}</h3><br>
-
+        <a href="{{path ("profil_user", {id: app.user.internautes.id})}}">Retour page profil</a><br>
 {% endblock %}

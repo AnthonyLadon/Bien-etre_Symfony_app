@@ -16,10 +16,9 @@
 <div class="count">
     {{ pagination.getTotalItemCount }} prestataire(s) trouvé(s)
 </div>
-<a href="{{path ("prestataire_register")}}">Devenir prestataire</a>
 	{% if partenaires %}
 		<div class="partenaires-list-wrap">
-			{% for partenaire in pagination %}
+			{% for partenaire in pagination %} 
 				<a class="partenaires-card" href="{{path('detailPartenaire',{id : partenaire.id})}}">
 					<h3>{{partenaire.nom}}</h3>
 					<img class="prestaire_img" src="{{ asset('images/avatars/' ~ partenaire.images[0]) }}" alt="avatar du prestataire"/>

@@ -16,24 +16,22 @@ icon.addEventListener("click", function () {
 
 //*****************************/
 
-// Settings Leaflet maps
-
-var map = L.map("map").setView([51.505, -0.09], 13);
-
-L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-  maxZoom: 19,
-  attribution:
-    '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-}).addTo(map);
-
-var marker = L.marker([51.508, -0.11], {
-  color: "red",
-  fillColor: "#f03",
-  fillOpacity: 0.5,
-  radius: 500,
-}).addTo(map);
-
-marker.bindPopup("Je suis ici");
+// Permet, sur les autres pages que l'accueil, d'afficher et de masquer le zone de recherche
+const TargetDiv = document.getElementById("search-bar-wrap");
+const BTN = document.getElementById("search-button-toggle");
+// condition pour éviter les erreurs sur la page home (TargetDiv n'existe pas sur cette page)
+if (TargetDiv) {
+  TargetDiv.style.display = "none";
+  BTN.onclick = function () {
+    if (TargetDiv.style.display !== "none") {
+      TargetDiv.style.display = "none";
+      BTN.innerHTML = '<i class="fa fa-search"></i>';
+    } else {
+      TargetDiv.style.display = "block";
+      BTN.innerHTML = '<i class="fa-solid fa-xmark"></i>';
+    }
+  };
+}
 
 //*****************************/
 
@@ -190,20 +188,3 @@ marker.bindPopup("Je suis ici");
 // });
 
 //******************/
-
-// Permet, sur les autres pages que l'accueil, d'afficher et de masquer le zone de recherche
-const TargetDiv = document.getElementById("search-bar-wrap");
-const BTN = document.getElementById("search-button-toggle");
-// condition pour éviter les erreurs sur la page home (TargetDiv n'existe pas sur cette page)
-if (TargetDiv) {
-  TargetDiv.style.display = "none";
-  BTN.onclick = function () {
-    if (TargetDiv.style.display !== "none") {
-      TargetDiv.style.display = "none";
-      BTN.innerHTML = '<i class="fa fa-search"></i>';
-    } else {
-      TargetDiv.style.display = "block";
-      BTN.innerHTML = '<i class="fa-solid fa-xmark"></i>';
-    }
-  };
-}
