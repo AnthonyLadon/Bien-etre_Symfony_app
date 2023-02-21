@@ -2,9 +2,13 @@
 
 namespace App\Form;
 
+use App\Entity\CodePostal;
+use App\Entity\Commune;
+use App\Entity\Localite;
 use App\Entity\Utilisateur;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
@@ -30,16 +34,17 @@ class RegistrationFormType extends AbstractType
             ->add('adresseNum', NumberType::class,[
                 'label' => 'Numéro'
             ])
-            ->add('commune', TextType::class,[
+            ->add('commune', EntityType::class,[
+                'class' => Commune::class,
                 'label' => 'commune',
             ])
-            ->add('codePostal', NumberType::class,[
+            ->add('codePostal', EntityType::class,[
+                'class' => CodePostal::class,
                 'label' => 'code postal',
-                'mapped' => false,
             ])
-            ->add('localite', TextType::class,[
+            ->add('localite', EntityType::class,[
+                'class' => Localite::class,
                 'label' => 'localité',
-                'mapped' => false,
             ])
             ->add('agreeTerms', CheckboxType::class, [
                 'mapped' => false,
@@ -56,7 +61,7 @@ class RegistrationFormType extends AbstractType
                 'first_options'  => ['label' => 'Choisissez un mot de passe'],
                 'second_options' => ['label' => 'Veuillez repeter le mot de passe'],
                 'type' => PasswordType::class,
-                'invalid_message' => 'Les deux mots de passe doivent correspondre',
+                'invalid_message' => 'Attention! Les deux mots de passe doivent correspondre',
                 'mapped' => false,
                 'attr' => ['autocomplete' => 'new-password'],
                 'constraints' => [

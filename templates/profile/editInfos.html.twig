@@ -8,7 +8,10 @@
 
 {% block body %}
 
-{{form(form) }}
+
+{{ form_start(form) }}
+{{ form_errors(form) }}
+{{form_end(form)}}
 
 <a href="{{path ("profil_user", {id: app.user.internautes.id})}}">Retour page profil</a><br>
 

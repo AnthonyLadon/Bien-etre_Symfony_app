@@ -42,8 +42,10 @@
             {{app.user.localite}}
         {% endif %}
         </p>
+        {# modif des infos Utilisateur #}
         <a href="{{path('edit_adress', {id: app.user.id} )}}">Modifier mon adresse</a><br>
-        <a href="{{path('edit_infos', {id: app.user.id} )}}">Modifier mon profil</a><br>
+        {# modif des infos Internaute #}
+        <a href="{{path('edit_infos', {id: app.user.internautes.id} )}}">Gérer mon profil</a><br>
     </div>
     <p>Membre depuis le {{app.user.dateInscription|date('d/m/Y')}}</p>
     <br>

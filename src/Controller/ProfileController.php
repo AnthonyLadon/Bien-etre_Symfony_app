@@ -12,6 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
+
 class ProfileController extends AbstractController
 {
     //------------------------------------------------------------------
@@ -94,6 +95,7 @@ class ProfileController extends AbstractController
 
      public function register(Request $request)
      {
+      
         return $this->render('partenaire/inscription.html.twig', [
         ]);
      }
