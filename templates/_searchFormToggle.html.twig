@@ -1,42 +1,47 @@
-			{# Bouton affichage/masquage du formulaire  #}
-			<button id="search-button-toggle"><i class="fa fa-search"></i></button>
+	
+	{# Bouton affichage/masquage du formulaire  #}
+	<button id="search-button-toggle"><i class="fa fa-search"></i></button>
 
-			<div class="search-bar-wrap" id="search-bar-wrap">
-				{{ form_start(form) }}
-				
-					{{ form_row(form.prestataire, {
-						'attr': {'class': 'main-search-input'},
-						'label': 'Nom du prestataire', 
-						'label_attr': {'class': 'main-search-label'}}) 
-					}}
-
-					{{ form_row(form.categorie, {
-						'attr': {'class': 'main-search-input'},
-						'label': 'Catégorie',
-						'label_attr': {'class': 'main-search-label'}}) 
-					}}
-
-					{{ form_row(form.localite, {
-						'attr': {'class': 'main-search-input'},
-						'label': 'Localité',
-						'label_attr': {'class': 'main-search-label'}}) 
-					}}
-
-					{{ form_row(form.commune, {
-						'attr': {'class': 'main-search-input'},
-						'label': 'Commune',
-						'label_attr': {'class': 'main-search-label'}}) 
-					}}
-
-					{{ form_row(form.cp, {
-						'attr': {'class': 'main-search-input'},
-						'label': 'Code Postal',
-						'label_attr': {'class': 'main-search-label'}}) 
-						}}
-
-					{{ form_row(form.recherche, {
-						'attr': {'class': 'main-search-button'}
-					}) }}
-
-				{{ form_end(form) }}
+	<div class="search-bar-wrap" id="search-bar-wrap">
+		<div class="main-search-bar-wrap">
+		<form name="prestataire_search" method="get" action="{{path ('home')}}">
+			<div>
+			<label class="main-search-label">Nom du prestataire</label>
+			<input class="main-search-input" type="text" name="nom" placeholder="Veuillez entrer un nom">
 			</div>
+			<div>
+			<label class="main-search-label">Catégorie de service</label>
+			<input class="main-search-input" type="text" name="categorie" placeholder="Veuillez une catégorie">
+			</div>
+			<div>
+			<label class="main-search-label" >Localité</label>
+			<select class="main-search-input" type="select" name="localite" id="prestataire_search_localite">
+				<option value="">-- Selectionnez une localité --</option>
+				<option value="région Bruxelles capitale">région Bruxelles capitale</option>
+				<option value="province de liège">province de Liège</option>
+				<option value="province du hainaut">province du hainaut</option>
+				<option value="province du brabant wallon">province du brabant wallon</option>
+				<option value="province d'anvers">province d'anvers</option>
+				<option value="province de flandre occidentale">province de flandre occidentale</option>
+				<option value="province de flandre orientale">province de flandre orientale</option>
+				<option value="province du brabant flamand">province du brabant flamand</option>
+				<option value="province du brabant flamand (Louvain)">province du brabant flamand (Louvain)</option>
+				<option value="province du luxembourg">province du luxembourg</option>
+				<option value="province du limbourg">province du limbourg</option>
+				<option value="province de namur">province de namur</option>
+			</select>
+			</div>
+			<div>
+			<label class="main-search-label">Commune</label>
+			<select class="main-search-input" type="text" name="commune" id="prestataire_search_commune"><option value="">-- Selectionnez une commune --</option></select>
+			</div>
+			<div>
+			<label class="main-search-label">Code Postal</label>
+			<select class="main-search-input" type="text" name="codePostal" id="prestataire_search_cp"><option value="">-- Selectionnez un code postal --</option></select>
+			</div>
+			<div>
+			<button class="main-search-button" type="submit" name="submit">Rechercher</button>
+			</div>
+		</form>
+		</div>
+	</div>

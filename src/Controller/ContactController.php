@@ -30,52 +30,7 @@ class ContactController extends AbstractController
     public function index(EntityManagerInterface $entityManager, Request $request): Response
     {
 
-        // creation du formulaire
-        $form = $this->createForm(PrestataireSearchType::class, null, [
-            'method' => 'GET',
-            // retire le token de l'url généré (GET)
-            'csrf_protection' => false
-        ]);
-
-        $formView = $form->createView();
-
-
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-            $form->getData(); // stocke les valeurs envoyées
-
-            $receivedDatas = $form->getData('viewData');
-
-
-            // récupération des données envoyées via le formulaire
-            $nomPrestataire = $receivedDatas['prestataire'];
-
-            // pour ne pas executer de ->get() si la valeur récupérée vaut null
-            !is_null($receivedDatas['categorie']) ? $categorieId = $receivedDatas['categorie']->getId(): $categorieId = null;
-            !is_null($receivedDatas['localite']) ? $localite = $receivedDatas['localite']->getId(): $localite = null;
-            !is_null($receivedDatas['cp']) ? $codePostal = $receivedDatas['cp']->getCodePostal(): $codePostal = null;
-            !is_null($receivedDatas['commune']) ? $commune = $receivedDatas['commune']->getCommune(): $commune = null;
-            //verif des données envoyées au repository
-            //dd($nomPrestataire, $categorieId, $localite, $codePostal, $commune);
-
-
-            $repositoryPrestataires = $entityManager->getRepository(Prestataire::class);
-            $partenaires = $repositoryPrestataires->SearchBar($nomPrestataire, $categorieId, $localite, $codePostal, $commune);
-            // verif des données recues de la DB
-            //dd($partenaires);
-
-            // envoi les données reçues par la DB à la vue liste de prestataires
-            return $this->render('partenaire/liste.html.twig', [
-                'partenaires' => $partenaires,
-                'form' => $formView
-            ]);
-        }
-
-        $repositoryPrestataires = $entityManager->getRepository(Prestataire::class);
-
-
         return $this->render('contact/index.html.twig', [
-            'form' => $formView
         ]);
         
     }

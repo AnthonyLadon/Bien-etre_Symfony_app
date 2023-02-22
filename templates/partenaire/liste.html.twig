@@ -7,10 +7,9 @@
 	<h1>Prestataires</h1>
 {% endblock %}
 
-{# {% block searchForm %}
-	{# {{ render(path('searchForm')) }} #}
-	{# {% embed "_searchFormToggle.html.twig" %}{% endembed %} #}
-{# {% endblock %} #}
+{% block searchForm %}
+	{% embed "_searchFormToggle.html.twig" %}{% endembed %}
+{% endblock %}
 
 {% block body %}
 <div class="count">

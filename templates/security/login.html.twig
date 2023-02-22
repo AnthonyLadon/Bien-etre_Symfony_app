@@ -6,6 +6,10 @@
     Connection
 {% endblock %}
 
+{% block searchForm %}
+	{% embed "_searchFormToggle.html.twig" %}{% endembed %}
+{% endblock %}
+
 {% block body %}
 <form method="post">
     {% if error %}

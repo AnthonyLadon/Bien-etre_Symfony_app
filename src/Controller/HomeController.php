@@ -55,7 +55,6 @@ class HomeController extends AbstractController
         }
 
 
-
         $repositoryCategorie = $entityManager->getRepository(CategorieService::class);
         $repositoryPrestataires = $entityManager->getRepository(Prestataire::class);
         // Permet de récupérer le service qui a le champ en avant = 1
