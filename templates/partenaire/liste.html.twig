@@ -24,6 +24,8 @@
 				{% endif %}
 					{% if partenaire.images[0] is defined %}
 						<img class="prestaire_img" src="{{ asset('images/avatars/' ~ partenaire.images[0]) }}" alt="avatar du prestataire"/>
+					{% else %}
+						<img class="prestaire_img" src="{{ asset('images/avatars/blank_profile.webp') }}" alt="avatar du prestataire"/>
 					{% endif %}
 
 				</a>

@@ -3,9 +3,12 @@
 namespace App\Controller;
 
 use App\Entity\Internaute;
+use App\Entity\Prestataire;
 use App\Entity\Utilisateur;
 use App\Form\InternauteType;
 use App\Form\UtilisateurType;
+use App\Form\PrestataireRegisterType;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Doctrine\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -93,10 +96,27 @@ class ProfileController extends AbstractController
      * @Route("/inscription_prestataire/{id}",name="prestataire_register")
      */
 
-     public function register(Request $request)
+     public function register(Request $request, EntityManagerInterface $entityManager)
      {
-      
-        return $this->render('partenaire/inscription.html.twig', [
-        ]);
-     }
+        $prestataire = new Prestataire();
+        $form = $this->createForm(PrestataireRegisterType::class, $prestataire);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+          $prestataire = new Prestataire();
+
+          $entityManager->persist($prestataire);
+          //$entityManager->flush();
+
+
+      return $this->redirectToRoute('home', [
+        
+      ]);
+    }
+
+    return $this->render('partenaire/inscription.html.twig', [
+      'PrestataireForm' => $form->createView()
+    ]);
+  }
 }

@@ -17,6 +17,8 @@
       <div class="partenaire-avatar">
       {% if partenaire.images[0] is defined %}
             <img class="prestaire_img" src="{{ asset('images/avatars/' ~ partenaire.images[0]) }}" alt="photo de profil du prestataire"/>
+      {% else %}
+            <img class="prestaire_img" src="{{ asset('images/avatars/blank_profile.webp') }}" alt="photo de profil du prestataire"/>
       {% endif %}
     </div>
     {% for pr in partenaire.promotion %}

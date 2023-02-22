@@ -2,9 +2,10 @@
 
 namespace App\Form;
 
-use App\Entity\CodePostal;
 use App\Entity\Commune;
 use App\Entity\Localite;
+use App\Entity\CodePostal;
+use App\Entity\Internaute;
 use App\Entity\Utilisateur;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -34,6 +35,10 @@ class RegistrationFormType extends AbstractType
             ->add('adresseNum', NumberType::class,[
                 'label' => 'Numéro'
             ])
+            ->add('localite', EntityType::class,[
+                'class' => Localite::class,
+                'label' => 'localité',
+            ])
             ->add('commune', EntityType::class,[
                 'class' => Commune::class,
                 'label' => 'commune',
@@ -41,10 +46,6 @@ class RegistrationFormType extends AbstractType
             ->add('codePostal', EntityType::class,[
                 'class' => CodePostal::class,
                 'label' => 'code postal',
-            ])
-            ->add('localite', EntityType::class,[
-                'class' => Localite::class,
-                'label' => 'localité',
             ])
             ->add('agreeTerms', CheckboxType::class, [
                 'mapped' => false,
