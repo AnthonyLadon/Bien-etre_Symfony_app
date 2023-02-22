@@ -43,10 +43,11 @@ const CODEPOSTAL = document.getElementById("prestataire_search_cp");
 const COMMUNE = document.getElementById("prestataire_search_commune");
 
 LOCALITE.addEventListener("change", function () {
-  console.log("ok");
   // Pour récupérer le texte du champ selectioné
   let selectedIndex = LOCALITE.options.selectedIndex;
-  let selectedText;
+  let selectedText = LOCALITE.options[selectedIndex].firstChild.data;
+  console.log(selectedText);
+
   let selectedLocaliteNormalized = selectedText
     .normalize("NFD")
     .replace(/([\u0300-\u036f]|[^0-9a-zA-Z])/g, "")
@@ -141,8 +142,6 @@ LOCALITE.addEventListener("change", function () {
 });
 
 COMMUNE.addEventListener("change", function () {
-  console.log("ça marche");
-
   let url = "../zipcode-belgium.json";
 
   // récupération de la string de la commune selectionnée

@@ -26,7 +26,6 @@ class InsertController extends AbstractController
         for ($i = 0; $i < 25; $i++) {
             $utilisateur = new Utilisateur();
             $utilisateur->setEmail('user'.$i.'@gmail.com');
-            $utilisateur->setNomComplet($faker->Name());
             $utilisateur->setPassword('password');
             $utilisateur->setTypeUtilisateur('utilisateur');
             $utilisateur->setRoles(['ROLE_USER']);
@@ -65,7 +64,6 @@ class InsertController extends AbstractController
 
         $admin = new Utilisateur();
         $admin->setEmail('admin@admin.be');
-        $admin->setNomComplet("admin");
         $admin->setPassword('admin');
         $admin->setDateInscription($faker->dateTime());
         $admin->setTypeUtilisateur('admin');
@@ -91,12 +89,36 @@ class InsertController extends AbstractController
      }
 
      /**
-      * @Route("/test",name="name")
+      * @Route("/ajout_provinces",name="ajout_provinces")
       */
 
-      public function test(){
+      public function test(EntityManagerInterface $entityManager){
+
+            // liste des provinces et région de Belgique
+            $provinces = array('région Bruxelles capitale',
+            'province du hainaut',
+            'province du brabant wallon',
+            'province d\'anvers',
+            'province de flandre occidentale',
+            'province de flandre orientale',
+            'province du brabant flamand',
+            'province du brabant flamand (Louvain)',
+            'province de liège',
+            'province du luxembourg',
+            'province du limbourg',
+            'province de namur');
+            $pronvincesLength = sizeof($provinces);
+    
+            for ($i = 0; $i < $pronvincesLength; $i++){
+                $localite = new Localite();
+                $localite->setLocalite($provinces[$i]);
+                $entityManager->persist($localite);
+            }
+    
+            //$entityManager->flush();
 
         return $this->render('insert/index.html.twig', [
+
             ]);
       }
 
