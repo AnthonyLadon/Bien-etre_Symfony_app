@@ -14,6 +14,11 @@
 
 {% block body %}
   <article>
+      <div class="partenaire-avatar">
+      {% if partenaire.images[0] is defined %}
+            <img class="prestaire_img" src="{{ asset('images/avatars/' ~ partenaire.images[0]) }}" alt="photo de profil du prestataire"/>
+      {% endif %}
+    </div>
     {% for pr in partenaire.promotion %}
       {%  if pr.affichageDe|date("d/m/Y") <= "now"|date("d/m/Y") and pr.affichageJusque|date("d/m/Y") >= "now"|date("d/m/Y") %}
       <div>
@@ -23,22 +28,22 @@
       </div>
       {% endif %}
     {% endfor %}
-  {% if partenaire.proposer is not empty %}
-    <h3>Mes catégories de service</h3>
-    <div class="prestataire-detail-services-list">
-      <ul>
-        {% for service in partenaire.proposer %}
-        <li><a href="{{path('detailService',{id : service.id} )}}">
-        {{ service.nom}}
-        </a>
-        {% endfor %}
-      </ul>
-    </div>
-  {% else %}
+    {% if partenaire.proposer is not empty %}
+      <h3>Mes catégories de service</h3>
+      <div class="prestataire-detail-services-list">
+        <ul>
+          {% for service in partenaire.proposer %}
+          <li><a href="{{path('detailService',{id : service.id} )}}">
+          {{ service.nom}}
+          </a>
+          {% endfor %}
+        </ul>
+      </div>
+    {% else %}
       <div class="prestataire-detail-services-list">
         <h3>Je n'ai pas encore de catégorie de service</h3>
       </div>
-  {% endif %}
+    {% endif %}
     {% if partenaire.stage is not empty %}
     <h3>Les stages que je propose actuellement</h3>
     <ul>
@@ -69,15 +74,19 @@
         {{ partenaire.tvaNum }}
       </p>
     </div>
-    <div>
-    <p>photo de profil</p>
-    {% if partenaire.images[0] is defined %}
-          <img class="prestaire_img" src="{{ asset('images/avatars/' ~ partenaire.images[0]) }}" alt="photo de profil du prestataire"/>
-    {% endif %}
-    gallerie de photos du prestataire
-    {% for part in partenaire.images %}
-      <img class="prestaire_img" src="{{ asset('images/avatars/' ~ part.image) }}" alt="photo du prestataire"/>
-    {% endfor %}
+    {# Carrousel photos prestataire #}
+    <div class="gallery">
+        {% for img in partenaire.images %}
+        {# test pour ne pas afficher la photo de profil ici #}
+          {% if img != partenaire.images[0] %}
+            <img class="prestaire_img" src="{{ asset('images/avatars/' ~ img) }}" alt="photo du prestataire"/>
+          {% endif %}
+        {% endfor %}
+        <img src="https://images.pexels.com/photos/13921689/pexels-photo-13921689.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" />
+        <img src="https://images.pexels.com/photos/14577737/pexels-photo-14577737.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" />
+        <img src="https://images.pexels.com/photos/14686959/pexels-photo-14686959.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" />
+        <img src="https://images.pexels.com/photos/12620000/pexels-photo-12620000.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" />
+    </div>
     </div>
     <p>Pour me trouver: </p>
     <p>{{ partenaire.utilisateur.adresseRue }} {{ partenaire.utilisateur.adresseNum }}</p>

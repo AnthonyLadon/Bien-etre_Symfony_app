@@ -1139,6 +1139,30 @@ input:checked + .slide-container .nav label {
   color: #995557;
 }
 
+.partenaire-avatar img {
+  width: 5rem;
+  border-radius: 10px;
+}
+
+.gallery {
+  display: flex;
+  width: 440px;
+  height: 200px;
+}
+
+.gallery img {
+  min-width: 0;
+  flex: 1 1 10px;
+  object-fit: cover;
+  opacity: 0.5;
+  transition: 0.9s;
+}
+
+.gallery img:hover {
+  flex: 1 1 280px;
+  opacity: 1;
+}
+
 @media screen and (min-width: 43rem) {
   .partenaires-list-wrap {
     margin: 2rem 1rem 1rem 1rem;
