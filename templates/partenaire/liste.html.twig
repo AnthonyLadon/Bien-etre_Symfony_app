@@ -7,10 +7,10 @@
 	<h1>Prestataires</h1>
 {% endblock %}
 
-{% block searchForm %}
+{# {% block searchForm %}
 	{# {{ render(path('searchForm')) }} #}
-	{% embed "_searchFormToggle.html.twig" %}{% endembed %}
-{% endblock %}
+	{# {% embed "_searchFormToggle.html.twig" %}{% endembed %} #}
+{# {% endblock %} #}
 
 {% block body %}
 <div class="count">
@@ -20,8 +20,13 @@
 		<div class="partenaires-list-wrap">
 			{% for partenaire in pagination %} 
 				<a class="partenaires-card" href="{{path('detailPartenaire',{id : partenaire.id})}}">
+				{% if partenaire.nom is defined %}
 					<h3>{{partenaire.nom}}</h3>
-					<img class="prestaire_img" src="{{ asset('images/avatars/' ~ partenaire.images[0]) }}" alt="avatar du prestataire"/>
+				{% endif %}
+					{% if partenaire.images[0] is defined %}
+						<img class="prestaire_img" src="{{ asset('images/avatars/' ~ partenaire.images[0]) }}" alt="avatar du prestataire"/>
+					{% endif %}
+
 				</a>
 			{% endfor %}
 		</div>

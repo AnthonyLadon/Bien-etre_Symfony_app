@@ -53,8 +53,6 @@ class RegistrationController extends AbstractController
                 )
             );
 
-            dd($form->getData());
-
             // Ajout d'une entrée dans la table internaute (enregistrement par défaut en tant qu'internaure)
             $internaute = new Internaute();
             $internaute->setNom('');

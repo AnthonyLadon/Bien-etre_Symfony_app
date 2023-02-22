@@ -30,9 +30,6 @@ class Prestataire
     #[ORM\OneToMany(mappedBy: 'prestataire', targetEntity: Stage::class, orphanRemoval: true)]
     private Collection $stage;
 
-    #[ORM\OneToMany(mappedBy: 'Prestataire', targetEntity: Stage::class)]
-    private Collection $stages;
-
     #[ORM\OneToMany(mappedBy: 'prestataire', targetEntity: Promotion::class)]
     private Collection $promotion;
 
@@ -57,7 +54,6 @@ class Prestataire
     public function __construct()
     {
         $this->stage = new ArrayCollection();
-        $this->stages = new ArrayCollection();
         $this->promotion = new ArrayCollection();
         $this->commentaires = new ArrayCollection();
         $this->images = new ArrayCollection();
@@ -147,14 +143,6 @@ class Prestataire
         }
 
         return $this;
-    }
-
-    /**
-     * @return Collection<int, Stage>
-     */
-    public function getStages(): Collection
-    {
-        return $this->stages;
     }
 
     /**

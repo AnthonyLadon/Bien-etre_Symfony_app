@@ -9,7 +9,7 @@
 {% endblock %}
 
 
-{% block searchForm %}
+{# {% block searchForm %}
   
 					<div class="main-search-bar-wrap">
   
@@ -50,9 +50,39 @@
 
 								{{ form_end(form) }}
           </div>
-{% endblock %}
+
+{% endblock %} #}
+
 
 {% block body %}
+
+<div class="main-search-bar-wrap">
+      <form name="prestataire_search" method="get" action="{{path ('home')}}">
+      <div>
+        <label class="main-search-label">Nom du prestataire</label>
+        <input class="main-search-input" type="text" name="nom">
+      </div>
+      <div>
+        <label class="main-search-label">Catégorie</label>
+        <input class="main-search-input" type="text" name="categorie">
+      </div>
+      <div>
+        <label class="main-search-label" id="prestataire_search_localite" >Localité</label>
+        <select class="main-search-input" type="select" name="localite"><option value="">e</option><option value="">tt</option></select>
+      </div>
+      <div>
+        <label class="main-search-label" id="prestataire_search_commune">Commune</label>
+      <select class="main-search-input" type="text" name="commune"><option value="">d</option><option value="">gfdg</option></select>
+      </div>
+      <div>
+        <label class="main-search-label" id="prestataire_search_cp">Code Postal</label>
+        <select class="main-search-input" type="text" name="codePostal"><option value="">d</option><option value="">gfdg</option></select>
+      </div>
+      <div>
+        <button class="main-search-button" type="submit" name="submit">Rechercher</button>
+      </div>
+      </form>
+  </div>
 
   <div class="carousel">
     {# Images gérées par l'admin #}
@@ -104,7 +134,11 @@
           {% for p in lastPrestataires %}
             <div class="card">
               <div class="face face--front">
-              <img src="{{asset ('images/avatars/' ~ p.images[0] )}}" alt="photo prestataire">
+              {% if p.images[0] is defined %}
+                    <img src="{{asset ('images/avatars/' ~ p.images[0] )}}" alt="photo prestataire">
+                  {% else %}
+                    <img src="{{asset ('images/avatars/blank_profile.webp')}}" alt="photo prestataire">
+              {% endif %}
               </div>
               <a class="face face--back" href="{{path('detailPartenaire',{id : p.id})}}">{{p.nom }}</a>
             </div>

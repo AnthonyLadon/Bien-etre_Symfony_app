@@ -16,6 +16,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\FormBuilderInterface;
 
 
 class HomeController extends AbstractController
@@ -26,39 +27,20 @@ class HomeController extends AbstractController
 
     public function homeAndSearchForm(EntityManagerInterface $entityManager ,Request $request, PaginatorInterface $paginator){
 
-        // creation du formulaire
-        $form = $this->createForm(PrestataireSearchType::class, null, [
-            'method' => 'GET',
-            // retire le token de l'url généré (GET)
-            'csrf_protection' => false
-        ]);
 
-        //dd($form);
-        $formView = $form->createView();
-        //dd($formView);
-
-
-        $form->handleRequest($request);
-        //dd($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $form->getData(); // stocke les valeurs envoyées
-            $receivedDatas = $form->getData('viewData'); 
-
-
-            // récupération des données envoyées via le formulaire
-            $nomPrestataire = $receivedDatas['prestataire'];
-            // pour ne pas executer de ->get() si la valeur récupérée vaut null
-            !is_null($receivedDatas['categorie']) ? $categorieId = $receivedDatas['categorie']->getId(): $categorieId = null;
-            !is_null($receivedDatas['localite']) ? $localite = $receivedDatas['localite']->getId(): $localite = null;
-            !is_null($receivedDatas['cp']) ? $codePostal = $receivedDatas['cp']->getCodePostal(): $codePostal = null;
-            !is_null($receivedDatas['commune']) ? $commune = $receivedDatas['commune']->getCommune(): $commune = null;
-
+        if (isset($_GET['submit'])){
+            // Récupération des données envoyées en GET par le formulaire html
+            ($request->query->all()['nom'])!== "" ? $nom = filter_var(($request->query->all()['nom']), FILTER_SANITIZE_SPECIAL_CHARS) : $nom = null;
+            ($request->query->all()['categorie'])!== "" ? $categorie = filter_var(($request->query->all()['categorie']), FILTER_SANITIZE_SPECIAL_CHARS) : $categorie = null;
+            ($request->query->all()['localite'])!== "" ? $localite = filter_var(($request->query->all()['localite']), FILTER_SANITIZE_SPECIAL_CHARS) : $localite = null;
+            ($request->query->all()['commune'])!== "" ? $commune = filter_var(($request->query->all()['commune']), FILTER_SANITIZE_SPECIAL_CHARS) : $commune = null;
+            ($request->query->all()['codePostal'])!== "" ? $codePostal = filter_var(($request->query->all()['codePostal']), FILTER_SANITIZE_NUMBER_INT) : $codePostal = null;
+            dump($nom, $categorie, $localite, $commune, $codePostal);
 
             $repositoryPrestataires = $entityManager->getRepository(Prestataire::class);
-            $partenaires = $repositoryPrestataires->SearchBar($nomPrestataire, $categorieId, $localite, $codePostal, $commune);
-
-            // Utilise le bundle de pagination => https://github.com/KnpLabs/KnpPaginatorBundle
+            $partenaires = $repositoryPrestataires->SearchBar($nom, $categorie, $localite, $codePostal, $commune);
+            dump($partenaires);
+            
             $pagination = $paginator->paginate(
                 $partenaires, /* query NOT result */
                 $request->query->getInt('page', 1), /*page number*/
@@ -69,11 +51,11 @@ class HomeController extends AbstractController
             return $this->render('partenaire/liste.html.twig', [
                 'pagination' => $pagination,
                 'partenaires' => $partenaires,
-                'form' => $formView,
             ]);
-            
         }
-        
+
+
+
         $repositoryCategorie = $entityManager->getRepository(CategorieService::class);
         $repositoryPrestataires = $entityManager->getRepository(Prestataire::class);
         // Permet de récupérer le service qui a le champ en avant = 1
@@ -84,7 +66,6 @@ class HomeController extends AbstractController
         return $this->render('home/index.html.twig', [
             "highlightService" => $highlightService,
             "lastPrestataires" => $lastPrestataires,
-            'form' => $formView
         ]);
     }
 

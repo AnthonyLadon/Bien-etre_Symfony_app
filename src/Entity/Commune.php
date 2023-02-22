@@ -21,11 +21,6 @@ class Commune
     #[ORM\OneToMany(mappedBy: 'commune', targetEntity: Utilisateur::class)]
     private Collection $utilisateurs;
 
-
-    #[ORM\ManyToOne(inversedBy: 'communes')]
-    private ?Localite $localite = null;
-
-
     public function __construct()
     {
         $this->utilisateurs = new ArrayCollection();

@@ -70,8 +70,13 @@
       </p>
     </div>
     <div>
+    <p>photo de profil</p>
+    {% if partenaire.images[0] is defined %}
+          <img class="prestaire_img" src="{{ asset('images/avatars/' ~ partenaire.images[0]) }}" alt="photo de profil du prestataire"/>
+    {% endif %}
+    gallerie de photos du prestataire
     {% for part in partenaire.images %}
-    <img class="prestaire_img" src="{{ asset('images/avatars/' ~ part.image) }}" alt="photo du prestataire"/>
+      <img class="prestaire_img" src="{{ asset('images/avatars/' ~ part.image) }}" alt="photo du prestataire"/>
     {% endfor %}
     </div>
     <p>Pour me trouver: </p>

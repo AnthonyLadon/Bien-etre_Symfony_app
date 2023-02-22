@@ -79,39 +79,41 @@ class PrestataireRepository extends ServiceEntityRepository
 
     // Requete envoyée via la barre de recherche pour trouver un ou plusieurs prestataires 
 
-       public function SearchBar($nomPrestataire, $categorie, $localite, $codePostal, $commune): ?array
+       public function SearchBar($nom, $categorie, $localite, $codePostal, $commune): ?array
        {
            $query = $this->createQueryBuilder('p')
-                // liaison prestataire-catégorie 'proposer' via les Id
-                ->join('p.proposer', 'proposer')
-                ->join('p.utilisateur', 'user')
-                ->join('user.codePostal', 'user_cp')
-                ->join('user.commune', 'user_com')
+                //liaison des tables 
+                ->leftjoin('p.proposer', 'proposer')
+                ->leftjoin('p.utilisateur', 'user')
+                ->leftjoin('user.codePostal', 'codePostal')
+                ->leftjoin('user.commune', 'commune')
+                ->leftjoin('user.localite', 'localite')
                 ;
-                if($nomPrestataire){
+                // test si la varibale $nom n'est pas null, sinon on n'execute pas la requete WHERE
+                if($nom){
                     $query->andWhere('p.nom LIKE :nom')
-                    ->setParameter('nom', '%'.$nomPrestataire.'%');
+                    ->setParameter('nom', '%'.$nom.'%');
                 }
                 if($categorie){
-                    $query->andWhere('proposer = :categorieId')
-                    ->setParameter('categorieId', $categorie);
+                    $query->andWhere('proposer.nom LIKE :CategorieService')
+                    ->setParameter('CategorieService', '%'.$categorie.'%');
                 }
                 if($localite){
-                    $query->andWhere('user.localite = :loc')
-                    ->setParameter('loc' , $localite);
+                    $query->andWhere('localite.localite LIKE :loc')
+                    ->setParameter('loc' , '%'.$localite.'%');
                 }
                 if($commune){
-                    $query->andWhere('user_com.commune = :com')
-                    ->setParameter('com', $commune);
+                    $query->andWhere('commune.commune LIKE :com')
+                    ->setParameter('com', '%'.$commune.'%');
                 }
                 if($codePostal){
-                    $query->andWhere('user_cp.codePostal = :cp')
+                    $query->andWhere('codePostal.codePostal = :cp')
                     ->setParameter('cp', $codePostal);
                 }
+                $query->groupBy('p');
                 $query->orderBy('p.nom', 'ASC');
                 $query = $query->getQuery();
                 return $query->getResult();
            ;
        }
-
     }
