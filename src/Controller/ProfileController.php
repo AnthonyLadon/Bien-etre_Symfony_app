@@ -96,18 +96,35 @@ class ProfileController extends AbstractController
      * @Route("/inscription_prestataire/{id}",name="prestataire_register")
      */
 
-     public function register(Request $request, EntityManagerInterface $entityManager)
+     public function register(Request $request, EntityManagerInterface $entityManager, $id)
      {
+        $repository = $entityManager->getRepository(Utilisateur::class);
+        $utilisateur = $repository->find($id);
+
         $prestataire = new Prestataire();
         $form = $this->createForm(PrestataireRegisterType::class, $prestataire);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-          $prestataire = new Prestataire();
+          $form = $form->getData();
+          $nom = $form->getNom();
+          $website = $form->getSiteWeb();
+          $tel = $form->getTel();
+          $tva = $form->getTvaNum();
+          
 
+          $prestataire = new Prestataire();
+          $prestataire->setNom($nom);
+          $prestataire->setSiteWeb($website);
+          $prestataire->setTel($tel);
+          $prestataire->setTvaNum($tva);
+
+          $utilisateur->setRoles(["ROLE_PREST"]);
+
+          $entityManager->persist($utilisateur);
           $entityManager->persist($prestataire);
-          //$entityManager->flush();
+          $entityManager->flush();
 
 
       return $this->redirectToRoute('home', [

@@ -54,6 +54,9 @@
 {% endblock %}
 
 {% block body %}
+{% if is_granted('ROLE_ADMIN') %}
+  <a href="#">Modifier les photos</a>
+{% endif %}
   <div class="carousel">
     {# Images gérées par l'admin #}
     <ul class="slides">
