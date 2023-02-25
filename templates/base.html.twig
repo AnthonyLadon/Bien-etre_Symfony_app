@@ -32,11 +32,19 @@
 									<li><a id="partenaires" href="{{path ("listePartenaires")}}"><i class="fa-solid fa-handshake-simple"></i>&nbsp;Prestataires</a></li>
 									<li><a id="services" href="{{path ("listeServices")}}"><i class="fa-solid fa-bell-concierge"></i>&nbsp;Services</a></li>
 									<li><a id="services" href="{{path ("listeStages")}}"><i class="fa-solid fa-person-chalkboard"></i>&nbsp;Stages</a></li>
-									<li><a href="{{path ("security_login")}}"><i class="fa-solid fa-right-to-bracket"></i>&nbsp;Connection</a></li>
-									<li><a href="{{path ("inscription")}}"><i class="fa-solid fa-user-plus"></i>&nbsp;Inscription</a></li>
-									{# accés au lien seulement si le user est authentifié #}
+										{# accés au lien seulement si le user est authentifié #}
+									{% if app.user %}
+										<li><a href="{{ path('app_logout') }}"><i class="fa-solid fa-right-from-bracket"></i>&nbsp;Déconnection</a></li>
+									{% else %}
+										<li><a href="{{path ("security_login")}}"><i class="fa-solid fa-right-to-bracket"></i>&nbsp;Connection</a></li>
+									{% endif %}
+										{# accés au lien seulement si le user est authentifié #}
+									{% if not app.user %}
+										<li><a href="{{path ("inscription")}}"><i class="fa-solid fa-user-plus"></i>&nbsp;Inscription</a></li>
+									{% endif %}
+										{# accés au lien seulement si le user est authentifié #}
 									{% if app.user and is_granted('ROLE_USER') and not is_granted('ROLE_ADMIN') and not is_granted('ROLE_PREST') %}
-									{# affichage avatar si le user a une photo de profil (sinon icone) #}
+										{# affichage avatar si le user a une photo de profil (sinon icone) #}
 										{% if app.user.internautes.image is defined and app.user.roles[0] == 'ROLE_USER' %}
 											{% if app.user.internautes.image %}
 												<li><a href="{{path ("profil_user", {id: app.user.internautes.id})}}"><img class="profile-avatar" src="{{ asset('images/avatars/' ~ app.user.internautes.image) }}" alt="logo utilisateur"></a></li>
@@ -47,7 +55,7 @@
 									{% endif %}
 									{% if is_granted('ROLE_PREST')%}
 										{# affichage avatar si le prestataire a une photo de profil (sinon icone) #}
-										<a href="{{path ("profil_prest", {id: app.user.internautes.id})}}">Profil prestataire</a>
+										<a href="{{path ("profil_prest", {id: app.user.internautes.id})}}"><i class="fa-solid fa-user"></i>&nbsp;Ma page</a>
 									{% endif %}
 									{% if is_granted('ROLE_ADMIN') %}
     									<li ><a href="{{path ("admin")}}"><i class="fa-solid fa-screwdriver-wrench"></i>&nbsp;Admin</a></li>
