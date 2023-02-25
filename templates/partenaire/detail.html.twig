@@ -94,5 +94,15 @@
     <p>{{ partenaire.utilisateur.adresseRue }} {{ partenaire.utilisateur.adresseNum }}</p>
     <p>{{ partenaire.utilisateur.codePostal }} {{ partenaire.utilisateur.commune }}</p>
     <div id="map"></div>
+    <div>
+      <p>Commentaires</p>
+      {% for com in partenaire.commentaires %}
+        <div>
+          <p>{{com.titre}}</p>
+          <p>{{com.contenu}}</p>
+          <p>Le {{com.dateEncodage| date('d/m/Y')}} par: {{com.internaute }}</p>
+        </div>
+      {% endfor %}
+    </div>
   </article>
 {% endblock %}

@@ -71,12 +71,13 @@ class RegistrationFormType extends AbstractType
                         'message' => 'Veuillez entrer un mot de passe'
                     ]),
                     new Length([
+                        // contrainte de longueur du mot de passe
                         'min' => 7,
                         'minMessage' => 'Votre mot de passe doit contenir au minimum {{ limit }} caractères',
                         // max length allowed by Symfony for security reasons
                         'max' => 4096,
                     ]),
-                    // Regex pour obliger l'utilisateur à créer un mot de passe solide
+                    // Regex pour obliger l'utilisateur à créer un mot de passe solide (minimum 1 majuscule, 1 caractere special, 1 chiffre)
                     new Regex("/^(?=.*\d)(?=.*[A-Z])(?=.*[@#$%])(?!.*(.)\1{2}).*[a-z]/m",
                     'Désolé votre mot de passe n\'est pas valide, veuillez le modifier en veillant à respecter les contraintes de complexité'
                     )
