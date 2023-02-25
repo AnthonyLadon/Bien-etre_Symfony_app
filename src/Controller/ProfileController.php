@@ -31,9 +31,9 @@ class ProfileController extends AbstractController
     /**
      * @Route("/profil/{id}",name="profil_user")
      */
-    public function index(): Response
+    public function showUser(): Response
     {
-        return $this->render('profile/index.html.twig', [
+        return $this->render('profil_utilisateur/index.html.twig', [
         ]);
     }
 
@@ -55,10 +55,10 @@ class ProfileController extends AbstractController
           $entityManager->persist($util);
           $entityManager->flush();
     
-          return $this->render('profile/index.html.twig', [
+          return $this->render('profil_utilisateur/index.html.twig', [
           ]);
         }
-        return $this->render('profile/editAdress.html.twig', [
+        return $this->render('profil_utilisateur/editAdress.html.twig', [
             'formProfile' => $form->createView(),
             ]);
     }
@@ -80,10 +80,10 @@ class ProfileController extends AbstractController
           $entityManager->persist($internaute);
           $entityManager->flush();
     
-          return $this->render('profile/index.html.twig', [
+          return $this->render('profil_utilisateur/index.html.twig', [
           ]);
         }
-        return $this->render('profile/editInfos.html.twig', [
+        return $this->render('profil_utilisateur/editInfos.html.twig', [
           'form' => $form->createView(),
       ]);
      }
@@ -115,19 +115,21 @@ class ProfileController extends AbstractController
           
 
           $prestataire = new Prestataire();
+          $prestataire->setUtilisateur($utilisateur);
           $prestataire->setNom($nom);
           $prestataire->setSiteWeb($website);
           $prestataire->setTel($tel);
           $prestataire->setTvaNum($tva);
 
-          $utilisateur->setRoles(["ROLE_PREST"]);
+          $utilisateur->setRoles(["ROLE_USER", "ROLE_PREST"]);
+          $utilisateur->setTypeUtilisateur('prestataire');
 
           $entityManager->persist($utilisateur);
           $entityManager->persist($prestataire);
           $entityManager->flush();
 
 
-      return $this->redirectToRoute('home', [
+      return $this->redirectToRoute('security_login', [
         
       ]);
     }
@@ -136,4 +138,20 @@ class ProfileController extends AbstractController
       'PrestataireForm' => $form->createView()
     ]);
   }
+
+
+    // ----------------------------------------------------------------
+    // Afficher profil prestataire
+    // ----------------------------------------------------------------
+
+     /**
+     * @Route("/profil_prestataire/{id}",name="profil_prest")
+     */
+    public function showPrest(): Response
+    {
+        return $this->render('profil_prestataire/index.html.twig', [
+        ]);
+    }
+
+
 }

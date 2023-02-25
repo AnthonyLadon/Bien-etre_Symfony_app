@@ -17,10 +17,19 @@ class LoginSecurityController extends AbstractController
      */
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
-        // redirige vers la page de profil si utilisateur dèjà connecté
-        if ($this->getUser()) {
-            return $this->render('profile/index.html.twig');
+        
+        if ($this->getUser()){
+
+        $roles = $this->getUser()->getRoles();
+
+        // redirige vers la page de prestataire s'il s'agit d'un prestataire connecté
+        if (in_array('ROLE_PREST', $roles)){
+            return $this->render('profil_prestataire/index.html.twig');
+        }else{
+            // ou alors page profil utilisateur si user connecté
+            return $this->render('profil_utilisateur/index.html.twig');
         }
+    }
 
         // get the login error if there is one
         $error = $authenticationUtils->getLastAuthenticationError();

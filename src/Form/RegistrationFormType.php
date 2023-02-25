@@ -10,6 +10,7 @@ use App\Entity\Utilisateur;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Validator\Constraints\Regex;
 use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
@@ -59,7 +60,7 @@ class RegistrationFormType extends AbstractType
             // Utilisation du type RepeatedType afin de forcer l'utilisateur à entrer 2 fois
             // son mot de passe (Et si match des 2 MDP -> envoi)
             ->add('plainPassword', RepeatedType::class, [
-                'first_options'  => ['label' => 'Choisissez un mot de passe'],
+                'first_options'  => ['label' => 'Choisissez un mot de passe (Minimum 7 caractères de long, une majuscule, Un chiffre et un symbole)'],
                 'second_options' => ['label' => 'Veuillez repeter le mot de passe'],
                 'type' => PasswordType::class,
                 'invalid_message' => 'Attention! Les deux mots de passe doivent correspondre',
@@ -70,11 +71,15 @@ class RegistrationFormType extends AbstractType
                         'message' => 'Veuillez entrer un mot de passe'
                     ]),
                     new Length([
-                        'min' => 6,
+                        'min' => 7,
                         'minMessage' => 'Votre mot de passe doit contenir au minimum {{ limit }} caractères',
                         // max length allowed by Symfony for security reasons
                         'max' => 4096,
                     ]),
+                    // Regex pour obliger l'utilisateur à créer un mot de passe solide
+                    new Regex("/^(?=.*\d)(?=.*[A-Z])(?=.*[@#$%])(?!.*(.)\1{2}).*[a-z]/m",
+                    'Désolé votre mot de passe n\'est pas valide, veuillez le modifier en veillant à respecter les contraintes de complexité'
+                    )
                 ],
             ])
         ;
