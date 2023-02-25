@@ -96,6 +96,13 @@
     <div id="map"></div>
     <div>
       <p>Commentaires</p>
+      {% if is_granted('ROLE_USER') and not is_granted('ROLE_PREST') %}
+      <div>
+        <p>Ajouter un commentaire</p>
+        {{form(form) }}
+      </div>
+      {% endif %}
+
       {% for com in partenaire.commentaires %}
         <div>
           <p>{{com.titre}}</p>

@@ -2,8 +2,12 @@
 
 namespace App\Controller;
 
+use App\Entity\Commentaire;
 use App\Entity\Prestataire;
+use App\Entity\Utilisateur;
+use App\Form\CommentaireType;
 use Doctrine\DBAL\Types\TextType;
+use App\Form\RegistrationFormType;
 use App\Form\PrestataireSearchType;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
@@ -11,6 +15,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class PartenaireController extends AbstractController
@@ -39,20 +44,46 @@ class PartenaireController extends AbstractController
         ]);
     }
 
-    // Affichage detail d'un Prestataire
+    // Affichage detail d'un Prestataire + commentaire (si authentifié en tant qu'User)
 
     /**
      * @Route("partenaires/detail/{id}", name="detailPartenaire")
      */
 
-    public function detailPrestataire($id, EntityManagerInterface $entityManager, Request $request, PaginatorInterface $paginator)
+     // userInterface permet de récupérer l'utilisateur actuellemnt authentifié
+    public function detailPrestataire($id, EntityManagerInterface $entityManager, Request $request, UserInterface $user, PaginatorInterface $paginator)
     {
 
         $repository = $entityManager->getRepository(Prestataire::class);
         $partenaire = $repository->find($id);
 
+        $commentaire = new Commentaire;
+        $form = $this->createForm(CommentaireType::class, $commentaire);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $form = $form->getData();
+            $commentaire->setTitre($form->getTitre());
+            $commentaire->setContenu($form->getContenu());
+            $commentaire->setDateEncodage(new \DateTime);
+            $commentaire->setPrestataire($partenaire);
+            $commentaire->setInternaute($user->getInternautes());
+
+            $entityManager->persist($commentaire);
+            $entityManager->flush();
+
+
+            return $this->redirectToRoute('detailPartenaire',  [
+                'id' => $partenaire->getId(),
+            ]);
+        }
+
+
         return $this->render('partenaire/detail.html.twig', [
             'partenaire' => $partenaire,
+            'form' => $form->createView(),
         ]);
     }
+
 }
