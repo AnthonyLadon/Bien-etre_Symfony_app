@@ -24,9 +24,6 @@ class PrestataireRegisterType extends AbstractType
             ->add('siteWeb', UrlType::class)
             ->add('tel', NumberType::class)
             ->add('tvaNum', NumberType::class)
-            // ->add('utilisateur', EntityType::class,[
-            //     'class' => Utilisateur::class,
-            // ])
             ->add ('proposer' )
             ->add('soumettre', SubmitType::class, 
             ['label' => 'envoyer']

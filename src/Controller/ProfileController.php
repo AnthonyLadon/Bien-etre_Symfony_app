@@ -115,7 +115,7 @@ class ProfileController extends AbstractController
           $website = $form->getSiteWeb();
           $tel = $form->getTel();
           $tva = $form->getTvaNum();
-          
+          $proposer = $form->getProposer();
 
           $prestataire = new Prestataire();
           $prestataire->setUtilisateur($utilisateur);
@@ -123,8 +123,13 @@ class ProfileController extends AbstractController
           $prestataire->setSiteWeb($website);
           $prestataire->setTel($tel);
           $prestataire->setTvaNum($tva);
+          // boucle pour charger les différentes catégories selectionnées dans le formualaire
+          foreach($proposer as $p){
+            $prestataire->addProposer($p);
+            $entityManager->persist($prestataire);
+          }
 
-          $utilisateur->setRoles(["ROLE_USER", "ROLE_PREST"]);
+          $utilisateur->setRoles(["ROLE_PREST"]);
           $utilisateur->setTypeUtilisateur('prestataire');
 
           $entityManager->persist($utilisateur);
@@ -163,7 +168,6 @@ class ProfileController extends AbstractController
 
         $form = $form->getData();
         $stage->setPrestataire($partenaire);
-
 
         $entityManager->persist($stage);
         $entityManager->flush();

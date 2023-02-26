@@ -4,18 +4,12 @@ namespace App\Controller;
 
 use App\Entity\Commentaire;
 use App\Entity\Prestataire;
-use App\Entity\Utilisateur;
 use App\Form\CommentaireType;
-use Doctrine\DBAL\Types\TextType;
-use App\Form\RegistrationFormType;
-use App\Form\PrestataireSearchType;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class PartenaireController extends AbstractController
@@ -51,7 +45,7 @@ class PartenaireController extends AbstractController
      */
 
      // userInterface permet de récupérer l'utilisateur actuellemnt authentifié
-    public function detailPrestataire($id, EntityManagerInterface $entityManager, Request $request, UserInterface $user, PaginatorInterface $paginator)
+    public function detailPrestataire($id, EntityManagerInterface $entityManager, Request $request, PaginatorInterface $paginator)
     {
 
         $repository = $entityManager->getRepository(Prestataire::class);
@@ -68,7 +62,10 @@ class PartenaireController extends AbstractController
             $commentaire->setContenu($form->getContenu());
             $commentaire->setDateEncodage(new \DateTime);
             $commentaire->setPrestataire($partenaire);
-            $commentaire->setInternaute($user->getInternautes());
+            $utilisateur = $partenaire->getUtilisateur();
+            //dd($utilisateur);
+            $commentaire->setInternaute($utilisateur->getInternautes());
+
 
             $entityManager->persist($commentaire);
             $entityManager->flush();

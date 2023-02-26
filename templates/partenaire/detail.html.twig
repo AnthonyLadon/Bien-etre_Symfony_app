@@ -89,27 +89,30 @@
         <img src="https://images.pexels.com/photos/14686959/pexels-photo-14686959.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" />
         <img src="https://images.pexels.com/photos/12620000/pexels-photo-12620000.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" />
     </div>
-    </div>
-    <p>Pour me trouver: </p>
-    <p>{{ partenaire.utilisateur.adresseRue }} {{ partenaire.utilisateur.adresseNum }}</p>
-    <p>{{ partenaire.utilisateur.codePostal }} {{ partenaire.utilisateur.commune }}</p>
-    <div id="map"></div>
     <div>
-      <p>Commentaires</p>
-      {% if is_granted('ROLE_USER') and not is_granted('ROLE_PREST') %}
-      <div>
-        <p>Ajouter un commentaire</p>
-        {{form(form) }}
-      </div>
+      <p>Pour me trouver: </p>
+      {% if partenaire.utilisateur.adresseRue is defined and  partenaire.utilisateur.adresseNum is defined and partenaire.utilisateur.codePostal is defined and partenaire.utilisateur.commune is defined%}
+        <p>{{ partenaire.utilisateur.adresseRue }} {{ partenaire.utilisateur.adresseNum }}</p>
+        <p>{{ partenaire.utilisateur.codePostal }} {{ partenaire.utilisateur.commune }}</p>
+        <div id="map"></div>
+      {% else %}
+       <p>Oops, je n'ai pas encore renseigné mon adresse</p>
       {% endif %}
-
-      {% for com in partenaire.commentaires %}
-        <div>
-          <p>{{com.titre}}</p>
-          <p>{{com.contenu}}</p>
-          <p>Le {{com.dateEncodage| date('d/m/Y')}} par: {{com.internaute }}</p>
-        </div>
-      {% endfor %}
     </div>
+    <p>Commentaires</p>
+    {% if is_granted('ROLE_USER') and not is_granted('ROLE_PREST') %}
+    <div>
+      <p>Ajouter un commentaire</p>
+      {{form(form) }}
+    </div>
+    {% endif %}
+
+    {% for com in partenaire.commentaires %}
+      <div>
+        <p>{{com.titre}}</p>
+        <p>{{com.contenu}}</p>
+        <p>Le {{com.dateEncodage| date('d/m/Y')}} par: {{com.internaute }}</p>
+      </div>
+    {% endfor %}
   </article>
 {% endblock %}
