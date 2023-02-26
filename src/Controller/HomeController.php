@@ -57,7 +57,8 @@ class HomeController extends AbstractController
 
         $repositoryCategorie = $entityManager->getRepository(CategorieService::class);
         $repositoryPrestataires = $entityManager->getRepository(Prestataire::class);
-        // Permet de récupérer le service qui a le champ en avant = 1
+        // Permet de récupérer le service qui a le champ en avant = 1 (et de s'assurer d'en récupérer qu'un seul
+        // meme si d'autres on le statut 'en avant')
         $highlightService = $repositoryCategorie->findOneBy(['enAvant' => 1]);
         // Récupère les derniers prestataires à partir du plus grand ID et limite à 4 resultats
         $lastPrestataires = $repositoryPrestataires->findLastPrestataires();

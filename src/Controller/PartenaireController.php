@@ -82,5 +82,6 @@ class PartenaireController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+    
 
 }

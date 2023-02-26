@@ -3,7 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\Stage;
+use App\Form\PromoType;
 use App\Form\StageType;
+use App\Entity\Promotion;
 use App\Entity\Internaute;
 use App\Entity\Prestataire;
 use App\Entity\Utilisateur;
@@ -179,6 +181,40 @@ class ProfileController extends AbstractController
   }
 
         return $this->render('profil_prestataire/index.html.twig', [
+          'partenaire' => $partenaire,
+          'form' => $form->createView()
+        ]);
+    }
+
+
+
+     /**
+     * @Route("/profil_prestataire/promo/{id}", name="profil_prest_promo")
+     */
+    public function prestAddPromo(EntityManagerInterface $entityManager, $id, Request $request): Response
+    {
+      $repository = $entityManager->getRepository(Prestataire::class);
+      $partenaire = $repository->find($id);
+
+      $promo = new Promotion();
+      $form = $this->createForm(PromoType::class, $promo);
+      $form->handleRequest($request);
+
+      if ($form->isSubmitted() && $form->isValid()) {
+
+        $form = $form->getData();
+        $promo->setPrestataire($partenaire);
+
+        $entityManager->persist($promo);
+        $entityManager->flush();
+
+
+    return $this->redirectToRoute('profil_prest', [
+      'id' => $partenaire->getId(),
+    ]);
+  }
+
+        return $this->render('profil_prestataire/ajout_promo.html.twig', [
           'partenaire' => $partenaire,
           'form' => $form->createView()
         ]);

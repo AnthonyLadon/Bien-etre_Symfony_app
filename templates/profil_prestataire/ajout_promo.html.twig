@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ajout promotion{% endblock %}
+
+{% block titreh1 %}
+	<h1>Ajouter une promotion</h1>
+{% endblock %}
+
+{% block searchForm %}
+	{% embed "_searchFormToggle.html.twig" %}{% endembed %}
+{% endblock %}
+
+
+{% block body %}
+
+{{form(form) }}
+
+{% endblock %}
