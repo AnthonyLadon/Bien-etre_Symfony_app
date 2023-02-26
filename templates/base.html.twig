@@ -53,9 +53,8 @@
 											{% endif %}
 										{% endif %}
 									{% endif %}
-									{% if is_granted('ROLE_PREST')%}
-										{# affichage avatar si le prestataire a une photo de profil (sinon icone) #}
-										<a href="{{path ("profil_prest", {id: app.user.internautes.id})}}"><i class="fa-solid fa-user"></i>&nbsp;Ma page</a>
+									{% if is_granted('ROLE_PREST') %}
+										<a href="{{path ("profil_prest", {id: app.user.prestataire.id})}}"><i class="fa-solid fa-user"></i>&nbsp;Ma page</a>
 									{% endif %}
 									{% if is_granted('ROLE_ADMIN') %}
     									<li ><a href="{{path ("admin")}}"><i class="fa-solid fa-screwdriver-wrench"></i>&nbsp;Admin</a></li>
@@ -83,6 +82,7 @@
 			</header>
 					
 		<div class="l-main-wrap"> 
+	
 		
 		{% block body %}{% endblock %}
 		

@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Entity\Stage;
+use App\Form\StageType;
 use App\Entity\Internaute;
 use App\Entity\Prestataire;
 use App\Entity\Utilisateur;
@@ -13,6 +15,7 @@ use Symfony\Bridge\Doctrine\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 
@@ -145,13 +148,36 @@ class ProfileController extends AbstractController
     // ----------------------------------------------------------------
 
      /**
-     * @Route("/profil_prestataire/{id}",name="profil_prest")
+     * @Route("/profil_prestataire/{id}", name="profil_prest")
      */
-    public function showPrest(): Response
+    public function showPrest(EntityManagerInterface $entityManager, $id, Request $request): Response
     {
+      $repository = $entityManager->getRepository(Prestataire::class);
+      $partenaire = $repository->find($id);
+
+      $stage = new Stage();
+      $form = $this->createForm(StageType::class, $stage);
+      $form->handleRequest($request);
+
+      if ($form->isSubmitted() && $form->isValid()) {
+
+        $form = $form->getData();
+        $stage->setPrestataire($partenaire);
+
+
+        $entityManager->persist($stage);
+        $entityManager->flush();
+
+
+    return $this->redirectToRoute('profil_prest', [
+      'id' => $partenaire->getId(),
+    ]);
+  }
+
         return $this->render('profil_prestataire/index.html.twig', [
+          'partenaire' => $partenaire,
+          'form' => $form->createView()
         ]);
     }
-
 
 }

@@ -36,9 +36,6 @@ class Prestataire
     #[ORM\OneToMany(mappedBy: 'prestataire', targetEntity: Commentaire::class)]
     private Collection $commentaires;
 
-    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
-    private ?Utilisateur $utilisateur = null;
-
     #[ORM\OneToMany(mappedBy: 'images_Logo', targetEntity: Images::class)]
     private Collection $images;
 
@@ -50,6 +47,9 @@ class Prestataire
 
     #[ORM\ManyToMany(targetEntity: Internaute::class, inversedBy: 'prestataires')]
     private Collection $favori;
+
+    #[ORM\OneToOne(mappedBy: 'prestataire', cascade: ['persist', 'remove'])]
+    private ?Utilisateur $utilisateur = null;
 
     public function __construct()
     {
@@ -205,18 +205,6 @@ class Prestataire
         return $this;
     }
 
-    public function getUtilisateur(): ?Utilisateur
-    {
-        return $this->utilisateur;
-    }
-
-    public function setUtilisateur(?Utilisateur $utilisateur): self
-    {
-        $this->utilisateur = $utilisateur;
-
-        return $this;
-    }
-
     /**
      * @return Collection<int, Images>
      */
@@ -321,6 +309,28 @@ class Prestataire
     public function removeFavori(Internaute $favori): self
     {
         $this->favori->removeElement($favori);
+
+        return $this;
+    }
+
+    public function getUtilisateur(): ?Utilisateur
+    {
+        return $this->utilisateur;
+    }
+
+    public function setUtilisateur(?Utilisateur $utilisateur): self
+    {
+        // unset the owning side of the relation if necessary
+        if ($utilisateur === null && $this->utilisateur !== null) {
+            $this->utilisateur->setPrestataire(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($utilisateur !== null && $utilisateur->getPrestataire() !== $this) {
+            $utilisateur->setPrestataire($this);
+        }
+
+        $this->utilisateur = $utilisateur;
 
         return $this;
     }
