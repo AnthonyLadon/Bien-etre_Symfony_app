@@ -34,8 +34,7 @@
         {% endif %}
       {% endfor %}
     {% endif %}
-   
-    <a href="{{path('profil_prest_promo',{id : partenaire.id})}}">Ajouter une promotion</a>
+  
     {% if partenaire.proposer is defined %}
       <h3>Mes catégories de service</h3>
       <div class="prestataire-detail-services-list">
@@ -51,7 +50,7 @@
       </div>
     {% endif %}
 	<a href="">Ajouter une catégorie de service</a>
-    {% if partenaire.stage is defined %}
+    {% if partenaire.stage is not empty %}
     <h3>Les stages que je propose actuellement</h3>
     <ul>
         {% for st in partenaire.stage %}
@@ -69,7 +68,8 @@
 	<a href="">Ajouter un stage</a>
 	{{form(form) }}
   <div>
-    {% if partenaire.promotion %}
+  <h3>Mes promotions</h3>
+    {% if partenaire.promotion is not empty %}
       {% for pr in partenaire.promotion %}
         <div>
           <p><span>Promotion!</span> Dans la catégorie "{{pr.categorieService}}", du: {{pr.debut|date("d/m/Y") }} au: {{pr.fin|date("d/m/Y")}}</p>
@@ -77,6 +77,8 @@
           {{ pr.description }}
         </div>
       {% endfor %}
+    {% else %}
+     <p>Je n'ai pas de promotion pour le moment </p>
     {% endif %}
         <a href="{{path('profil_prest_promo',{id: partenaire.id})}}">Ajouter une promotion</a>
   </div>

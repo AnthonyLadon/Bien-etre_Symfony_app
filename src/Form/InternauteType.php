@@ -26,24 +26,6 @@ class InternauteType extends AbstractType
             //->add('prestataires')
             // ->add('utilisateur')
             //->add('image')
-            ->add('image', FileType::class, [
-                'label' => 'Photo de profil',
-                'mapped' => false,
-                'required' => false,
-
-                // unmapped fields can't define their validation using annotations
-                // in the associated entity, so you can use the PHP constraint classes
-                'constraints' => [
-                    new File([
-                        'maxSize' => '1024k',
-                        'mimeTypes' => [
-                            'application/pdf',
-                            'application/x-pdf',
-                        ],
-                        'mimeTypesMessage' => 'Choisissez une photo valide',
-                    ])
-                ],
-            ])
             ->add('modifier', SubmitType::class, 
             ['label' => 'Enregistrer les modifications']);
     }

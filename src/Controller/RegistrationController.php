@@ -63,6 +63,8 @@ class RegistrationController extends AbstractController
             $entityManager->persist($internaute);
             $entityManager->flush();
 
+            $this->addFlash('success', 'Votre inscription a bien été prise en compte');
+
             // generate a signed url and email it to the user
             $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,
                 (new TemplatedEmail())

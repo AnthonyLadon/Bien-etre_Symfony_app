@@ -53,7 +53,7 @@ class Images
         return $this->image;
     }
 
-    public function setImage(?int $image): self
+    public function setImage(?string $image): self
     {
         $this->image = $image;
 

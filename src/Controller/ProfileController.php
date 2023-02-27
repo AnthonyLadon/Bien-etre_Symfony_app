@@ -3,8 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\Stage;
+use App\Entity\Images;
 use App\Form\PromoType;
 use App\Form\StageType;
+use App\Form\ImagesType;
 use App\Entity\Promotion;
 use App\Entity\Internaute;
 use App\Entity\Prestataire;
@@ -12,6 +14,7 @@ use App\Entity\Utilisateur;
 use App\Form\InternauteType;
 use App\Form\UtilisateurType;
 use App\Form\PrestataireRegisterType;
+use App\pictureService\pictureService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Doctrine\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Request;
@@ -19,6 +22,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Gedmo\Sluggable\Util\Urlizer;
 
 
 class ProfileController extends AbstractController
@@ -44,7 +48,7 @@ class ProfileController extends AbstractController
 
 
     // ----------------------------------------------------------------
-    // Modifier l'adresse de l'utilisateur (entitée utilisateur)
+    // Modifier l'adresse de l'internaute (entitée utilisateur)
     // ----------------------------------------------------------------
     /**
      * @Route("/editer_adresse/{id}",name="edit_adress")
@@ -59,6 +63,8 @@ class ProfileController extends AbstractController
           $entityManager = $this->getDoctrine()->getManager();
           $entityManager->persist($util);
           $entityManager->flush();
+
+          $this->addFlash('success', 'Votre adresse a bien été mise à jour');
     
           return $this->render('profil_utilisateur/index.html.twig', [
           ]);
@@ -80,10 +86,14 @@ class ProfileController extends AbstractController
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+          
+
           $internaute = $form->getData();
           $entityManager = $this->getDoctrine()->getManager();
           $entityManager->persist($internaute);
           $entityManager->flush();
+
+          $this->addFlash('success', 'Vos informations ont bien été mises à jour');
     
           return $this->render('profil_utilisateur/index.html.twig', [
           ]);
@@ -92,6 +102,54 @@ class ProfileController extends AbstractController
           'form' => $form->createView(),
       ]);
      }
+
+
+    // ----------------------------------------------------------------
+    // Modifier la photo de profil de l'utilisateur (internaute)
+    // ----------------------------------------------------------------
+    /**
+     * @Route("/ajout_image/{id}",name="addImageUser")
+     */
+    public function addImage(Request $request, Internaute $internaute, EntityManagerInterface $entityManager, $id): Response
+    {
+
+        $repository = $entityManager->getRepository(Internaute::class);
+        $internaute = $repository->findOneById($id);
+
+        $image = new Images();
+        $form = $this->createForm(ImagesType::class, $image);
+        $form->handleRequest($request);
+
+         if ($form->isSubmitted() && $form->isValid()) {
+           /** @var UploadedFile $uploadedFile */
+           $uploadedFile = $form['imageFile']->getData();
+           $destination = $this->getParameter('kernel.project_dir').'/public/images/uploads';
+
+           $originalFilename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
+           $newFilename = Urlizer::urlize($originalFilename).'-'.uniqid().'.'.$uploadedFile->guessExtension();
+
+           $uploadedFile->move(
+            $destination,
+            $newFilename
+            );
+
+           $image->setImage($newFilename);
+           $image->setImageInternaute($internaute);
+
+           $entityManager = $this->getDoctrine()->getManager();
+           $entityManager->persist($image);
+           $entityManager->flush();
+
+           $this->addFlash('success', 'Votre image a bien été enregistré');
+     
+           return $this->render('profil_utilisateur/index.html.twig', [
+           ]);
+         }
+
+       return $this->render('profil_utilisateur/addImage.html.twig', [
+        'form' => $form->createView(),
+     ]);
+    }
 
 
     // ----------------------------------------------------------------
@@ -137,6 +195,8 @@ class ProfileController extends AbstractController
           $entityManager->persist($utilisateur);
           $entityManager->persist($prestataire);
           $entityManager->flush();
+
+          $this->addFlash('success', 'Vous venez d\'être enregistré en tant que prestataire');
 
 
       return $this->redirectToRoute('security_login', [

@@ -70,6 +70,8 @@ class PartenaireController extends AbstractController
             $entityManager->persist($commentaire);
             $entityManager->flush();
 
+            $this->addFlash('success', 'Votre commentaire a bien été envoyé');
+
 
             return $this->redirectToRoute('detailPartenaire',  [
                 'id' => $partenaire->getId(),

@@ -16,6 +16,15 @@
      <a href="{{path ("prestataire_register", {id: app.user.id})}}">Devenir prestataire</a>
 {% endif %}
 
+<div class="">
+    {% if app.user.internautes.image != '' %}
+        <a href=""><img class="prestaire_img" src="{{ asset('images/uploads/' ~ app.user.internautes.image) }}" alt="photo de profil du prestataire"/></a>
+    {% else %}
+        <a href=""><img class="prestaire_img" src="{{ asset('images/avatars/blank_profile.webp') }}" alt="photo de profil du prestataire"/></a>
+    {% endif %}
+    <a href="{{path ("addImageUser", {id: app.user.internautes.id})}}">Modifier votre photo de profil</a>
+</div>
+
 
 {% if app.user.internautes.prenom is defined and app.user.internautes.nom is defined %}
     <h1>{{app.user.internautes.prenom}} {{app.user.internautes.nom}}<br></h1>

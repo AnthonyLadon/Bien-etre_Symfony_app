@@ -8,14 +8,15 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class ImagesType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('image', FileType::class,[
-                "label" => "Image",
+            ->add('imageFile', FileType::class, [
+                 "label" => "Image",
                 'mapped' => false,
                 'required' => false,
                 'constraints' => [
@@ -31,7 +32,10 @@ class ImagesType extends AbstractType
                         'mimeTypesMessage' => 'Veuillez uploder une image valide',
                     ])
                 ],
-            ]);
+            ])
+            ->add('enregistrer', SubmitType::class, 
+            ['label' => 'enregistrer']
+            );
     }
 
     public function configureOptions(OptionsResolver $resolver): void

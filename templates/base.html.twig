@@ -46,8 +46,8 @@
 									{% if app.user and is_granted('ROLE_USER') and not is_granted('ROLE_ADMIN') and not is_granted('ROLE_PREST') %}
 										{# affichage avatar si le user a une photo de profil (sinon icone) #}
 										{% if app.user.internautes.image is defined and app.user.roles[0] == 'ROLE_USER' %}
-											{% if app.user.internautes.image %}
-												<li><a href="{{path ("profil_user", {id: app.user.internautes.id})}}"><img class="profile-avatar" src="{{ asset('images/avatars/' ~ app.user.internautes.image) }}" alt="logo utilisateur"></a></li>
+											{% if app.user.internautes.image != '' %}
+												<li><a href="{{path ("profil_user", {id: app.user.internautes.id})}}"><img class="profile-avatar" src="{{ asset('images/uploads/' ~ app.user.internautes.image) }}" alt="logo utilisateur"></a></li>
 											{% else %}
 												<li><a href="{{path ("profil_user", {id: app.user.internautes.id})}}"><img class="profile-avatar" src="{{ asset('images/avatars/blank_profile.webp') }}" alt="logo utilisateur"></a></li>
 											{% endif %}
@@ -70,7 +70,6 @@
 						</div>
 					</div>
 
-
 						<div class='l-main-logo'>
 							<a href="{{path ('home')}}"><img src="{{asset ('images/logo.png')}}" alt="image-logo"></a>
 						</div>
@@ -80,10 +79,14 @@
 						</div>
 		</div>
 			</header>
-					
 		<div class="l-main-wrap"> 
 	
-		
+		{% for message in app.flashes('success') %}
+			<div class="">
+				{{message}}
+			</div>
+		{% endfor %}
+
 		{% block body %}{% endblock %}
 		
 	</body>
