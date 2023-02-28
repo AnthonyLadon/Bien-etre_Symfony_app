@@ -15,6 +15,7 @@ use App\Form\InternauteType;
 use App\Form\UtilisateurType;
 use App\Form\PrestataireRegisterType;
 use App\pictureService\pictureService;
+use App\Services\UploaderHelper;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Doctrine\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Request;
@@ -22,7 +23,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Gedmo\Sluggable\Util\Urlizer;
+
 
 
 class ProfileController extends AbstractController
@@ -110,44 +111,52 @@ class ProfileController extends AbstractController
     /**
      * @Route("/ajout_image/{id}",name="addImageUser")
      */
-    public function addImage(Request $request, Internaute $internaute, EntityManagerInterface $entityManager, $id): Response
+    public function addImage(Request $request, Internaute $internaute, UploaderHelper $uploaderHelper, EntityManagerInterface $entityManager, $id): Response
     {
 
         $repository = $entityManager->getRepository(Internaute::class);
         $internaute = $repository->findOneById($id);
+        // récupération image actuelle si elle existe
+        $img_user = $entityManager->getRepository(Images::class)->findOneBy(['image_internaute' => $internaute]);
 
         $image = new Images();
         $form = $this->createForm(ImagesType::class, $image);
         $form->handleRequest($request);
 
          if ($form->isSubmitted() && $form->isValid()) {
-           /** @var UploadedFile $uploadedFile */
-           $uploadedFile = $form['imageFile']->getData();
-           $destination = $this->getParameter('kernel.project_dir').'/public/images/uploads';
 
-           $originalFilename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
-           $newFilename = Urlizer::urlize($originalFilename).'-'.uniqid().'.'.$uploadedFile->guessExtension();
+          // Effacement de l'image en base de données + fichier -> dossier uploads
+          // if ($img_user){
+          //   $query = $entityManager->createQuery('DELETE FROM App\Entity\Images i WHERE i.image_internaute = :id')
+          //   ->setParameter('id', $internaute->getId());
+          //   $query->execute();
 
-           $uploadedFile->move(
-            $destination,
-            $newFilename
-            );
+          //   //! $fileSystem = new FileSystem;
+          //   //! $fileSystem->remove([$img_user, '/public/images/uploads']);
+          // }
 
-           $image->setImage($newFilename);
-           $image->setImageInternaute($internaute);
+           $uploadedImage = $form['imageFile']->getData();
+
+          if($uploadedImage){
+            $newImageName = $uploaderHelper->uploadImages($uploadedImage);
+            $image->setImage($newImageName);
+            $image->setImageInternaute($internaute);
+          }
 
            $entityManager = $this->getDoctrine()->getManager();
            $entityManager->persist($image);
            $entityManager->flush();
 
            $this->addFlash('success', 'Votre image a bien été enregistré');
-     
-           return $this->render('profil_utilisateur/index.html.twig', [
-           ]);
+
+           return $this->redirectToRoute('profil_user', [
+                "id" => $id
+            ]);
          }
 
        return $this->render('profil_utilisateur/addImage.html.twig', [
         'form' => $form->createView(),
+        'id' => $id
      ]);
     }
 
@@ -171,18 +180,10 @@ class ProfileController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
 
           $form = $form->getData();
-          $nom = $form->getNom();
-          $website = $form->getSiteWeb();
-          $tel = $form->getTel();
-          $tva = $form->getTvaNum();
           $proposer = $form->getProposer();
 
           $prestataire = new Prestataire();
           $prestataire->setUtilisateur($utilisateur);
-          $prestataire->setNom($nom);
-          $prestataire->setSiteWeb($website);
-          $prestataire->setTel($tel);
-          $prestataire->setTvaNum($tva);
           // boucle pour charger les différentes catégories selectionnées dans le formualaire
           foreach($proposer as $p){
             $prestataire->addProposer($p);

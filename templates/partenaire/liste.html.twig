@@ -36,6 +36,11 @@
 				<p>Désolé, il n'y a aucun prestataire correspondant à votre recherche</p>
 			</div>
 	{% endif %}
+
+	{% if app.user and app.user.roles[0] == 'ROLE_USER' %}
+     	<a href="{{path ("prestataire_register", {id: app.user.id})}}">M'inscrire en tant que prestataire</a>
+	{% endif %}
+	
 	{# display navigation #}
 	<div class='l-main-pagination'>
 		<div class="navigation">

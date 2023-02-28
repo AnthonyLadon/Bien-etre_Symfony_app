@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Prestataire;
 use App\Entity\Utilisateur;
 use App\Entity\CategorieService;
+use Doctrine\DBAL\Types\ArrayType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -22,11 +23,21 @@ class PrestataireRegisterType extends AbstractType
         $builder
             ->add('nom', TextType::class)
             ->add('siteWeb', UrlType::class)
-            ->add('tel', NumberType::class)
-            ->add('tvaNum', NumberType::class)
-            ->add ('proposer' )
+            ->add('tel', NumberType::class,[
+                'label' => 'Numéro de téléphone'
+            ])
+            ->add('tvaNum', NumberType::class,[
+                'label' => 'Numéro de TVA'
+            ])
+            ->add ('proposer', EntityType::class,[
+                "class" => CategorieService::class,
+                "multiple" => true,
+                "required" => false,
+                'label' => 'choisir une ou plusieurs catégories'
+
+            ])
             ->add('soumettre', SubmitType::class, 
-            ['label' => 'envoyer']
+            ['label' => 'M\'inscrire']
             )
         ;
     }
