@@ -101,7 +101,7 @@
     </div>
 
     <div class="prestataire-detail-adress">
-      <p class="prestataire-detail-title">Où me trouver: </p>
+      <h3 class="prestataire-detail-adress-title">Où me trouver: </h3>
       {% if partenaire.utilisateur.adresseRue is defined and  partenaire.utilisateur.adresseNum is defined and partenaire.utilisateur.codePostal is defined and partenaire.utilisateur.commune is defined%}
         <p>{{ partenaire.utilisateur.adresseRue }} {{ partenaire.utilisateur.adresseNum }}</p>
         <p>{{ partenaire.utilisateur.codePostal }} {{ partenaire.utilisateur.commune }}</p>
@@ -111,27 +111,39 @@
       {% endif %}
     </div>
     
-    <p>Commentaires</p>
     {% if is_granted('ROLE_USER') and not is_granted('ROLE_PREST') %}
-    <div>
-      <p>Ajouter un commentaire</p>
-      {{form(form) }}
+    <div class="prestataire-detail-add-comment-form">
+      <h3 class="prestataire-detail-add-comment-form-title">Ajouter un commentaire</h3>
+      {{ form_start(form) }}
+      <div class="prestataire-detail-add-comment-form-row">
+        {{ form_label(form.titre) }}
+        {{ form_widget(form.titre) }}
+      </div>
+      <div class="prestataire-detail-add-comment-form-row">
+        {{ form_label(form.contenu) }}
+        {{ form_widget(form.contenu) }}
+      </div>
+      <div class="prestataire-detail-add-comment-form-submit">
+        {{ form_widget(form.commenter) }}
+      </div>
+      {{ form_end(form) }}
     </div>
     {% endif %}
 
-    <div class="prestataire-detail-comments">
+    <div class="prestataire-detail-comments-zone">
+       <h3 class="prestataire-detail-comments-title">Commentaires</h3>
       {% for com in partenaire.commentaires %}
-        <div>
-          <p>{{com.titre}}</p>
-          <p>{{com.contenu}}</p>
-          <p>Le {{com.dateEncodage| date('d/m/Y')}} par: {{com.internaute }}</p>
+        <div class="prestataire-detail-comments">
+          <h4>{{com.titre}}</h4>
+          <p class="prestataire-detail-comments-content">{{com.contenu}}</p>
+          <div class="prestataire-detail-comments-date-author">
+            <p>Le {{com.dateEncodage| date('d/m/Y')}}</p>
+            <p> par: {{com.internaute }}</p>
+          </div>
         </div>
+        <div class="prestataire-detail-comments-separator"></div>
       {% endfor %}
     </div>
   </article>
   
-  	{% if app.user and app.user.roles[0] == 'ROLE_USER' %}
-     	<a href="{{path ("prestataire_register", {id: app.user.id})}}">M'inscrire en tant que prestataire</a>
-	{% endif %}
-
 {% endblock %}

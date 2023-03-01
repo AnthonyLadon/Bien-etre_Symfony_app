@@ -13,17 +13,29 @@
   margin: 0.8rem 0 0 0;
 }
 
+.register-as-prestataire-link {
+  text-align: center;
+  margin: 0.5rem 0 0 0;
+
+  a {
+    color: $dark-third-color;
+  }
+  a:hover {
+    color: $smooth-minth;
+  }
+}
+
 .partenaires-card {
   margin: 2rem 0 0 0;
   width: 8rem;
   height: 10.5rem;
   background-color: $dark-third-color;
   border-radius: 10px;
-  box-shadow: 0px 29px 38px -15px rgba(0, 0, 0, 0.43);
+  box-shadow: 0px 29px 38px -15px $third-color;
   transition: 0.3s;
 
   &.partenaires-card:hover {
-    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 16px 0 $third-color;
   }
 
   h3 {
@@ -84,6 +96,7 @@
   margin: 1rem 0 0 0;
   text-align: center;
   color: $black-pink;
+  text-decoration: underline;
 }
 
 .prestataire-detail-services-list {
@@ -124,6 +137,7 @@
   margin: 1rem 0 0 0;
   text-align: center;
   color: $black-pink;
+  text-decoration: underline;
 }
 
 .prestataire-detail-stage-list {
@@ -152,6 +166,7 @@
   margin: 1rem 0 0 0;
   text-align: center;
   color: $black-pink;
+  text-decoration: underline;
 }
 
 .prestataire-detail-contact {
@@ -184,6 +199,13 @@
   }
 }
 
+.prestataire-detail-adress-title {
+  margin: 1rem 0 1rem 0;
+  text-align: center;
+  color: $black-pink;
+  text-decoration: underline;
+}
+
 .prestataire-detail-adress {
   border-radius: 5px;
   margin: 2rem 1rem 0 1rem;
@@ -193,6 +215,11 @@
 
   &.prestataire-detail-adress:hover {
     box-shadow: 0 8px 16px 0 $dark-third-color;
+  }
+
+  p {
+    text-align: center;
+    color: $dark-third-color;
   }
 }
 
@@ -212,6 +239,130 @@
     flex: 1 1 280px;
     opacity: 1;
   }
+}
+
+#map {
+  border-radius: 10px;
+  margin: 2rem auto;
+  padding: 1rem;
+}
+
+.prestataire-detail-add-comment-form {
+  border-radius: 5px;
+  margin: 2rem 1rem 0 1rem;
+  padding: 1rem 0 2rem 0;
+  box-shadow: 0px 12px 38px 5px $third-color;
+  transition: 0.3s;
+
+  &.prestataire-detail-add-comment-form:hover {
+    box-shadow: 0 8px 16px 0 $dark-third-color;
+  }
+}
+.prestataire-detail-add-comment-form-title {
+  margin: 1rem 0 2rem 0;
+  text-decoration: underline;
+  text-align: center;
+  color: $black-pink;
+  text-decoration: underline;
+}
+
+.prestataire-detail-add-comment-form-row {
+  text-align: center;
+  label {
+    margin: 0.3rem 0 0.3rem 0;
+    display: block;
+    color: $black-pink;
+  }
+  input {
+    display: block;
+    width: 80%;
+    height: 2rem;
+    margin: 0 auto;
+    border-radius: 5px;
+    outline: none;
+    color: $dark-third-color;
+    background-color: $secondary-transparent;
+    font-size: 1rem;
+  }
+  textarea {
+    display: block;
+    width: 80%;
+    height: 10rem;
+    margin: 0 auto;
+    border-radius: 5px;
+    color: $dark-third-color;
+    background-color: $secondary-transparent;
+    font-size: 1rem;
+    outline: none;
+    resize: none;
+  }
+}
+
+.prestataire-detail-add-comment-form-submit {
+  margin: 1rem auto 0;
+  text-align: center;
+  button {
+    width: 30%;
+    padding: 0rem;
+    margin: 0.5rem 0 0.5rem 0;
+    height: 2rem;
+    border: 1px solid $third-color;
+    background: $third-color;
+    text-align: center;
+    color: #fff;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 18px;
+
+    &:hover {
+      color: $darker-pink;
+    }
+  }
+}
+
+.prestataire-detail-comments-zone {
+  border-radius: 5px;
+  margin: 2rem 1rem 0 1rem;
+  padding: 1rem 0 6rem 0;
+  box-shadow: 0px 12px 38px 5px $third-color;
+  transition: 0.3s;
+
+  &.prestataire-detail-comments-zone:hover {
+    box-shadow: 0 8px 16px 0 $dark-third-color;
+  }
+}
+
+.prestataire-detail-comments-title {
+  margin: 1rem 0 3rem 0;
+  text-align: center;
+  color: $black-pink;
+  text-decoration: underline;
+}
+
+.prestataire-detail-comments {
+  padding: 0 5rem;
+  h4 {
+    color: $dark-third-color;
+    text-align: center;
+    margin: 0 0 0.8rem 0;
+  }
+}
+
+.prestataire-detail-comments-content {
+  color: $dark-third-color;
+}
+
+.prestataire-detail-comments-date-author {
+  margin: 1.5rem 0 0 0;
+  font-size: 0.8rem;
+  text-align: center;
+  color: $third-color;
+}
+.prestataire-detail-comments-separator {
+  margin: 2rem auto;
+  height: 2px;
+  background-color: $third-color;
+  width: 70%;
 }
 
 // ****************************************************************

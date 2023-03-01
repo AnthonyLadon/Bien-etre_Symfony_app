@@ -15,6 +15,11 @@
 <div class="countPrestataireFound">
     {{ pagination.getTotalItemCount }} prestataire(s) trouvé(s)
 </div>
+	{% if app.user and app.user.roles[0] == 'ROLE_USER' %}
+		<div class="register-as-prestataire-link">
+			<a href="{{path ("prestataire_register", {id: app.user.id})}}">M'inscrire en tant que prestataire</a>
+		</div>
+	{% endif %}
 	{% if partenaires %}
 		<div class="partenaires-list-wrap">
 			{% for partenaire in pagination %} 
@@ -38,10 +43,6 @@
 			</div>
 	{% endif %}
 
-	{% if app.user and app.user.roles[0] == 'ROLE_USER' %}
-     	<a href="{{path ("prestataire_register", {id: app.user.id})}}">M'inscrire en tant que prestataire</a>
-	{% endif %}
-	
 	{# display navigation #}
 	<div class='l-main-pagination'>
 		<div class="navigation">

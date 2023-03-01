@@ -42,6 +42,17 @@
   }
 }
 
+.flash-message {
+  margin: 0 auto;
+  padding: 0.5rem 0;
+  text-align: center;
+  height: 2.5rem;
+  width: 100%;
+  color: $black-pink;
+  border-color: aquamarine;
+  background-color: rgba(127, 255, 212, 0.556);
+}
+
 //************************************************************************************************
 
 @media screen and (min-width: $tablet-break) {
