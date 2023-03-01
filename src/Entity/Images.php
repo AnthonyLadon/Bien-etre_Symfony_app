@@ -106,11 +106,6 @@ class Images
         return $this;
     }
 
-    public function __toString()
-    {
-        return $this->image;
-    }
-
     public function getImageInternaute(): ?Internaute
     {
         return $this->image_internaute;
@@ -122,4 +117,10 @@ class Images
 
         return $this;
     }
+
+    public function __toString()
+    {
+        return $this->image;
+    }
+
 }

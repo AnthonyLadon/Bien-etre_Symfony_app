@@ -1,20 +1,27 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}ajout promotion{% endblock %}
+{% block title %}Modifier photo de profil{% endblock %}
 
 {% block titreh1 %}
-	<h1>Ajouter une promotion</h1>
+	<h1>Photo de profil</h1>
 {% endblock %}
 
 {% block searchForm %}
 	{% embed "_searchFormToggle.html.twig" %}{% endembed %}
 {% endblock %}
 
-
 {% block body %}
 
 {{ form_start(form) }}
-
+	{{ form_row(form.imageFile, {
+		'attr': {'class': ''},
+		'label': 'Numéro',
+		}) 
+	}}
+	{{ form_row(form.enregistrer, {
+		'attr': {'class': ''},
+		}) 
+	}}
 {{form_end(form)}}
 
 {% endblock %}

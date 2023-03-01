@@ -12,22 +12,23 @@
 {% endblock %}
 
 {% block body %}
-<div class="count">
+<div class="countPrestataireFound">
     {{ pagination.getTotalItemCount }} prestataire(s) trouvé(s)
 </div>
 	{% if partenaires %}
 		<div class="partenaires-list-wrap">
 			{% for partenaire in pagination %} 
 				<a class="partenaires-card" href="{{path('detailPartenaire',{id : partenaire.id})}}">
-				{% if partenaire.nom is defined %}
-					<h3>{{partenaire.nom}}</h3>
-				{% endif %}
-					{% if partenaire.images[0] is defined %}
-						<img class="prestaire_img" src="{{ asset('images/avatars/' ~ partenaire.images[0]) }}" alt="avatar du prestataire"/>
+					{% if partenaire.images[0] is defined and partenaire.images[0] != '' %}
+						<img class="prestataire_img" src="{{ asset('images/uploads/' ~ partenaire.images[0]) }}" alt="photo de profil du prestataire"/>
 					{% else %}
-						<img class="prestaire_img" src="{{ asset('images/avatars/blank_profile.webp') }}" alt="avatar du prestataire"/>
+						<img class="prestataire_img" src="{{ asset('images/avatars/blank_profile.webp') }}" alt="photo de profil du prestataire"/>
 					{% endif %}
-
+					{% if partenaire.nom is defined %}
+						<div>
+							<h3>{{partenaire.nom}}</h3>
+						</div>
+					{% endif %}
 				</a>
 			{% endfor %}
 		</div>

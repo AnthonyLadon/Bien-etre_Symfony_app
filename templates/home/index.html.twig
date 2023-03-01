@@ -107,11 +107,11 @@
           {% for p in lastPrestataires %}
             <div class="card">
               <div class="face face--front">
-              {% if p.images[0] is defined %}
-                    <img src="{{asset ('images/avatars/' ~ p.images[0] )}}" alt="photo prestataire">
-                  {% else %}
-                    <img src="{{asset ('images/avatars/blank_profile.webp')}}" alt="photo prestataire">
-              {% endif %}
+                {% if p.images[0] is defined and p.images[0] != '' %}
+                  <img  src="{{ asset('images/uploads/' ~ p.images[0]) }}" alt="photo de profil du prestataire"/>
+                {% else %}
+                  <img  src="{{ asset('images/avatars/blank_profile.webp') }}" alt="photo de profil du prestataire"/>
+                {% endif %}
               </div>
               <a class="face face--back" href="{{path('detailPartenaire',{id : p.id})}}">{{p.nom }}</a>
             </div>

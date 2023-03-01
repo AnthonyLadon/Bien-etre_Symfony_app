@@ -54,14 +54,13 @@ class ProfileController extends AbstractController
     /**
      * @Route("/editer_adresse/{id}",name="edit_adress")
      */
-    public function editAdress(Request $request, Utilisateur $util): Response
+    public function editAdress(Request $request,EntityManagerInterface $entityManager, Utilisateur $util): Response
     {
         $form = $this->createForm(UtilisateurType::class, $util);
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
           $util = $form->getData();
-          $entityManager = $this->getDoctrine()->getManager();
           $entityManager->persist($util);
           $entityManager->flush();
 
@@ -81,7 +80,7 @@ class ProfileController extends AbstractController
     /**
      * @Route("/editer_infos/{id}",name="edit_infos")
      */
-     public function editProfile(Request $request, Internaute $internaute): Response
+     public function editProfile(Request $request, Internaute $internaute, EntityManagerInterface $entityManager): Response
      {
         $form = $this->createForm(InternauteType::class, $internaute);
 
@@ -90,7 +89,6 @@ class ProfileController extends AbstractController
           
 
           $internaute = $form->getData();
-          $entityManager = $this->getDoctrine()->getManager();
           $entityManager->persist($internaute);
           $entityManager->flush();
 
@@ -106,12 +104,12 @@ class ProfileController extends AbstractController
 
 
     // ----------------------------------------------------------------
-    // Modifier la photo de profil de l'utilisateur (internaute)
+    // Ajouter/modifier la photo de profil de l'utilisateur (internaute)
     // ----------------------------------------------------------------
     /**
      * @Route("/ajout_image/{id}",name="addImageUser")
      */
-    public function addImage(Request $request, Internaute $internaute, UploaderHelper $uploaderHelper, EntityManagerInterface $entityManager, $id): Response
+    public function addImageUser(Request $request, Internaute $internaute, UploaderHelper $uploaderHelper, EntityManagerInterface $entityManager, $id): Response
     {
 
         $repository = $entityManager->getRepository(Internaute::class);
@@ -123,19 +121,23 @@ class ProfileController extends AbstractController
         $form = $this->createForm(ImagesType::class, $image);
         $form->handleRequest($request);
 
+
          if ($form->isSubmitted() && $form->isValid()) {
 
-          // Effacement de l'image en base de données + fichier -> dossier uploads
-          // if ($img_user){
-          //   $query = $entityManager->createQuery('DELETE FROM App\Entity\Images i WHERE i.image_internaute = :id')
-          //   ->setParameter('id', $internaute->getId());
-          //   $query->execute();
+          $uploadedImage = $form['imageFile']->getData();
 
-          //   //! $fileSystem = new FileSystem;
-          //   //! $fileSystem->remove([$img_user, '/public/images/uploads']);
-          // }
+          // if ($uplodedImage) -> évite de supprimer l'image si formulaire ne renvoit rien
+          if ($img_user && $uploadedImage){
+            // Suppression de l'image en base de données
+            $query = $entityManager->createQuery('DELETE FROM App\Entity\Images i WHERE i.image_internaute = :id')
+            ->setParameter('id', $internaute->getId());
+            $query->execute();
 
-           $uploadedImage = $form['imageFile']->getData();
+            // suppression du fichier dans le dossier uploads
+            $imgToDelete = $uploaderHelper->getUploadPath().'/'.$img_user;
+            unlink($imgToDelete);
+          }
+
 
           if($uploadedImage){
             $newImageName = $uploaderHelper->uploadImages($uploadedImage);
@@ -143,7 +145,6 @@ class ProfileController extends AbstractController
             $image->setImageInternaute($internaute);
           }
 
-           $entityManager = $this->getDoctrine()->getManager();
            $entityManager->persist($image);
            $entityManager->flush();
 
@@ -279,6 +280,124 @@ class ProfileController extends AbstractController
           'partenaire' => $partenaire,
           'form' => $form->createView()
         ]);
+    }
+
+
+
+
+    // ----------------------------------------------------------------
+    // Ajouter/modifier la photo de profil de Prestataire
+    // ----------------------------------------------------------------
+    /**
+     * @Route("/ajout_logo/{id}",name="addImagePrest")
+     */
+    public function addImagePrest(Request $request, Prestataire $prestataire, UploaderHelper $uploaderHelper, EntityManagerInterface $entityManager, $id): Response
+    {
+
+        $repository = $entityManager->getRepository(Prestataire::class);
+        $prestataire = $repository->findOneById($id);
+        // récupération image actuelle si elle existe
+        $img_prest = $entityManager->getRepository(Images::class)->findOneBy(['images_Logo' => $prestataire]);
+
+        $image = new Images();
+        $form = $this->createForm(ImagesType::class, $image);
+        $form->handleRequest($request);
+
+
+         if ($form->isSubmitted() && $form->isValid()) {
+
+          $uploadedImage = $form['imageFile']->getData();
+
+          // if ($uplodedImage) -> évite de supprimer l'image si formulaire ne renvoit rien
+          if ($img_prest && $uploadedImage){
+            // Suppression de l'image en base de données
+            $query = $entityManager->createQuery('DELETE FROM App\Entity\Images i WHERE i.images_Logo = :id')
+            ->setParameter('id', $prestataire->getId());
+            $query->execute();
+
+            // suppression du fichier dans le dossier uploads
+            $imgToDelete = $uploaderHelper->getUploadPath().'/'.$img_prest;
+            unlink($imgToDelete);
+          }
+
+          if($uploadedImage){
+            $newImageName = $uploaderHelper->uploadImages($uploadedImage);
+            $image->setImage($newImageName);
+            $image->setImagesLogo($prestataire);
+          }
+
+           $entityManager->persist($image);
+           $entityManager->flush();
+
+           $this->addFlash('success', 'Votre image a bien été enregistré');
+
+           return $this->redirectToRoute('profil_prest', [
+                "id" => $id
+            ]);
+         }
+
+       return $this->render('profil_prestataire/addImage.html.twig', [
+        'form' => $form->createView(),
+        'id' => $id
+     ]);
+    }
+
+
+    // ----------------------------------------------------------------
+    // Ajouter/modifier les photos du carrousel Prestataire
+    // ----------------------------------------------------------------
+    /**
+     * @Route("/ajout_logo/{id}",name="addImagePrest")
+     */
+    public function addImageCarrouselPrest(Request $request, Prestataire $prestataire, UploaderHelper $uploaderHelper, EntityManagerInterface $entityManager, $id): Response
+    {
+
+    //     $repository = $entityManager->getRepository(Prestataire::class);
+    //     $prestataire = $repository->findOneById($id);
+    //     // récupération image actuelle si elle existe
+    //     $img_prest = $entityManager->getRepository(Images::class)->findOneBy(['images_Logo' => $prestataire]);
+
+    //     $image = new Images();
+    //     $form = $this->createForm(ImagesType::class, $image);
+    //     $form->handleRequest($request);
+
+
+    //      if ($form->isSubmitted() && $form->isValid()) {
+
+    //       $uploadedImage = $form['imageFile']->getData();
+
+    //       // if ($uplodedImage) -> évite de supprimer l'image si formulaire ne renvoit rien
+    //       if ($img_prest && $uploadedImage){
+    //         // Suppression de l'image en base de données
+    //         $query = $entityManager->createQuery('DELETE FROM App\Entity\Images i WHERE i.images_Logo = :id')
+    //         ->setParameter('id', $prestataire->getId());
+    //         $query->execute();
+
+    //         // suppression du fichier dans le dossier uploads
+    //         $imgToDelete = $uploaderHelper->getUploadPath().'/'.$img_prest;
+    //         unlink($imgToDelete);
+    //       }
+
+    //       if($uploadedImage){
+    //         $newImageName = $uploaderHelper->uploadImages($uploadedImage);
+    //         $image->setImage($newImageName);
+    //         $image->setImagesLogo($prestataire);
+    //       }
+
+    //        $entityManager->persist($image);
+    //        $entityManager->flush();
+
+    //        $this->addFlash('success', 'Votre image a bien été enregistré');
+
+    //        return $this->redirectToRoute('profil_prest', [
+    //             "id" => $id
+    //         ]);
+    //      }
+
+    //    return $this->render('profil_prestataire/addImage.html.twig', [
+    //     'form' => $form->createView(),
+    //     'id' => $id
+    //  ]);
     }
 
 }

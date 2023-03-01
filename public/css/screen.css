@@ -1110,23 +1110,41 @@ input:checked + .slide-container .nav label {
   justify-items: center;
 }
 
+.countPrestataireFound {
+  text-align: center;
+  color: rgba(128, 128, 128, 0.538);
+  margin: 0.8rem 0 0 0;
+}
+
 .partenaires-card {
-  margin: 3rem 0 0 0;
-  max-width: 25rem;
-  background-color: #c9e9eb;
-  padding: 0.5rem 0.5rem 1.5rem 0.5rem;
+  margin: 2rem 0 0 0;
+  width: 8rem;
+  height: 10.5rem;
+  background-color: #c0898b;
   border-radius: 10px;
   box-shadow: 0px 29px 38px -15px rgba(0, 0, 0, 0.43);
+  transition: 0.3s;
+}
+.partenaires-card.partenaires-card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 .partenaires-card h3 {
   margin: 0 0 0.5rem 0;
   text-align: center;
-  color: #b96d6f;
-  font-size: 1rem;
+  color: #a1d2d0;
+  font-size: 0.7rem;
   font-weight: bold;
 }
-.partenaires-card img {
-  border-radius: 5px;
+
+.aucun-resultat-prestataire {
+  text-align: center;
+  color: #995557;
+}
+
+.prestataire_img {
+  border-radius: 5px 5px 0 0;
+  width: 8rem;
+  height: 8rem;
 }
 
 .aucun-resultat-prestataire {
@@ -1140,21 +1158,142 @@ input:checked + .slide-container .nav label {
 }
 
 .partenaire-avatar {
-  margin: 2rem 0 0 0;
+  margin: 4rem 0 0 0;
   text-align: center;
 }
 .partenaire-avatar img {
-  width: 6rem;
-  border-radius: 25px;
+  width: 7rem;
+  height: 9rem;
+  border-radius: 40px;
+  object-fit: cover;
+  box-shadow: 0px 29px 38px -15px #d2a1a3;
+}
+
+.prestataire-detail-services {
+  border-radius: 5px;
+  margin: 4rem 1rem 0 1rem;
+  padding: 1rem;
+  box-shadow: 0px 12px 38px 5px #d2a1a3;
+  transition: 0.3s;
+}
+.prestataire-detail-services.prestataire-detail-services:hover {
+  box-shadow: 0 8px 16px 0 #c0898b;
+}
+
+.prestataire-detail-services-list-title {
+  margin: 1rem 0 0 0;
+  text-align: center;
+  color: #995557;
+}
+
+.prestataire-detail-services-list ul {
+  margin: 0.8rem 0 0 0;
+}
+.prestataire-detail-services-list li {
+  text-align: center;
+  padding: 0.5rem 0 0 0;
+}
+.prestataire-detail-services-list a {
+  color: #c0898b;
+}
+.prestataire-detail-services-list a:hover {
+  color: #a1d2d0;
+}
+
+.prestataire-detail-no-service {
+  margin: 2rem 0 0 0;
+  text-align: center;
+  color: #b96d6f;
+}
+
+.prestataire-detail-stage {
+  border-radius: 5px;
+  margin: 2rem 1rem 0 1rem;
+  padding: 1rem;
+  box-shadow: 0px 12px 38px 5px #d2a1a3;
+  transition: 0.3s;
+}
+.prestataire-detail-stage.prestataire-detail-stage:hover {
+  box-shadow: 0 8px 16px 0 #c0898b;
+}
+
+.prestataire-detail-stage-list-title {
+  margin: 1rem 0 0 0;
+  text-align: center;
+  color: #995557;
+}
+
+.prestataire-detail-stage-list ul {
+  margin: 0.8rem 0 0 0;
+}
+.prestataire-detail-stage-list li {
+  text-align: center;
+  padding: 0.5rem 0 0 0;
+}
+.prestataire-detail-stage-list a {
+  color: #c0898b;
+}
+.prestataire-detail-stage-list a:hover {
+  color: #a1d2d0;
+}
+
+.prestataire-detail-no-stage {
+  margin: 2rem 0 0 0;
+  text-align: center;
+  color: #b96d6f;
+}
+
+.prestataire-detail-contact-title {
+  margin: 1rem 0 0 0;
+  text-align: center;
+  color: #995557;
+}
+
+.prestataire-detail-contact {
+  border-radius: 5px;
+  margin: 2rem 1rem 0 1rem;
+  padding: 1rem;
+  box-shadow: 0px 12px 38px 5px #d2a1a3;
+  transition: 0.3s;
+}
+.prestataire-detail-contact.prestataire-detail-contact:hover {
+  box-shadow: 0 8px 16px 0 #c0898b;
+}
+.prestataire-detail-contact ul {
+  margin: 0.8rem 0 0 0;
+}
+.prestataire-detail-contact li {
+  text-align: center;
+  padding: 0.5rem 0 0 0;
+  color: #c0898b;
+}
+.prestataire-detail-contact li span {
+  color: #995557;
+}
+.prestataire-detail-contact a {
+  color: #c0898b;
+}
+.prestataire-detail-contact a:hover {
+  color: #a1d2d0;
+}
+
+.prestataire-detail-adress {
+  border-radius: 5px;
+  margin: 2rem 1rem 0 1rem;
+  padding: 1rem;
+  box-shadow: 0px 12px 38px 5px #d2a1a3;
+  transition: 0.3s;
+}
+.prestataire-detail-adress.prestataire-detail-adress:hover {
+  box-shadow: 0 8px 16px 0 #c0898b;
 }
 
 .gallery {
-  margin: 0 auto;
+  margin: 2rem auto;
   display: flex;
   width: 100%;
-  height: 18rem;
+  height: 20rem;
 }
-
 .gallery img {
   min-width: 0;
   flex: 1 1 10px;
@@ -1162,7 +1301,6 @@ input:checked + .slide-container .nav label {
   opacity: 0.5;
   transition: 1s;
 }
-
 .gallery img:hover {
   flex: 1 1 280px;
   opacity: 1;
@@ -1177,19 +1315,18 @@ input:checked + .slide-container .nav label {
     justify-content: space-evenly;
     justify-items: center;
   }
-  .partenaires-card {
-    margin: 3rem 0 0 0;
-    max-width: 20rem;
-  }
 }
 @media screen and (min-width: 62rem) {
   .partenaires-list-wrap {
     margin: 2rem 3rem 1rem 3rem;
   }
   .partenaires-card {
-    margin: 3rem 0 0 0;
-    min-width: 24rem;
-    max-width: 28rem;
+    width: 10rem;
+    height: 12.5rem;
+  }
+  .prestataire_img {
+    width: 10rem;
+    height: 10rem;
   }
 }
 

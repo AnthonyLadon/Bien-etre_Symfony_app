@@ -21,9 +21,9 @@ class ImagesType extends AbstractType
                 'required' => false,
                 'constraints' => [
                     new File([
-                        'maxSize' => '1024k',
+                        'maxSize' => '5M',  // Taile max du fichier uplodé 
                         'mimeTypes' => [
-                            'image/png',
+                            'image/png', 
                             'image/jpg',
                             'image/jpeg',
                             'image/webp',

@@ -14,11 +14,12 @@
 {% block body %}
   <article>
       <div class="partenaire-avatar">
-      {% if partenaire.images[0] is defined %}
-            <a href=""><img class="prestaire_img" src="{{ asset('images/avatars/' ~ partenaire.images[0]) }}" alt="photo de profil du prestataire"/></a>
+      {% if partenaire.images[0] is defined and partenaire.images[0] != '' %}
+            <a href=""><img class="prestaire_img" src="{{ asset('images/uploads/' ~ partenaire.images[0]) }}" alt="photo de profil du prestataire"/></a>
       {% else %}
             <a href=""><img class="prestaire_img" src="{{ asset('images/avatars/blank_profile.webp') }}" alt="photo de profil du prestataire"/></a>
       {% endif %}
+      <a href="{{path ("addImagePrest", {id: app.user.prestataire.id})}}">Modifier votre photo de profil</a>
       {% if partenaire.nom %}
         <h3>{{partenaire.nom }}</h3>
       {% endif %}
@@ -113,24 +114,19 @@
         <img src="https://images.pexels.com/photos/12620000/pexels-photo-12620000.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" />
     </div>
     </div>
-    <a href="">Ajouter/modifier mon adresse</a>
     {% if partenaire.utilisateur.adresseRue is defined and  partenaire.utilisateur.adresseNum is defined and partenaire.utilisateur.codePostal is defined and partenaire.utilisateur.commune is defined%}
+          <a href="">Modifier mon adresse</a>
           <p>Pour me trouver: </p>
           <p>{{ partenaire.utilisateur.adresseRue }} {{ partenaire.utilisateur.adresseNum }}</p>
           <p>{{ partenaire.utilisateur.codePostal }} {{ partenaire.utilisateur.commune }}</p>
           <div id="map"></div>
     {% else %}
+          <a href="">Renseigner mon adresse</a>
           <p>Oops, je n'ai pas encore renseigné mon adresse</p>
     {% endif %}
     <div>
       <p>Commentaires</p>
-      {% if is_granted('ROLE_USER') and not is_granted('ROLE_PREST') %}
-      <div>
-        <p>Ajouter un commentaire</p>
-        {{form(form) }}
-      </div>
-      {% endif %}
-
+      
       {% for com in partenaire.commentaires %}
         <div>
           <p>{{com.titre}}</p>

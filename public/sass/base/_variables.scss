@@ -1,8 +1,6 @@
-
 // media queries
-$tablet-break :43rem;
-$laptop-break :62rem;
-
+$tablet-break: 43rem;
+$laptop-break: 62rem;
 
 // colors
 $main-color: #a0541c;
@@ -10,7 +8,6 @@ $secondary-color: #def5f6;
 $secondary-transparent: #def5f6a5;
 $secondary-transparent2: #def5f6ca;
 $blue-light: #bbf3f4;
-
 
 $third-color-light: #edd9da;
 $third-color: #d2a1a3;
@@ -20,12 +17,6 @@ $darker-pink: #b96d6f;
 $black-pink: #995557;
 
 $smooth-minth: #a1d2d0;
-
-// a tester:
-$tr: #a3d2a1;
-$vd: #a1a3d2;
-
-
 
 //fonts
 @import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);

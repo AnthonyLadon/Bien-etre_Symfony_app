@@ -7,25 +7,43 @@
   justify-items: center;
 }
 
+.countPrestataireFound {
+  text-align: center;
+  color: rgba(128, 128, 128, 0.538);
+  margin: 0.8rem 0 0 0;
+}
+
 .partenaires-card {
-  margin: 3rem 0 0 0;
-  max-width: 25rem;
-  background-color: #c9e9eb;
-  padding: 0.5rem 0.5rem 1.5rem 0.5rem;
+  margin: 2rem 0 0 0;
+  width: 8rem;
+  height: 10.5rem;
+  background-color: $dark-third-color;
   border-radius: 10px;
   box-shadow: 0px 29px 38px -15px rgba(0, 0, 0, 0.43);
+  transition: 0.3s;
+
+  &.partenaires-card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  }
 
   h3 {
     margin: 0 0 0.5rem 0;
     text-align: center;
-    color: $darker-pink;
-    font-size: 1rem;
+    color: $smooth-minth;
+    font-size: 0.7rem;
     font-weight: bold;
   }
+}
 
-  img {
-    border-radius: 5px;
-  }
+.aucun-resultat-prestataire {
+  text-align: center;
+  color: $black-pink;
+}
+
+.prestataire_img {
+  border-radius: 5px 5px 0 0;
+  width: 8rem;
+  height: 8rem;
 }
 
 .aucun-resultat-prestataire {
@@ -39,32 +57,161 @@
 }
 
 .partenaire-avatar {
-  margin: 2rem 0 0 0;
+  margin: 4rem 0 0 0;
   text-align: center;
   img {
-    width: 6rem;
-    border-radius: 25px;
+    width: 7rem;
+    height: 9rem;
+    border-radius: 40px;
+    object-fit: cover;
+    box-shadow: 0px 29px 38px -15px $third-color;
+  }
+}
+
+.prestataire-detail-services {
+  border-radius: 5px;
+  margin: 4rem 1rem 0 1rem;
+  padding: 1rem;
+  box-shadow: 0px 12px 38px 5px $third-color;
+  transition: 0.3s;
+
+  &.prestataire-detail-services:hover {
+    box-shadow: 0 8px 16px 0 $dark-third-color;
+  }
+}
+
+.prestataire-detail-services-list-title {
+  margin: 1rem 0 0 0;
+  text-align: center;
+  color: $black-pink;
+}
+
+.prestataire-detail-services-list {
+  ul {
+    margin: 0.8rem 0 0 0;
+  }
+  li {
+    text-align: center;
+    padding: 0.5rem 0 0 0;
+  }
+  a {
+    color: $dark-third-color;
+  }
+  a:hover {
+    color: $smooth-minth;
+  }
+}
+
+.prestataire-detail-no-service {
+  margin: 2rem 0 0 0;
+  text-align: center;
+  color: $darker-pink;
+}
+
+.prestataire-detail-stage {
+  border-radius: 5px;
+  margin: 2rem 1rem 0 1rem;
+  padding: 1rem;
+  box-shadow: 0px 12px 38px 5px $third-color;
+  transition: 0.3s;
+
+  &.prestataire-detail-stage:hover {
+    box-shadow: 0 8px 16px 0 $dark-third-color;
+  }
+}
+
+.prestataire-detail-stage-list-title {
+  margin: 1rem 0 0 0;
+  text-align: center;
+  color: $black-pink;
+}
+
+.prestataire-detail-stage-list {
+  ul {
+    margin: 0.8rem 0 0 0;
+  }
+  li {
+    text-align: center;
+    padding: 0.5rem 0 0 0;
+  }
+  a {
+    color: $dark-third-color;
+  }
+  a:hover {
+    color: $smooth-minth;
+  }
+}
+
+.prestataire-detail-no-stage {
+  margin: 2rem 0 0 0;
+  text-align: center;
+  color: $darker-pink;
+}
+
+.prestataire-detail-contact-title {
+  margin: 1rem 0 0 0;
+  text-align: center;
+  color: $black-pink;
+}
+
+.prestataire-detail-contact {
+  border-radius: 5px;
+  margin: 2rem 1rem 0 1rem;
+  padding: 1rem;
+  box-shadow: 0px 12px 38px 5px $third-color;
+  transition: 0.3s;
+
+  &.prestataire-detail-contact:hover {
+    box-shadow: 0 8px 16px 0 $dark-third-color;
+  }
+
+  ul {
+    margin: 0.8rem 0 0 0;
+  }
+  li {
+    text-align: center;
+    padding: 0.5rem 0 0 0;
+    color: $dark-third-color;
+    span {
+      color: $black-pink;
+    }
+  }
+  a {
+    color: $dark-third-color;
+  }
+  a:hover {
+    color: $smooth-minth;
+  }
+}
+
+.prestataire-detail-adress {
+  border-radius: 5px;
+  margin: 2rem 1rem 0 1rem;
+  padding: 1rem;
+  box-shadow: 0px 12px 38px 5px $third-color;
+  transition: 0.3s;
+
+  &.prestataire-detail-adress:hover {
+    box-shadow: 0 8px 16px 0 $dark-third-color;
   }
 }
 
 .gallery {
-  margin: 0 auto;
+  margin: 2rem auto;
   display: flex;
   width: 100%;
-  height: 18rem;
-}
-
-.gallery img {
-  min-width: 0;
-  flex: 1 1 10px;
-  object-fit: cover;
-  opacity: 0.5;
-  transition: 1s;
-}
-
-.gallery img:hover {
-  flex: 1 1 280px;
-  opacity: 1;
+  height: 20rem;
+  img {
+    min-width: 0;
+    flex: 1 1 10px;
+    object-fit: cover;
+    opacity: 0.5;
+    transition: 1s;
+  }
+  img:hover {
+    flex: 1 1 280px;
+    opacity: 1;
+  }
 }
 
 // ****************************************************************
@@ -78,11 +225,6 @@
     justify-content: space-evenly;
     justify-items: center;
   }
-
-  .partenaires-card {
-    margin: 3rem 0 0 0;
-    max-width: 20rem;
-  }
 }
 
 // ****************************************************************
@@ -93,8 +235,12 @@
   }
 
   .partenaires-card {
-    margin: 3rem 0 0 0;
-    min-width: 24rem;
-    max-width: 28rem;
+    width: 10rem;
+    height: 12.5rem;
+  }
+
+  .prestataire_img {
+    width: 10rem;
+    height: 10rem;
   }
 }
