@@ -161,57 +161,6 @@ class ProfileController extends AbstractController
      ]);
     }
 
-
-    // ----------------------------------------------------------------
-    // Inscription en tant que prestataire
-    // ----------------------------------------------------------------
-     /**
-     * @Route("/inscription_prestataire/{id}",name="prestataire_register")
-     */
-
-     public function register(Request $request, EntityManagerInterface $entityManager, $id)
-     {
-        $repository = $entityManager->getRepository(Utilisateur::class);
-        $utilisateur = $repository->find($id);
-
-        $prestataire = new Prestataire();
-        $form = $this->createForm(PrestataireRegisterType::class, $prestataire);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-
-          $form = $form->getData();
-          $proposer = $form->getProposer();
-
-          $prestataire = new Prestataire();
-          $prestataire->setUtilisateur($utilisateur);
-          // boucle pour charger les différentes catégories selectionnées dans le formualaire
-          foreach($proposer as $p){
-            $prestataire->addProposer($p);
-            $entityManager->persist($prestataire);
-          }
-
-          $utilisateur->setRoles(["ROLE_PREST"]);
-          $utilisateur->setTypeUtilisateur('prestataire');
-
-          $entityManager->persist($utilisateur);
-          $entityManager->persist($prestataire);
-          $entityManager->flush();
-
-          $this->addFlash('success', 'Vous venez d\'être enregistré en tant que prestataire');
-
-
-      return $this->redirectToRoute('security_login', [
-        
-      ]);
-    }
-
-    return $this->render('partenaire/inscription.html.twig', [
-      'PrestataireForm' => $form->createView()
-    ]);
-  }
-
-
     // ----------------------------------------------------------------
     // Afficher profil prestataire
     // ----------------------------------------------------------------
@@ -349,8 +298,8 @@ class ProfileController extends AbstractController
     /**
      * @Route("/ajout_logo/{id}",name="addImagePrest")
      */
-    public function addImageCarrouselPrest(Request $request, Prestataire $prestataire, UploaderHelper $uploaderHelper, EntityManagerInterface $entityManager, $id): Response
-    {
+    //public function addImageCarrouselPrest(Request $request, Prestataire $prestataire, UploaderHelper $uploaderHelper, EntityManagerInterface $entityManager, $id): Response
+    //{
 
     //     $repository = $entityManager->getRepository(Prestataire::class);
     //     $prestataire = $repository->findOneById($id);
@@ -398,6 +347,6 @@ class ProfileController extends AbstractController
     //     'form' => $form->createView(),
     //     'id' => $id
     //  ]);
-    }
+    //}
 
 }

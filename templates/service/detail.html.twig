@@ -14,22 +14,35 @@
 
 {% block body %}
 	<article>
-		<div class="presataire-detail-wrap">
-			<h2>Service {{categorie.nom}}</h2>
-			<p>{{categorie.description}}</p>
-			<img src="{{asset ('images/services/' ~ categorie.image )}}" alt="photo service">
+		<div class="service-detail-wrap">
+			<div class="service-detail-description">
+				<p>{{categorie.description}}</p>
+			</div>
+			{% if categorie.image %}
+				<img src="{{asset ('images/services/' ~ categorie.image )}}" alt="photo service">
+				{% else %}
+				<img src="{{asset ('images/blank_image.jpg')}}" alt="photo service">
+			{% endif %}
 		</div>
 
 
 		{% if lastPrestataires %}
-			<div class="prestaire-last-registrated-wrap">
-				<h3>Dans la meme catégorie de categorie:</h3>
-			
+			<h3 class="partenaire-last-registrated-title">Prestataires dans la catégorie {{categorie.nom}}:</h3>
+			<div class="partenaires-list-wrap">
 				{% for prest in lastPrestataires %}
-					<div class="prestaire-last-registrated-cards-wrap">
-						<a class="" href="{{path('detailPartenaire',{id : prest.id})}}">
-							<h3>{{prest.nom}}</h3>
-							<img src="{{asset ('images/avatars/avatar1.jpeg')}}" alt="photo prestataire">
+					<div class="partenaires-card">
+						<a href="{{path ('detailPartenaire',{id : prest.id}) }}">
+
+						{% if prest.images[0] is defined and prest.images[0] != '' %}
+								<img class="prestataire_img" src="{{asset ('images/uploads/' ~ prest.images[0] )}}" alt="photo du prestataire">
+							{% else %}
+								<img class="prestataire_img"  src="{{asset ('images/avatars/blank_profile.webp' )}}" alt="photo du prestataire">
+						{% endif %}
+							{% if prest.nom %}
+							<div>
+								<h3>{{prest.nom}}</h3>
+							</div>
+					{% endif %}
 						</a>
 					</div>
 				{% endfor %}

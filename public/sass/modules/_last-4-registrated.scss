@@ -4,13 +4,14 @@
   h2 {
     text-transform: uppercase;
     margin: 0 auto 2rem auto;
+    padding: 0.5rem;
     background-color: $third-color-light;
     text-align: center;
     color: $darker-third-color;
     border-bottom: solid 4px $dark-third-color;
     border-radius: 15px;
     border-radius: 0.8rem;
-    width: 100%;
+    max-width: 90%;
   }
 }
 
@@ -107,5 +108,17 @@
 
   .face--back {
     font-size: 0.6rem;
+  }
+}
+
+// ****************************************************************
+
+@media screen and (min-width: $tablet-break) {
+  .last-4-registrated {
+    h2 {
+      text-transform: uppercase;
+      margin: 0 auto 2rem auto;
+      max-width: 60%;
+    }
   }
 }

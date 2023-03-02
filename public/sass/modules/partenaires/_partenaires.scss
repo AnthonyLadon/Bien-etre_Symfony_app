@@ -3,7 +3,7 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: space-around;
   justify-items: center;
 }
 
@@ -56,6 +56,7 @@
   border-radius: 5px 5px 0 0;
   width: 8rem;
   height: 8rem;
+  object-fit: cover;
 }
 
 .aucun-resultat-prestataire {

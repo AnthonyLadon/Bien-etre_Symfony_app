@@ -5,7 +5,7 @@ Service {{stage.nom}}
 {% endblock %}
 
 {% block titreh1 %}
-	<h1>Details du stage</h1>
+	<h1>{{stage.nom}}</h1>
 {% endblock %}
 
 {% block searchForm %}
@@ -14,12 +14,26 @@ Service {{stage.nom}}
 
 {% block body %}
 	<article>
-		<div class="">	
-			<h2>{{stage.nom}}. Annimé par {{stage.prestataire.nom }}</h2>
-			<h4>Description du stage:</h4>
-			<p>{{stage.description}}</p>
-			<p>Informations complémentaires: {{stage.infoComplementaire}}</p>
-			<p>Tarif: {{stage.tarif}}</p>
+		<div class="stage-detail-wrap">	
+			<div class="stage-partenaires-card" href="{{path('detailPartenaire',{id : stage.prestataire.id})}}">
+				<a href="{{path('detailPartenaire',{id : stage.prestataire.id})}}">
+					{% if stage.prestataire.images[0] is defined and stage.prestataire.images[0] != '' %}
+						<img class="stage-prestataire_img" src="{{ asset('images/uploads/' ~ stage.prestatire.images[0]) }}" alt="photo de profil du prestataire"/>
+					{% else %}
+						<img class="stage-prestataire_img" src="{{ asset('images/avatars/blank_profile.webp') }}" alt="photo de profil du prestataire"/>
+					{% endif %}
+					{% if stage.prestataire.nom is defined %}
+						<div>
+							<h3>{{stage.prestataire.nom }}</h3>
+						</div>
+					{% endif %}
+				</a>
+			</div>
+			<div class="stage-detail-info">
+				<p><span>Description du stage: </span>{{stage.description}}</p>
+				<p><span>Tarif: </span>{{stage.tarif}}</p>
+				<p><span>Informations complémentaires: </span>{{stage.infoComplementaire}}</p>
+			</div>
 		</div>
 	</article>
 {% endblock %}

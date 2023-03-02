@@ -1,0 +1,138 @@
+//
+//__________List
+
+.countStagesFound {
+  text-align: center;
+  color: rgba(128, 128, 128, 0.538);
+  margin: 0.8rem 0 0 0;
+}
+
+.stage-list-wrap {
+  margin: 2rem 1rem 1rem 1rem;
+  padding: 2rem 0 0 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  justify-items: center;
+}
+
+.stage-card {
+  margin: 2rem 0 0 0;
+  width: 20rem;
+  height: 18rem;
+  background-color: $warm-yellow;
+  border-radius: 10px;
+  box-shadow: 0px 29px 38px -15px $third-color;
+  transition: 0.3s;
+
+  &.stage-card:hover {
+    box-shadow: 0 8px 16px 0 $third-color;
+  }
+
+  h3 {
+    margin: 1rem 0 0.5rem 0;
+    text-align: center;
+    color: $darker-pink;
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  p {
+    text-align: center;
+    color: $darker-pink;
+  }
+}
+
+.stage-prestataire-wrap {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.stage-partenaires-card {
+  margin: 0.5rem 0 0.5rem 0;
+  width: 8rem;
+  height: 10.5rem;
+  background-color: $dark-third-color;
+  border-radius: 10px;
+
+  h3 {
+    margin: 0 0 0.5rem 0;
+    text-align: center;
+    color: $smooth-minth;
+    font-size: 0.7rem;
+    font-weight: bold;
+  }
+  p {
+    text-align: center;
+  }
+}
+
+.stage-prestataire_img {
+  border-radius: 5px 5px 0 0;
+  width: 8rem;
+  height: 8rem;
+  object-fit: cover;
+}
+
+//__________Details
+
+.stage-detail-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 4rem auto;
+  padding: 0 1rem;
+  max-width: 35rem;
+
+  h4 {
+    text-align: center;
+    margin: 2rem 0 1rem 0;
+  }
+}
+
+.stage-detail-info {
+  margin: 2rem 0 0 0;
+  text-align: start;
+
+  p {
+    color: $black-pink;
+    margin: 0 0 0.5rem 0;
+  }
+
+  span {
+    color: $dark-third-color;
+  }
+}
+
+// ****************************************************************
+
+@media screen and (min-width: $tablet-break) {
+  .stage-list-wrap {
+    margin: 2rem 1rem 1rem 1rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    justify-items: center;
+  }
+
+  .stage-card {
+    margin: 3rem 0 0 0;
+    max-width: 20rem;
+  }
+}
+
+// ****************************************************************
+
+@media screen and (min-width: $laptop-break) {
+  .service-list-wrap {
+    margin: 2rem 3rem 1rem 3rem;
+  }
+
+  .service-card {
+    margin: 3rem 0 0 0;
+    max-width: 18rem;
+  }
+}

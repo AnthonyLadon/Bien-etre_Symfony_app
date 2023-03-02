@@ -685,13 +685,14 @@ input:checked + .slide-container .nav label {
 .last-4-registrated h2 {
   text-transform: uppercase;
   margin: 0 auto 2rem auto;
+  padding: 0.5rem;
   background-color: #edd9da;
   text-align: center;
   color: #bd797b;
   border-bottom: solid 4px #c0898b;
   border-radius: 15px;
   border-radius: 0.8rem;
-  width: 100%;
+  max-width: 90%;
 }
 
 .last-4-registrated-wrap {
@@ -774,6 +775,13 @@ input:checked + .slide-container .nav label {
   }
   .face--back {
     font-size: 0.6rem;
+  }
+}
+@media screen and (min-width: 43rem) {
+  .last-4-registrated h2 {
+    text-transform: uppercase;
+    margin: 0 auto 2rem auto;
+    max-width: 60%;
   }
 }
 .highlight-service-wrap {
@@ -975,6 +983,12 @@ input:checked + .slide-container .nav label {
   height: 50rem;
 }
 
+.service-list-count {
+  text-align: center;
+  color: rgba(128, 128, 128, 0.538);
+  margin: 0.8rem 0 0 0;
+}
+
 .service-list-wrap {
   margin: 2rem 1rem 1rem 1rem;
   display: flex;
@@ -986,7 +1000,8 @@ input:checked + .slide-container .nav label {
 
 .service-card {
   margin: 3rem 0 0 0;
-  max-width: 25rem;
+  width: 15rem;
+  height: 15rem;
   background-color: #c9e9eb;
   padding: 0.5rem 0.5rem 1.5rem 0.5rem;
   border-radius: 10px;
@@ -1000,6 +1015,8 @@ input:checked + .slide-container .nav label {
   font-weight: bold;
 }
 .service-card img {
+  width: 15rem;
+  height: 12rem;
   border-radius: 5px;
 }
 
@@ -1021,25 +1038,26 @@ input:checked + .slide-container .nav label {
   .service-list-wrap {
     margin: 2rem 3rem 1rem 3rem;
   }
-  .service-card {
-    margin: 3rem 0 0 0;
-    min-width: 24rem;
-    max-width: 28rem;
-  }
 }
-.presataire-detail-wrap {
-  margin: 2rem;
+.service-detail-wrap {
+  margin: 2rem 0 4rem 0;
   padding: 1rem;
-  border: solid 1px #b96d6f;
   border-radius: 5px;
 }
-.presataire-detail-wrap h2 {
-  color: #b96d6f;
-  font-size: 1.5rem;
+.service-detail-wrap img {
+  display: flex;
+  margin: 0 auto;
+  min-width: 50%;
 }
-.presataire-detail-wrap p {
+
+.service-detail-description {
+  display: flex;
+  justify-content: center;
+}
+.service-detail-description p {
   color: #995557;
-  margin: 1rem 0 0 0;
+  margin: 0 0 1.5rem 0;
+  text-align: start;
 }
 
 .prestaire-last-registrated-wrap {
@@ -1053,16 +1071,45 @@ input:checked + .slide-container .nav label {
   font-size: 1.5rem;
 }
 
-.prestaire-last-registrated {
-  color: #995557;
+.partenaire-last-registrated-title {
+  text-align: center;
+  color: #b96d6f;
+  font-size: 1.5rem;
 }
 
-.prestaire-last-registrated-cards-wrap {
-  margin: 1rem 0 0 0;
+@media screen and (min-width: 62rem) {
+  .service-detail-wrap {
+    display: flex;
+    margin: 2rem 0 4rem 0;
+    padding: 1rem;
+    border-radius: 5px;
+  }
+  .service-detail-wrap img {
+    display: flex;
+    margin: 0 auto;
+    min-width: 50%;
+    max-width: 70%;
+  }
+  .service-detail-description {
+    display: flex;
+    justify-content: center;
+  }
+  .service-detail-description p {
+    font-size: 1.2rem;
+    margin: auto 0;
+    min-width: 50%;
+    max-width: 80%;
+  }
+}
+.countStagesFound {
+  text-align: center;
+  color: rgba(128, 128, 128, 0.538);
+  margin: 0.8rem 0 0 0;
 }
 
 .stage-list-wrap {
   margin: 2rem 1rem 1rem 1rem;
+  padding: 2rem 0 0 0;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -1071,22 +1118,84 @@ input:checked + .slide-container .nav label {
 }
 
 .stage-card {
-  margin: 3rem 0 0 0;
-  max-width: 25rem;
-  background-color: #c9e9eb;
-  padding: 0.5rem 0.5rem 1.5rem 0.5rem;
+  margin: 2rem 0 0 0;
+  width: 20rem;
+  height: 18rem;
+  background-color: #f8caaa;
   border-radius: 10px;
-  box-shadow: 0px 29px 38px -15px rgba(0, 0, 0, 0.43);
+  box-shadow: 0px 29px 38px -15px #d2a1a3;
+  transition: 0.3s;
+}
+.stage-card.stage-card:hover {
+  box-shadow: 0 8px 16px 0 #d2a1a3;
 }
 .stage-card h3 {
-  margin: 0 0 0.5rem 0;
+  margin: 1rem 0 0.5rem 0;
   text-align: center;
   color: #b96d6f;
-  font-size: 1rem;
+  font-size: 1.2rem;
   font-weight: bold;
 }
-.stage-card img {
-  border-radius: 5px;
+.stage-card p {
+  text-align: center;
+  color: #b96d6f;
+}
+
+.stage-prestataire-wrap {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.stage-partenaires-card {
+  margin: 0.5rem 0 0.5rem 0;
+  width: 8rem;
+  height: 10.5rem;
+  background-color: #c0898b;
+  border-radius: 10px;
+}
+.stage-partenaires-card h3 {
+  margin: 0 0 0.5rem 0;
+  text-align: center;
+  color: #a1d2d0;
+  font-size: 0.7rem;
+  font-weight: bold;
+}
+.stage-partenaires-card p {
+  text-align: center;
+}
+
+.stage-prestataire_img {
+  border-radius: 5px 5px 0 0;
+  width: 8rem;
+  height: 8rem;
+  object-fit: cover;
+}
+
+.stage-detail-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 4rem auto;
+  padding: 0 1rem;
+  max-width: 35rem;
+}
+.stage-detail-wrap h4 {
+  text-align: center;
+  margin: 2rem 0 1rem 0;
+}
+
+.stage-detail-info {
+  margin: 2rem 0 0 0;
+  text-align: start;
+}
+.stage-detail-info p {
+  color: #995557;
+  margin: 0 0 0.5rem 0;
+}
+.stage-detail-info span {
+  color: #c0898b;
 }
 
 @media screen and (min-width: 43rem) {
@@ -1117,7 +1226,7 @@ input:checked + .slide-container .nav label {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: space-around;
   justify-items: center;
 }
 
@@ -1167,6 +1276,7 @@ input:checked + .slide-container .nav label {
   border-radius: 5px 5px 0 0;
   width: 8rem;
   height: 8rem;
+  object-fit: cover;
 }
 
 .aucun-resultat-prestataire {

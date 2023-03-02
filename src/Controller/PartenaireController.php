@@ -4,7 +4,9 @@ namespace App\Controller;
 
 use App\Entity\Commentaire;
 use App\Entity\Prestataire;
+use App\Entity\Utilisateur;
 use App\Form\CommentaireType;
+use App\Form\PrestataireRegisterType;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -84,6 +86,55 @@ class PartenaireController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+
+
+    // ----------------------------------------------------------------
+    // Inscription en tant que prestataire
+    // ----------------------------------------------------------------
+     /**
+     * @Route("/inscription_prestataire/{id}",name="prestataire_register")
+     */
+
+     public function registerPrest(Request $request, EntityManagerInterface $entityManager, $id)
+     {
+        $repository = $entityManager->getRepository(Utilisateur::class);
+        $utilisateur = $repository->find($id);
+
+        $prestataire = new Prestataire();
+        $form = $this->createForm(PrestataireRegisterType::class, $prestataire);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+          $form = $form->getData();
+          $proposer = $form->getProposer();
+
+          $prestataire->setUtilisateur($utilisateur);
+          // boucle pour charger les différentes catégories selectionnées dans le formulaire
+          foreach($proposer as $p){
+            $prestataire->addProposer($p);
+            $entityManager->persist($prestataire);
+          }
+
+          $utilisateur->setRoles(["ROLE_PREST"]);
+          $utilisateur->setTypeUtilisateur('prestataire');
+
+          $entityManager->persist($utilisateur);
+          $entityManager->persist($prestataire);
+          $entityManager->flush();
+
+          $this->addFlash('success', 'Vous venez d\'être enregistré en tant que prestataire');
+
+
+      return $this->redirectToRoute('security_login', [
+        
+      ]);
+    }
+
+    return $this->render('partenaire/inscription.html.twig', [
+      'PrestataireForm' => $form->createView()
+    ]);
+  }
     
 
 }

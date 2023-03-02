@@ -12,7 +12,7 @@
 			
 
 {% block body %}
-	<div class="count">
+	<div class="service-list-count">
     	{{ pagination.getTotalItemCount }} stage(s) trouvé(s)
 	</div>
 	<div class="service-list-wrap">
@@ -20,7 +20,11 @@
 				{% if categorie.valide == 1 %}
 					<a class="service-card" href="{{path('detailService',{id : categorie.id})}}">
 						<h3>{{categorie.nom}}</h3>
-						<img src="{{asset ('images/services/' ~ categorie.image )}}" alt="photo service">
+						{% if categorie.image %}
+							<img src="{{asset ('images/services/' ~ categorie.image )}}" alt="photo service">
+						{% else %}
+							<img src="{{asset ('images/blank_image.jpg' )}}" alt="photo service">
+						{% endif %}
 					</a>
 				{% endif %}
 		{% endfor %}

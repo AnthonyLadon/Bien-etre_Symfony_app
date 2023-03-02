@@ -11,23 +11,38 @@
 {% endblock %}
 
 {% block body %}
-	<div class="count">
+	<div class="countStagesFound">
     {{ pagination.getTotalItemCount }} stage(s) trouvé(s)
 	</div>
 	<div class="stage-list-wrap">
-	{% if stages %}
-		{% for stage in pagination %}
-		<div class="stage-card">
-			<a href="{{path('detailStage',{id : stage.id})}}">
-				<h3>{{stage.nom}}</h3>
-			</a>
-			<p>Du {{stage.debut|date('d/m/y')}} au {{stage.fin|date('d/m/y')}}</p>
-			<p>Proposé par: <a href="{{path('detailPartenaire',{id : stage.prestataire.id})}}">{{stage.prestataire.nom}}</a></p>
-		</div>
-		{% endfor %}
-	{% else %}
-		<p>Il n'y a pas de stage proposé pour le moment</p>
-	{% endif %}
+		{% if stages %}
+			{% for stage in pagination %}
+			<div class="stage-card">
+				<a href="{{path('detailStage',{id : stage.id})}}">
+					<h3>{{stage.nom}}</h3>
+					<p>Du {{stage.debut|date('d/m/y')}} au {{stage.fin|date('d/m/y')}}</p>
+					<p>Proposé par: </p>
+					<div class="stage-prestataire-wrap">
+						<div class="stage-partenaires-card" href="{{path('detailPartenaire',{id : stage.prestataire.id})}}">
+							{% if stage.prestataire.images[0] is defined and stage.prestataire.images[0] != '' %}
+								<img class="stage-prestataire_img" src="{{ asset('images/uploads/' ~ stage.prestatire.images[0]) }}" alt="photo de profil du prestataire"/>
+							{% else %}
+								<img class="stage-prestataire_img" src="{{ asset('images/avatars/blank_profile.webp') }}" alt="photo de profil du prestataire"/>
+							{% endif %}
+							{% if stage.prestataire.nom is defined %}
+								<div>
+									<h3>{{stage.prestataire.nom }}</h3>
+								</div>
+							{% endif %}
+						</div>
+					</div>
+			{% endfor %}
+				</a>
+			</div>
+		{% else %}
+			<p>Il n'y a pas de stage proposé pour le moment</p>
+		{% endif %}
+	</div>
 		{# display navigation #}
 	<div class='l-main-pagination'>
 		<div class="navigation">
