@@ -16,27 +16,52 @@
     {% endfor %}
 
     {{ form_start(registrationForm) }}
-        <div>
-            {{ form_label(registrationForm.adresseRue) }}
-            {{ form_widget(registrationForm.adresseRue) }}
-            {{ form_row(registrationForm.adresseNum) }}
-            {{ form_row(registrationForm.commune) }}
-            {{ form_row(registrationForm.codePostal) }}
-            {{ form_row(registrationForm.localite) }}
-        </div>
-        <div>
-            <p>Informations de connection</p>
-            {{ form_row(registrationForm.email) }}
-            {{ form_row(registrationForm.plainPassword, {
-            label: 'Mot de passe'
-            }) }}
-        </div>
-        {{ form_row(registrationForm.agreeTerms) }}
-        {{ form_errors(registrationForm) }}
+        <div class="form-register">
+            <div class="register-input">            
+                {{ form_label(registrationForm.adresseRue) }}
+                {{ form_widget(registrationForm.adresseRue) }}
+            </div>
+            <div class="register-input">
+                {{ form_label(registrationForm.adresseNum) }}
+                {{ form_widget(registrationForm.adresseNum) }}
+            </div>
+            <div class="register-input">
+                {{ form_label(registrationForm.localite) }}
+                {{ form_widget(registrationForm.localite) }}
+            </div >
+            <div class="register-input">
+                {{ form_label(registrationForm.commune) }}
+                {{ form_widget(registrationForm.commune) }}
+            </div>
+            <div class="register-input">
+                {{ form_label(registrationForm.codePostal) }}
+                {{ form_widget(registrationForm.codePostal) }}
+            </div>
+            <div class="register-input">
+                {{ form_label(registrationForm.email) }}
+                {{ form_widget(registrationForm.email) }}
+            </div>
+            <div class="register-input-password">
+                <p>Votre mot de passe doit contenir au minimum une majuscule, 7 caractères, un chiffre et un symbole</p>
+                {{ form_row(registrationForm.plainPassword, {
+                label: 'Mot de passe'
+                }) }}
+            </div>
+            <div class="register-input">
+                {{ form_label(registrationForm.agreeTerms) }}
+                <div class="checkbox-wrapper-2">
+                    {{ form_widget(registrationForm.agreeTerms, {'attr': {'class': 'sc-gJwTLC ikxBAC', 'name': '_remember_me' }}) }}
+                </div>
+            </div>
+            {{ form_errors(registrationForm) }}
 
-        <button type="submit" class="btn">S'inscrire</button>
+            <button class="register-form-submit" type="submit" class="btn">S'inscrire</button>
+        </div>
     {{ form_end(registrationForm) }}
-    <p>En cliquant sur "s'inscrire" j'accepte les conditions d'utilisation et la politique de confidencialité du site</p>
-    <a href="">Voir les conditions d'utilisation du site</a>
+    <div class="registration-form-conditions">
+        <p>En cliquant sur "s'inscrire" j'accepte les conditions d'utilisation et la politique de confidencialité du site</p>
+        <a href="">Voir les conditions d'utilisation du site</a>
+    </div>
+
 {% endblock %}
 

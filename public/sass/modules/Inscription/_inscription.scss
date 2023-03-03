@@ -1,0 +1,118 @@
+.form-register {
+  margin: 4rem auto 0 auto;
+  max-width: 35rem;
+  display: grid;
+  grid-template-rows: 1fr;
+  width: 80%;
+}
+
+.register-input {
+  display: grid;
+  grid-template-rows: 1fr;
+  margin: 0 0 0.5rem 0;
+
+  label {
+    text-align: start;
+    color: $darker-third-color;
+  }
+
+  input {
+    margin: 0 auto 0.5rem auto;
+    width: 100%;
+    border: 1px solid $third-color;
+    height: 2rem;
+    border-radius: 10px;
+    outline: none;
+    color: $third-color;
+    background-color: $secondary-transparent;
+  }
+
+  select {
+    margin: 0 auto 0.5rem auto;
+    width: 100%;
+    border: 1px solid $third-color;
+    height: 2rem;
+    border-radius: 10px;
+    outline: none;
+    color: $third-color;
+    background-color: $secondary-transparent;
+  }
+}
+
+.register-input-password {
+  margin: 1rem 0 0 0;
+
+  label {
+    text-align: center;
+    color: $darker-third-color;
+  }
+
+  input {
+    margin: 0 auto 1rem auto;
+    width: 100%;
+    border: 1px solid $third-color;
+    height: 2rem;
+    border-radius: 10px;
+    outline: none;
+    color: $third-color;
+    background-color: $secondary-transparent;
+  }
+  p {
+    margin: 0 0 0.5rem 0;
+    font-size: 0.9rem;
+    color: $third-color;
+  }
+}
+
+.register-form-submit {
+  padding: 0rem;
+  margin: 1rem auto 0 auto;
+  width: 8.5rem;
+  height: 1.8rem;
+  border: 1px solid $third-color;
+  background: $third-color;
+  text-align: center;
+  color: #fff;
+  border-radius: 10px;
+  font-size: 18px;
+  &:hover {
+    color: $darker-pink;
+  }
+}
+
+.alert-danger {
+  height: 2rem;
+  width: 100%;
+  background-color: aquamarine;
+}
+
+.register-links {
+  margin: 3rem 0 0 0;
+  display: grid;
+  grid-template-rows: 1fr;
+  text-align: center;
+  a {
+    color: $dark-third-color;
+    margin: 0 auto 0.5rem auto;
+    padding: 0.4rem;
+    width: 20rem;
+    &:hover {
+      color: $smooth-minth;
+    }
+  }
+}
+
+.registration-form-conditions {
+  width: 80%;
+  margin: 1rem auto 0 auto;
+  text-align: center;
+  p {
+    color: $dark-third-color;
+  }
+  a {
+    color: $black-pink;
+    &:hover {
+      color: $smooth-minth;
+    }
+  }
+}

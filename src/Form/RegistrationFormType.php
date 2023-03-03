@@ -61,7 +61,7 @@ class RegistrationFormType extends AbstractType
             // Utilisation du type RepeatedType afin de forcer l'utilisateur à entrer 2 fois
             // son mot de passe (Et si match des 2 MDP -> envoi)
             ->add('plainPassword', RepeatedType::class, [
-                'first_options'  => ['label' => 'Choisissez un mot de passe (Minimum 7 caractères de long, une majuscule, Un chiffre et un symbole)'],
+                'first_options'  => ['label' => 'Entrez votre mot de passe'],
                 'second_options' => ['label' => 'Veuillez repeter le mot de passe'],
                 'type' => PasswordType::class,
                 'invalid_message' => 'Attention! Les deux mots de passe doivent correspondre',
@@ -78,7 +78,7 @@ class RegistrationFormType extends AbstractType
                         // max length allowed by Symfony for security reasons
                         'max' => 4096,
                     ]),
-                    // Regex pour obliger l'utilisateur à créer un mot de passe solide (minimum 1 majuscule, 1 caractere special, 1 chiffre)
+                    //! Regex pour obliger l'utilisateur à créer un mot de passe solide (minimum 1 majuscule, 1 caractere special, 1 chiffre)
                     new Regex("/^(?=.*\d)(?=.*[A-Z])(?=.*[@#$%])(?!.*(.)\1{2}).*[a-z]/m",
                     'Désolé votre mot de passe n\'est pas valide, veuillez le modifier en veillant à respecter les contraintes de complexité'
                     )

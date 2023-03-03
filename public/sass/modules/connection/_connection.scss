@@ -9,18 +9,20 @@
 }
 
 .connection-input {
+  margin: 0 auto;
+  width: 65%;
   display: grid;
   grid-template-rows: 1fr;
 
   label {
-    text-align: center;
+    text-align: start;
     margin: 0 0 0.3rem 0;
     color: $darker-third-color;
   }
 
   input {
     margin: 0 auto 1rem auto;
-    width: 49%;
+    width: 100%;
     border: 1px solid $third-color;
     height: 2rem;
     border-radius: 10px;
