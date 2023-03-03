@@ -37,36 +37,47 @@
     {% endif %}
   
     {% if partenaire.proposer is defined %}
-      <h3>Mes catégories de service</h3>
+      <div class="prestataire-detail-services">
+        <h3 class="prestataire-detail-services-list-title">Mes catégories de service</h3>
+        <div class="prestataire-detail-services-list">
+          <ul>
+            {% for service in partenaire.proposer %}
+            <li><a href="{{path('detailService',{id : service.id} )}}">
+            {{ service.nom}}
+            </a>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    {% else %}
       <div class="prestataire-detail-services-list">
+        <h3 class="prestataire-detail-no-service">Je ne propose pas encore de catégorie de service</h3>
+      </div>
+    {% endif %}
+
+    <a href="">Ajouter une catégorie de service</a>
+
+    {% if partenaire.stage is not empty %}
+    <div class="prestataire-detail-stage">
+      <h3 class="prestataire-detail-stage-list-title">Les stages que je propose actuellement</h3>
+      <div class="prestataire-detail-stage-list">
         <ul>
-          {% for service in partenaire.proposer %}
-            <li><a href="{{path('detailService',{id : service.id} )}}">{{ service.nom}}</a>
-          {% endfor %}
+            {% for st in partenaire.stage %}
+              {# test si le stage est dans sa periode d'affichage. Si oui -> Affichage #}
+              {%  if st.affichageDe|date("d/m/Y") <= "now"|date("d/m/Y") and "now"|date("d/m/Y") <= st.affichageJusque|date("d/m/Y") %}
+                <li>
+                  <a href="{{path('detailStage',{id : st.id} )}}">{{st.nom}}</a>
+                </li>
+              {% endif %}
+            {% endfor %}
         </ul>
       </div>
+    </div>
     {% else %}
-      <div class="prestataire-detail-services-list">
-        <h3>Je n'ai pas encore de catégorie de service</h3>
-      </div>
-    {% endif %}
-	<a href="">Ajouter une catégorie de service</a>
-    {% if partenaire.stage is not empty %}
-    <h3>Les stages que je propose actuellement</h3>
-    <ul>
-        {% for st in partenaire.stage %}
-          {# test si le stage est dans sa periode d'affichage. Si oui -> Affichage #}
-          {%  if st.affichageDe|date("d/m/Y") <= "now"|date("d/m/Y") and "now"|date("d/m/Y") <= st.affichageJusque|date("d/m/Y") %}
-            <li>
-              <a href="{{path('detailStage',{id : st.id} )}}">{{st.nom}}</a>
-            </li>
-          {% endif %}
-        {% endfor %}
-    </ul>
-    {% else %}
-      <h3>Je ne propose pas encore de stage</h3>
-    {% endif %}
+      <h3 class="prestataire-detail-no-stage">Je ne propose pas de stage pour le moment</h3>
+   {% endif %}
 	<a href="">Ajouter un stage</a>
+
 	{{form(form) }}
   <div>
   <h3>Mes promotions</h3>
@@ -125,14 +136,19 @@
           <p>Oops, je n'ai pas encore renseigné mon adresse</p>
     {% endif %}
     <div>
-      <p>Commentaires</p>
-      
+
+    <div class="prestataire-detail-comments-zone">
+       <h3 class="prestataire-detail-comments-title">Commentaires</h3>
       {% for com in partenaire.commentaires %}
-        <div>
-          <p>{{com.titre}}</p>
-          <p>{{com.contenu}}</p>
-          <p>Le {{com.dateEncodage| date('d/m/Y')}} par: {{com.internaute }}</p>
+        <div class="prestataire-detail-comments">
+          <h4>{{com.titre}}</h4>
+          <p class="prestataire-detail-comments-content">{{com.contenu}}</p>
+          <div class="prestataire-detail-comments-date-author">
+            <p>Le {{com.dateEncodage| date('d/m/Y')}}</p>
+            <p> par: {{com.internaute }}</p>
+          </div>
         </div>
+        <div class="prestataire-detail-comments-separator"></div>
       {% endfor %}
     </div>
   </article>
