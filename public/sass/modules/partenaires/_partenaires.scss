@@ -200,6 +200,17 @@
   }
 }
 
+.mailto-prest {
+  margin: 1.5rem 0;
+  border: solid 1px $dark-third-color;
+  border-radius: 5px;
+  a {
+    color: $black-pink;
+    font-size: 1.2rem;
+    font-weight: 800;
+  }
+}
+
 .prestataire-detail-adress-title {
   margin: 1rem 0 1rem 0;
   text-align: center;

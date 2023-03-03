@@ -11,42 +11,46 @@
 {% endblock %}
 
 {% block body %}
-<form method="post">
-    {% if error %}
-        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-    {% endif %}
 
-    {% if app.user %}
-        <div class="mb-3">
-            Vous etes connecté en tant que {{ app.user.userIdentifier }}, 
-            <a href="{{ path('app_logout') }}">Se déconnecter</a>
+        <form class="form-connection" method="post">
+            {% if error %}
+                <div class="alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+            {% endif %}
+
+            {% if app.user %}
+                <div class="connection-already-logged">
+                    Vous etes connecté en tant que {{ app.user.userIdentifier }}, 
+                    <a href="{{ path('app_logout') }}">Se déconnecter</a>
+                </div>
+            {% endif %}
+
+            <div class="connection-input">
+                <label for="inputEmail">Email</label>
+                <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
+            </div>
+            <div class="connection-input">
+                <label for="inputPassword">Mot de passe</label>
+                <input class="connection-input" type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+            </div>
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+            <div class="connection-input">
+                <label for="_remember_me">Se souvenir de moi</label>
+                <div class="checkbox-wrapper-2">
+                    <input type="checkbox" class="sc-gJwTLC ikxBAC" name="_remember_me">
+                </div>
+            </div>
+
+
+
+
+            <div class="connection-input">
+                <button class="connection-form-submit" type="submit">Me connecter</button>
+            </div>
+        </form>
+
+        <div class="connection-links">
+            <a href="{{path ("inscription")}}">Inscription</a>
+            <a href="{{path ("app_forgot_password_request")}}">Mot de passe oublié?</a>
         </div>
-    {% endif %}
 
-    <label for="inputEmail">Email</label>
-    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
-    <label for="inputPassword">Mot de passe</label>
-    <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
-
-    <input type="hidden" name="_csrf_token"
-           value="{{ csrf_token('authenticate') }}">
-
-    
-        {# Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
-        See https://symfony.com/doc/current/security/remember_me.html #}
-
-        <div>
-            <label>
-                <input type="checkbox" name="_remember_me"> Se souvenir de moi
-            </label>
-        </div>
-   
-
-    <button class="" type="submit">
-        Se connecter
-    </button>
-</form>
-<a href="{{path ("inscription")}}">Inscription</a>
-<br>
-<a href="{{path ("app_forgot_password_request")}}">Mot de passe oublié</a>
 {% endblock %}
