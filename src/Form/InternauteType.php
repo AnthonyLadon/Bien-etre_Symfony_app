@@ -26,7 +26,7 @@ class InternauteType extends AbstractType
             //->add('prestataires')
             // ->add('utilisateur')
             //->add('image')
-            ->add('modifier', SubmitType::class, 
+            ->add('enregistrer', SubmitType::class, 
             ['label' => 'Enregistrer les modifications']);
     }
 

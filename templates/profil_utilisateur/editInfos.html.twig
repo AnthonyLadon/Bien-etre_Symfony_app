@@ -3,7 +3,7 @@
 {% block title %}Modifier Profil{% endblock %}
 
 {% block titreh1 %}
-	<h1>Modifier mon profil</h1>
+	<h1>Modifier mes informations</h1>
 {% endblock %}
 
 {% block searchForm %}
@@ -12,11 +12,30 @@
 
 {% block body %}
 
+<div class="user-profile-adress-form-back-to-profile">
+	<a href="{{path ("profil_user", {id: app.user.internautes.id})}}">Retour page profil</a>
+</div>
 
-{{ form_start(form) }}
-{{ form_errors(form) }}
+{{ form_start(form, {
+		'attr': {'class': 'user-profile-adress-form'}})
+		}}
+{{ form_row(form.nom, {
+	'attr': {'class': 'main-search-input'},
+	'label': 'Nom',
+	'label_attr': {'class': 'main-search-label'}}) 
+}}
+{{ form_row(form.prenom, {
+	'attr': {'class': 'main-search-input'},
+	'label': 'Prénom',
+	'label_attr': {'class': 'main-search-label'}}) 
+}}
+{{ form_row(form.newsletter, {
+	'label_attr': {'class': 'main-search-label'}}) 
+}}
+{{ form_row(form.enregistrer, {
+	'attr': {'class': 'main-search-button'}
+}) }}
 {{form_end(form)}}
 
-<a href="{{path ("profil_user", {id: app.user.internautes.id})}}">Retour page profil</a><br>
 
 {% endblock %}

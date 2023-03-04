@@ -12,16 +12,16 @@
 
 {% block body %}
 
-{{ form_start(form) }}
-	{{ form_row(form.imageFile, {
-		'attr': {'class': ''},
-		'label': 'Numéro',
+{{ form_start(form, {
+		'attr': {'class': 'user-profile-adress-form'}})
+		}}
+	{{ form_widget(form.imageFile, {
+		'attr': {'class': 'browse-file-input'},
 		}) 
 	}}
 	{{ form_row(form.enregistrer, {
-		'attr': {'class': ''},
-		}) 
-	}}
+		'attr': {'class': 'main-search-button'}
+	}) }}
 {{form_end(form)}}
 
 {% endblock %}

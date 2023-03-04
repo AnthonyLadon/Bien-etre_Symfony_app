@@ -1,0 +1,76 @@
+.user-profile-link-prest {
+  display: flex;
+  justify-content: center;
+  padding: 1rem 0 0 0;
+  a {
+    color: $dark-third-color;
+    &:hover {
+      color: $smooth-minth;
+    }
+  }
+}
+
+.user-profile-img {
+  margin: 2.5rem 0 0 0;
+  text-align: center;
+  img {
+    width: 7rem;
+    height: 9rem;
+    border-radius: 40px;
+    object-fit: cover;
+    box-shadow: 0px 29px 38px -15px $third-color;
+    &:hover {
+      border: solid 2px $third-color;
+    }
+  }
+  p {
+    color: rgba(128, 128, 128, 0.462);
+    font-size: 0.8rem;
+  }
+}
+
+.user-profile-name-email {
+  margin: 0 0 2rem 0;
+  color: $darker-pink;
+}
+
+.user-profile-infos-wrap {
+  text-align: center;
+
+  p {
+    margin: 0 0 1rem 0;
+  }
+  a {
+    color: $black-pink;
+  }
+  a:hover {
+    color: $smooth-minth;
+  }
+
+  ul {
+    margin: 0 0 1rem 0;
+    li {
+      color: $darker-pink;
+    }
+  }
+}
+
+.user-profile-adress-form {
+  margin: 2rem auto;
+  max-width: 75%;
+}
+
+.user-profile-adress-form-back-to-profile {
+  margin: 1rem 0 0 0;
+  text-align: center;
+  a {
+    color: $black-pink;
+  }
+  a:hover {
+    color: $smooth-minth;
+  }
+}
+
+.browse-file-input {
+  margin: 2rem 0 1rem 0;
+}

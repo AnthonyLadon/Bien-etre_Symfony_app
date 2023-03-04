@@ -45,3 +45,17 @@
   margin: 3rem 0 0 0;
   color: $third-color;
 }
+
+.back-home {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  font-size: 0.9rem;
+  top: 5rem;
+  a {
+    color: $darker-third-color;
+    &:hover {
+      color: $smooth-minth;
+    }
+  }
+}

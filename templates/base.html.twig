@@ -88,12 +88,12 @@
 		{% endfor %}
 
 		{% block body %}{% endblock %}
-		
 	</body>
 
 		</div>
 
 		{% block footer %}
+		<span class="back-home"><a href="{{path ('home')}}">Retour accueil</a></span>
 			<footer class="l-footer">
 				<div class="l-footer-links">
 					<a href="{{path ("aPropos")}}">à propos</a>

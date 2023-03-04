@@ -12,64 +12,64 @@
 
 
 {% block body %}
-{% if app.user.roles[0] == 'ROLE_USER' %}
-     <a href="{{path ("prestataire_register", {id: app.user.id})}}">M'inscrire en tant que prestataire</a>
-{% endif %}
 
-<div class="">
-    {% if app.user.internautes.image != '' %}
-        <a href=""><img class="prestaire_img" src="{{ asset('images/uploads/' ~ app.user.internautes.image) }}" alt="photo de profil du prestataire"/></a>
-    {% else %}
-        <a href=""><img class="prestaire_img" src="{{ asset('images/avatars/blank_profile.webp') }}" alt="photo de profil du prestataire"/></a>
+    {% if app.user.roles[0] == 'ROLE_USER' %}
+    <div class="user-profile-link-prest">
+        <a href="{{path ("prestataire_register", {id: app.user.id})}}">M'inscrire en tant que prestataire</a>
+    </div>
     {% endif %}
-    <a href="{{path ("addImageUser", {id: app.user.internautes.id})}}">Modifier votre photo de profil</a>
-</div>
 
-
-{% if app.user.internautes.prenom is defined and app.user.internautes.nom is defined %}
-    <h1>{{app.user.internautes.prenom}} {{app.user.internautes.nom}}<br></h1>
-{% endif %}
-
-<div>
-    <p>Email: {{app.user.email}}</p>
-    <div>
-        <p>
-        {% if app.user.adresseRue != null %}
-            {{app.user.adresseRue}}
-        {% endif %}
-        {% if app.user.adresseNum != null %}
-            {{app.user.adresseNum}}
-        {% endif %}
-        </p>
-        <p>
-        {% if app.user.commune != null %}
-            {{app.user.commune}}
-        {% endif %}
-        {% if app.user.codePostal %}
-            {{app.user.codePostal}}
-        {% endif %}
-        </p>
-        <p>
-        {% if app.user.localite != null%}
-            {{app.user.localite}}
-        {% endif %}
-        </p>
-        {% if app.user.id is defined %}
-         {# modif des infos Utilisateur #}
-            <a href="{{path('edit_adress', {id: app.user.id} )}}">Modifier mon adresse</a><br>
-        {% endif %}
-        {% if app.user.internautes.id is defined %}
-        {# modif des infos Internaute #}
-        <a href="{{path('edit_infos', {id: app.user.internautes.id} )}}">Gérer mon profil</a><br>
+    <div class="user-profile-img">
+        {% if app.user.internautes.image != '' %}
+            <a href="{{path ("addImageUser", {id: app.user.internautes.id})}}">
+            <img class="prestaire_img" src="{{ asset('images/uploads/' ~ app.user.internautes.image) }}" alt="photo de profil du prestataire"/>
+            </a>
+        {% else %}
+            <a href="{{path ("addImageUser", {id: app.user.internautes.id})}}">
+            <img class="prestaire_img" src="{{ asset('images/avatars/blank_profile.webp') }}" alt="photo de profil du prestataire"/>
+            </a>
+            <p>Membre depuis le {{app.user.dateInscription|date('d/m/Y')}}</p>
         {% endif %}
     </div>
-    <p>Membre depuis le {{app.user.dateInscription|date('d/m/Y')}}</p>
-    <br>
-    {% if app.user.internautes.image is defined %}
-        <img class="" src="{{ asset('images/avatars/' ~ app.user.internautes.image) }}" alt="photo profil internaute"/>
-    {% else %}
-    <a href=""><img class="" src="{{ asset('images/avatars/blank_profile.webp') }}" alt="photo profil internaute"/></a>
 
-    {% endif %}
+    <div class="user-profile-infos-wrap">
+        <div class="user-profile-name-email">
+            {% if app.user.internautes.prenom is defined and app.user.internautes.nom is defined %}
+            <h1>{{app.user.internautes.prenom}} {{app.user.internautes.nom}}</h1>
+            {% endif %}
+            <p>{{app.user.email}}</p>
+                    {% if app.user.internautes.id is defined %}
+        {# modif des infos Internaute #}
+        <a href="{{path('edit_infos', {id: app.user.internautes.id} )}}">Gérer mes informations de profil</a>
+        {% endif %}
+        </div>
+        <ul>
+            <li>
+                {% if app.user.adresseRue != null %}
+                    {{app.user.adresseRue}}
+                {% endif %}
+                {% if app.user.adresseNum != null %}
+                    {{app.user.adresseNum}}
+                {% endif %}
+            </li>
+            <li>
+                {% if app.user.commune != null %}
+                    {{app.user.commune}}
+                {% endif %}
+                {% if app.user.codePostal %}
+                    {{app.user.codePostal}}
+                {% endif %}
+            </li>
+            <li>
+                {% if app.user.localite != null%}
+                    {{app.user.localite}}
+                {% endif %}
+            </li>
+        </ul>
+        {% if app.user.id is defined %}
+            {# modif des infos Utilisateur #}
+            <a href="{{path('edit_adress', {id: app.user.id} )}}">Modifier mon adresse</a>
+        {% endif %}
+    </div>
 
 {% endblock %}

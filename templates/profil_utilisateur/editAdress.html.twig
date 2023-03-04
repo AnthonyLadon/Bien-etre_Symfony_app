@@ -12,7 +12,13 @@
 
 {% block body %}
 
-{{ form_start(formProfile) }}
+<div class="user-profile-adress-form-back-to-profile">
+	<a class="user-profile-adress-form-back-to-profile" href="{{path ("profil_user", {id: app.user.internautes.id})}}">Retour page profil</a>
+</div>
+
+{{ form_start(formProfile, {
+		'attr': {'class': 'user-profile-adress-form'}})
+		}}
 	{{ form_row(formProfile.adresseNum, {
 		'attr': {'class': 'main-search-input'},
 		'label': 'Numéro',
@@ -45,5 +51,4 @@
 
 {{form_end(formProfile)}}
 
-        <a href="{{path ("profil_user", {id: app.user.internautes.id})}}">Retour page profil</a><br>
 {% endblock %}

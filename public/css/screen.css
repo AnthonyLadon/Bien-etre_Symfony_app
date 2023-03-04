@@ -299,6 +299,20 @@ nav.show {
   color: #d2a1a3;
 }
 
+.back-home {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  font-size: 0.9rem;
+  top: 5rem;
+}
+.back-home a {
+  color: #bd797b;
+}
+.back-home a:hover {
+  color: #a1d2d0;
+}
+
 .l-background-image-wrap {
   background-image: url("../images/wallpaper/wallpaper-main.jpeg");
   background-size: cover;
@@ -2128,6 +2142,81 @@ input:checked + .slide-container .nav label {
 }
 .registration-form-conditions a:hover {
   color: #a1d2d0;
+}
+
+.user-profile-link-prest {
+  display: flex;
+  justify-content: center;
+  padding: 1rem 0 0 0;
+}
+.user-profile-link-prest a {
+  color: #c0898b;
+}
+.user-profile-link-prest a:hover {
+  color: #a1d2d0;
+}
+
+.user-profile-img {
+  margin: 2.5rem 0 0 0;
+  text-align: center;
+}
+.user-profile-img img {
+  width: 7rem;
+  height: 9rem;
+  border-radius: 40px;
+  object-fit: cover;
+  box-shadow: 0px 29px 38px -15px #d2a1a3;
+}
+.user-profile-img img:hover {
+  border: solid 2px #d2a1a3;
+}
+.user-profile-img p {
+  color: rgba(128, 128, 128, 0.462);
+  font-size: 0.8rem;
+}
+
+.user-profile-name-email {
+  margin: 0 0 2rem 0;
+  color: #b96d6f;
+}
+
+.user-profile-infos-wrap {
+  text-align: center;
+}
+.user-profile-infos-wrap p {
+  margin: 0 0 1rem 0;
+}
+.user-profile-infos-wrap a {
+  color: #995557;
+}
+.user-profile-infos-wrap a:hover {
+  color: #a1d2d0;
+}
+.user-profile-infos-wrap ul {
+  margin: 0 0 1rem 0;
+}
+.user-profile-infos-wrap ul li {
+  color: #b96d6f;
+}
+
+.user-profile-adress-form {
+  margin: 2rem auto;
+  max-width: 75%;
+}
+
+.user-profile-adress-form-back-to-profile {
+  margin: 1rem 0 0 0;
+  text-align: center;
+}
+.user-profile-adress-form-back-to-profile a {
+  color: #995557;
+}
+.user-profile-adress-form-back-to-profile a:hover {
+  color: #a1d2d0;
+}
+
+.browse-file-input {
+  margin: 2rem 0 1rem 0;
 }
 
 /*# sourceMappingURL=screen.css.map */
