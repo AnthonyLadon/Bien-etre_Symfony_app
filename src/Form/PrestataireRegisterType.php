@@ -36,9 +36,9 @@ class PrestataireRegisterType extends AbstractType
                 'label' => 'choisir une ou plusieurs catégories'
 
             ])
-            ->add('soumettre', SubmitType::class, 
-            ['label' => 'M\'inscrire']
-            )
+            ->add('soumettre', SubmitType::class, [
+                'label' => 'M\'inscrire'
+            ])
         ;
     }
 

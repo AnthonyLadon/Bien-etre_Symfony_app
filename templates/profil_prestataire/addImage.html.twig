@@ -11,7 +11,7 @@
 {% endblock %}
 
 {% block body %}
-
+<a href="{{path ("profil_prest", {id: app.user.prestataire.id})}}">retour sur ma page de profil</a>
 {{ form_start(form) }}
 	{{ form_row(form.imageFile, {
 		'attr': {'class': ''},

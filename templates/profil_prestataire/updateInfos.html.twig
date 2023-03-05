@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}ajout promotion{% endblock %}
+{% block title %}Modifier informations{% endblock %}
 
 {% block titreh1 %}
-	<h1>Ajouter une promotion</h1>
+	<h1>Modifier mes informations</h1>
 {% endblock %}
 
 {% block searchForm %}
@@ -13,7 +13,15 @@
 
 {% block body %}
 <a href="{{path ("profil_prest", {id: app.user.prestataire.id})}}">retour sur ma page de profil</a>
+
 {{ form_start(form) }}
+
+{{ form_row(form.nom)}}
+{{ form_row(form.siteWeb)}}
+{{ form_row(form.tel) }}
+{{ form_row(form.tvaNum) }}
+{{ form_row(form.proposer) }}
+{{ form_row(form.soumettre, { 'label': 'Enregistrer les modifications' }) }}
 
 {{form_end(form)}}
 

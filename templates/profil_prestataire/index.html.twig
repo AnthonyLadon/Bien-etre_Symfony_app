@@ -55,7 +55,7 @@
       </div>
     {% endif %}
 
-    <a href="">Ajouter une catégorie de service</a>
+    <a href="{{path('update_infos_prest',{id: partenaire.id})}}">Mettre mes informations à jour</a>
 
     {% if partenaire.stage is not empty %}
     <div class="prestataire-detail-stage">
@@ -130,7 +130,6 @@
           <p>Pour me trouver: </p>
           <p>{{ partenaire.utilisateur.adresseRue }} {{ partenaire.utilisateur.adresseNum }}</p>
           <p>{{ partenaire.utilisateur.codePostal }} {{ partenaire.utilisateur.commune }}</p>
-          <div id="map"></div>
     {% else %}
           <a href="">Renseigner mon adresse</a>
           <p>Oops, je n'ai pas encore renseigné mon adresse</p>

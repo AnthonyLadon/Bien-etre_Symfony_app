@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\CategorieService;
 use App\Entity\Stage;
 use App\Entity\Images;
 use App\Form\PromoType;
@@ -178,6 +179,49 @@ class ProfileController extends AbstractController
     }
 
 
+
+    // ----------------------------------------------------------------
+    // Modifier les infos profil prestataire
+    // ----------------------------------------------------------------
+     /**
+     * @Route("/profil_prestataire/updateInfos/{id}", name="update_infos_prest")
+     */
+    public function updatePrest(EntityManagerInterface $entityManager, $id, Request $request): Response
+    {
+      $repository = $entityManager->getRepository(Prestataire::class);
+      $prestataire = $repository->find($id);
+
+      $form = $this->createForm(PrestataireRegisterType::class, $prestataire);
+      $form->handleRequest($request);
+
+      if ($form->isSubmitted() && $form->isValid()) {
+
+        $form = $form->getData();
+        $proposer = $form->getProposer();
+
+        // boucle pour charger les différentes catégories selectionnées dans le formulaire
+        foreach($proposer as $p){
+          $prestataire->addProposer($p);
+          $entityManager->persist($prestataire);
+        }
+
+        $entityManager->persist($prestataire);
+        $entityManager->flush();
+
+        $this->addFlash('success', 'Vos catégories ont bien été mises à jour');
+
+      return $this->redirectToRoute('profil_prest', [
+        'id'=> $id
+        ]);
+      }
+
+        return $this->render('profil_prestataire/updateInfos.html.twig', [
+          'partenaire' => $prestataire,
+          'form' => $form->createView(),
+        ]);
+    }
+
+
     // ----------------------------------------------------------------
     // Ajouter une promotion (profil Prestataire)
     // ----------------------------------------------------------------
@@ -247,43 +291,6 @@ class ProfileController extends AbstractController
           'form' => $form->createView()
         ]);
     }
-
-
-
-    // ----------------------------------------------------------------
-    // Ajouter une catégorie (profil Prestataire)
-    // ----------------------------------------------------------------
-     /**
-     * @Route("/profil_prestataire/categorie/{id}", name="profil_prest_categorie")
-     */
-    public function prestAddCategorie(EntityManagerInterface $entityManager, $id, Request $request): Response
-    {
-      $repository = $entityManager->getRepository(Prestataire::class);
-      $partenaire = $repository->find($id);
-
-      $stage = new Stage();
-      $form = $this->createForm(StageType::class, $stage);
-      $form->handleRequest($request);
-
-      if ($form->isSubmitted() && $form->isValid()) {
-
-        $form = $form->getData();
-        $stage->setPrestataire($partenaire);
-
-        $entityManager->persist($stage);
-        $entityManager->flush();
-
-    return $this->redirectToRoute('profil_prest', [
-      'id' => $partenaire->getId(),
-    ]);
-  }
-
-        return $this->render('profil_prestataire/addStage.html.twig', [
-          'partenaire' => $partenaire,
-          'form' => $form->createView()
-        ]);
-    }
-
 
 
 
