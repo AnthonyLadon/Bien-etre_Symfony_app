@@ -110,7 +110,10 @@
       {% if partenaire.utilisateur.adresseRue is defined and  partenaire.utilisateur.adresseNum is defined and partenaire.utilisateur.codePostal is defined and partenaire.utilisateur.commune is defined%}
         <p>{{ partenaire.utilisateur.adresseRue }} {{ partenaire.utilisateur.adresseNum }}</p>
         <p>{{ partenaire.utilisateur.codePostal }} {{ partenaire.utilisateur.commune }}</p>
-        <div id="map"></div>
+        
+        {# Map leaftlet ************************************ #}
+        <div id="map"></div> 
+
       {% else %}
        <p class="prestataire-detail-no-adress">Oops, je n'ai pas encore renseigné mon adresse</p>
       {% endif %}
@@ -150,5 +153,5 @@
       {% endfor %}
     </div>
   </article>
-  
+
 {% endblock %}

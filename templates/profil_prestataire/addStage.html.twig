@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ajout stage{% endblock %}
+
+{% block titreh1 %}
+	<h1>Ajouter un stage</h1>
+{% endblock %}
+
+{% block searchForm %}
+	{% embed "_searchFormToggle.html.twig" %}{% endembed %}
+{% endblock %}
+
+
+{% block body %}
+
+{{ form_start(form) }}
+
+{{form_end(form)}}
+
+{% endblock %}

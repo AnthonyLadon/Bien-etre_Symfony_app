@@ -164,7 +164,6 @@ class ProfileController extends AbstractController
     // ----------------------------------------------------------------
     // Afficher profil prestataire
     // ----------------------------------------------------------------
-
      /**
      * @Route("/profil_prestataire/{id}", name="profil_prest")
      */
@@ -173,32 +172,15 @@ class ProfileController extends AbstractController
       $repository = $entityManager->getRepository(Prestataire::class);
       $partenaire = $repository->find($id);
 
-      $stage = new Stage();
-      $form = $this->createForm(StageType::class, $stage);
-      $form->handleRequest($request);
-
-      if ($form->isSubmitted() && $form->isValid()) {
-
-        $form = $form->getData();
-        $stage->setPrestataire($partenaire);
-
-        $entityManager->persist($stage);
-        $entityManager->flush();
-
-
-    return $this->redirectToRoute('profil_prest', [
-      'id' => $partenaire->getId(),
-    ]);
-  }
-
         return $this->render('profil_prestataire/index.html.twig', [
           'partenaire' => $partenaire,
-          'form' => $form->createView()
         ]);
     }
 
 
-
+    // ----------------------------------------------------------------
+    // Ajouter une promotion (profil Prestataire)
+    // ----------------------------------------------------------------
      /**
      * @Route("/profil_prestataire/promo/{id}", name="profil_prest_promo")
      */
@@ -225,7 +207,78 @@ class ProfileController extends AbstractController
     ]);
   }
 
-        return $this->render('profil_prestataire/ajout_promo.html.twig', [
+        return $this->render('profil_prestataire/addPromo.html.twig', [
+          'partenaire' => $partenaire,
+          'form' => $form->createView()
+        ]);
+    }
+
+
+    // ----------------------------------------------------------------
+    // Ajouter un stage (profil Prestataire)
+    // ----------------------------------------------------------------
+     /**
+     * @Route("/profil_prestataire/stage/{id}", name="profil_prest_stage")
+     */
+    public function prestAddStage(EntityManagerInterface $entityManager, $id, Request $request): Response
+    {
+      $repository = $entityManager->getRepository(Prestataire::class);
+      $partenaire = $repository->find($id);
+
+      $stage = new Stage();
+      $form = $this->createForm(StageType::class, $stage);
+      $form->handleRequest($request);
+
+      if ($form->isSubmitted() && $form->isValid()) {
+
+        $form = $form->getData();
+        $stage->setPrestataire($partenaire);
+
+        $entityManager->persist($stage);
+        $entityManager->flush();
+
+    return $this->redirectToRoute('profil_prest', [
+      'id' => $partenaire->getId(),
+    ]);
+  }
+
+        return $this->render('profil_prestataire/addStage.html.twig', [
+          'partenaire' => $partenaire,
+          'form' => $form->createView()
+        ]);
+    }
+
+
+
+    // ----------------------------------------------------------------
+    // Ajouter une catégorie (profil Prestataire)
+    // ----------------------------------------------------------------
+     /**
+     * @Route("/profil_prestataire/categorie/{id}", name="profil_prest_categorie")
+     */
+    public function prestAddCategorie(EntityManagerInterface $entityManager, $id, Request $request): Response
+    {
+      $repository = $entityManager->getRepository(Prestataire::class);
+      $partenaire = $repository->find($id);
+
+      $stage = new Stage();
+      $form = $this->createForm(StageType::class, $stage);
+      $form->handleRequest($request);
+
+      if ($form->isSubmitted() && $form->isValid()) {
+
+        $form = $form->getData();
+        $stage->setPrestataire($partenaire);
+
+        $entityManager->persist($stage);
+        $entityManager->flush();
+
+    return $this->redirectToRoute('profil_prest', [
+      'id' => $partenaire->getId(),
+    ]);
+  }
+
+        return $this->render('profil_prestataire/addStage.html.twig', [
           'partenaire' => $partenaire,
           'form' => $form->createView()
         ]);
@@ -291,62 +344,5 @@ class ProfileController extends AbstractController
      ]);
     }
 
-
-    // ----------------------------------------------------------------
-    // Ajouter/modifier les photos du carrousel Prestataire
-    // ----------------------------------------------------------------
-    /**
-     * @Route("/ajout_logo/{id}",name="addImagePrest")
-     */
-    //public function addImageCarrouselPrest(Request $request, Prestataire $prestataire, UploaderHelper $uploaderHelper, EntityManagerInterface $entityManager, $id): Response
-    //{
-
-    //     $repository = $entityManager->getRepository(Prestataire::class);
-    //     $prestataire = $repository->findOneById($id);
-    //     // récupération image actuelle si elle existe
-    //     $img_prest = $entityManager->getRepository(Images::class)->findOneBy(['images_Logo' => $prestataire]);
-
-    //     $image = new Images();
-    //     $form = $this->createForm(ImagesType::class, $image);
-    //     $form->handleRequest($request);
-
-
-    //      if ($form->isSubmitted() && $form->isValid()) {
-
-    //       $uploadedImage = $form['imageFile']->getData();
-
-    //       // if ($uplodedImage) -> évite de supprimer l'image si formulaire ne renvoit rien
-    //       if ($img_prest && $uploadedImage){
-    //         // Suppression de l'image en base de données
-    //         $query = $entityManager->createQuery('DELETE FROM App\Entity\Images i WHERE i.images_Logo = :id')
-    //         ->setParameter('id', $prestataire->getId());
-    //         $query->execute();
-
-    //         // suppression du fichier dans le dossier uploads
-    //         $imgToDelete = $uploaderHelper->getUploadPath().'/'.$img_prest;
-    //         unlink($imgToDelete);
-    //       }
-
-    //       if($uploadedImage){
-    //         $newImageName = $uploaderHelper->uploadImages($uploadedImage);
-    //         $image->setImage($newImageName);
-    //         $image->setImagesLogo($prestataire);
-    //       }
-
-    //        $entityManager->persist($image);
-    //        $entityManager->flush();
-
-    //        $this->addFlash('success', 'Votre image a bien été enregistré');
-
-    //        return $this->redirectToRoute('profil_prest', [
-    //             "id" => $id
-    //         ]);
-    //      }
-
-    //    return $this->render('profil_prestataire/addImage.html.twig', [
-    //     'form' => $form->createView(),
-    //     'id' => $id
-    //  ]);
-    //}
 
 }

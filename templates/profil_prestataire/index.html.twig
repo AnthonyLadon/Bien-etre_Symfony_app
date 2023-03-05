@@ -76,9 +76,9 @@
     {% else %}
       <h3 class="prestataire-detail-no-stage">Je ne propose pas de stage pour le moment</h3>
    {% endif %}
-	<a href="">Ajouter un stage</a>
 
-	{{form(form) }}
+	<a href="{{path('profil_prest_stage',{id: partenaire.id})}}">Ajouter un stage</a>
+
   <div>
   <h3>Mes promotions</h3>
     {% if partenaire.promotion is not empty %}
