@@ -1,4 +1,3 @@
-//
 //__________List
 
 .countStagesFound {
@@ -9,12 +8,9 @@
 
 .stage-list-wrap {
   margin: 2rem 1rem 1rem 1rem;
-  padding: 2rem 0 0 0;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  justify-items: center;
+  display: grid;
+  grid-template-rows: 1fr;
+  justify-content: center;
 }
 
 .stage-card {
@@ -43,7 +39,7 @@
   }
 }
 
-.stage-prestataire-wrap {
+.stage-prestataire-card-wrap {
   margin: 0;
   padding: 0;
   display: flex;
@@ -51,7 +47,7 @@
 }
 
 .stage-partenaires-card {
-  margin: 0.5rem 0 0.5rem 0;
+  margin: 0.5rem auto 0.5rem auto;
   width: 8rem;
   height: 10.5rem;
   background-color: $dark-third-color;
@@ -79,8 +75,8 @@
 //__________Details
 
 .stage-detail-wrap {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-rows: 1fr;
   justify-content: center;
   margin: 4rem auto;
   padding: 0 1rem;
@@ -98,11 +94,16 @@
 
   p {
     color: $black-pink;
-    margin: 0 0 0.5rem 0;
+    margin: 0 0 2rem 0;
+    text-align: center;
   }
 
-  span {
+  h5 {
     color: $dark-third-color;
+    font-size: 1.5rem;
+    text-align: center;
+    text-decoration: underline;
+    margin: 0 0 1rem 0;
   }
 }
 

@@ -2,18 +2,18 @@
 .search-bar-wrap {
   position: relative;
   left: 0%;
-  top: 20%;
+  top: 24%;
   width: 100%;
 }
 
 // boutton afficher/masquer la zone de recherche
 #search-button-toggle {
+  z-index: 99;
   position: relative;
   left: 80%;
   top: 35%;
   width: 3.8rem;
   height: 1.8rem;
-  padding: 2px 0 0 0;
   margin: 0 auto;
   border: 1px solid $third-color;
   background: $third-color;
@@ -25,6 +25,10 @@
 
   &:hover {
     color: $darker-pink;
+  }
+
+  a {
+    padding: 2px 0;
   }
 }
 

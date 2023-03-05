@@ -20,7 +20,7 @@ class StageType extends AbstractType
             ->add('nom', TextType::class,[
                 
             ])
-            ->add('description', TextType::class)
+            ->add('description', TextareaType::class)
             ->add('tarif', TextType::class)
             ->add('infoComplementaire', TextareaType::class,[
                 'required' => false,

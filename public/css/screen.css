@@ -861,17 +861,17 @@ input:checked + .slide-container .nav label {
 .search-bar-wrap {
   position: relative;
   left: 0%;
-  top: 20%;
+  top: 24%;
   width: 100%;
 }
 
 #search-button-toggle {
+  z-index: 99;
   position: relative;
   left: 80%;
   top: 35%;
   width: 3.8rem;
   height: 1.8rem;
-  padding: 2px 0 0 0;
   margin: 0 auto;
   border: 1px solid #d2a1a3;
   background: #d2a1a3;
@@ -883,6 +883,9 @@ input:checked + .slide-container .nav label {
 }
 #search-button-toggle:hover {
   color: #b96d6f;
+}
+#search-button-toggle a {
+  padding: 2px 0;
 }
 
 .search-input {
@@ -1124,12 +1127,9 @@ input:checked + .slide-container .nav label {
 
 .stage-list-wrap {
   margin: 2rem 1rem 1rem 1rem;
-  padding: 2rem 0 0 0;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  justify-items: center;
+  display: grid;
+  grid-template-rows: 1fr;
+  justify-content: center;
 }
 
 .stage-card {
@@ -1156,7 +1156,7 @@ input:checked + .slide-container .nav label {
   color: #b96d6f;
 }
 
-.stage-prestataire-wrap {
+.stage-prestataire-card-wrap {
   margin: 0;
   padding: 0;
   display: flex;
@@ -1164,7 +1164,7 @@ input:checked + .slide-container .nav label {
 }
 
 .stage-partenaires-card {
-  margin: 0.5rem 0 0.5rem 0;
+  margin: 0.5rem auto 0.5rem auto;
   width: 8rem;
   height: 10.5rem;
   background-color: #c0898b;
@@ -1189,8 +1189,8 @@ input:checked + .slide-container .nav label {
 }
 
 .stage-detail-wrap {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-rows: 1fr;
   justify-content: center;
   margin: 4rem auto;
   padding: 0 1rem;
@@ -1207,10 +1207,15 @@ input:checked + .slide-container .nav label {
 }
 .stage-detail-info p {
   color: #995557;
-  margin: 0 0 0.5rem 0;
+  margin: 0 0 2rem 0;
+  text-align: center;
 }
-.stage-detail-info span {
+.stage-detail-info h5 {
   color: #c0898b;
+  font-size: 1.5rem;
+  text-align: center;
+  text-decoration: underline;
+  margin: 0 0 1rem 0;
 }
 
 @media screen and (min-width: 43rem) {
