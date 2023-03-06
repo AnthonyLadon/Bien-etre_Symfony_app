@@ -17,6 +17,43 @@ body {
   width: 30rem;
 }
 
+.pagination {
+  display: flex;
+  justify-content: center;
+  flex-wrap: nowrap;
+  margin: 3rem auto 1rem auto;
+  font-size: 1.2rem;
+
+  span {
+    color: $darker-pink;
+    padding: 8px 16px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+  }
+
+  .current {
+    background-color: rgba(117, 49, 49, 0.176);
+    color: $darker-pink;
+    padding: 8px 16px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+  }
+
+  a {
+    color: $darker-pink;
+    padding: 8px 16px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+  }
+
+  a:hover:not(.current) {
+    background-color: $smooth-minth;
+  }
+}
+
 //************************************************************************************************
 
 @media screen and (min-width: $tablet-break) {

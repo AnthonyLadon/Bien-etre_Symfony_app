@@ -17,32 +17,37 @@
 	<div class="stage-list-wrap">
 		{% if stages %}
 			{% for stage in pagination %}
-				<div class="stage-card">
-					<a href="{{path('detailStage',{id : stage.id})}}">
-						<h3>{{stage.nom}}</h3>
-						<p>Du {{stage.debut|date('d/m/y')}} au {{stage.fin|date('d/m/y')}}</p>
-						<p>Proposé par: </p>
-						<div class="stage-prestataire-card-wrap">
-							<div class="stage-partenaires-card" href="{{path('detailPartenaire',{id : stage.prestataire.id})}}">
-								{% if stage.prestataire.images[0] is defined and stage.prestataire.images[0] != '' %}
-									<img class="stage-prestataire_img" src="{{ asset('images/uploads/' ~ stage.prestataire.images[0]) }}" alt="photo de profil du prestataire"/>
-								{% else %}
-									<img class="stage-prestataire_img" src="{{ asset('images/avatars/blank_profile.webp') }}" alt="photo de profil du prestataire"/>
-								{% endif %}
-								{% if stage.prestataire.nom is defined %}
-									<div>
-										<h3>{{stage.prestataire.nom }}</h3>
-									</div>
-								{% endif %}
+			{# Le 'if' en dessous ne fonctionne pas !! Je ne comprend pas pourquoi #}
+			{# {%  if stage.affichageDe|date("d/m/Y") <= "now"|date("d/m/Y") and  "now"|date('d/m/Y') <= stage.affichageJusque|date('d/m/Y')  %} #}
+				{%  if stage.affichageDe|date("d/m/Y") <= "now"|date("d/m/Y") %}
+					<div class="stage-card">
+						<a href="{{path('detailStage',{id : stage.id})}}">
+							<h3>{{stage.nom}}</h3>
+							<p>Du {{stage.debut|date('d/m/y')}} au {{stage.fin|date('d/m/y')}}</p>
+							<p>Proposé par: </p>
+							<div class="stage-prestataire-card-wrap">
+								<div class="stage-partenaires-card" href="{{path('detailPartenaire',{id : stage.prestataire.id})}}">
+									{% if stage.prestataire.images[0] is defined and stage.prestataire.images[0] != '' %}
+										<img class="stage-prestataire_img" src="{{ asset('images/uploads/' ~ stage.prestataire.images[0]) }}" alt="photo de profil du prestataire"/>
+									{% else %}
+										<img class="stage-prestataire_img" src="{{ asset('images/avatars/blank_profile.webp') }}" alt="photo de profil du prestataire"/>
+									{% endif %}
+									{% if stage.prestataire.nom is defined %}
+										<div>
+											<h3>{{stage.prestataire.nom }}</h3>
+										</div>
+									{% endif %}
+								</div>
 							</div>
-						</div>
-					</a>
-				</div>
+						</a>
+					</div>
+				{% endif %}
 			{% endfor %}
 		{% else %}
 			<p>Il n'y a pas de stage proposé pour le moment</p>
 		{% endif %}
 	</div>
+
 
 		{# display navigation #}
 	<div class='l-main-pagination'>

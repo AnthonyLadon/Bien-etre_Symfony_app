@@ -64,7 +64,9 @@
         <ul>
             {% for st in partenaire.stage %}
               {# test si le stage est dans sa periode d'affichage. Si oui -> Affichage #}
-              {%  if st.affichageDe|date("d/m/Y") <= "now"|date("d/m/Y") and "now"|date("d/m/Y") <= st.affichageJusque|date("d/m/Y") %}
+              {# Le 'if' en dessous ne fonctionne pas !! Je ne comprend pas pourquoi #}
+              {# {%  if st.affichageDe|date("d/m/Y") <= "now"|date("d/m/Y") and "now"|date("d/m/Y") <= st.affichageJusque|date("d/m/Y") %} #}
+              {%  if st.affichageDe|date("d/m/Y") <= "now"|date("d/m/Y") %}
                 <li>
                   <a href="{{path('detailStage',{id : st.id} )}}">{{st.nom}}</a>
                 </li>
