@@ -27,7 +27,7 @@ class StageController extends AbstractController
         $pagination = $paginator->paginate(
             $stages, /* query NOT result */
             $request->query->getInt('page', 1), /*page number*/
-            8 /*limit par page*/
+            4 /*limit par page*/
         );
 
         return $this->render('stage/liste.html.twig', [

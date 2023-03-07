@@ -1,3 +1,33 @@
+.prestataire-detail-promotion {
+  margin: 2rem 0;
+  border-radius: 15px;
+
+  h4 {
+    margin: 0.2rem 0 0 0;
+    position: relative;
+    top: -1.6rem;
+    text-align: center;
+    font-size: 2rem;
+    color: $darker-pink;
+    border-radius: 5px;
+  }
+
+  p {
+    text-align: center;
+    border-radius: 5px;
+    color: $darker-pink;
+  }
+
+  span {
+    text-decoration: underline;
+  }
+}
+
+.prestataire-detail-promotion-description {
+  margin: 1rem 0;
+  font-size: 1.2rem;
+}
+
 .prestataire-detail-services {
   border-radius: 5px;
   margin: 4rem 1rem 0 1rem;

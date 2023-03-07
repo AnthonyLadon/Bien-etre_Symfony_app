@@ -1169,7 +1169,7 @@ input:checked + .slide-container .nav label {
   margin: 2rem 0 0 0;
   width: 20rem;
   height: 18rem;
-  background-color: rgba(248, 203, 170, 0.7058823529);
+  background-color: rgba(217, 237, 236, 0.6274509804);
   border-radius: 10px;
   box-shadow: 0px 29px 38px -15px #d2a1a3;
   transition: 0.3s;
@@ -1377,6 +1377,33 @@ input:checked + .slide-container .nav label {
     height: 10rem;
   }
 }
+.prestataire-detail-promotion {
+  margin: 2rem 0;
+  border-radius: 15px;
+}
+.prestataire-detail-promotion h4 {
+  margin: 0.2rem 0 0 0;
+  position: relative;
+  top: -1.6rem;
+  text-align: center;
+  font-size: 2rem;
+  color: #b96d6f;
+  border-radius: 5px;
+}
+.prestataire-detail-promotion p {
+  text-align: center;
+  border-radius: 5px;
+  color: #b96d6f;
+}
+.prestataire-detail-promotion span {
+  text-decoration: underline;
+}
+
+.prestataire-detail-promotion-description {
+  margin: 1rem 0;
+  font-size: 1.2rem;
+}
+
 .prestataire-detail-services {
   border-radius: 5px;
   margin: 4rem 1rem 0 1rem;
