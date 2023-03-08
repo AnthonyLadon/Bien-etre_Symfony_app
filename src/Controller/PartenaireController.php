@@ -31,7 +31,7 @@ class PartenaireController extends AbstractController
         $pagination = $paginator->paginate(
             $partenaires, /* query NOT result */
             $request->query->getInt('page', 1), /*page number*/
-            4 /*limit par page*/
+            5 // Définition de la limite d'items par page
         );
 
         return $this->render('partenaire/liste.html.twig', [

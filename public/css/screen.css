@@ -251,6 +251,7 @@ nav.show {
   }
   .l-main-nav {
     height: 5rem;
+    padding: 0 0 5rem 0;
     background: unset;
     opacity: 100%;
     transition: unset;
@@ -412,17 +413,17 @@ nav.show {
   .l-background-image-wrap {
     background-image: url("../images/wallpaper/wallpaper-main3.png");
     max-width: 2000px;
-    height: 30rem;
+    height: 44rem;
   }
   .l-main-logo {
-    padding: 10rem 0 8rem 0;
+    padding: 22rem 0 8rem 0;
   }
   .l-main-logo img {
     width: 7rem;
   }
   .ease-in-title {
     position: absolute;
-    top: 27.2rem;
+    top: 39.2rem;
     text-shadow: -1px 1px 27px rgb(210, 161, 163);
   }
 }
@@ -443,7 +444,7 @@ nav.show {
   border-radius: 10px;
   outline: none;
   color: #d2a1a3;
-  background-color: rgba(222, 245, 246, 0.6470588235);
+  background-color: #f7f0f0;
 }
 
 .main-search-input::placeholder {
@@ -456,7 +457,8 @@ nav.show {
 }
 
 .main-search-label {
-  color: #995557;
+  color: rgba(118, 65, 67, 0.8705882353);
+  text-shadow: 2px 2px 13px rgb(208, 169, 170);
 }
 
 .main-search-button {
@@ -464,16 +466,18 @@ nav.show {
   padding: 0rem;
   margin: 1rem 0 0.5rem 0;
   height: 2rem;
-  border: 1px solid #d2a1a3;
-  background: #d2a1a3;
+  border: none;
+  background: background-input;
   text-align: center;
-  color: #fff;
+  color: #c0898b;
   border-radius: 10px;
   cursor: pointer;
   font-size: 18px;
 }
 .main-search-button:hover {
-  color: #b96d6f;
+  color: #c0898b;
+  border: 1px solid #c0898b;
+  background-color: #a1d2d0;
 }
 
 @media screen and (min-width: 43rem) {
@@ -488,7 +492,7 @@ nav.show {
 @media screen and (min-width: 62rem) {
   .main-search-bar-wrap {
     position: relative;
-    top: 4rem;
+    top: 5rem;
     justify-content: center;
     width: 35rem;
     padding: 0;
@@ -496,21 +500,12 @@ nav.show {
   }
   .main-search-bar-wrap div {
     display: grid;
-    grid-template-columns: 6.5rem 1fr;
+    grid-template-columns: 1fr;
   }
   .main-search-input {
     width: 100%;
     height: 2rem;
     margin: 0 1rem 0.5rem 0;
-  }
-  .main-search-button {
-    width: 100%;
-    padding: 0rem;
-    margin: 0 0 0.5rem 0;
-    height: 2rem;
-  }
-  .main-search-button:hover {
-    color: #b96d6f;
   }
 }
 .carousel {
@@ -961,8 +956,8 @@ input:checked + .slide-container .nav label {
 @media screen and (min-width: 62rem) {
   .search-bar-wrap {
     position: relative;
-    top: 5%;
-    left: 17.5%;
+    top: -1rem;
+    left: 22%;
     width: 34rem;
     justify-content: space-around;
     margin: 0;
@@ -1277,7 +1272,6 @@ input:checked + .slide-container .nav label {
 .partenaires-list-wrap {
   margin: 2rem 1rem 1rem 1rem;
   display: flex;
-  flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
   justify-items: center;
@@ -1301,7 +1295,7 @@ input:checked + .slide-container .nav label {
 }
 
 .partenaires-card {
-  margin: 2rem 0 0 0;
+  margin: 2rem 0.5rem 0 0.5rem;
   width: 8rem;
   height: 10.5rem;
   background-color: #c0898b;
@@ -1357,16 +1351,7 @@ input:checked + .slide-container .nav label {
 @media screen and (min-width: 43rem) {
   .partenaires-list-wrap {
     margin: 2rem 1rem 1rem 1rem;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
     justify-items: center;
-  }
-}
-@media screen and (min-width: 62rem) {
-  .partenaires-list-wrap {
-    margin: 2rem 3rem 1rem 3rem;
   }
   .partenaires-card {
     width: 10rem;
@@ -1375,6 +1360,11 @@ input:checked + .slide-container .nav label {
   .prestataire_img {
     width: 10rem;
     height: 10rem;
+  }
+}
+@media screen and (min-width: 62rem) {
+  .partenaires-list-wrap {
+    margin: 2rem 3rem 1rem 3rem;
   }
 }
 .prestataire-detail-promotion {
@@ -1386,7 +1376,7 @@ input:checked + .slide-container .nav label {
   position: relative;
   top: -1.6rem;
   text-align: center;
-  font-size: 2rem;
+  font-size: 2.5rem;
   color: #b96d6f;
   border-radius: 5px;
 }
@@ -1664,8 +1654,10 @@ input:checked + .slide-container .nav label {
 
 .prestataire-detail-comments {
   padding: 0 5rem;
+  text-align: center;
 }
 .prestataire-detail-comments h4 {
+  font-size: 1.4rem;
   color: #c0898b;
   text-align: center;
   margin: 0 0 0.8rem 0;

@@ -1,5 +1,0 @@
-
-
-Pour lancer la compilation de SASS:
-
-sass --watch public/sass/screen.scss public/css/screen.css

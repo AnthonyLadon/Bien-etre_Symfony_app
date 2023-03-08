@@ -16,7 +16,7 @@ class Images
     #[ORM\Column(nullable: true)]
     private ?int $ordre = null;
 
-    #[ORM\Column(nullable: true)]
+    #[ORM\Column(nullable: false)]
     private ?string $image = null;
 
     #[ORM\ManyToOne(inversedBy: 'images')]

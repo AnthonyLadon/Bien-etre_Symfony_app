@@ -5,58 +5,108 @@
 {% endblock %}
 
 {% block titreh1 %}
-    Bien-être
+  Bien-être
 {% endblock %}
 
-
 {% block searchForm %}
-    <div class="main-search-bar-wrap">
-      <form name="prestataire_search" method="get" action="{{path ('home')}}">
-        <div>
-          <label class="main-search-label">Nom</label>
-          <input class="main-search-input" type="text" name="nom" placeholder="Veuillez entrer un nom">
-        </div>
-        <div>
-          <label class="main-search-label">Catégorie</label>
-          <input class="main-search-input" type="text" name="categorie" placeholder="Veuillez une catégorie">
-        </div>
-        <div>
-          <label class="main-search-label" >Localité</label>
-          <select class="main-search-input" type="select" name="localite" id="prestataire_search_localite">
-            <option value="">-- Selectionnez une localité --</option>
-            <option value="région Bruxelles capitale">région Bruxelles capitale</option>
-            <option value="province de liège">province de Liège</option>
-            <option value="province du hainaut">province du hainaut</option>
-            <option value="province du brabant wallon">province du brabant wallon</option>
-            <option value="province d'anvers">province d'anvers</option>
-            <option value="province de flandre occidentale">province de flandre occidentale</option>
-            <option value="province de flandre orientale">province de flandre orientale</option>
-            <option value="province du brabant flamand">province du brabant flamand</option>
-            <option value="province du brabant flamand (Louvain)">province du brabant flamand (Louvain)</option>
-            <option value="province du luxembourg">province du luxembourg</option>
-            <option value="province du limbourg">province du limbourg</option>
-            <option value="province de namur">province de namur</option>
-          </select>
-        </div>
-        <div>
-          <label class="main-search-label">Commune</label>
-          <select class="main-search-input" type="text" name="commune" id="prestataire_search_commune"><option value="">-- Selectionnez une commune --</option></select>
-        </div>
-        <div>
-          <label class="main-search-label">Code postal</label>
-          <select class="main-search-input" type="text" name="codePostal" id="prestataire_search_cp"><option value="">-- Selectionnez un code postal --</option></select>
-        </div>
-        <div>
-          <button class="main-search-button" type="submit" name="submit">Rechercher</button>
-        </div>
-      </form>
-    </div>
+  <div class="main-search-bar-wrap">
+    <form name="prestataire_search" method="get" action="{{ path('home') }}">
+      <div>
+        <label class="main-search-label">Nom du prestataire</label>
+        <input class="main-search-input"
+          type="text"
+          name="nom"
+          placeholder="Veuillez entrer un nom" />
+      </div>
+      <div>
+        <label class="main-search-label">Catégorie de service</label>
+        <input class="main-search-input"
+          type="text"
+          name="categorie"
+          placeholder="Veuillez une catégorie" />
+      </div>
+      <div>
+        <label class="main-search-label">Localité</label>
+        <select class="main-search-input"
+          type="select"
+          name="localite"
+          id="prestataire_search_localite">
+          <option value="">
+            -- Selectionnez une localité --
+          </option>
+          <option value="région Bruxelles capitale">
+            région Bruxelles capitale
+          </option>
+          <option value="province de liège">
+            province de Liège
+          </option>
+          <option value="province du hainaut">
+            province du hainaut
+          </option>
+          <option value="province du brabant wallon">
+            province du brabant wallon
+          </option>
+          <option value="province d'anvers">
+            province d'anvers
+          </option>
+          <option value="province de flandre occidentale">
+            province de flandre occidentale
+          </option>
+          <option value="province de flandre orientale">
+            province de flandre orientale
+          </option>
+          <option value="province du brabant flamand">
+            province du brabant flamand
+          </option>
+          <option value="province du brabant flamand (Louvain)">
+            province du brabant flamand (Louvain)
+          </option>
+          <option value="province du luxembourg">
+            province du luxembourg
+          </option>
+          <option value="province du limbourg">
+            province du limbourg
+          </option>
+          <option value="province de namur">
+            province de namur
+          </option>
+        </select>
+      </div>
+      <div>
+        <label class="main-search-label">Commune</label>
+        <select class="main-search-input"
+          type="text"
+          name="commune"
+          id="prestataire_search_commune">
+          <option value="">
+            -- Selectionnez une commune --
+          </option>
+        </select>
+      </div>
+      <div>
+        <label class="main-search-label">Code postal</label>
+        <select class="main-search-input"
+          type="text"
+          name="codePostal"
+          id="prestataire_search_cp">
+          <option value="">
+            -- Selectionnez un code postal --
+          </option>
+        </select>
+      </div>
+      <div>
+        <button class="main-search-button" type="submit" name="submit">
+          Rechercher
+        </button>
+      </div>
+    </form>
+  </div>
 {% endblock %}
 
 {% block body %}
-{% if is_granted('ROLE_ADMIN') %}
-  <a href="#">Modifier les photos</a>
-{% endif %}
+  {% if is_granted('ROLE_ADMIN') %}
+    <a href="#">Modifier les photos</a>
+  {% endif %}
   <div class="carousel">
     {# Images gérées par l'admin #}
     <ul class="slides">
@@ -103,24 +153,37 @@
         Les derniers prestataires incrits
       </h2>
       <div class="last-4-registrated-wrap">
-      {% if lastPrestataires %}
+        {% if lastPrestataires %}
           {% for p in lastPrestataires %}
             <div class="card">
               <div class="face face--front">
                 {% if p.images[0] is defined and p.images[0] != '' %}
-                  <img  src="{{ asset('images/uploads/' ~ p.images[0]) }}" alt="photo de profil du prestataire"/>
+                  <img src="{{ asset('images/uploads/' ~ p.images[0]) }}"
+                    alt="photo de profil du prestataire" />
                 {% else %}
-                  <img  src="{{ asset('images/avatars/blank_profile.webp') }}" alt="photo de profil du prestataire"/>
+                  <img src="{{ asset('images/avatars/blank_profile.webp') }}"
+                    alt="photo de profil du prestataire" />
                 {% endif %}
               </div>
-              <a class="face face--back" href="{{path('detailPartenaire',{id : p.id})}}">{{p.nom }}</a>
+              <a class="face face--back"
+                href="{{
+                path(
+                  'detailPartenaire',
+                  {
+                    id: p.id
+                  }
+                )
+                }}">
+                {{ p.nom }}
+              </a>
             </div>
           {% endfor %}
         {% else %}
-            <p>Il n'y a pas encore de presataire inscrit sur le site</p>
-      {% endif %}
+          <p>
+            Il n'y a pas encore de presataire inscrit sur le site
+          </p>
+        {% endif %}
       </div>
-    
     </article>
   </div>
 
@@ -142,25 +205,32 @@
         Le service à la une
       </h2>
       {% if highlightService %}
-          <a href="{{path('detailService',{id : highlightService.id})}}">
-            <div class="highlight-service-card">
-              <img src="{{asset ('images/services/' ~ highlightService.image )}}"
-                alt="photo service à la une" />
-              <div class="highlight-service-card-title">
-                <h4>
-                  {{highlightService.nom}}
-                </h4>
-              </div>
+        <a href="{{
+          path(
+            'detailService',
+            {
+              id: highlightService.id
+            }
+          )
+          }}">
+          <div class="highlight-service-card">
+            <img src="{{ asset('images/services/' ~ highlightService.image) }}"
+              alt="photo service à la une" />
+            <div class="highlight-service-card-title">
+              <h4>
+                {{ highlightService.nom }}
+              </h4>
             </div>
-          </a>
-        {% else %}
-            <div class="highlight-service-card">
-              <div class="highlight-service-card-title">
-                <h1>
-                  Il n'y a pas de service mis en avant pour le moment
-                </h1>
-              </div>
-            </div>
+          </div>
+        </a>
+      {% else %}
+        <div class="highlight-service-card">
+          <div class="highlight-service-card-title">
+            <h1>
+              Il n'y a pas de service mis en avant pour le moment
+            </h1>
+          </div>
+        </div>
       {% endif %}
     </article>
   </div>

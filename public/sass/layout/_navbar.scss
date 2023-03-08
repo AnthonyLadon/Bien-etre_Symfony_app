@@ -1,4 +1,4 @@
-// Icone hamburger
+// Icone hamburger + annimation de celle-ci
 .icon-1,
 .icon-2,
 .icon-3 {
@@ -57,7 +57,7 @@
   height: 8rem;
 }
 
-// Menu
+// Navbar menu
 .l-main-nav {
   background: $third-color;
   position: absolute;
@@ -157,9 +157,12 @@ nav.show {
     display: none;
   }
 
-  // pour afficher en permanence la navbar et eviter que la div ne descende trop bas et ne gene la searchbar
+  // pour afficher en permanence la navbar et eviter que la div ne
+  // descende trop bas et ne gene la searchbar
+
   .l-main-nav {
     height: 5rem;
+    padding: 0 0 5rem 0;
     background: unset;
     opacity: 100%;
     transition: unset;

@@ -1,0 +1,12 @@
+
+Lancer le serveur symfony: 
+
+symfony server:start
+
+https://127.0.0.1:8000/
+
+
+
+Pour lancer la compilation de SASS (node):
+
+sass --watch public/sass/screen.scss public/css/screen.css

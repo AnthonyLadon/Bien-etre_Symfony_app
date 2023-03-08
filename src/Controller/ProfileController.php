@@ -298,7 +298,7 @@ class ProfileController extends AbstractController
     // Ajouter/modifier la photo de profil de Prestataire
     // ----------------------------------------------------------------
     /**
-     * @Route("/ajout_logo/{id}",name="addImagePrest")
+     * @Route("/profil_prestataire/ajout_logo/{id}",name="addImagePrest")
      */
     public function addImagePrest(Request $request, Prestataire $prestataire, UploaderHelper $uploaderHelper, EntityManagerInterface $entityManager, $id): Response
     {
@@ -351,5 +351,85 @@ class ProfileController extends AbstractController
      ]);
     }
 
+
+
+    // ----------------------------------------------------------------
+    // Ajouter des photos au carrousel profil de Prestataire
+    // ----------------------------------------------------------------
+    /**
+     * @Route("profil_prestataire/images/{id}",name="imagesPrest")
+     */
+    public function crudImagesPrest(Request $request, Prestataire $prestataire, UploaderHelper $uploaderHelper, EntityManagerInterface $entityManager, $id): Response
+    {
+
+        $repository = $entityManager->getRepository(Prestataire::class);
+        $prestataire = $repository->findOneById($id);
+
+        $image = new Images();
+        $form = $this->createForm(ImagesType::class, $image);
+        $form->handleRequest($request);
+
+
+         if ($form->isSubmitted() && $form->isValid()) {
+
+          $uploadedImage = $form['imageFile']->getData();
+
+          if($uploadedImage){
+            $newImageName = $uploaderHelper->uploadImages($uploadedImage);
+            $image->setImage($newImageName);
+            $image->setImagesPhoto($prestataire);
+          }
+
+           $entityManager->persist($image);
+           $entityManager->flush();
+
+           $this->addFlash('success', 'Votre image a bien été enregistré');
+
+           return $this->redirectToRoute('profil_prest', [
+                "id" => $id
+            ]);
+         }
+
+       return $this->render('profil_prestataire/imagesCarrousel.html.twig', [
+        'form' => $form->createView(),
+        'id' => $id,
+        "prestataire" => $prestataire
+     ]);
+    }
+
+
+    // ----------------------------------------------------------------
+    // supprimer une photo du carrousel profil de Prestataire
+    // ----------------------------------------------------------------
+    /**
+     * @Route("profil_prestataire/suprimer_img/{id}/{id_img}",name="supprImagePrest")
+     */
+    public function supprImagesPrest(Prestataire $prestataire, UploaderHelper $uploaderHelper, EntityManagerInterface $entityManager, $id, $id_img): Response
+    {
+
+      // On récupére l'id du prestataire et celui de l'image passés en parametre depus le lien
+        $repository = $entityManager->getRepository(Prestataire::class);
+        $prestataire = $repository->findOneById($id);
+        // récupération de l'image
+        $img_carrousel_prest = $entityManager->getRepository(Images::class)->findOneBy(['id' =>  $id_img]);
+
+        // Suppression de l'image en base de données
+        $query = $entityManager->createQuery('DELETE FROM App\Entity\Images i WHERE i.id = :id')
+        ->setParameter('id', $id_img);
+        $query->execute();
+
+        // suppression du fichier dans le dossier uploads
+        $imgToDelete = $uploaderHelper->getUploadPath().'/'.$img_carrousel_prest;
+        unlink($imgToDelete);
+
+           $entityManager->flush();
+
+           $this->addFlash('success', 'Votre image a bien été supprimé');
+
+           return $this->redirectToRoute('imagesPrest', [
+                "id" => $id,
+                "prestataire" => $prestataire
+            ]);
+       }
 
 }

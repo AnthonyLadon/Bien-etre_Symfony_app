@@ -22,6 +22,7 @@
       {% endif %}
     </div>
 
+    {# Les promotions ne sont visibles que par les utilisateurs identitfiés #}
     {% if is_granted("ROLE_USER") %}
         {% for pr in partenaire.promotion %}
         {# TODO REVOIR LES CONDITIONS DATES !!!!!!!!!!! #}
@@ -152,7 +153,11 @@
           <p class="prestataire-detail-comments-content">{{com.contenu}}</p>
           <div class="prestataire-detail-comments-date-author">
             <p>Le {{com.dateEncodage| date('d/m/Y')}}</p>
-            <p> par: {{com.internaute }}</p>
+            {% if app.user.internautes.prenom is defined %}
+                 <p> par: {{app.user.internautes.prenom }}</p>
+                 {% else %}
+                 <p> par: Anonyme</p>
+            {% endif %}
           </div>
         </div>
         <div class="prestataire-detail-comments-separator"></div>

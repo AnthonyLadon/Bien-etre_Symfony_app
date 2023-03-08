@@ -44,7 +44,7 @@ class HomeController extends AbstractController
             $pagination = $paginator->paginate(
                 $partenaires, /* query NOT result */
                 $request->query->getInt('page', 1), /*page number*/
-                8 /*limit par page*/
+                5 // Définition de la limite d'items par page
             );
 
             // envoi les données reçues par la DB à la vue liste de prestataires

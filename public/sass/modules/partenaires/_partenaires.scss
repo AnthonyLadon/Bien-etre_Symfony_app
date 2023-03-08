@@ -1,7 +1,6 @@
 .partenaires-list-wrap {
   margin: 2rem 1rem 1rem 1rem;
   display: flex;
-  flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
   justify-items: center;
@@ -26,7 +25,7 @@
 }
 
 .partenaires-card {
-  margin: 2rem 0 0 0;
+  margin: 2rem 0.5rem 0 0.5rem;
   width: 8rem;
   height: 10.5rem;
   background-color: $dark-third-color;
@@ -86,19 +85,7 @@
 @media screen and (min-width: $tablet-break) {
   .partenaires-list-wrap {
     margin: 2rem 1rem 1rem 1rem;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
     justify-items: center;
-  }
-}
-
-// ****************************************************************
-
-@media screen and (min-width: $laptop-break) {
-  .partenaires-list-wrap {
-    margin: 2rem 3rem 1rem 3rem;
   }
 
   .partenaires-card {
@@ -109,5 +96,13 @@
   .prestataire_img {
     width: 10rem;
     height: 10rem;
+  }
+}
+
+// ****************************************************************
+
+@media screen and (min-width: $laptop-break) {
+  .partenaires-list-wrap {
+    margin: 2rem 3rem 1rem 3rem;
   }
 }

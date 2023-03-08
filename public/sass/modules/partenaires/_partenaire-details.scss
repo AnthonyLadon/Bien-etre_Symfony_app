@@ -7,7 +7,7 @@
     position: relative;
     top: -1.6rem;
     text-align: center;
-    font-size: 2rem;
+    font-size: 2.5rem;
     color: $darker-pink;
     border-radius: 5px;
   }
@@ -300,7 +300,9 @@
 
 .prestataire-detail-comments {
   padding: 0 5rem;
+  text-align: center;
   h4 {
+    font-size: 1.4rem;
     color: $dark-third-color;
     text-align: center;
     margin: 0 0 0.8rem 0;

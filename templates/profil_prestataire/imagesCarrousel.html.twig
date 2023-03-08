@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+  Images prestataire
+{% endblock %}
+
+{% block titreh1 %}
+  <h1>
+    Gestion de vos images
+  </h1>
+{% endblock %}
+
+{% block searchForm %}
+  {% embed '_searchFormToggle.html.twig' %}
+
+  {% endembed %}
+{% endblock %}
+
+{% block body %}
+  <div>
+    <h3 href="">
+      Ajouter une nouvelle photo à votre gallerie
+    </h3>
+    {{ form(form) }}
+  </div>
+  {% for img in prestataire.imagesPhoto %}
+    <img style="width:8rem;"
+      class=""
+      src="{{ asset('images/uploads/' ~ img) }}"
+      alt="photo carrousel" />
+    <div>
+      {# On passe l'id du prestataire et celui d'image en parametre #}
+      <a href="{{
+        path(
+          'supprImagePrest',
+          {
+            id: prestataire.id,
+            id_img: img.id
+          }
+        )
+        }}">
+        Retirer cette photo
+      </a>
+    </div>
+  {% endfor %}
+{% endblock %}

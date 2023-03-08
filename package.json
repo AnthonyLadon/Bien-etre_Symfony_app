@@ -20,5 +20,9 @@
         "dev": "encore dev",
         "watch": "encore dev --watch",
         "build": "encore production --progress"
+    },
+    "dependencies": {
+        "prettier-plugin-twig-enhancements": "^1.0.1",
+        "remove": "^0.1.5"
     }
 }

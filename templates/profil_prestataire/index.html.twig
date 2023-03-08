@@ -114,18 +114,11 @@
       </p>
     </div>
     {# Carrousel photos prestataire #}
+        <a href="{{path ("imagesPrest", {id: app.user.prestataire.id})}}">Gérer les photos de la gallerie</a>
     <div class="gallery">
-        {% for img in partenaire.images %}
-        {# test pour ne pas afficher la photo de profil ici #}
-          {% if img != partenaire.images[0] %}
-            <img class="prestaire_img" src="{{ asset('images/avatars/' ~ img) }}" alt="photo du prestataire"/>
-          {% endif %}
+        {% for img in partenaire.imagesPhoto %}
+          <img class="prestaire_img" src="{{ asset('images/uploads/' ~ img) }}" alt="photo carrousel"/>
         {% endfor %}
-        <img src="https://images.pexels.com/photos/13921689/pexels-photo-13921689.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" />
-        <img src="https://images.pexels.com/photos/14577737/pexels-photo-14577737.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" />
-        <img src="https://images.pexels.com/photos/14686959/pexels-photo-14686959.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" />
-        <img src="https://images.pexels.com/photos/12620000/pexels-photo-12620000.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" />
-    </div>
     </div>
     {% if partenaire.utilisateur.adresseRue is defined and  partenaire.utilisateur.adresseNum is defined and partenaire.utilisateur.codePostal is defined and partenaire.utilisateur.commune is defined%}
           <a href="">Modifier mon adresse</a>

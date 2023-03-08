@@ -17,7 +17,7 @@
   border-radius: 10px;
   outline: none;
   color: $third-color;
-  background-color: $secondary-transparent;
+  background-color: $background-input;
 }
 
 // couleur du texte dans le placeholder
@@ -32,7 +32,8 @@
 }
 
 .main-search-label {
-  color: $black-pink;
+  color: $darken-pink;
+  text-shadow: 2px 2px 13px rgb(208, 169, 170);
 }
 
 // gestion du bouton
@@ -41,16 +42,18 @@
   padding: 0rem;
   margin: 1rem 0 0.5rem 0;
   height: 2rem;
-  border: 1px solid $third-color;
-  background: $third-color;
+  border: none;
+  background: background-input;
   text-align: center;
-  color: #fff;
+  color: $dark-third-color;
   border-radius: 10px;
   cursor: pointer;
   font-size: 18px;
 
   &:hover {
-    color: $darker-pink;
+    color: $dark-third-color;
+    border: 1px solid $dark-third-color;
+    background-color: $smooth-minth;
   }
 }
 
@@ -72,7 +75,7 @@
 @media screen and (min-width: $laptop-break) {
   .main-search-bar-wrap {
     position: relative;
-    top: 4rem;
+    top: 5rem;
     justify-content: center;
     width: 35rem;
     padding: 0;
@@ -80,7 +83,7 @@
 
     div {
       display: grid;
-      grid-template-columns: 6.5rem 1fr;
+      grid-template-columns: 1fr;
     }
   }
 
@@ -88,17 +91,5 @@
     width: 100%;
     height: 2rem;
     margin: 0 1rem 0.5rem 0;
-  }
-
-  // gestion du bouton
-  .main-search-button {
-    width: 100%;
-    padding: 0rem;
-    margin: 0 0 0.5rem 0;
-    height: 2rem;
-
-    &:hover {
-      color: $darker-pink;
-    }
   }
 }

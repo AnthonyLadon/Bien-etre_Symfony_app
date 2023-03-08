@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Prestataire{% endblock %}
+
+{% block body %}
+    <h1>Create new Prestataire</h1>
+
+    {{ include('prestataire/_form.html.twig') }}
+
+    <a href="{{ path('app_prestataire_index') }}">back to list</a>
+{% endblock %}
