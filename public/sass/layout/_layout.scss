@@ -13,8 +13,11 @@ body {
 }
 
 #map {
-  height: 15rem;
-  width: 30rem;
+  height: 18rem;
+  width: 100%;
+  border-radius: 15px;
+  margin: 2rem auto;
+  box-shadow: 0px 12px 20px 5px $third-color;
 }
 
 .pagination {
@@ -57,4 +60,17 @@ body {
 //************************************************************************************************
 
 @media screen and (min-width: $tablet-break) {
+  #map {
+    height: 20rem;
+    width: 100%;
+  }
+}
+
+//************************************************************************************************
+
+@media screen and (min-width: $laptop-break) {
+  #map {
+    height: 26rem;
+    width: 75%;
+  }
 }

@@ -30,6 +30,7 @@ class HomeController extends AbstractController
 
         if (isset($_GET['submit'])){
             // Récupération des données envoyées en GET par le formulaire html
+            // Les données sont filtrées par sécurité
             ($request->query->all()['nom'])!== "" ? $nom = filter_var(($request->query->all()['nom']), FILTER_SANITIZE_SPECIAL_CHARS) : $nom = null;
             ($request->query->all()['categorie'])!== "" ? $categorie = filter_var(($request->query->all()['categorie']), FILTER_SANITIZE_SPECIAL_CHARS) : $categorie = null;
             ($request->query->all()['localite'])!== "" ? $localite = filter_var(($request->query->all()['localite']), FILTER_SANITIZE_SPECIAL_CHARS) : $localite = null;

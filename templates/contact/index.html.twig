@@ -1,19 +1,19 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Contact{% endblock %}
-
+{% block title %}
+  Contact
+{% endblock %}
 
 {% block titreh1 %}
-    Contact
+  Contact
 {% endblock %}
 
 {% block searchForm %}
-	{% embed "_searchFormToggle.html.twig" %}{% endembed %}
+  {% embed '_searchFormToggle.html.twig' %}
+
+  {% endembed %}
 {% endblock %}
 
-
 {% block body %}
-
-    <a href="mailto:contact@bienetre.com">Nous contacter par email</a>
-
+  <a href="mailto:contact@bienetre.com">Nous contacter par email</a>
 {% endblock %}

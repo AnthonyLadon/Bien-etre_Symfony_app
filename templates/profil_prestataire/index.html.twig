@@ -116,9 +116,13 @@
     {# Carrousel photos prestataire #}
         <a href="{{path ("imagesPrest", {id: app.user.prestataire.id})}}">Gérer les photos de la gallerie</a>
     <div class="gallery">
+    {% if partenaire.imagesPhoto is not empty %}
         {% for img in partenaire.imagesPhoto %}
           <img class="prestaire_img" src="{{ asset('images/uploads/' ~ img) }}" alt="photo carrousel"/>
         {% endfor %}
+        {% else %}
+        <p class="prestataire-detail-no-stage">😱 Oops je ne propose pas encore de photo dans ma gallerie..</p>
+    {% endif %}
     </div>
     {% if partenaire.utilisateur.adresseRue is defined and  partenaire.utilisateur.adresseNum is defined and partenaire.utilisateur.codePostal is defined and partenaire.utilisateur.commune is defined%}
           <a href="">Modifier mon adresse</a>

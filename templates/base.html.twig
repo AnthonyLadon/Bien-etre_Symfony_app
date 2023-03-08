@@ -32,7 +32,6 @@
 									<li><a id="partenaires" href="{{path ("listePartenaires")}}"><i class="fa-solid fa-handshake-simple"></i>&nbsp;Prestataires</a></li>
 									<li><a id="services" href="{{path ("listeServices")}}"><i class="fa-solid fa-bell-concierge"></i>&nbsp;Services</a></li>
 									<li><a id="services" href="{{path ("listeStages")}}"><i class="fa-solid fa-person-chalkboard"></i>&nbsp;Stages</a></li>
-									
 									{# accés au lien seulement si le user est authentifié #}
 									{% if app.user %}
 										<li><a href="{{ path('app_logout') }}"><i class="fa-solid fa-right-from-bracket"></i>&nbsp;Déconnection</a></li>

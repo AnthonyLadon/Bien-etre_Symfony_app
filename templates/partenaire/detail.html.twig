@@ -80,16 +80,13 @@
 
     {# Carrousel photos prestataire #}
     <div class="gallery">
-        {% for img in partenaire.images %}
-        {# test pour ne pas afficher la photo de profil ici #}
-          {% if img != partenaire.images[0] %}
-            <img class="prestaire_img" src="{{ asset('images/avatars/' ~ img) }}" alt="photo du prestataire"/>
-          {% endif %}
+    {% if partenaire.imagesPhoto is not empty %}
+        {% for img in partenaire.imagesPhoto %}
+          <img class="prestaire_img" src="{{ asset('images/uploads/' ~ img) }}" alt="photo carrousel"/>
         {% endfor %}
-        <img src="https://images.pexels.com/photos/13921689/pexels-photo-13921689.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" />
-        <img src="https://images.pexels.com/photos/14577737/pexels-photo-14577737.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" />
-        <img src="https://images.pexels.com/photos/14686959/pexels-photo-14686959.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" />
-        <img src="https://images.pexels.com/photos/12620000/pexels-photo-12620000.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" />
+        {% else %}
+        <p class="prestataire-detail-no-stage">😱 Oops je ne propose pas encore de photo dans ma gallerie..</p>
+    {% endif %}
     </div>
 
     <div class="prestataire-detail-contact">
@@ -119,7 +116,12 @@
         <p>{{ partenaire.utilisateur.codePostal }} {{ partenaire.utilisateur.commune }}</p>
         
         {# Map leaftlet ************************************ #}
-        <div id="map"></div> 
+        {# Récupération de la longitude et latitude dans le js -> js/map.js #}
+        <p style="display: none" id="map-lat">{{lat}}</p>
+        <p style="display:none" id="map-lng">{{lng}}</p>
+
+        <div id="map"></div>
+
 
       {% else %}
        <p class="prestataire-detail-no-adress">Oops, je n'ai pas encore renseigné mon adresse</p>
