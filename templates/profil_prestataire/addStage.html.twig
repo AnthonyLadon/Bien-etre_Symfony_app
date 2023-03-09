@@ -1,20 +1,68 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}ajout stage{% endblock %}
+{% block title %}
+  ajout stage
+{% endblock %}
 
 {% block titreh1 %}
-	<h1>Ajouter un stage</h1>
+  <h1>
+    Ajouter un stage
+  </h1>
 {% endblock %}
 
 {% block searchForm %}
-	{% embed "_searchFormToggle.html.twig" %}{% endembed %}
+  {% embed '_searchFormToggle.html.twig' %}
+
+  {% endembed %}
 {% endblock %}
 
-
 {% block body %}
-      <a href="{{path ("profil_prest", {id: app.user.prestataire.id})}}">retour sur ma page de profil</a>
-{{ form_start(form) }}
+  <a href="{{
+    path(
+      'profil_prest',
+      {
+        id: app.user.prestataire.id
+      }
+    )
+    }}">
+    retour sur ma page de profil
+  </a>
+  {{ form_start(form) }}
 
-{{form_end(form)}}
+  <div class="form-register">
+    <div class="register-input">
+      {{ form_label(form.nom) }}
+      {{ form_widget(form.nom) }}
+    </div>
+    <div class="register-input">
+      {{ form_label(form.description) }}
+      {{ form_widget(form.description) }}
+    </div>
+    <div class="register-input">
+      {{ form_label(form.tarif) }}
+      {{ form_widget(form.tarif) }}
+    </div>
+    <div class="register-input">
+      {{ form_label(form.infoComplementaire) }}
+      {{ form_widget(form.infoComplementaire) }}
+    </div>
+    <div class="">
+      {{ form_label(form.debut) }}
+      {{ form_widget(form.debut) }}
+    </div>
+    <div class="">
+      {{ form_label(form.fin) }}
+      {{ form_widget(form.fin) }}
+    </div>
+    <div class="">
+      {{ form_label(form.affichageDe) }}
+      {{ form_widget(form.affichageDe) }}
+    </div>
+    <div class="">
+      {{ form_label(form.affichageJusque) }}
+      {{ form_widget(form.affichageJusque) }}
+    </div>
+  </div>
 
+  {{ form_end(form) }}
 {% endblock %}

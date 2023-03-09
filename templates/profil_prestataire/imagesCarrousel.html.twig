@@ -17,30 +17,45 @@
 {% endblock %}
 
 {% block body %}
-  <div>
-    <h3 href="">
-      Ajouter une nouvelle photo à votre gallerie
-    </h3>
-    {{ form(form) }}
-  </div>
-  {% for img in prestataire.imagesPhoto %}
-    <img style="width:8rem;"
-      class=""
-      src="{{ asset('images/uploads/' ~ img) }}"
-      alt="photo carrousel" />
-    <div>
-      {# On passe l'id du prestataire et celui d'image en parametre #}
-      <a href="{{
-        path(
-          'supprImagePrest',
-          {
-            id: prestataire.id,
-            id_img: img.id
-          }
-        )
-        }}">
-        Retirer cette photo
-      </a>
+  <h3 class="prestataire-gallery-manage-title">
+    Ajouter une nouvelle photo à votre gallerie
+  </h3>
+
+  {{ form_start(form) }}
+  <div class="form-register">
+    <div class="form-file-input">
+      {{ form_label(form.imageFile) }}
+      {{ form_widget(form.imageFile) }}
     </div>
-  {% endfor %}
+    <div class="submit-form-button">
+      {{ form_label(form.enregistrer) }}
+      {{ form_widget(form.enregistrer) }}
+    </div>
+  </div>
+  {{ form_end(form) }}
+
+  <div class="prestataire-gallery-manage-photos-wrap">
+    {% for img in prestataire.imagesPhoto %}
+      <div class="prestataire-gallery-manage-photos">
+        <img style="width:8rem;"
+          class=""
+          src="{{ asset('images/uploads/' ~ img) }}"
+          alt="photo carrousel" />
+        <div>
+          {# On passe l'id du prestataire et celui de l'image en parametre #}
+          <a href="{{
+            path(
+              'supprImagePrest',
+              {
+                id: prestataire.id,
+                id_img: img.id
+              }
+            )
+            }}">
+            Supprimer photo
+          </a>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
 {% endblock %}

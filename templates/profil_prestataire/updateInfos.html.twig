@@ -1,28 +1,65 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Modifier informations{% endblock %}
+{% block title %}
+  Modifier informations
+{% endblock %}
 
 {% block titreh1 %}
-	<h1>Modifier mes informations</h1>
+  <h1>
+    Modifier mes informations
+  </h1>
 {% endblock %}
 
 {% block searchForm %}
-	{% embed "_searchFormToggle.html.twig" %}{% endembed %}
+  {% embed '_searchFormToggle.html.twig' %}
+
+  {% endembed %}
 {% endblock %}
 
-
 {% block body %}
-<a href="{{path ("profil_prest", {id: app.user.prestataire.id})}}">retour sur ma page de profil</a>
+  <a href="{{
+    path(
+      'profil_prest',
+      {
+        id: app.user.prestataire.id
+      }
+    )
+    }}">
+    retour sur ma page de profil
+  </a>
 
-{{ form_start(form) }}
+  {{ form_start(form) }}
 
-{{ form_row(form.nom)}}
-{{ form_row(form.siteWeb)}}
-{{ form_row(form.tel) }}
-{{ form_row(form.tvaNum) }}
-{{ form_row(form.proposer) }}
-{{ form_row(form.soumettre, { 'label': 'Enregistrer les modifications' }) }}
+  <div class="form-register">
+    <div class="register-input">
+      {{ form_label(form.nom) }}
+      {{ form_widget(form.nom) }}
+    </div>
+    <div class="register-input">
+      {{ form_label(form.siteWeb) }}
+      {{ form_widget(form.siteWeb) }}
+    </div>
+    <div class="register-input">
+      {{ form_label(form.tel) }}
+      {{ form_widget(form.tel) }}
+    </div>
+    <div class="register-input">
+      {{ form_label(form.tvaNum) }}
+      {{ form_widget(form.tvaNum) }}
+    </div>
+    <div class="">
+      {{ form_label(form.proposer) }}
+      {{ form_widget(form.proposer) }}
+    </div>
 
-{{form_end(form)}}
-
+    {{
+      form_row(
+        form.soumettre,
+        {
+          label: 'Enregistrer les modifications'
+        }
+      )
+    }}
+  </div>
+  {{ form_end(form) }}
 {% endblock %}
