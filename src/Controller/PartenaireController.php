@@ -65,8 +65,13 @@ class PartenaireController extends AbstractController
         $geocoder = new Geocoder('b091b28cf9ff4f33acbedc0c90166f8c');
         // récupération des données de latitude et longitude
         $result = $geocoder->geocode($adresse);
-        $lat = $result['results'][0]['geometry']['lat'];
-        $lng = $result['results'][0]['geometry']['lng'];
+        if(isset($result)){
+            $lat = $result['results'][0]['geometry']['lat'];
+            $lng = $result['results'][0]['geometry']['lng'];
+        }else{
+            $lat = null;
+            $lng = null;
+        }
 
 
         $commentaire = new Commentaire;

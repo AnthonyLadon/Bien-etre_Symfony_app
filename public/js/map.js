@@ -5,7 +5,7 @@ let lat = document.getElementById("map-lat").innerText;
 let lng = document.getElementById("map-lng").innerText;
 
 // On passe les valeurs lat et longitude à la carte et au marqeur
-var map = L.map("map").setView([lat, lng], 12);
+var map = L.map("map").setView([lat, lng], 16);
 
 L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
   maxZoom: 19,
