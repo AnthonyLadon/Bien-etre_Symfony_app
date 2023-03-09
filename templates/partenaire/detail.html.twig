@@ -53,7 +53,7 @@
     </div>
     {% else %}
       <div class="prestataire-detail-services-list">
-        <h3 class="prestataire-detail-no-service">Je ne propose pas encore de catégorie de service</h3>
+        <p class="prestataire-detail-no-data">Je ne propose pas encore de catégorie de service</p>
       </div>
     {% endif %}
     {% if partenaire.stage is not empty %}
@@ -75,7 +75,7 @@
       </div>
     </div>
     {% else %}
-      <h3 class="prestataire-detail-no-stage">Je ne propose pas de stage pour le moment</h3>
+      <p class="prestataire-detail-no-data">Je ne propose pas de stage pour le moment</p>
    {% endif %}
 
     {# Carrousel photos prestataire #}
@@ -85,7 +85,7 @@
           <img class="prestaire_img" src="{{ asset('images/uploads/' ~ img) }}" alt="photo carrousel"/>
         {% endfor %}
         {% else %}
-        <p class="prestataire-detail-no-stage">😱 Oops je ne propose pas encore de photo dans ma gallerie..</p>
+        <p class="prestataire-detail-no-data">😱 Oops je ne propose pas encore de photo dans ma gallerie...</p>
     {% endif %}
     </div>
 
@@ -124,7 +124,7 @@
 
 
       {% else %}
-       <p class="prestataire-detail-no-adress">Oops, je n'ai pas encore renseigné mon adresse</p>
+       <p class="prestataire-detail-no-data">Oops, je n'ai pas encore renseigné mon adresse</p>
       {% endif %}
     </div>
     

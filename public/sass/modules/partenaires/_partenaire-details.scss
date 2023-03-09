@@ -63,9 +63,12 @@
   }
 }
 
-.prestataire-detail-no-service {
-  margin: 2rem 0 0 0;
+.prestataire-detail-no-data {
+  display: block;
+  max-width: 80%;
+  margin: 2rem auto 0 auto;
   text-align: center;
+  font-size: 1.5rem;
   color: $darker-pink;
 }
 

@@ -21,6 +21,11 @@ use Symfony\Component\Form\FormBuilderInterface;
 
 class HomeController extends AbstractController
 {
+
+    // ----------------------------------------------------------------
+    // Afficher page home -> formulaire de recherche de prestataires, 
+    // derniers prestataires inscrits et le service à la une
+    // ----------------------------------------------------------------
     /**
      * @Route("/",name="home")
      */

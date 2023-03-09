@@ -30,6 +30,9 @@ class RegistrationController extends AbstractController
         $this->emailVerifier = $emailVerifier;
     }
 
+    // ----------------------------------------------------------------
+    // Inscription sur le site (+ envoi email vérification)
+    // ----------------------------------------------------------------
     /**
      * @Route("/inscription",name="inscription")
      */
@@ -66,7 +69,7 @@ class RegistrationController extends AbstractController
 
             $this->addFlash('success', 'Votre inscription a bien été prise en compte');
 
-            // generate a signed url and email it to the user
+            // envoi de l'email de confirmation d'inscription
             $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,
                 (new TemplatedEmail())
                     ->from(new Address('bienetre@no-reply.com', 'BienEtre & Co'))
@@ -74,7 +77,6 @@ class RegistrationController extends AbstractController
                     ->subject('Merci de confirmer votre adresse email')
                     ->htmlTemplate('registration/confirmation_email.html.twig')
             );
-            // do anything else you need here, like send an email
 
             return $userAuthenticator->authenticateUser(
                 $user,
@@ -89,6 +91,9 @@ class RegistrationController extends AbstractController
     }
 
 
+    // ----------------------------------------------------------------
+    // Inscription sur le site (+ envoi email vérification)
+    // ----------------------------------------------------------------
     #[Route('/verify/email', name: 'app_verify_email')]
     public function verifyUserEmail(Request $request, TranslatorInterface $translator): Response
     {
@@ -112,7 +117,7 @@ class RegistrationController extends AbstractController
 
 
     // ----------------------------------------------------------------
-    // Inscription en tant que prestataire
+    // Inscription en tant que prestataire (ROLE_USER required)
     // ----------------------------------------------------------------
      /**
      * @Route("/inscription_prestataire/{id}",name="prestataire_register")

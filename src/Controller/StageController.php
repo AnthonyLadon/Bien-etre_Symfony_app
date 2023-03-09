@@ -14,6 +14,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class StageController extends AbstractController
 {
+
+    // ----------------------------------------------------------------
+    // Affichage liste des stages
+    // ----------------------------------------------------------------
     /**
      * @Route("/stages",name="listeStages")
      */
@@ -36,10 +40,13 @@ class StageController extends AbstractController
         ]);
     }
 
+
+    // ----------------------------------------------------------------
+    // Affichage detail stage
+    // ----------------------------------------------------------------
     /**
      * @Route("stages/detail/{id}", name="detailStage")
      */
-
      public function detailStage($id, EntityManagerInterface $entityManager, Request $request, PaginatorInterface $paginator)
      {
 

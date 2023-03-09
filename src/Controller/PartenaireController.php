@@ -17,8 +17,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class PartenaireController extends AbstractController
 {
-    // Affichage de tous les Prestataires
 
+    // ----------------------------------------------------------------
+    // Affichage de tous les Prestataires (& pagination)
+    // ----------------------------------------------------------------
     /**
      * @Route("/partenaires",name="listePartenaires")
      */
@@ -41,8 +43,10 @@ class PartenaireController extends AbstractController
         ]);
     }
 
-    // Affichage detail d'un Prestataire + commentaire (si authentifié en tant qu'User)
 
+    // ----------------------------------------------------------------
+    // Affichage detail d'un Prestataire + commentaire (si authentifié en tant qu'User)
+    // ----------------------------------------------------------------
     /**
      * @Route("partenaires/detail/{id}", name="detailPartenaire")
      */

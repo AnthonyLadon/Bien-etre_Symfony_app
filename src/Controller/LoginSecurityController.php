@@ -9,9 +9,11 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class LoginSecurityController extends AbstractController
 {
-
+    // ----------------------------------------------------------------
+    // Controller LOGIN
     // priority = 1 place la route en tete des routes (executée en 1ére) et donc evite
     // d'etre confondue avec un slug ou autre
+    // ----------------------------------------------------------------
     /**
      * @Route("/login",name="security_login", priority=1)
      */
@@ -39,6 +41,9 @@ class LoginSecurityController extends AbstractController
         return $this->render('security/login.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
     }
 
+    // ----------------------------------------------------------------
+    // LOGOUT
+    // ----------------------------------------------------------------
     #[Route(path: '/logout', name: 'app_logout')]
     public function logout(): void
     {

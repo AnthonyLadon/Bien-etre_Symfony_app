@@ -15,7 +15,7 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class InsertController extends AbstractController
 {
-    //+++++++++++++++++++ dé-commenter $entityManager->flush();
+    //+++++++++++++++++++ Pour ajouter en DB dé-commenter $entityManager->flush();
      /**
      * @Route("/ajout_user",name="ajoutUtilisateur")
      */
@@ -53,7 +53,7 @@ class InsertController extends AbstractController
         ]);
     }
 
-        //+++++++++++++++++++ dé-commenter $entityManager->flush();
+    //+++++++++++++++++++ Pour ajouter en DB dé-commenter $entityManager->flush();
     /**
      * @Route("ajout_admin",name="ajoutAdmin")
      */

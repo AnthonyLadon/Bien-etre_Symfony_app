@@ -17,8 +17,10 @@ use function Symfony\Component\DependencyInjection\Loader\Configurator\service;
 class ServiceController extends AbstractController
 {
 
-    // Affichage liste des services
 
+    // ----------------------------------------------------------------
+    // Affichage liste des services
+    // ----------------------------------------------------------------
     /**
      * @Route("/services",name="listeServices")
      */
@@ -42,10 +44,11 @@ class ServiceController extends AbstractController
         ]);
     }
 
+    
 
-
+    // ----------------------------------------------------------------
     // Affichage detail d'un Service
-
+    // ----------------------------------------------------------------
     /**
      * @Route("services/detail/{id}", name="detailService")
      */
