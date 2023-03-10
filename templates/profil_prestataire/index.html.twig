@@ -26,18 +26,6 @@
 
     <a class="prestataire-detail-link-crud" href="{{path('update_infos_prest',{id: partenaire.id})}}">Mettre mes informations à jour</a>
 
-    {% if partenaire.promotion is defined %}
-      {% for pr in partenaire.promotion %}
-        {#! {%  if pr.affichageDe|date("d/m/Y") <= "now"|date("d/m/Y") and pr.affichageJusque|date("d/m/Y") >= "now"|date("d/m/Y") %} #}
-        <div>
-          <p><span>Promotion!</span> Dans la catégorie "{{pr.categorieService}}", du: {{pr.debut|date("d/m/Y") }} au: {{pr.fin|date("d/m/Y")}}</p>
-          <p>{{ pr.nom }}</p>
-          {{ pr.description }}
-        </div>
-        {#! {% endif %} #}
-      {% endfor %}
-    {% endif %}
-  
     {% if partenaire.proposer is defined %}
       <div class="prestataire-detail">
         <h3 class="prestataire-detail-list-title">Mes catégories de service</h3>
@@ -64,9 +52,7 @@
         <ul>
             {% for st in partenaire.stage %}
               {# test si le stage est dans sa periode d'affichage. Si oui -> Affichage #}
-              {# Le 'if' en dessous ne fonctionne pas !! Je ne comprend pas pourquoi #}
-              {# {%  if st.affichageDe|date("d/m/Y") <= "now"|date("d/m/Y") and "now"|date("d/m/Y") <= st.affichageJusque|date("d/m/Y") %} #}
-              {%  if st.affichageDe|date("d/m/Y") <= "now"|date("d/m/Y") %}
+              {% if date(st.affichageDe) < date() and date(st.affichageJusque) > date() %}
                 <li>
                   <a href="{{path('detailStage',{id : st.id} )}}">{{st.nom}}</a>
                 </li>
@@ -86,9 +72,10 @@
     {% if partenaire.promotion is not empty %}
       {% for pr in partenaire.promotion %}
         <div class="prestataire-detail-list">
-          <p><span>Promotion!</span> Dans la catégorie "{{pr.categorieService}}", du: {{pr.debut|date("d/m/Y") }} au: {{pr.fin|date("d/m/Y")}}</p>
+          <p>{{pr.categorieService}}</p> 
+          <p>du: {{pr.debut|date("d/m/Y") }} au: {{pr.fin|date("d/m/Y")}}</p>
           <p>{{ pr.nom }}</p>
-          {{ pr.description }}
+          <p>{{ pr.description }}</p>
         </div>
       {% endfor %}
     {% else %}

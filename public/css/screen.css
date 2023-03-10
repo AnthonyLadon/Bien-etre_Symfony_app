@@ -1646,24 +1646,6 @@ input:checked + .slide-container .nav label {
   color: #b96d6f;
 }
 
-.prestataire-detail-comments-zone {
-  border-radius: 5px;
-  margin: 2rem 1rem 0 1rem;
-  padding: 1rem 0 6rem 0;
-  box-shadow: 0px 12px 38px 5px #d2a1a3;
-  transition: 0.3s;
-}
-.prestataire-detail-comments-zone.prestataire-detail-comments-zone:hover {
-  box-shadow: 0 8px 16px 0 #c0898b;
-}
-
-.prestataire-detail-comments-title {
-  margin: 1rem 0 3rem 0;
-  text-align: center;
-  color: #995557;
-  text-decoration: underline;
-}
-
 .prestataire-detail-comments {
   padding: 0 5rem;
   text-align: center;

@@ -11,15 +11,11 @@
 {% endblock %}
 
 {% block body %}
-	<div class="countStagesFound">
-		{{ pagination.getTotalItemCount }} stage(s) trouvé(s)
 	</div>
 	<div class="stage-list-wrap">
 		{% if stages %}
 			{% for stage in pagination %}
-			{# Le 'if' en dessous ne fonctionne pas !! Je ne comprend pas pourquoi #}
-			{# {%  if stage.affichageDe|date("d/m/Y") <= "now"|date("d/m/Y") and  "now"|date('d/m/Y') <= stage.affichageJusque|date('d/m/Y')  %} #}
-				{%  if stage.affichageDe|date("d/m/Y") <= "now"|date("d/m/Y") %}
+				{% if date(stage.affichageDe) < date() and date(stage.affichageJusque) > date() %}
 					<div class="stage-card">
 						<a href="{{path('detailStage',{id : stage.id})}}">
 							<h3>{{stage.nom}}</h3>

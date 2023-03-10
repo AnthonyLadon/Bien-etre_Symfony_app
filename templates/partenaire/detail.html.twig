@@ -25,8 +25,7 @@
     {# Les promotions ne sont visibles que par les utilisateurs identitfiés #}
     {% if is_granted("ROLE_USER") %}
         {% for pr in partenaire.promotion %}
-        {# TODO REVOIR LES CONDITIONS DATES !!!!!!!!!!! #}
-         {# !{%  if pr.affichageDe|date("d/m/Y") <= "now"|date("d/m/Y") and pr.affichageJusque|date("d/m/Y") >= "now"|date("d/m/Y") %} #}
+         {% if date(pr.affichageDe) < date() and date(pr.affichageJusque) > date() %}
           <div class="prestataire-detail-promotion">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#a1d2d0" fill-opacity="1" d="M0,288L40,245.3C80,203,160,117,240,106.7C320,96,400,160,480,170.7C560,181,640,139,720,149.3C800,160,880,224,960,213.3C1040,203,1120,117,1200,90.7C1280,64,1360,96,1400,112L1440,128L1440,0L1400,0C1360,0,1280,0,1200,0C1120,0,1040,0,960,0C880,0,800,0,720,0C640,0,560,0,480,0C400,0,320,0,240,0C160,0,80,0,40,0L0,0Z"></path></svg>
             <h4>{{ pr.nom }}</h4>
@@ -35,37 +34,34 @@
             <p class="prestataire-detail-promotion-description">{{ pr.description }}</p>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#a1d2d0" fill-opacity="1" d="M0,288L40,245.3C80,203,160,117,240,106.7C320,96,400,160,480,170.7C560,181,640,139,720,149.3C800,160,880,224,960,213.3C1040,203,1120,117,1200,90.7C1280,64,1360,96,1400,112L1440,128L1440,320L1400,320C1360,320,1280,320,1200,320C1120,320,1040,320,960,320C880,320,800,320,720,320C640,320,560,320,480,320C400,320,320,320,240,320C160,320,80,320,40,320L0,320Z"></path></svg>
           </div>
-        {#! {% endif %} #}
+        ! {% endif %}
       {% endfor %}
     {% endif %}
     {% if partenaire.proposer is not empty %}
-    <div class="prestataire-detail-services">
-      <h3 class="prestataire-detail-services-list-title">Mes catégories de service</h3>
-      <div class="prestataire-detail-services-list">
+    <div class="prestataire-detail">
+      <h3 class="prestataire-detail-list-title">Mes catégories de service</h3>
+      <div class="prestataire-detail-list">
         <ul>
           {% for service in partenaire.proposer %}
-          <li><a href="{{path('detailService',{id : service.id} )}}">
-          {{ service.nom}}
-          </a>
+          <li>
+            <a href="{{path('detailService',{id : service.id} )}}">{{ service.nom}}</a>
           {% endfor %}
         </ul>
       </div>
     </div>
     {% else %}
-      <div class="prestataire-detail-services-list">
+      <div class="prestataire-detail-list">
         <p class="prestataire-detail-no-data">Je ne propose pas encore de catégorie de service</p>
       </div>
     {% endif %}
     {% if partenaire.stage is not empty %}
-    <div class="prestataire-detail-stage">
-      <h3 class="prestataire-detail-stage-list-title">Les stages que je propose actuellement</h3>
-      <div class="prestataire-detail-stage-list">
+    <div class="prestataire-detail">
+      <h3 class="prestataire-detail-list-title">Les stages que je propose actuellement</h3>
+      <div class="prestataire-detail-list">
         <ul>
             {% for st in partenaire.stage %}
               {# test si le stage est dans sa periode d'affichage. Si oui -> Affichage #}
-              {# Le 'if' en dessous ne fonctionne pas !! Je ne comprend pas pourquoi #}
-              {# {% if st.affichageDe|date("d/m/Y") <= "now"|date("d/m/Y") and st.affichageJusque|date("d/m/Y") >= "now"|date("d/m/Y") %} #}
-              {% if st.affichageDe|date("d/m/Y") <= "now"|date("d/m/Y")%}
+              {% if date(st.affichageDe) < date() and date(st.affichageJusque) > date() %}
                 <li>
                   <a href="{{path('detailStage',{id : st.id} )}}">{{st.nom}}</a>
                 </li>
@@ -89,7 +85,7 @@
     {% endif %}
     </div>
 
-    <div class="prestataire-detail-contact">
+    <div class="prestataire-detail">
       <h3 class="prestataire-detail-contact-title">Mes informations</h3>
       <ul>
       <li>
@@ -109,7 +105,7 @@
       </ul>
     </div>
 
-    <div class="prestataire-detail-adress">
+    <div class="prestataire-detail">
       <h3 class="prestataire-detail-adress-title">Où me trouver: </h3>
       {% if partenaire.utilisateur.adresseRue is defined and  partenaire.utilisateur.adresseNum is defined and partenaire.utilisateur.codePostal is defined and partenaire.utilisateur.commune is defined%}
         <p>{{ partenaire.utilisateur.adresseRue }} {{ partenaire.utilisateur.adresseNum }}</p>
@@ -147,8 +143,8 @@
     </div>
     {% endif %}
 
-    <div class="prestataire-detail-comments-zone">
-       <h3 class="prestataire-detail-comments-title">Commentaires</h3>
+    <div class="prestataire-detail">
+       <h3 class="prestataire-detail-list-title">Commentaires</h3>
       {% for com in partenaire.commentaires %}
         <div class="prestataire-detail-comments">
           <h4>{{com.titre}}</h4>

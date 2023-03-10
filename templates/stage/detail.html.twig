@@ -1,42 +1,87 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-Service {{stage.nom}}
+  Service {{ stage.nom }}
 {% endblock %}
 
 {% block titreh1 %}
-	<h1>{{stage.nom}}</h1>
+  <h1>
+    {{ stage.nom }}
+  </h1>
 {% endblock %}
 
 {% block searchForm %}
-	{% embed "_searchFormToggle.html.twig" %}{% endembed %}
+  {% embed '_searchFormToggle.html.twig' %}
+
+  {% endembed %}
 {% endblock %}
 
 {% block body %}
-	<article>
-		<div class="stage-detail-wrap">	
-			<div class="stage-partenaires-card" href="{{path('detailPartenaire',{id : stage.prestataire.id})}}">
-				<a href="{{path('detailPartenaire',{id : stage.prestataire.id})}}">
-					{% if stage.prestataire.images[0] is defined and stage.prestataire.images[0] != '' %}
-						<img class="stage-prestataire_img" src="{{ asset('images/uploads/' ~ stage.prestataire.images[0]) }}" alt="photo de profil du prestataire"/>
-					{% else %}
-						<img class="stage-prestataire_img" src="{{ asset('images/avatars/blank_profile.webp') }}" alt="photo de profil du prestataire"/>
-					{% endif %}
-					{% if stage.prestataire.nom is defined %}
-						<div>
-							<h3>{{stage.prestataire.nom }}</h3>
-						</div>
-					{% endif %}
-				</a>
-			</div>
-			<div class="stage-detail-info">
-				<h5>Description du stage</h5>
-				<p>{{stage.description}}</p>
-				<h5>Tarif</h5>
-				<p>{{stage.tarif}}</p>
-				<h5>Informations complémentaires</h5> 
-				<p>{{stage.infoComplementaire}}</p>
-			</div>
-		</div>
-	</article>
+  <article>
+    <div class="stage-detail-wrap">
+      <div class="stage-partenaires-card"
+        href="{{
+        path(
+          'detailPartenaire',
+          {
+            id: stage.prestataire.id
+          }
+        )
+        }}">
+        <a href="{{
+          path(
+            'detailPartenaire',
+            {
+              id: stage.prestataire.id
+            }
+          )
+          }}">
+          {% if
+            stage.prestataire.images[0] is defined
+              and stage.prestataire.images[0] != '' %}
+            <img class="stage-prestataire_img"
+              src="{{ asset('images/uploads/' ~ stage.prestataire.images[0]) }}"
+              alt="photo de profil du prestataire" />
+          {% else %}
+            <img class="stage-prestataire_img"
+              src="{{ asset('images/avatars/blank_profile.webp') }}"
+              alt="photo de profil du prestataire" />
+          {% endif %}
+          {% if stage.prestataire.nom is defined %}
+            <div>
+              <h3>
+                {{ stage.prestataire.nom }}
+              </h3>
+            </div>
+          {% endif %}
+        </a>
+      </div>
+      <div class="stage-detail-info">
+        <h5>
+          Description du stage
+        </h5>
+        <p>
+          {{ stage.description }}
+        </p>
+        <h5>
+          Période
+        </h5>
+        <p>
+          Du {{ stage.debut|date('d/m/y') }} au {{ stage.fin|date('d/m/y') }}
+        </p>
+        <h5>
+          Tarif
+        </h5>
+        <p>
+          {{ stage.tarif }}
+        </p>
+        <h5>
+          Informations complémentaires
+        </h5>
+        <p>
+          {{ stage.infoComplementaire }}
+        </p>
+      </div>
+    </div>
+  </article>
 {% endblock %}
