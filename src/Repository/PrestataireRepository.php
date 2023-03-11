@@ -52,7 +52,7 @@ class PrestataireRepository extends ServiceEntityRepository
 
     // permet de selectionner les ID les plus grands (donc les dernières entrées 
     // et de limiter le resultat à 4)
-    public function findLastPrestataires(): array
+    public function lastRegisteredPrestataires(): array
     {
         return $this->createQueryBuilder('p')
             ->orderBy('p.id', 'DESC')
@@ -64,7 +64,7 @@ class PrestataireRepository extends ServiceEntityRepository
 
 
     // Trouve les 4 derniers prestataires inscrits dans une même catégorie
-    public function last4Prestataires($serviceId): ?array
+    public function lastPrestatairesCategory($serviceId): ?array
     {
         return $this->createQueryBuilder('p')
             ->leftJoin('p.proposer', 'categ')

@@ -62,7 +62,7 @@ class ServiceController extends AbstractController
 
         // récupére les 4 derniers presatataires inscrits dans cette catégorie
         $repository = $entityManager->getRepository(Prestataire::class);
-        $lastPrestataires = $repository->last4Prestataires($id);
+        $lastPrestataires = $repository->lastPrestatairesCategory($id);
 
         return $this->render(
             'service/detail.html.twig',

@@ -13,17 +13,11 @@
     <form name="prestataire_search" method="get" action="{{ path('home') }}">
       <div>
         <label class="main-search-label">Nom du prestataire</label>
-        <input class="main-search-input"
-          type="text"
-          name="nom"
-          placeholder="Veuillez entrer un nom" />
+        <input class="main-search-input" type="text" name="nom" />
       </div>
       <div>
         <label class="main-search-label">Catégorie de service</label>
-        <input class="main-search-input"
-          type="text"
-          name="categorie"
-          placeholder="Veuillez une catégorie" />
+        <input class="main-search-input" type="text" name="categorie" />
       </div>
       <div>
         <label class="main-search-label">Localité</label>
@@ -32,7 +26,7 @@
           name="localite"
           id="prestataire_search_localite">
           <option value="">
-            -- Selectionnez une localité --
+            - Selection -
           </option>
           <option value="région Bruxelles capitale">
             région Bruxelles capitale
@@ -79,7 +73,7 @@
           name="commune"
           id="prestataire_search_commune">
           <option value="">
-            -- Selectionnez une commune --
+            - Selection -
           </option>
         </select>
       </div>
@@ -90,7 +84,7 @@
           name="codePostal"
           id="prestataire_search_cp">
           <option value="">
-            -- Selectionnez un code postal --
+            - Selection -
           </option>
         </select>
       </div>

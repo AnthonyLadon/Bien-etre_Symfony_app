@@ -26,21 +26,26 @@
 
 .partenaires-card {
   margin: 2rem 0.5rem 0 0.5rem;
-  width: 8rem;
+  width: 10rem;
   height: 10.5rem;
-  background-color: $dark-third-color;
+  background-color: $light-blue;
   border-radius: 10px;
   box-shadow: 0px 29px 38px -15px $third-color;
   transition: 0.3s;
+
+  img {
+    width: 10rem;
+  }
 
   &.partenaires-card:hover {
     box-shadow: 0 8px 16px 0 $third-color;
   }
 
   h3 {
-    margin: 0 0 0.5rem 0;
+    text-transform: uppercase;
+    padding: 0.2rem;
     text-align: center;
-    color: $smooth-minth;
+    color: $dark-third-color;
     font-size: 0.7rem;
     font-weight: bold;
   }

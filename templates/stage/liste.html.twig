@@ -22,7 +22,7 @@
 							<p>Du {{stage.debut|date('d/m/y')}} au {{stage.fin|date('d/m/y')}}</p>
 							<p>Proposé par: </p>
 							<div class="stage-prestataire-card-wrap">
-								<div class="stage-partenaires-card" href="{{path('detailPartenaire',{id : stage.prestataire.id})}}">
+								<div class="stage-prestataire-card" href="{{path('detailPartenaire',{id : stage.prestataire.id})}}">
 									{% if stage.prestataire.images[0] is defined and stage.prestataire.images[0] != '' %}
 										<img class="stage-prestataire_img" src="{{ asset('images/uploads/' ~ stage.prestataire.images[0]) }}" alt="photo de profil du prestataire"/>
 									{% else %}

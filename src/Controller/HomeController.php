@@ -67,7 +67,7 @@ class HomeController extends AbstractController
         // meme si d'autres on le statut 'en avant')
         $highlightService = $repositoryCategorie->findOneBy(['enAvant' => 1]);
         // Récupère les derniers prestataires à partir du plus grand ID et limite à 4 resultats
-        $lastPrestataires = $repositoryPrestataires->findLastPrestataires();
+        $lastPrestataires = $repositoryPrestataires->lastRegisteredPrestataires();
 
         return $this->render('home/index.html.twig', [
             "highlightService" => $highlightService,

@@ -3,7 +3,7 @@
 // }
 
 .l-background-image-wrap {
-  background-image: url("../images/wallpaper/wallpaper-main.jpeg");
+  background-image: url("../images/wallpaper/wallpaper-main.jpg");
   background-size: cover;
   max-width: 1200px;
   height: 42rem;
@@ -57,7 +57,7 @@
 
 @media screen and (min-width: $tablet-break) {
   .l-background-image-wrap {
-    background-image: url("../images/wallpaper/wallpaper-main2.jpeg");
+    background-image: url("../images/wallpaper/wallpaper-main.jpg");
     background-size: cover;
   }
 
@@ -78,7 +78,7 @@
 
 @media screen and (min-width: $laptop-break) {
   .l-background-image-wrap {
-    background-image: url("../images/wallpaper/wallpaper-main3.png");
+    background-image: url("../images/wallpaper/wallpaper-main.jpg");
     max-width: 2000px;
     height: 44rem;
   }

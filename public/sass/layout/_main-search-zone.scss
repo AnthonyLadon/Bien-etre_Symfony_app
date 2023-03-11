@@ -12,12 +12,13 @@
 .main-search-input {
   width: 100%;
   margin: 0 0 0.5rem 0;
-  border: 1px solid $third-color;
+  border: none;
   height: 2rem;
   border-radius: 10px;
   outline: none;
   color: $third-color;
   background-color: $background-input;
+  box-shadow: 0 8px 30px 0 $third-color;
 }
 
 // couleur du texte dans le placeholder
@@ -44,6 +45,7 @@
   height: 2rem;
   border: none;
   background: background-input;
+  background-color: $smooth-minth-light;
   text-align: center;
   color: $dark-third-color;
   border-radius: 10px;
@@ -52,7 +54,6 @@
 
   &:hover {
     color: $dark-third-color;
-    border: 1px solid $dark-third-color;
     background-color: $smooth-minth;
   }
 }
@@ -67,6 +68,22 @@
     justify-content: center;
     width: 50%;
     padding: 1.5rem 0 0 0;
+  }
+
+  .main-search-input {
+    width: 100%;
+    margin: 0 0 0.5rem 0;
+    height: 2rem;
+    border-radius: 10px;
+    outline: none;
+    color: $third-color;
+    background-color: $background-input;
+    box-shadow: 0px 29px 38px -15px $third-color-light;
+    transition: 0.3s;
+
+    &.main-search-input:hover {
+      box-shadow: 0 8px 16px 0 $third-color-light;
+    }
   }
 }
 
