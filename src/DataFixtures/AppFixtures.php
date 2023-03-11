@@ -14,24 +14,8 @@ use Doctrine\Bundle\FixturesBundle\Fixture;
 class AppFixtures extends Fixture
 {
 
-    // Fixtures via Faker
-
     public function load(ObjectManager $manager): void
     {
-
-
-        $faker = Factory::create('fr_BE');
-
-        // Creation des catégories de services
-        for ($i = 0; $i < 15; $i++) {
-            $service = new CategorieService();
-            $service->setNom($faker->jobTitle);
-            $service->setDescription($faker->paragraph);
-            $service->setEnAvant(0);
-            $service->setValide(1);
-            $manager->persist($service);
-        };
-
 
         // liste des provinces et région de Belgique
         $provinces = array('région Bruxelles capitale',
