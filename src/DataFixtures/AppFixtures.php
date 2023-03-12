@@ -19,7 +19,6 @@ class AppFixtures extends Fixture
 
     public function load(ObjectManager $manager): void
     {
-
         // liste des provinces et région de Belgique
         $provinces = array('région Bruxelles capitale',
         'province du hainaut',

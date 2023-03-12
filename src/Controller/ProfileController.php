@@ -9,8 +9,10 @@ use App\Form\StageType;
 use App\Form\ImagesType;
 use App\Entity\Promotion;
 use App\Entity\Prestataire;
-use App\Form\PrestataireRegisterType;
+use App\Entity\Utilisateur;
+use App\Form\UtilisateurType;
 use App\Services\UploaderHelper;
+use App\Form\PrestataireRegisterType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -308,4 +310,39 @@ class ProfileController extends AbstractController
             ]);
        }
 
+
+
+    // ----------------------------------------------------------------
+    // Modifier l'adresse du Prestataire
+    // ----------------------------------------------------------------
+    /**
+     * @Route("profil_prestataire/adresse/{id}",name="updateAdress")
+     */
+    public function updateAdress(EntityManagerInterface $entityManager, Request $request, $id): Response
+    {
+
+      $repository = $entityManager->getRepository(Utilisateur::class);
+      $utilisateur = $repository->find($id);
+
+      $form = $this->createForm(UtilisateurType::class, $utilisateur);
+      $form->handleRequest($request);
+
+      if ($form->isSubmitted() && $form->isValid()) {
+      $form = $form->getData();
+
+      $entityManager->persist($utilisateur);
+      $entityManager->flush();
+
+      $this->addFlash('success', 'Votre adresse a été mise à jour');
+
+      $id_prest = $utilisateur->getPrestataire()->getId();
+      return $this->redirectToRoute('profil_prest', [
+        'id'=> $id_prest
+        ]);
+      }
+          return $this->render('profil_prestataire/updateAdress.html.twig', [
+            'id' => $id,
+            'form' => $form->createView(),
+          ]); 
+    }
 }

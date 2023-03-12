@@ -1,7 +1,3 @@
-// .l-main-header-wrap{
-//   position: fixed;
-// }
-
 .l-background-image-wrap {
   background-image: url("../images/wallpaper/wallpaper-main.jpg");
   background-size: cover;
@@ -20,11 +16,10 @@
   text-align: center;
   text-shadow: 5px 4px 14px $black-pink;
 
-  // annimation du titre (voir fichier scss annimations: slide-in)
   h1 {
     color: $smooth-minth;
     font-size: 3rem;
-    animation: slide-in 2000ms ease-in-out;
+    animation: slide-in 2000ms ease-in-out; // -> "_annimations.scss" (slide-in)
     animation-delay: 0ms;
   }
 }
@@ -67,7 +62,6 @@
 
   .ease-in-title {
     top: 36.5rem;
-
     h1 {
       font-size: 4rem;
     }
@@ -95,5 +89,12 @@
     position: absolute;
     top: 39.2rem;
     text-shadow: -1px 1px 27px rgba(210, 161, 163, 1);
+
+    h1 {
+      color: $black-pink;
+      font-size: 4rem;
+      animation: slide-in 2000ms ease-in-out; // -> "_annimations.scss" (slide-in)
+      animation-delay: 0ms;
+    }
   }
 }

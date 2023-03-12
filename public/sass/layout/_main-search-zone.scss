@@ -21,19 +21,14 @@
   box-shadow: 0 8px 30px 0 $third-color;
 }
 
-// couleur du texte dans le placeholder
-.main-search-input::placeholder {
-  color: $third-color;
-  padding: 0 0 0 0.5rem;
-}
-
 // couleur du texte ecrit dans la barre de recherche
 .main-search-input:focus {
-  color: $darker-third-color;
+  color: $darker-pink;
 }
 
 .main-search-label {
   color: $darken-pink;
+  font-size: 1.1rem;
   text-shadow: 2px 2px 13px rgb(208, 169, 170);
 }
 
@@ -78,11 +73,11 @@
     outline: none;
     color: $third-color;
     background-color: $background-input;
-    box-shadow: 0px 29px 38px -15px $third-color-light;
+    box-shadow: 0 8px 30px 0 $third-color;
     transition: 0.3s;
 
     &.main-search-input:hover {
-      box-shadow: 0 8px 16px 0 $third-color-light;
+      box-shadow: 0 8px 16px 0 $third-color;
     }
   }
 }

@@ -118,7 +118,7 @@ LOCALITE.addEventListener("change", function () {
       let city = "";
 
       for (data of datas) {
-        if (data.zip > minZipCode && data.zip < maxZipCode) {
+        if (data.zip >= minZipCode && data.zip <= maxZipCode) {
           city = data.city
             .normalize("NFD")
             .replace(/([\u0300-\u036f]|[^0-9a-zA-Z])/g, "")

@@ -87,10 +87,11 @@
       }
     }
     .profile-avatar {
+      margin: 1rem 0 0 0;
       object-fit: cover;
-      height: 3.5rem;
+      height: 4.5rem;
       width: 3.5rem;
-      border-radius: 100%;
+      border-radius: 25px;
     }
     .profile-avatar:hover {
       border: solid 2px $smooth-minth;
@@ -161,9 +162,10 @@ nav.show {
   // descende trop bas et ne gene la searchbar
 
   .l-main-nav {
-    height: 5rem;
-    padding: 0 0 5rem 0;
-    background: unset;
+    z-index: 99;
+    background: $dark-third-color;
+    height: 3.5rem;
+    padding: 0 0 2.5rem 0;
     opacity: 100%;
     transition: unset;
     width: 100%;
@@ -176,18 +178,23 @@ nav.show {
       margin: 1rem auto 0 auto;
       display: flex;
       justify-content: space-evenly;
-      border-bottom: solid 1px $darker-pink;
+      width: 90%;
+
+      .profile-avatar {
+        margin: 0;
+        height: 5.5rem;
+        width: 4.5rem;
+      }
 
       a {
         list-style: none;
         font-size: 1rem;
-        color: $darker-pink;
+        color: $smooth-minth;
         text-transform: unset;
         letter-spacing: 1px;
-      }
-
-      a:hover {
-        color: $smooth-minth;
+        &:hover {
+          color: $darker-pink;
+        }
       }
     }
   }
@@ -195,11 +202,5 @@ nav.show {
   .wrap-menu {
     max-width: 1000px;
     margin: 0 auto;
-  }
-
-  .l-main-nav {
-    ul {
-      width: 90%;
-    }
   }
 }

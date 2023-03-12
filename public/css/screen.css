@@ -207,10 +207,11 @@ body {
   color: #b96d6f;
 }
 .l-main-nav ul .profile-avatar {
+  margin: 1rem 0 0 0;
   object-fit: cover;
-  height: 3.5rem;
+  height: 4.5rem;
   width: 3.5rem;
-  border-radius: 100%;
+  border-radius: 25px;
 }
 .l-main-nav ul .profile-avatar:hover {
   border: solid 2px #a1d2d0;
@@ -265,9 +266,10 @@ nav.show {
     display: none;
   }
   .l-main-nav {
-    height: 5rem;
-    padding: 0 0 5rem 0;
-    background: unset;
+    z-index: 99;
+    background: #c0898b;
+    height: 3.5rem;
+    padding: 0 0 2.5rem 0;
     opacity: 100%;
     transition: unset;
     width: 100%;
@@ -280,24 +282,26 @@ nav.show {
     margin: 1rem auto 0 auto;
     display: flex;
     justify-content: space-evenly;
-    border-bottom: solid 1px #b96d6f;
+    width: 90%;
+  }
+  .l-main-nav ul .profile-avatar {
+    margin: 0;
+    height: 5.5rem;
+    width: 4.5rem;
   }
   .l-main-nav ul a {
     list-style: none;
     font-size: 1rem;
-    color: #b96d6f;
+    color: #a1d2d0;
     text-transform: unset;
     letter-spacing: 1px;
   }
   .l-main-nav ul a:hover {
-    color: #a1d2d0;
+    color: #b96d6f;
   }
   .wrap-menu {
     max-width: 1000px;
     margin: 0 auto;
-  }
-  .l-main-nav ul {
-    width: 90%;
   }
 }
 .l-footer {
@@ -441,6 +445,12 @@ nav.show {
     top: 39.2rem;
     text-shadow: -1px 1px 27px rgb(210, 161, 163);
   }
+  .ease-in-title h1 {
+    color: #995557;
+    font-size: 4rem;
+    animation: slide-in 2000ms ease-in-out;
+    animation-delay: 0ms;
+  }
 }
 .main-search-bar-wrap {
   display: flex;
@@ -463,17 +473,13 @@ nav.show {
   box-shadow: 0 8px 30px 0 #d2a1a3;
 }
 
-.main-search-input::placeholder {
-  color: #d2a1a3;
-  padding: 0 0 0 0.5rem;
-}
-
 .main-search-input:focus {
-  color: #bd797b;
+  color: #b96d6f;
 }
 
 .main-search-label {
   color: rgba(118, 65, 67, 0.8705882353);
+  font-size: 1.1rem;
   text-shadow: 2px 2px 13px rgb(208, 169, 170);
 }
 
@@ -512,11 +518,11 @@ nav.show {
     outline: none;
     color: #d2a1a3;
     background-color: #f7f0f0;
-    box-shadow: 0px 29px 38px -15px #edd9da;
+    box-shadow: 0 8px 30px 0 #d2a1a3;
     transition: 0.3s;
   }
   .main-search-input.main-search-input:hover {
-    box-shadow: 0 8px 16px 0 #edd9da;
+    box-shadow: 0 8px 16px 0 #d2a1a3;
   }
 }
 @media screen and (min-width: 62rem) {
@@ -994,6 +1000,7 @@ input:checked + .slide-container .nav label {
   }
   #search-button-toggle {
     top: 55%;
+    left: 10%;
   }
   .search-input {
     width: 49%;
@@ -1124,6 +1131,7 @@ input:checked + .slide-container .nav label {
   display: flex;
   margin: 0 auto;
   min-width: 50%;
+  max-width: 85%;
 }
 
 .service-detail-description {
