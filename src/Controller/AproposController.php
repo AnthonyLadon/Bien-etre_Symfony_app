@@ -2,10 +2,6 @@
 
 namespace App\Controller;
 
-use App\Entity\Commune;
-use App\Entity\CodePostal;
-use App\Entity\Prestataire;
-use App\Form\PrestataireSearchType;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;

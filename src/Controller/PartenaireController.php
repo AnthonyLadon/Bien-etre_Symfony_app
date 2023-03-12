@@ -4,10 +4,8 @@ namespace App\Controller;
 
 use App\Entity\Commentaire;
 use App\Entity\Prestataire;
-use App\Entity\Utilisateur;
 use App\Form\CommentaireType;
 use OpenCage\Geocoder\Geocoder;
-use App\Form\PrestataireRegisterType;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -19,7 +17,7 @@ class PartenaireController extends AbstractController
 {
 
     // ----------------------------------------------------------------
-    // Affichage de tous les Prestataires (& pagination)
+    // Affichage de tous les Prestataires (+ pagination)
     // ----------------------------------------------------------------
     /**
      * @Route("/partenaires",name="listePartenaires")
@@ -43,7 +41,6 @@ class PartenaireController extends AbstractController
         ]);
     }
 
-
     // ----------------------------------------------------------------
     // Affichage detail d'un Prestataire + commentaire (si authentifié en tant qu'User)
     // ----------------------------------------------------------------
@@ -58,16 +55,15 @@ class PartenaireController extends AbstractController
         $repository = $entityManager->getRepository(Prestataire::class);
         $partenaire = $repository->find($id);
 
-
       $rue = $partenaire->getUtilisateur()->getAdresseRue();
       $num = $partenaire->getUtilisateur()->getAdresseNum();
       $commune= $partenaire->getUtilisateur()->getCommune()->getCommune();
       $codePostal= $partenaire->getUtilisateur()->getCodePostal()->getCodePostal();
       $adresse= ($rue." ".$num." ".$codePostal." ".$commune);
 
-        // Appel de l'API Geocoder opencagedata.com 
+        // Appel API Geocoder opencagedata.com 
         $geocoder = new Geocoder('b091b28cf9ff4f33acbedc0c90166f8c');// <- Entrez ici votre clé API
-        // récupération des données de latitude et longitude
+        // récupération des données de latitude et longitude de l'adresse passée en paramêtre
         $result = $geocoder->geocode($adresse);
         if(isset($result)){
             $lat = $result['results'][0]['geometry']['lat'];

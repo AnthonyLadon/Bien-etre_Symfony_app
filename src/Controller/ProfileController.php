@@ -2,27 +2,19 @@
 
 namespace App\Controller;
 
-use App\Entity\CategorieService;
 use App\Entity\Stage;
 use App\Entity\Images;
 use App\Form\PromoType;
 use App\Form\StageType;
 use App\Form\ImagesType;
 use App\Entity\Promotion;
-use App\Entity\Internaute;
 use App\Entity\Prestataire;
-use App\Entity\Utilisateur;
-use App\Form\InternauteType;
-use App\Form\UtilisateurType;
 use App\Form\PrestataireRegisterType;
-use App\pictureService\pictureService;
 use App\Services\UploaderHelper;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bridge\Doctrine\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 

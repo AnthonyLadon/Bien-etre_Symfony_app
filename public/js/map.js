@@ -1,6 +1,6 @@
 //Settings Leaflet maps
 
-// récupération des coordonnées envoyées par l'API
+// récupération des coordonnées envoyées par l'API (le controleur les affiche dans le DOM)
 let lat = document.getElementById("map-lat").innerText;
 let lng = document.getElementById("map-lng").innerText;
 

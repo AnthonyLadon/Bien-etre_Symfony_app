@@ -3,8 +3,6 @@
 namespace App\Controller;
 
 use App\Entity\Stage;
-use App\Entity\Prestataire;
-use App\Form\PrestataireSearchType;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;

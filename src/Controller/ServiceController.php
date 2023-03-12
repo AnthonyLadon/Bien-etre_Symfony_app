@@ -4,15 +4,12 @@ namespace App\Controller;
 
 use App\Entity\Prestataire;
 use App\Entity\CategorieService;
-use App\Form\PrestataireSearchType;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
-
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use function Symfony\Component\DependencyInjection\Loader\Configurator\service;
 
 class ServiceController extends AbstractController
 {

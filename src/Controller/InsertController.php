@@ -2,13 +2,9 @@
 
 namespace App\Controller;
 
-use PDO;
-use Exception;
 use Faker\Factory;
-use App\Entity\Localite;
 use App\Entity\Utilisateur;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;

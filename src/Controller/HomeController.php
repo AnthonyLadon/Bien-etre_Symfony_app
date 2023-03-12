@@ -2,21 +2,14 @@
 
 namespace App\Controller;
 
-use PDO;
-use Exception;
-use App\Entity\Commune;
-use App\Entity\Localite;
-use App\Entity\CodePostal;
+
 use App\Entity\Prestataire;
 use App\Entity\CategorieService;
-use App\Form\PrestataireSearchType;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Form\FormBuilderInterface;
 
 
 class HomeController extends AbstractController

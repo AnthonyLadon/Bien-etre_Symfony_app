@@ -2,9 +2,6 @@
 
 namespace App\Controller;
 
-use App\Entity\Prestataire;
-use Symfony\Component\Mime\Email;
-use App\Form\PrestataireSearchType;
 use Symfony\Component\Mime\Address;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;

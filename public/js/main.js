@@ -16,10 +16,10 @@ icon.addEventListener("click", function () {
 
 //*****************************/
 
-// Permet, sur les autres pages que l'accueil, d'afficher et de masquer le zone de recherche
+// Permet, sur les autres pages que l'accueil, d'afficher et de masquer le formulaire de recherche
 const TargetDiv = document.getElementById("search-bar-wrap");
 const BTN = document.getElementById("search-button-toggle");
-// condition pour éviter les erreurs sur la page home (TargetDiv n'existe pas sur cette page)
+// condition pour éviter les erreurs sur la page home (TargetDiv n'existe pas sur page home)
 if (TargetDiv) {
   TargetDiv.style.display = "none";
   BTN.onclick = function () {
@@ -46,7 +46,6 @@ LOCALITE.addEventListener("change", function () {
   // Pour récupérer le texte du champ selectioné
   let selectedIndex = LOCALITE.options.selectedIndex;
   let selectedText = LOCALITE.options[selectedIndex].firstChild.data;
-  console.log(selectedText);
 
   let selectedLocaliteNormalized = selectedText
     .normalize("NFD")
