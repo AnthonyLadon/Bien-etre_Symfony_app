@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Entity\Commune;
+use App\Entity\CodePostal;
 use App\Entity\Prestataire;
 use App\Form\PrestataireSearchType;
 use Doctrine\ORM\EntityManagerInterface;
@@ -23,4 +25,5 @@ class AproposController extends AbstractController
         ]);
 
     }
+
 }

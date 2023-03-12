@@ -2,10 +2,9 @@
 
 namespace App\DataFixtures;
 
-use Faker\Factory;
-use App\Entity\Stage;
+use App\Entity\Commune;
 use App\Entity\Localite;
-use App\Entity\CategorieService;
+use App\Entity\CodePostal;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 
@@ -13,6 +12,10 @@ use Doctrine\Bundle\FixturesBundle\Fixture;
 
 class AppFixtures extends Fixture
 {
+
+    // ------------------------------------------------------------------------
+    // Insertion dans la DB des localité, communes et code postaux de Belgique
+    // ------------------------------------------------------------------------
 
     public function load(ObjectManager $manager): void
     {
@@ -38,10 +41,25 @@ class AppFixtures extends Fixture
             $manager->persist($localite);
         }
 
+        // Récupére depuis le fichier json les communes + code postaux de Belgique
+        $json = file_get_contents('public/zipcode-belgium.json');
+
+        // Decoder le fichier json
+        $json_data = json_decode($json,true);
+
+        foreach($json_data as $key => $value){
+            $commune = new Commune();
+            $codePostal= new CodePostal();
+            $commune->setCommune($value['city']);
+            $manager->persist($commune);
+
+            $codePostal->setCodePostal($value['zip']);
+            $manager->persist($codePostal);
+        }
+
         $manager->flush();
     }
+
 }
 
-
-// Pour executer les fixtures ->
-//-------------- php bin/console doctrine:fixtures:load ----------------------
+//TODO Pour executer les fixtures -> php bin/console doctrine:fixtures:load

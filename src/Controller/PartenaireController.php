@@ -65,8 +65,8 @@ class PartenaireController extends AbstractController
       $codePostal= $partenaire->getUtilisateur()->getCodePostal()->getCodePostal();
       $adresse= ($rue." ".$num." ".$codePostal." ".$commune);
 
-        // Appel de l'API Geocoder opencagedata.com
-        $geocoder = new Geocoder('b091b28cf9ff4f33acbedc0c90166f8c');
+        // Appel de l'API Geocoder opencagedata.com 
+        $geocoder = new Geocoder('b091b28cf9ff4f33acbedc0c90166f8c');// <- Entrez ici votre clé API
         // récupération des données de latitude et longitude
         $result = $geocoder->geocode($adresse);
         if(isset($result)){
