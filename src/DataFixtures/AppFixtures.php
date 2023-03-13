@@ -50,9 +50,8 @@ class AppFixtures extends Fixture
             $commune = new Commune();
             $codePostal= new CodePostal();
             $commune->setCommune($value['city']);
-            $manager->persist($commune);
-
             $codePostal->setCodePostal($value['zip']);
+            $manager->persist($commune);
             $manager->persist($codePostal);
         }
 

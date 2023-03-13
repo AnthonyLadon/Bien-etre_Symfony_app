@@ -11,6 +11,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class AproposController extends AbstractController
 {
+
+    // ----------------------------------------------------------------
+    // Afficher page à propos
+    // ----------------------------------------------------------------
     /**
      * @Route("/apropos",name="aPropos")
      */

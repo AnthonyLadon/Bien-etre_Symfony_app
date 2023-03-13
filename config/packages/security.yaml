@@ -34,6 +34,8 @@ security:
 
   # Easy way to control access for large sections of your site
   # Note: Only the *first* access control that matches will be used
+
+  # Gestion des permissions d'accès dans l'application selon le rôle
   access_control:
     - { path: ^/admin, roles: ROLE_ADMIN }
     - { path: ^/profil, roles: ROLE_USER }

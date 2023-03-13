@@ -12,8 +12,11 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 class InsertController extends AbstractController
 {
 
-
-    //+++++++++++++++++++ Pour ajouter en DB dé-commenter $entityManager->flush();
+    // ----------------------------------------------------------------
+    // Ajout d'un ADMIN en base de données
+    // email: admin@admin.be
+    // password: admin
+    // ----------------------------------------------------------------
     /**
      * @Route("ajout_admin",name="ajoutAdmin")
      */
@@ -41,7 +44,7 @@ class InsertController extends AbstractController
         $admin->setPassword($hashedPassword);
 
         $entityManager->persist($admin);
-        //$entityManager->flush();
+        $entityManager->flush();
 
 
         return $this->render('insert/index.html.twig', [
