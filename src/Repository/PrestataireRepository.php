@@ -70,7 +70,7 @@ class PrestataireRepository extends ServiceEntityRepository
             ->leftJoin('p.proposer', 'categ')
             ->andWhere('categ = :val')
             ->setParameter('val', $serviceId)
-            ->orderBy('p.nom')
+            ->orderBy('p.id', 'DESC')
             ->setMaxResults(4)
             ->getQuery()
             ->getResult();
@@ -111,7 +111,7 @@ class PrestataireRepository extends ServiceEntityRepository
                     ->setParameter('cp', $codePostal);
                 }
                 $query->groupBy('p');
-                $query->orderBy('p.nom', 'ASC');
+                $query->orderBy('p.nom');
                 $query = $query->getQuery();
                 return $query->getResult();
            ;

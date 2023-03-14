@@ -209,11 +209,7 @@
           }}">
           <div class="highlight-service-card">
             {% if highlightService.image %}
-              <img src="{{
-                asset(
-                  'images/services/' ~ highlightService.image
-                )
-                }}"
+              <img src="{{ asset('images/uploads/' ~ highlightService.image) }}"
                 alt="photo service à la une" />
             {% else %}
               <img src="{{ asset('images/blank_image.jpg') }}"

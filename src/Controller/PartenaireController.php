@@ -65,7 +65,7 @@ class PartenaireController extends AbstractController
         $geocoder = new Geocoder('b091b28cf9ff4f33acbedc0c90166f8c');// <- Entrez ici votre clé API
         // récupération des données de latitude et longitude de l'adresse passée en paramêtre
         $result = $geocoder->geocode($adresse);
-        if(isset($result)){
+        if($result){
             $lat = $result['results'][0]['geometry']['lat'];
             $lng = $result['results'][0]['geometry']['lng'];
         }else{
