@@ -2012,6 +2012,13 @@ input:checked + .slide-container .nav label {
   padding: 1rem;
 }
 
+.back-to-prestataire-detail {
+  display: block;
+  text-align: center;
+  margin: 2rem auto 0 auto;
+  color: #c0898b;
+}
+
 .form-connection {
   margin: 4rem auto 0 auto;
   max-width: 35rem;

@@ -17,5 +17,17 @@
 {% endblock %}
 
 {% block body %}
+  <a class="back-to-prestataire-detail"
+    href="{{
+    path(
+      'profil_prest',
+      {
+        id: app.user.prestataire.id
+      }
+    )
+    }}">
+    retour sur ma page de profil
+  </a>
+
   {{ form(form) }}
 {% endblock %}

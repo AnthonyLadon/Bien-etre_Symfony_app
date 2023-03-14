@@ -17,6 +17,18 @@
 {% endblock %}
 
 {% block body %}
+  <a class="back-to-prestataire-detail"
+    href="{{
+    path(
+      'profil_prest',
+      {
+        id: app.user.prestataire.id
+      }
+    )
+    }}">
+    retour sur ma page de profil
+  </a>
+
   <h3 class="prestataire-gallery-manage-title">
     Ajouter une nouvelle photo à votre gallerie
   </h3>
