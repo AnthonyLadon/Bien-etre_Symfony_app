@@ -1738,6 +1738,7 @@ input:checked + .slide-container .nav label {
   margin: 1rem auto 0.5rem auto;
   text-align: center;
   color: #ca565a;
+  font-size: 1.2rem;
   padding: 0.2rem;
 }
 .prestataire-detail-link-crud:hover {
@@ -1756,6 +1757,7 @@ input:checked + .slide-container .nav label {
 .prestataire-detail-list-title {
   margin: 1rem 0 0 0;
   text-align: center;
+  font-size: 1.5rem;
   color: #995557;
 }
 
@@ -1792,8 +1794,10 @@ input:checked + .slide-container .nav label {
 
 .prestataire-detail-empty-field {
   display: block;
-  margin: 1rem 0 0 0;
+  padding: 2rem 0;
+  margin: auto;
   text-align: center;
+  font-size: 1.2rem;
   color: #b96d6f;
 }
 

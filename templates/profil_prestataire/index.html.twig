@@ -26,10 +26,11 @@
 
     <a class="prestataire-detail-link-crud" href="{{path('update_infos_prest',{id: partenaire.id})}}">Mettre mes informations à jour</a>
 
-    {% if partenaire.proposer is defined %}
+    
       <div class="prestataire-detail">
         <h3 class="prestataire-detail-list-title">Mes catégories de service</h3>
         <div class="prestataire-detail-list">
+        {% if partenaire.proposer is not empty %}
           <ul>
             {% for service in partenaire.proposer %}
             <li><a href="{{path('detailService',{id : service.id} )}}">
@@ -37,18 +38,19 @@
             </a>
             {% endfor %}
           </ul>
+        {% else %}
+        <div class="prestataire-detail-list">
+          <h3 class="prestataire-detail-empty-field">😅 Je ne propose pas encore de catégorie de service</h3>
+        </div>
+        {% endif %}
         </div>
       </div>
-    {% else %}
-      <div class="prestataire-detail-list">
-        <h3 class="prestataire-detail-empty-field">Je ne propose pas encore de catégorie de service</h3>
-      </div>
-    {% endif %}
 
-    {% if partenaire.stage is not empty %}
+
     <div class="prestataire-detail">
       <h3 class="prestataire-detail-list-title">Les stages que je propose actuellement</h3>
       <div class="prestataire-detail-list">
+    {% if partenaire.stage is not empty %}
         <ul>
             {% for st in partenaire.stage %}
               {# test si le stage est dans sa periode d'affichage. Si oui -> Affichage #}
@@ -59,11 +61,12 @@
               {% endif %}
             {% endfor %}
         </ul>
+      {% else %}
+      <h3 class="prestataire-detail-empty-field">😅 Je ne propose pas de stage pour le moment</h3>
+   {% endif %}
       </div>
     </div>
-    {% else %}
-      <h3 class="prestataire-detail-empty-field">Je ne propose pas de stage pour le moment</h3>
-   {% endif %}
+
 
 	<a class="prestataire-detail-link-crud" href="{{path('profil_prest_stage',{id: partenaire.id})}}">Ajouter un stage</a>
 
@@ -79,12 +82,13 @@
         </div>
       {% endfor %}
     {% else %}
-      <p class="prestataire-detail-empty-field">Je n'ai pas de promotion pour le moment </p>
+      <p class="prestataire-detail-empty-field">Il n'y a pas de promotion pour le moment </p>
     {% endif %}
   </div>
   <a class="prestataire-detail-link-crud" href="{{path('profil_prest_promo',{id: partenaire.id})}}">Ajouter une promotion</a>
 
     <div class="prestataire-detail">
+    <h3 class="prestataire-detail-list-title">Infos complémentaires</h3>
       <div class="prestataire-detail-list">
           <p>
             Mon site web:
@@ -94,11 +98,15 @@
           </p>
           <p>
             Tél:
-            {{ partenaire.tel }}
+            {% if partenaire.tel %}
+              {{ partenaire.tel }}
+            {% endif %}
           </p>
           <p>
             N° TVA:
-            {{ partenaire.tvaNum }}
+            {% if partenaire.tvaNum %}
+              {{ partenaire.tvaNum }}
+            {% endif %}
           </p>
         </div>
     </div>
