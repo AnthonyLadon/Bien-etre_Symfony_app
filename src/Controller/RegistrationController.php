@@ -159,7 +159,7 @@ class RegistrationController extends AbstractController
       ]);
     }
 
-    return $this->render('partenaire/inscription.html.twig', [
+    return $this->render('profil_utilisateur/inscription_prestataire.html.twig', [
       'PrestataireForm' => $form->createView()
     ]);
   }

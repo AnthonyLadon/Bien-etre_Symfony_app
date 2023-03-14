@@ -29,7 +29,7 @@ class StageType extends AbstractType
             ->add('fin', DateType::class)
             ->add('affichageDe', DateType::class)
             ->add('affichageJusque', DateType::class)
-            ->add('modifier', SubmitType::class, 
+            ->add('enregistrer', SubmitType::class, 
             ['label' => 'Ajouter le stage']);
         ;
     }

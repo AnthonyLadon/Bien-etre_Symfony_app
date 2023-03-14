@@ -1,3 +1,11 @@
+.partenaire-registration-title {
+  display: block;
+  padding: 0 5rem;
+  margin: 2rem auto 0 auto;
+  color: $darker-third-color;
+  text-align: center;
+}
+
 .form-register {
   margin: 4rem auto 0 auto;
   max-width: 35rem;
@@ -6,7 +14,7 @@
   width: 80%;
 }
 
-.register-input {
+.form-register-input {
   display: grid;
   grid-template-rows: 1fr;
   margin: 0 0 0.5rem 0;
@@ -16,7 +24,8 @@
     color: $darker-third-color;
   }
 
-  input {
+  input,
+  textarea {
     margin: 0 auto 0.5rem auto;
     width: 100%;
     border: 1px solid $third-color;
@@ -31,11 +40,62 @@
     margin: 0 auto 0.5rem auto;
     width: 100%;
     border: 1px solid $third-color;
+    height: 100%;
+    border-radius: 10px;
+    outline: none;
+    color: $third-color;
+    background-color: $secondary-transparent;
+  }
+}
+
+.form-register-input-date {
+  display: block;
+  margin: 0 auto;
+  justify-content: center;
+
+  label {
+    text-align: start;
+    color: $darker-third-color;
+  }
+
+  select {
+    margin: 0 auto 0.5rem auto;
+    border: 1px solid $third-color;
     height: 2rem;
     border-radius: 10px;
     outline: none;
     color: $third-color;
     background-color: $secondary-transparent;
+  }
+}
+
+.form-register-input-multiple-select {
+  display: grid;
+  grid-template-rows: 1fr;
+  margin: 0 0 0.5rem 0;
+
+  label {
+    text-align: start;
+    color: $darker-third-color;
+  }
+
+  select {
+    margin: 0 auto 0.5rem auto;
+    width: 100%;
+    height: 100%;
+    padding: 1rem 0;
+    border: 1px solid $third-color;
+    height: 100%;
+    border-radius: 10px;
+    outline: none;
+    color: $third-color;
+    background-color: $secondary-transparent;
+
+    option:focus,
+    option:checked {
+      background: $salmon-light;
+      color: $darker-pink;
+    }
   }
 }
 

@@ -30,26 +30,10 @@
   </a>
 
   {{ form_start(form) }}
-  {{
-    form_row(
-      form.imageFile,
-      {
-        attr: {
-          class: ''
-        },
-        label: 'Numéro'
-      }
-    )
-  }}
-  {{
-    form_row(
-      form.enregistrer,
-      {
-        attr: {
-          class: ''
-        }
-      }
-    )
-  }}
+  <div class="form-register">
+    {{form_row(form.imageFile,{attr: {class: ''},label: 'Numéro'})}}
+    {{ form_widget(form.enregistrer,{'attr': {'class': 'register-form-submit'}}) }}
+  </div>
+
   {{ form_end(form) }}
 {% endblock %}

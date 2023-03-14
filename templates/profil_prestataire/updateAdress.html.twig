@@ -29,5 +29,30 @@
     retour sur ma page de profil
   </a>
 
-  {{ form(form) }}
+    {{ form_start(form) }}
+
+  <div class="form-register">
+    <div class="form-register-input">
+      {{ form_label(form.adresseRue) }}
+      {{ form_widget(form.adresseRue) }}
+    </div>
+    <div class="form-register-input">
+      {{ form_label(form.adresseNum) }}
+      {{ form_widget(form.adresseNum) }}
+    </div>
+    <div class="form-register-input">
+      {{ form_label(form.localite) }}
+      {{ form_widget(form.localite) }}
+    </div>
+    <div class="form-register-input">
+      {{ form_label(form.commune) }}
+      {{ form_widget(form.commune) }}
+    </div>
+    <div class="form-register-input">
+      {{ form_label(form.codePostal) }}
+      {{ form_widget(form.codePostal) }}
+    </div>
+    {{ form_widget(form.modifier,{'attr': {'class': 'register-form-submit'}}) }}
+  </div>
+    {{ form_end(form) }}
 {% endblock %}

@@ -39,7 +39,7 @@ class UtilisateurType extends AbstractType
                 'required' => false,
                 ])
             ->add('modifier', SubmitType::class, 
-            ['label' => 'Enregistrer modifications']
+            ['label' => 'Enregistrer']
             );
     }
 

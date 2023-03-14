@@ -16,7 +16,6 @@ class PromoType extends AbstractType
         $builder
             ->add('nom')
             ->add('description')
-            ->add('documentPDF')
             ->add('debut', DateType::class)
             ->add('fin', DateType::class)
             ->add('affichageDe', DateType::class)

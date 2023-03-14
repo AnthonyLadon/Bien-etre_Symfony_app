@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Prestataire inscription
+{% endblock %}
+
+{% block titreh1 %}
+  Inscription prestataire
+{% endblock %}
+
+{% block searchForm %}
+	{% embed "_searchFormToggle.html.twig" %}{% endembed %}
+{% endblock %}
+
+{% block body %}
+
+<h3 class="partenaire-registration-title">Vous n'êtes plus qu'à quelques clics de faire partie des prestataires de Bien-être!</h3>
+
+  {{ form_start(PrestataireForm) }}
+
+  <div class="form-register">
+    <div class="form-register-input">
+      {{ form_label(PrestataireForm.nom) }}
+      {{ form_widget(PrestataireForm.nom) }}
+    </div>
+    <div class="form-register-input">
+      {{ form_label(PrestataireForm.siteWeb) }}
+      {{ form_widget(PrestataireForm.siteWeb) }}
+    </div>
+    <div class="form-register-input">
+      {{ form_label(PrestataireForm.tel) }}
+      {{ form_widget(PrestataireForm.tel) }}
+    </div>
+    <div class="form-register-input">
+      {{ form_label(PrestataireForm.tvaNum) }}
+      {{ form_widget(PrestataireForm.tvaNum) }}
+    </div>
+    <div class="form-register-input-multiple-select">
+      {{ form_label(PrestataireForm.proposer) }}
+      {{ form_widget(PrestataireForm.proposer) }}
+    </div>
+    {{ form_widget(PrestataireForm.soumettre,{'attr': {'class': 'register-form-submit'}}) }}
+
+  </div>
+  {{ form_end(PrestataireForm) }}
+
+{% endblock %}

@@ -30,38 +30,35 @@
   </a>
   {{ form_start(form) }}
   <div class="form-register">
-    <div class="register-input">
+    <div class="form-register-input">
       {{ form_label(form.nom) }}
       {{ form_widget(form.nom) }}
     </div>
-    <div class="register-input">
+    <div class="form-register-input">
       {{ form_label(form.description) }}
       {{ form_widget(form.description) }}
     </div>
-    <div class="register-input">
+    <div class="form-register-input">
       {{ form_label(form.categorieService) }}
       {{ form_widget(form.categorieService) }}
     </div>
-    <div class="register-input">
-      {{ form_label(form.documentPDF) }}
-      {{ form_widget(form.documentPDF) }}
-    </div>
-    <div class="">
+    <div class="form-register-input-date">
       {{ form_label(form.debut) }}
       {{ form_widget(form.debut) }}
     </div>
-    <div class="">
+    <div class="form-register-input-date">
       {{ form_label(form.fin) }}
       {{ form_widget(form.fin) }}
     </div>
-    <div class="">
+    <div class="form-register-input-date">
       {{ form_label(form.affichageDe) }}
       {{ form_widget(form.affichageDe) }}
     </div>
-    <div class="">
+    <div class="form-register-input-date">
       {{ form_label(form.affichageJusque) }}
       {{ form_widget(form.affichageJusque) }}
     </div>
+    {{ form_widget(form.enregistrer,{'attr': {'class': 'register-form-submit'}}) }}
   </div>
   {{ form_end(form) }}
 {% endblock %}

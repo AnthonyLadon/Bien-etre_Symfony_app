@@ -32,35 +32,28 @@
   {{ form_start(form) }}
 
   <div class="form-register">
-    <div class="register-input">
+    <div class="form-register-input">
       {{ form_label(form.nom) }}
       {{ form_widget(form.nom) }}
     </div>
-    <div class="register-input">
+    <div class="form-register-input">
       {{ form_label(form.siteWeb) }}
       {{ form_widget(form.siteWeb) }}
     </div>
-    <div class="register-input">
+    <div class="form-register-input">
       {{ form_label(form.tel) }}
       {{ form_widget(form.tel) }}
     </div>
-    <div class="register-input">
+    <div class="form-register-input">
       {{ form_label(form.tvaNum) }}
       {{ form_widget(form.tvaNum) }}
     </div>
-    <div class="">
+    <div class="form-register-input-multiple-select">
       {{ form_label(form.proposer) }}
       {{ form_widget(form.proposer) }}
     </div>
+    {{ form_widget(form.soumettre,{'attr': {'class': 'register-form-submit'}}) }}
 
-    {{
-      form_row(
-        form.soumettre,
-        {
-          label: 'Enregistrer les modifications'
-        }
-      )
-    }}
   </div>
   {{ form_end(form) }}
 {% endblock %}

@@ -35,6 +35,29 @@ if (TargetDiv) {
 
 //*****************************/
 
+// permet les selections multiples dans les champs select
+// qui ont l'attribut 'multiple' et ce sans utiliser la touche ctrl
+
+window.onmousedown = function (e) {
+  let el = e.target;
+  if (
+    el.tagName.toLowerCase() == "option" &&
+    el.parentNode.hasAttribute("multiple")
+  ) {
+    e.preventDefault();
+
+    // permet la selection et dé-selection multiple
+    if (el.hasAttribute("selected")) el.removeAttribute("selected");
+    else el.setAttribute("selected", "");
+
+    // hack to correct buggy behavior
+    let select = el.parentNode.cloneNode(true);
+    el.parentNode.parentNode.replaceChild(select, el.parentNode);
+  }
+};
+
+//*****************************/
+
 // Requete AJAX formulaire de recherche pour récupérer villes et code postaux de Belgique
 // depuis un fichier json
 

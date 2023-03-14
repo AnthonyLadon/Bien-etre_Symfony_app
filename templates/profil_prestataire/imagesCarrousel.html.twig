@@ -39,10 +39,7 @@
       {{ form_label(form.imageFile) }}
       {{ form_widget(form.imageFile) }}
     </div>
-    <div class="submit-form-button">
-      {{ form_label(form.enregistrer) }}
-      {{ form_widget(form.enregistrer) }}
-    </div>
+    {{ form_widget(form.enregistrer,{'attr': {'class': 'register-form-submit'}}) }}
   </div>
   {{ form_end(form) }}
 
