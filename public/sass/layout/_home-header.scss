@@ -37,7 +37,7 @@
   }
 }
 
-.flash-message {
+.flash-success-message {
   margin: 0 auto;
   padding: 0.5rem 0;
   text-align: center;
@@ -46,6 +46,16 @@
   color: $black-pink;
   border-color: aquamarine;
   background-color: rgba(127, 255, 212, 0.556);
+}
+
+.flash-notice-message {
+  margin: 0 auto;
+  padding: 0.5rem 0;
+  text-align: center;
+  height: 2.5rem;
+  width: 100%;
+  color: white;
+  background-color: rgba(255, 0, 0, 0.558);
 }
 
 //************************************************************************************************

@@ -8,8 +8,8 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 // Creation d'une classe de gestion des images uploadées
 Class UploaderHelper{
 
-    // voir config/services.yaml
-    // -> bind: $uploadsPath: "%kernel.project_dir%/public/images/uploads"
+    // voir fichier config/services.yaml
+    // bind: $uploadsPath: "%kernel.project_dir%/public/images/uploads"
     private $uploadsPath;
 
     public function __construct(string $uploadsPath){

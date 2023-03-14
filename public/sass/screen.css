@@ -208,7 +208,8 @@ body {
 }
 .l-main-nav ul .profile-avatar {
   margin: 1rem 0 0 0;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   height: 4.5rem;
   width: 3.5rem;
   border-radius: 25px;
@@ -402,7 +403,7 @@ nav.show {
   box-shadow: 0px 29px 38px -15px rgba(0, 0, 0, 0.43);
 }
 
-.flash-success-message {
+.flash-message {
   margin: 0 auto;
   padding: 0.5rem 0;
   text-align: center;
@@ -411,16 +412,6 @@ nav.show {
   color: #995557;
   border-color: aquamarine;
   background-color: rgba(127, 255, 212, 0.556);
-}
-
-.flash-notice-message {
-  margin: 0 auto;
-  padding: 0.5rem 0;
-  text-align: center;
-  height: 2.5rem;
-  width: 100%;
-  color: white;
-  background-color: rgba(255, 0, 0, 0.558);
 }
 
 @media screen and (min-width: 43rem) {
@@ -570,7 +561,9 @@ ul.slides {
 }
 
 .slides * {
-  user-select: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
 }
 
 ul.slides input {
@@ -594,7 +587,8 @@ ul.slides input {
 .slide-image img {
   width: 100%;
   height: 22rem;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .carousel-controls {
@@ -698,7 +692,8 @@ input:checked + .slide-container .nav label {
     width: auto;
     min-width: 100%;
     height: 30rem;
-    object-fit: cover;
+    -o-object-fit: cover;
+       object-fit: cover;
   }
   .carousel-controls .prev-slide {
     width: 49%;
@@ -726,7 +721,8 @@ input:checked + .slide-container .nav label {
     width: auto;
     min-width: 100%;
     height: 45rem;
-    object-fit: cover;
+    -o-object-fit: cover;
+       object-fit: cover;
   }
   .carousel-controls .prev-slide {
     width: 49%;
@@ -813,12 +809,14 @@ input:checked + .slide-container .nav label {
   border-radius: 0.8rem;
   background-size: cover;
   background-position: center center;
-  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
   transition: transform 0.5s ease-in-out;
 }
 
 .face--front img {
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   width: 8rem;
   height: 8rem;
   border-radius: 0.8rem;
@@ -971,6 +969,11 @@ input:checked + .slide-container .nav label {
   outline: none;
   color: #d2a1a3;
   background-color: rgba(222, 245, 246, 0.6470588235);
+}
+
+.search-input::-moz-placeholder {
+  color: #d2a1a3;
+  padding: 0 0 0 0.5rem;
 }
 
 .search-input::placeholder {
@@ -1271,7 +1274,8 @@ input:checked + .slide-container .nav label {
   border-radius: 5px 5px 0 0;
   width: 8rem;
   height: 8rem;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .stage-detail-wrap {
@@ -1385,7 +1389,8 @@ input:checked + .slide-container .nav label {
   border-radius: 5px 5px 0 0;
   width: 8rem;
   height: 8rem;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .aucun-resultat-prestataire {
@@ -1406,7 +1411,8 @@ input:checked + .slide-container .nav label {
   width: 7rem;
   height: 9rem;
   border-radius: 40px;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   box-shadow: 0px 29px 38px -15px #d2a1a3;
 }
 
@@ -1612,7 +1618,8 @@ input:checked + .slide-container .nav label {
 .gallery img {
   min-width: 0;
   flex: 1 1 10px;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   opacity: 0.5;
   transition: 1s;
 }
@@ -1730,7 +1737,8 @@ input:checked + .slide-container .nav label {
   width: 7rem;
   height: 9rem;
   border-radius: 40px;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   box-shadow: 0px 29px 38px -15px #d2a1a3;
 }
 .profil-prest-avatar img:hover {
@@ -1911,7 +1919,8 @@ input:checked + .slide-container .nav label {
 .gallery img {
   min-width: 0;
   flex: 1 1 10px;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   opacity: 0.5;
   transition: 1s;
 }
@@ -2063,7 +2072,9 @@ input:checked + .slide-container .nav label {
 }
 
 .checkbox-wrapper-2 .ikxBAC {
-  appearance: none;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
   background-color: #d2a1a3;
   border-radius: 72px;
   border-style: none;
@@ -2281,7 +2292,8 @@ input:checked + .slide-container .nav label {
   width: 7rem;
   height: 9rem;
   border-radius: 40px;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   box-shadow: 0px 29px 38px -15px #d2a1a3;
 }
 .user-profile-img img:hover {
@@ -2334,6 +2346,4 @@ input:checked + .slide-container .nav label {
 
 .browse-file-input {
   margin: 2rem 0 1rem 0;
-}
-
-/*# sourceMappingURL=screen.css.map */
+}/*# sourceMappingURL=screen.css.map */

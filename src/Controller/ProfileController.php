@@ -195,7 +195,6 @@ class ProfileController extends AbstractController
 
           $uploadedImage = $form['imageFile']->getData();
 
-          // if ($uplodedImage) -> évite de supprimer l'image si formulaire ne renvoit rien
           if ($img_prest && $uploadedImage){
             // Suppression de l'image en base de données
             $query = $entityManager->createQuery('DELETE FROM App\Entity\Images i WHERE i.images_Logo = :id')
@@ -207,20 +206,22 @@ class ProfileController extends AbstractController
             unlink($imgToDelete);
           }
 
+           // évite de supprimer l'image si formulaire est envoyé vide
           if($uploadedImage){
             $newImageName = $uploaderHelper->uploadImages($uploadedImage);
             $image->setImage($newImageName);
             $image->setImagesLogo($prestataire);
+            $entityManager->persist($image);
+            $entityManager->flush();
+ 
+            $this->addFlash('success', 'Votre image a bien été enregistré');
+
+            return $this->redirectToRoute('profil_prest', [
+              "id" => $id
+          ]);
           }
 
-           $entityManager->persist($image);
-           $entityManager->flush();
-
-           $this->addFlash('success', 'Votre image a bien été enregistré');
-
-           return $this->redirectToRoute('profil_prest', [
-                "id" => $id
-            ]);
+           $this->addFlash('notice', "L'image n'est pas valide");
          }
 
        return $this->render('profil_prestataire/addImage.html.twig', [
@@ -258,14 +259,17 @@ class ProfileController extends AbstractController
             $image->setImagesPhoto($prestataire);
           }
 
-           $entityManager->persist($image);
-           $entityManager->flush();
+          if ($image->getImage() != null ){
+            $entityManager->persist($image);
+            $entityManager->flush();
+            $this->addFlash('success', 'Votre image a bien été enregistré');
 
-           $this->addFlash('success', 'Votre image a bien été enregistré');
-
-           return $this->redirectToRoute('profil_prest', [
-                "id" => $id
-            ]);
+            return $this->redirectToRoute('profil_prest', [
+              "id" => $id
+          ]);
+          }
+          
+          $this->addFlash('notice', 'Votre image n\'est pas valide');
          }
 
        return $this->render('profil_prestataire/imagesCarrousel.html.twig', [

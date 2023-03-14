@@ -83,11 +83,18 @@
 			</header>
 		<div class="l-main-wrap"> 
 	
+	    {# affichage des bandeaux messages succes ou erreur #}
 		{% for message in app.flashes('success') %}
-			<div class="flash-message">
+			<div class="flash-success-message">
 				{{message}}
 			</div>
 		{% endfor %}
+		{% for message in app.flashes('notice') %}
+		<div class="flash-notice-message">
+			{{message}}
+		</div>
+		{% endfor %}
+
 
 		{% block body %}{% endblock %}
 	</body>
