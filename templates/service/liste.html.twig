@@ -16,17 +16,17 @@
     	{{ pagination.getTotalItemCount }} stage(s) trouvé(s)
 	</div>
 	<div class="service-list-wrap">
-				{% for categorie in pagination %}
-				{% if categorie.valide == 1 %}
-					<a class="service-card" href="{{path('detailService',{id : categorie.id})}}">
-						<h3>{{categorie.nom}}</h3>
-						{% if categorie.image %}
-							<img src="{{asset ('images/services/' ~ categorie.image )}}" alt="photo service">
-						{% else %}
-							<img src="{{asset ('images/blank_image.jpg' )}}" alt="photo service">
-						{% endif %}
-					</a>
-				{% endif %}
+		{% for categorie in pagination %}
+			{% if categorie.valide == 1 %}
+				<a class="service-card" href="{{path('detailService',{id : categorie.id})}}">
+					<h3>{{categorie.nom}}</h3>
+					{% if categorie.image %}
+						<img src="{{ asset('images/uploads/' ~ categorie.image) }}" alt="photo service">
+					{% else %}
+						<img src="{{asset ('images/blank_image.jpg' )}}" alt="photo service">
+					{% endif %}
+				</a>
+			{% endif %}
 		{% endfor %}
 	</div>
 	{# display navigation #}

@@ -1,3 +1,14 @@
+.admin-link-carrousel {
+  display: block;
+  color: $darker-third-color;
+  font-size: 1.3rem;
+  margin: 1rem auto;
+  text-align: center;
+  &:hover {
+    color: $smooth-minth;
+  }
+}
+
 .carousel {
   margin: 5rem 0;
 }

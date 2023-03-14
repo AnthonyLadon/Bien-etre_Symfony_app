@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+  Photo catégorie
+{% endblock %}
+
+{% block titreh1 %}
+  <h1>
+    Gestion photo catégorie
+  </h1>
+{% endblock %}
+
+{% block searchForm %}
+  {% embed '_searchFormToggle.html.twig' %}
+
+  {% endembed %}
+{% endblock %}
+
+{% block body %}
+    
+    {{ form_start(form) }}
+      <div class="form-register">
+        {{form_row(form.imageFile,{attr: {class: ''},label: 'Numéro'})}}
+        {{ form_widget(form.enregistrer,{'attr': {'class': 'register-form-submit'}}) }}
+      </div>
+    {{ form_end(form) }}
+
+{% endblock %}

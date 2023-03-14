@@ -98,10 +98,10 @@
 {% endblock %}
 
 {% block body %}
-  {% if is_granted('ROLE_ADMIN') %}
-    <a href="#">Modifier les photos</a>
-  {% endif %}
   <div class="carousel">
+    {% if is_granted('ROLE_ADMIN') %}
+      <a class="admin-link-carrousel" href="#">Modifier les photos</a>
+    {% endif %}
     {# Images gérées par l'admin #}
     <ul class="slides">
       <input type="radio" name="radio-buttons" id="img-1" checked />

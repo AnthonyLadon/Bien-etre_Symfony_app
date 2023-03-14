@@ -2,8 +2,11 @@
 
 namespace App\Controller;
 
+use App\Entity\Images;
+use App\Form\ImagesType;
 use App\Entity\Prestataire;
 use App\Entity\CategorieService;
+use App\Services\UploaderHelper;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -68,5 +71,66 @@ class ServiceController extends AbstractController
                 'lastPrestataires' => $lastPrestataires,
             ]
         );
+    }
+
+
+    // ----------------------------------------------------------------
+    // Si ROLE_ADMIN -> Ajouter/modifier la photo de la catégorie
+    // ----------------------------------------------------------------
+    /**
+     * @Route("/admin/categorie/image/{id}",name="categorie_img")
+     */
+    public function addImagePrest(Request $request, CategorieService $categorie, UploaderHelper $uploaderHelper, EntityManagerInterface $entityManager, $id): Response
+    {
+        $repository = $entityManager->getRepository(CategorieService::class);
+        $categorie = $repository->findOneById($id);
+        // récupération image actuelle si elle existe
+        $img_categ = null;
+        if($categorie->getImage()){
+            $img_categ = $categorie->getImage()->getCategorieService()->getImage();
+        }
+
+        $image = new Images();
+        $form = $this->createForm(ImagesType::class, $image);
+        $form->handleRequest($request);
+
+
+         if ($form->isSubmitted() && $form->isValid()) {
+
+          $uploadedImage = $form['imageFile']->getData();
+
+          if ($img_categ && $uploadedImage){
+            // Suppression de l'image en base de données
+            $query = $entityManager->createQuery('DELETE FROM App\Entity\CategorieService i WHERE i.image = :id')
+            ->setParameter('id', $categorie->getId());
+            $query->execute();
+
+            // suppression du fichier dans le dossier uploads
+            $imgToDelete = $uploaderHelper->getUploadPath().'/'.$img_categ;
+            unlink($imgToDelete);
+          }
+
+           // évite de supprimer l'image si le formulaire est envoyé vide
+          if($uploadedImage){
+            $newImageName = $uploaderHelper->uploadImages($uploadedImage);
+            $image->setImage($newImageName);
+            $image->setCategorieService($categorie);
+            $entityManager->persist($image);
+            $entityManager->flush();
+ 
+            $this->addFlash('success', 'Votre image a bien été enregistré');
+
+            return $this->redirectToRoute('detailService', [
+              "id" => $id
+          ]);
+          }
+
+           $this->addFlash('notice', "L'image n'est pas valide");
+         }
+
+       return $this->render('service/admin_photo.html.twig', [
+        'form' => $form->createView(),
+        'id' => $id
+     ]);
     }
 }

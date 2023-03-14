@@ -1,54 +1,85 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-{{categorie.nom}}
+  {{ categorie.nom }}
 {% endblock %}
 
 {% block titreh1 %}
-	<h1>{{categorie.nom}}</h1>
+  <h1>
+    {{ categorie.nom }}
+  </h1>
 {% endblock %}
 
 {% block searchForm %}
-	{% embed "_searchFormToggle.html.twig" %}{% endembed %}
+  {% embed '_searchFormToggle.html.twig' %}
+
+  {% endembed %}
 {% endblock %}
 
 {% block body %}
-	<article>
-		<div class="service-detail-wrap">
-			<div class="service-detail-description">
-				<p>{{categorie.description}}</p>
-			</div>
-			{% if categorie.image %}
-				<img src="{{asset ('images/services/' ~ categorie.image )}}" alt="photo service">
-				{% else %}
-				<img src="{{asset ('images/blank_image.jpg')}}" alt="photo service">
-			{% endif %}
-		</div>
+  <article>
+    <div class="service-detail-wrap">
+      {% if is_granted('ROLE_ADMIN') %}
+        <a class="admin-link-carrousel"
+          href="{{
+          path(
+            'categorie_img',
+            {
+              id: categorie.id
+            }
+          )
+          }}">
+          Modifier la photo
+        </a>
+      {% endif %}
+      <div class="service-detail-description">
+        <p>
+          {{ categorie.description }}
+        </p>
+      </div>
+      {% if categorie.image %}
+        <img src="{{ asset('images/uploads/' ~ categorie.image) }}"
+          alt="photo service" />
+      {% else %}
+        <img src="{{ asset('images/blank_image.jpg') }}" alt="photo service" />
+      {% endif %}
+    </div>
 
-
-		{% if lastPrestataires %}
-			<h3 class="partenaire-last-registrated-title">Prestataires dans la catégorie {{categorie.nom}}:</h3>
-			<div class="partenaires-list-wrap">
-				{% for prest in lastPrestataires %}
-					<div class="partenaires-card">
-						<a href="{{path ('detailPartenaire',{id : prest.id}) }}">
-
-						{% if prest.images[0] is defined and prest.images[0] != '' %}
-								<img class="prestataire_img" src="{{asset ('images/uploads/' ~ prest.images[0] )}}" alt="photo du prestataire">
-							{% else %}
-								<img class="prestataire_img"  src="{{asset ('images/avatars/blank_profile.webp' )}}" alt="photo du prestataire">
-						{% endif %}
-							{% if prest.nom %}
-							<div>
-								<h3>{{prest.nom}}</h3>
-							</div>
-					{% endif %}
-						</a>
-					</div>
-				{% endfor %}
-			</div>
-		{% endif %}
-
-	</article>
-
+    {% if lastPrestataires %}
+      <h3 class="partenaire-last-registrated-title">
+        Prestataires dans la catégorie {{ categorie.nom }}:
+      </h3>
+      <div class="partenaires-list-wrap">
+        {% for prest in lastPrestataires %}
+          <div class="partenaires-card">
+            <a href="{{
+              path(
+                'detailPartenaire',
+                {
+                  id: prest.id
+                }
+              )
+              }}">
+              {% if prest.images[0] is defined and prest.images[0] != '' %}
+                <img class="prestataire_img"
+                  src="{{ asset('images/uploads/' ~ prest.images[0]) }}"
+                  alt="photo du prestataire" />
+              {% else %}
+                <img class="prestataire_img"
+                  src="{{ asset('images/avatars/blank_profile.webp') }}"
+                  alt="photo du prestataire" />
+              {% endif %}
+              {% if prest.nom %}
+                <div>
+                  <h3>
+                    {{ prest.nom }}
+                  </h3>
+                </div>
+              {% endif %}
+            </a>
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </article>
 {% endblock %}

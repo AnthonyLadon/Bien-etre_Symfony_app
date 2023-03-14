@@ -554,6 +554,17 @@ nav.show {
     margin: 0 1rem 0.5rem 0;
   }
 }
+.admin-link-carrousel {
+  display: block;
+  color: #bd797b;
+  font-size: 1.3rem;
+  margin: 1rem auto;
+  text-align: center;
+}
+.admin-link-carrousel:hover {
+  color: #a1d2d0;
+}
+
 .carousel {
   margin: 5rem 0;
 }
@@ -2256,14 +2267,14 @@ input:checked + .slide-container .nav label {
   color: #b96d6f;
 }
 
-.register-input-password {
+.register-form-input-password {
   margin: 1rem 0 0 0;
 }
-.register-input-password label {
+.register-form-input-password label {
   text-align: center;
   color: #bd797b;
 }
-.register-input-password input {
+.register-form-input-password input {
   margin: 0 auto 1rem auto;
   width: 100%;
   border: 1px solid #d2a1a3;
@@ -2273,7 +2284,7 @@ input:checked + .slide-container .nav label {
   color: #d2a1a3;
   background-color: rgba(222, 245, 246, 0.6470588235);
 }
-.register-input-password p {
+.register-form-input-password p {
   margin: 0 0 0.5rem 0;
   font-size: 0.9rem;
   color: #d2a1a3;
