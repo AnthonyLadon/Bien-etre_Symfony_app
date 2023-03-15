@@ -143,14 +143,14 @@ class RegistrationController extends AbstractController
             $entityManager->persist($prestataire);
           }
 
-          $utilisateur->setRoles(["ROLE_PREST","ROLE_USER"]);
+          $utilisateur->setRoles(["ROLE_USER", "ROLE_PREST"]);
           $utilisateur->setTypeUtilisateur('prestataire');
 
           $entityManager->persist($utilisateur);
           $entityManager->persist($prestataire);
           $entityManager->flush();
 
-          $this->addFlash('success', 'Vous venez d\'être enregistré en tant que prestataire');
+          $this->addFlash('success', 'Félicitation vous êtes un prestataire! Veuillez vous connecter à votre compte');
 
 
       return $this->redirectToRoute('profil_prest', [

@@ -8,9 +8,18 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
 class LoginSecurityController extends AbstractController
 {
+
+    private $tokenStorage;
+
+    public function __construct(TokenStorageInterface $tokenStorage)
+    {
+        $this->tokenStorage = $tokenStorage;
+    }
+    
     // ----------------------------------------------------------------
     // Controller LOGIN
     // priority = 1 place la route en tete des routes (executée en 1ére) et donc evite
@@ -21,13 +30,12 @@ class LoginSecurityController extends AbstractController
      */
     public function login(AuthenticationUtils $authenticationUtils, EntityManagerInterface $entityManager): Response
     {
-        
+
         if ($this->getUser()) {
 
         // récupèration des rôles de l'utilisateur
         $roles = $this->getUser()->getRoles();
 
-        // redirige vers la page de prestataire s'il s'agit d'un prestataire connecté
         if (in_array('ROLE_PREST', $roles)){
             return $this->render('profil_prestataire/index.html.twig');
         }
@@ -39,17 +47,20 @@ class LoginSecurityController extends AbstractController
         // Gestion des tentatives de connection infructueuses
         $error = $authenticationUtils->getLastAuthenticationError();
         if($error){
-            $user = $entityManager->getRepository(Utilisateur::class)->findOneBy(['email' => $lastUsername]);
-            // incrémentation dans la DB du nombre de tentatives de connections infructueuses
-            $user->setNbEssais($user->getNbEssais() + 1);
-            $entityManager->persist($user);
-            // passe isBanni à TRUE dans la DB si l'utilisateur a fait plus de 3 tentatives infructueuses
-            if($user->getNbEssais() >= 3) {
-                $user->setBanni(1);
-                $entityManager->persist($user);
-                $this->addFlash('notice', 'Votre compte est bloqué. Veuillez contacter l\'administrateur du site.');
-            }
-            $entityManager->flush();
+                 // recupération de l'utilisateur
+                $user = $entityManager->getRepository(Utilisateur::class)->findOneBy(['email' => $lastUsername]);
+                if($user){
+                    // incrémentation dans la DB du nombre de tentatives de connections infructueuses
+                    $user->setNbEssais($user->getNbEssais() + 1);
+                    $entityManager->persist($user);
+                    // passe isBanni à TRUE dans la DB si tentatives infructueuses > 3
+                    if($user->getNbEssais() > 3) {
+                        $user->setBanni(1);
+                        $entityManager->persist($user);
+                        $this->addFlash('notice', 'Votre compte est bloqué. Veuillez contacter l\'administrateur du site.');
+                    }
+                    $entityManager->flush();
+                }
         }
 
         return $this->render('security/login.html.twig', ['last_username' => $lastUsername, 'error' => $error]);

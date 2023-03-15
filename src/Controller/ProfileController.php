@@ -108,6 +108,7 @@ class ProfileController extends AbstractController
      */
     public function prestAddPromo(EntityManagerInterface $entityManager, $id, Request $request): Response
     {
+
       $repository = $entityManager->getRepository(Prestataire::class);
       $partenaire = $repository->find($id);
 
@@ -144,6 +145,7 @@ class ProfileController extends AbstractController
      */
     public function prestAddStage(EntityManagerInterface $entityManager, $id, Request $request): Response
     {
+
       $repository = $entityManager->getRepository(Prestataire::class);
       $partenaire = $repository->find($id);
 

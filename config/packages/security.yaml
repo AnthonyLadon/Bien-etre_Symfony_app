@@ -22,6 +22,9 @@ security:
       lazy: true
       provider: app_user_provider
       custom_authenticator: App\Security\LoginAuthenticator
+      # Ajout de conditions d'authentification (voir security/UserChecker.php)
+      # pattern: ^/
+      # user_checker: App\Security\UserChecker
 
       # activate different ways to authenticate
       # https://symfony.com/doc/current/security.html#the-firewall
@@ -37,11 +40,13 @@ security:
 
   # Gestion des permissions d'accès dans l'application selon le rôle
   access_control:
+    - { path: ^/profil_prestataire, roles: ROLE_PREST }
     - { path: ^/admin, roles: ROLE_ADMIN }
     - { path: ^/profil, roles: ROLE_USER }
     - { path: ^/editer_profil, roles: ROLE_USER }
     - { path: ^/editer_adresse, roles: ROLE_USER }
     - { path: ^/editer_infos, roles: ROLE_USER }
+    - { path: ^/ajout_image, roles: ROLE_USER }
 
 when@test:
   security:

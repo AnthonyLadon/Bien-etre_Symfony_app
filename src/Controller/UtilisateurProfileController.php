@@ -22,7 +22,7 @@ class UtilisateurProfileController extends AbstractController
     // Gestion profil Utilisateur (Internaute)
     // ----------------------------------------------------------------
     //------------------------------------------------------------------
-    //j'ai défini le contrôle d'accés dans config/packages/security.yaml
+    // Contrôle d'accès selon les roles défini dans config/packages/security.yaml
     // 
     // access_control:
     // - { path: ^/admin, roles: ROLE_ADMIN }
@@ -49,6 +49,9 @@ class UtilisateurProfileController extends AbstractController
      */
     public function editAdress(Request $request,EntityManagerInterface $entityManager, Utilisateur $util): Response
     {
+        // empeche l'accès à la page si l'utilisateur n'a pas le role user
+        $this->denyAccessUnlessGranted('ROLE_USER');
+
         $form = $this->createForm(UtilisateurType::class, $util);
 
         $form->handleRequest($request);
@@ -75,6 +78,10 @@ class UtilisateurProfileController extends AbstractController
      */
      public function editProfile(Request $request, Internaute $internaute, EntityManagerInterface $entityManager): Response
      {
+
+        // empeche l'accès à la page si l'utilisateur n'a pas le role user
+        $this->denyAccessUnlessGranted('ROLE_USER');
+
         $form = $this->createForm(InternauteType::class, $internaute);
 
         $form->handleRequest($request);
@@ -104,7 +111,9 @@ class UtilisateurProfileController extends AbstractController
      */
     public function addImageUser(Request $request, Internaute $internaute, UploaderHelper $uploaderHelper, EntityManagerInterface $entityManager, $id): Response
     {
-
+        // empeche l'accès à la page si l'utilisateur n'a pas le role user
+        $this->denyAccessUnlessGranted('ROLE_USER');
+        
         $repository = $entityManager->getRepository(Internaute::class);
         $internaute = $repository->findOneById($id);
         // récupération image actuelle si elle existe
