@@ -1155,6 +1155,19 @@ input:checked + .slide-container .nav label {
   max-width: 85%;
 }
 
+.admin-edit-categorie-photo {
+  display: block;
+  color: #bd797b;
+  width: 80%;
+  border: solid 1px #bd797b;
+  font-size: 1.5rem;
+  margin: 1rem auto;
+  text-align: center;
+}
+.admin-edit-categorie-photo:hover {
+  color: #a1d2d0;
+}
+
 .service-detail-description {
   display: flex;
   justify-content: center;

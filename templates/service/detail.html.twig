@@ -19,19 +19,6 @@
 {% block body %}
   <article>
     <div class="service-detail-wrap">
-      {% if is_granted('ROLE_ADMIN') %}
-        <a class="admin-link-carrousel"
-          href="{{
-          path(
-            'categorie_img',
-            {
-              id: categorie.id
-            }
-          )
-          }}">
-          Modifier la photo
-        </a>
-      {% endif %}
       <div class="service-detail-description">
         <p>
           {{ categorie.description }}
@@ -44,6 +31,19 @@
         <img src="{{ asset('images/blank_image.jpg') }}" alt="photo service" />
       {% endif %}
     </div>
+    {% if is_granted('ROLE_ADMIN') %}
+      <a class="admin-edit-categorie-photo"
+        href="{{
+        path(
+          'categorie_img',
+          {
+            id: categorie.id
+          }
+        )
+        }}">
+        Modifier la photo
+      </a>
+    {% endif %}
 
     {% if lastPrestataires %}
       <h3 class="partenaire-last-registrated-title">

@@ -11,6 +11,19 @@
   }
 }
 
+.admin-edit-categorie-photo {
+  display: block;
+  color: $darker-third-color;
+  width: 80%;
+  border: solid 1px $darker-third-color;
+  font-size: 1.5rem;
+  margin: 1rem auto;
+  text-align: center;
+  &:hover {
+    color: $smooth-minth;
+  }
+}
+
 .service-detail-description {
   display: flex;
   justify-content: center;
