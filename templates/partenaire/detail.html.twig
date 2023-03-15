@@ -23,7 +23,7 @@
     </div>
 
     {# Les promotions ne sont visibles que par les utilisateurs identitfiés #}
-    {% if is_granted("ROLE_USER") %}
+    {% if is_granted("ROLE_USER") and not is_granted('ROLE_PREST') %}
         {% for pr in partenaire.promotion %}
          {% if date(pr.affichageDe) < date() and date(pr.affichageJusque) > date() %}
           <div class="prestataire-detail-promotion">

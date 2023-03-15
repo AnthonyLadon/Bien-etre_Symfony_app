@@ -122,7 +122,6 @@ class RegistrationController extends AbstractController
      /**
      * @Route("/inscription_prestataire/{id}",name="prestataire_register")
      */
-
      public function registerPrest(Request $request, EntityManagerInterface $entityManager, $id)
      {
         $repository = $entityManager->getRepository(Utilisateur::class);
@@ -144,7 +143,7 @@ class RegistrationController extends AbstractController
             $entityManager->persist($prestataire);
           }
 
-          $utilisateur->setRoles(["ROLE_PREST"]);
+          $utilisateur->setRoles(["ROLE_PREST","ROLE_USER"]);
           $utilisateur->setTypeUtilisateur('prestataire');
 
           $entityManager->persist($utilisateur);
@@ -154,8 +153,8 @@ class RegistrationController extends AbstractController
           $this->addFlash('success', 'Vous venez d\'être enregistré en tant que prestataire');
 
 
-      return $this->redirectToRoute('security_login', [
-        
+      return $this->redirectToRoute('profil_prest', [
+        'id' => $prestataire->getId()
       ]);
     }
 

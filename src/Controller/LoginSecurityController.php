@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Entity\Utilisateur;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -17,26 +19,38 @@ class LoginSecurityController extends AbstractController
     /**
      * @Route("/login",name="security_login", priority=1)
      */
-    public function login(AuthenticationUtils $authenticationUtils): Response
+    public function login(AuthenticationUtils $authenticationUtils, EntityManagerInterface $entityManager): Response
     {
         
-        if ($this->getUser()){
+        if ($this->getUser()) {
 
+        // récupèration des rôles de l'utilisateur
         $roles = $this->getUser()->getRoles();
 
         // redirige vers la page de prestataire s'il s'agit d'un prestataire connecté
         if (in_array('ROLE_PREST', $roles)){
             return $this->render('profil_prestataire/index.html.twig');
-        }else{
-            // ou alors page profil utilisateur si user connecté
-            return $this->render('profil_utilisateur/index.html.twig');
         }
     }
 
-        // get the login error if there is one
-        $error = $authenticationUtils->getLastAuthenticationError();
-        // last username entered by the user
+        // dernier email entré par l'utilisateur
         $lastUsername = $authenticationUtils->getLastUsername();
+
+        // Gestion des tentatives de connection infructueuses
+        $error = $authenticationUtils->getLastAuthenticationError();
+        if($error){
+            $user = $entityManager->getRepository(Utilisateur::class)->findOneBy(['email' => $lastUsername]);
+            // incrémentation dans la DB du nombre de tentatives de connections infructueuses
+            $user->setNbEssais($user->getNbEssais() + 1);
+            $entityManager->persist($user);
+            // passe isBanni à TRUE dans la DB si l'utilisateur a fait plus de 3 tentatives infructueuses
+            if($user->getNbEssais() >= 3) {
+                $user->setBanni(1);
+                $entityManager->persist($user);
+                $this->addFlash('notice', 'Votre compte est bloqué. Veuillez contacter l\'administrateur du site.');
+            }
+            $entityManager->flush();
+        }
 
         return $this->render('security/login.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
     }

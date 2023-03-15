@@ -102,11 +102,11 @@ class PrestataireRepository extends ServiceEntityRepository
                     $query->andWhere('localite.localite LIKE :loc')
                     ->setParameter('loc' , '%'.$localite.'%');
                 }
-                if($commune){
+                if($commune and $commune != null){
                     $query->andWhere('commune.commune LIKE :com')
                     ->setParameter('com', '%'.$commune.'%');
                 }
-                if($codePostal){
+                if($codePostal and $commune != null){
                     $query->andWhere('codePostal.codePostal = :cp')
                     ->setParameter('cp', $codePostal);
                 }

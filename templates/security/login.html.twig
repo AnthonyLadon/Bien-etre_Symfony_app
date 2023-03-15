@@ -1,56 +1,72 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Connection{% endblock %}
+{% block title %}
+  Connection
+{% endblock %}
 
 {% block titreh1 %}
-    Connection
+  Connection
 {% endblock %}
 
 {% block searchForm %}
-	{% embed "_searchFormToggle.html.twig" %}{% endembed %}
+  {% embed '_searchFormToggle.html.twig' %}
+
+  {% endembed %}
 {% endblock %}
 
 {% block body %}
+  <form class="form-connection" method="post">
+    {% if error %}
+      <div class="alert-danger">
+        {{ error.messageKey|trans(error.messageData, 'security') }}
+      </div>
+    {% endif %}
 
-        <form class="form-connection" method="post">
-            {% if error %}
-                <div class="alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-            {% endif %}
+    {% if app.user %}
+      <div class="connection-already-logged">
+        Vous etes connecté en tant que {{ app.user.userIdentifier }},
+        <a href="{{ path('app_logout') }}">Se déconnecter</a>
+      </div>
+    {% endif %}
 
-            {% if app.user %}
-                <div class="connection-already-logged">
-                    Vous etes connecté en tant que {{ app.user.userIdentifier }}, 
-                    <a href="{{ path('app_logout') }}">Se déconnecter</a>
-                </div>
-            {% endif %}
+    <div class="connection-input">
+      <label for="inputEmail">Email</label>
+      <input type="email"
+        value="{{ last_username }}"
+        name="email"
+        id="inputEmail"
+        class="form-control"
+        autocomplete="email"
+        required
+        autofocus />
+    </div>
+    <div class="connection-input">
+      <label for="inputPassword">Mot de passe</label>
+      <input class="connection-input"
+        type="password"
+        name="password"
+        id="inputPassword"
+        class="form-control"
+        autocomplete="current-password"
+        required />
+    </div>
+    <input type="hidden"
+      name="_csrf_token"
+      value="{{ csrf_token('authenticate') }}" />
+    <div class="connection-input">
+      <label for="_remember_me">Se souvenir de moi</label>
+      <div class="checkbox-wrapper-2">
+        <input type="checkbox" class="sc-gJwTLC ikxBAC" name="_remember_me" />
+      </div>
+    </div>
 
-            <div class="connection-input">
-                <label for="inputEmail">Email</label>
-                <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
-            </div>
-            <div class="connection-input">
-                <label for="inputPassword">Mot de passe</label>
-                <input class="connection-input" type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
-            </div>
-            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
-            <div class="connection-input">
-                <label for="_remember_me">Se souvenir de moi</label>
-                <div class="checkbox-wrapper-2">
-                    <input type="checkbox" class="sc-gJwTLC ikxBAC" name="_remember_me">
-                </div>
-            </div>
+    <div class="connection-input">
+      <button class="connection-form-submit" type="submit">Me connecter</button>
+    </div>
+  </form>
 
-
-
-
-            <div class="connection-input">
-                <button class="connection-form-submit" type="submit">Me connecter</button>
-            </div>
-        </form>
-
-        <div class="connection-links">
-            <a href="{{path ("inscription")}}">Inscription</a>
-            <a href="{{path ("app_forgot_password_request")}}">Mot de passe oublié?</a>
-        </div>
-
+  <div class="connection-links">
+    <a href="{{ path('inscription') }}">Inscription</a>
+    <a href="{{ path('app_forgot_password_request') }}">Mot de passe oublié?</a>
+  </div>
 {% endblock %}

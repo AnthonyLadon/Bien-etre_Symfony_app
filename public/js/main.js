@@ -65,6 +65,7 @@ const LOCALITE = document.getElementById("prestataire_search_localite");
 const CODEPOSTAL = document.getElementById("prestataire_search_cp");
 const COMMUNE = document.getElementById("prestataire_search_commune");
 
+// chargement des options du champ Commune selon selection de Localité
 LOCALITE.addEventListener("change", function () {
   // Pour récupérer le texte du champ selectioné
   let selectedIndex = LOCALITE.options.selectedIndex;
@@ -153,7 +154,7 @@ LOCALITE.addEventListener("change", function () {
       // classement ds villes par ordre alphabetique
       cities.sort((a, b) => a.localeCompare(b));
 
-      let citiesOptions = "";
+      let citiesOptions = "<option value=''>- Selection -</option>";
       for (i = 0; i < cities.length; i++) {
         citiesOptions += `<option value="${cities[i]}">${cities[i]}</option>`;
       }
@@ -163,6 +164,7 @@ LOCALITE.addEventListener("change", function () {
   };
 });
 
+// chargement des options du champ Code Postal selon selection de Commune
 COMMUNE.addEventListener("change", function () {
   let url = "../zipcode-belgium.json";
 
@@ -200,7 +202,7 @@ COMMUNE.addEventListener("change", function () {
       }
 
       //creation des champs options avec les code postaux
-      let zipOptions = "";
+      let zipOptions = "<option value=''>- Selection -</option>";
       for (i = 0; i < zipCodes.length; i++) {
         zipOptions += `<option value='${zipCodes[i]}'>${zipCodes[i]}</option>`;
       }
