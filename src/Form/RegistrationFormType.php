@@ -31,6 +31,16 @@ class RegistrationFormType extends AbstractType
             ->add('email', EmailType::class,[
                 'label' => 'Email'
             ])
+            // champ non mappés (class Internaute)
+            ->add('nom', TextType::class, [
+                'label' => 'Nom',
+                'mapped' => false
+            ])
+            // champ non mappés (class Internaute)
+            ->add('prenom', TextType::class, [
+                'label' => 'Prénom',
+                'mapped' => false
+            ])
             ->add('adresseRue', TextType::class, [
                 'label' => 'rue'
                 ])

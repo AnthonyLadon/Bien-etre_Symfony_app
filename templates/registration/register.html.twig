@@ -17,6 +17,18 @@
 
     {{ form_start(registrationForm) }}
         <div class="form-register">
+            <div class="form-register-input">
+                {{ form_label(registrationForm.nom) }}
+                {{ form_widget(registrationForm.nom) }}
+            </div>
+            <div class="form-register-input">
+                {{ form_label(registrationForm.prenom) }}
+                {{ form_widget(registrationForm.prenom) }}
+            </div>
+            <div class="form-register-input">
+                {{ form_label(registrationForm.email) }}
+                {{ form_widget(registrationForm.email) }}
+            </div>
             <div class="form-register-input">            
                 {{ form_label(registrationForm.adresseRue) }}
                 {{ form_widget(registrationForm.adresseRue) }}
@@ -36,10 +48,6 @@
             <div class="form-register-input">
                 {{ form_label(registrationForm.codePostal) }}
                 {{ form_widget(registrationForm.codePostal) }}
-            </div>
-            <div class="form-register-input">
-                {{ form_label(registrationForm.email) }}
-                {{ form_widget(registrationForm.email) }}
             </div>
             <div class="register-form-input-password">
                 <p>Votre mot de passe doit contenir au minimum une majuscule, 7 caractères, un chiffre et un symbole</p>

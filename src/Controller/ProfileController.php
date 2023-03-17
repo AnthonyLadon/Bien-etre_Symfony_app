@@ -153,18 +153,18 @@ class ProfileController extends AbstractController
       $form = $this->createForm(StageType::class, $stage);
       $form->handleRequest($request);
 
-      if ($form->isSubmitted() && $form->isValid()) {
+          if ($form->isSubmitted() && $form->isValid()) {
 
-        $form = $form->getData();
-        $stage->setPrestataire($partenaire);
+            $form = $form->getData();
+            $stage->setPrestataire($partenaire);
 
-        $entityManager->persist($stage);
-        $entityManager->flush();
+            $entityManager->persist($stage);
+            $entityManager->flush();
 
-    return $this->redirectToRoute('profil_prest', [
-      'id' => $partenaire->getId(),
-    ]);
-  }
+        return $this->redirectToRoute('profil_prest_promo', [
+          'id' => $partenaire->getId(),
+        ]);
+      }
 
         return $this->render('profil_prestataire/addStage.html.twig', [
           'partenaire' => $partenaire,

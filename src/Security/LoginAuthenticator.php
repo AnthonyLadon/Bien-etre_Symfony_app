@@ -2,6 +2,7 @@
 
 namespace App\Security;
 
+use App\Entity\Utilisateur;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Security;
 use Symfony\Component\HttpFoundation\Response;
@@ -29,7 +30,7 @@ class LoginAuthenticator extends AbstractLoginFormAuthenticator
     {
 
         $email = $request->request->get('email', '');
-
+ 
         $request->getSession()->set(Security::LAST_USERNAME, $email);
 
         return new Passport(
@@ -43,6 +44,7 @@ class LoginAuthenticator extends AbstractLoginFormAuthenticator
 
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $firewallName): ?Response
     {
+
         if ($targetPath = $this->getTargetPath($request->getSession(), $firewallName)) {
             return new RedirectResponse($targetPath);
         }

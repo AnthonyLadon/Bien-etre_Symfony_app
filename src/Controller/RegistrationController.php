@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Entity\Stage;
+use App\Form\StageType;
 use App\Entity\Internaute;
 use App\Entity\Prestataire;
 use App\Entity\Utilisateur;
@@ -38,6 +40,11 @@ class RegistrationController extends AbstractController
      */
     public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, UserAuthenticatorInterface $userAuthenticator, LoginAuthenticator $authenticator, EntityManagerInterface $entityManager): Response
     {
+
+      // récupération de l'URL de la derniere page visitée
+      $LastVisitedPage = $request->headers->get('referer');
+
+
         $user = new Utilisateur();
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
@@ -57,10 +64,21 @@ class RegistrationController extends AbstractController
                 )
             );
 
+            // récupération des champs non mappés (class Internaute, localite, commune et codePostal)
+            $prenom = $form->get("prenom")->getData();
+            $nom = $form->get("nom")->getData();
+            $localite = $form->get("localite")->getData();
+            $commune = $form->get("commune")->getData();
+            $codePostal = $form->get("codePostal")->getData();
+
+            $user->setLocalite($localite);
+            $user->setCommune($commune);
+            $user->setCodePostal($codePostal);
+            
             // Ajout d'une entrée dans la table internaute (enregistrement par défaut en tant qu'internaure)
             $internaute = new Internaute();
-            $internaute->setNom('');
-            $internaute->setPrenom('');
+            $internaute->setNom($nom);
+            $internaute->setPrenom($prenom);
             $user->setInternautes($internaute);
 
             $entityManager->persist($user);
@@ -83,6 +101,9 @@ class RegistrationController extends AbstractController
                 $authenticator,
                 $request
             );
+
+            // redirige l'utilisateur vers la derniere page visitée
+            return $this->redirect($LastVisitedPage);
         }
 
         return $this->render('registration/register.html.twig', [
@@ -92,7 +113,7 @@ class RegistrationController extends AbstractController
 
 
     // ----------------------------------------------------------------
-    // Inscription sur le site (+ envoi email vérification)
+    // Verification de l'email (après inscription)
     // ----------------------------------------------------------------
     #[Route('/verify/email', name: 'app_verify_email')]
     public function verifyUserEmail(Request $request, TranslatorInterface $translator): Response
@@ -149,8 +170,11 @@ class RegistrationController extends AbstractController
           $entityManager->persist($utilisateur);
           $entityManager->persist($prestataire);
           $entityManager->flush();
+          $this->addFlash('success', 'Vous êtes un prestataire! Veuillez vous connecter pour renseigner vos stages et promos');
 
-          $this->addFlash('success', 'Félicitation vous êtes un prestataire! Veuillez vous connecter à votre compte');
+          return $this->redirectToRoute('profil_prest_stage', [
+            "id" => $prestataire->getId(),
+          ]);
 
 
       return $this->redirectToRoute('profil_prest', [

@@ -17,7 +17,8 @@
 {% endblock %}
 
 {% block body %}
-  <a class="back-to-prestataire-detail"
+{% if app.user %}
+    <a class="back-to-prestataire-detail"
     href="{{
     path(
       'profil_prest',
@@ -28,6 +29,7 @@
     }}">
     retour sur ma page de profil
   </a>
+{% endif %}
 
   {{ form_start(form) }}
 
