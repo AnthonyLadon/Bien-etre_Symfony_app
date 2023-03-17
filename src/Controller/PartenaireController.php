@@ -52,8 +52,8 @@ class PartenaireController extends AbstractController
     public function detailPrestataire($id, EntityManagerInterface $entityManager, Request $request, PaginatorInterface $paginator)
     {
 
-        $repository = $entityManager->getRepository(Prestataire::class);
-        $partenaire = $repository->find($id);
+      $repository = $entityManager->getRepository(Prestataire::class);
+      $partenaire = $repository->find($id);
 
       $rue = $partenaire->getUtilisateur()->getAdresseRue();
       $num = $partenaire->getUtilisateur()->getAdresseNum();

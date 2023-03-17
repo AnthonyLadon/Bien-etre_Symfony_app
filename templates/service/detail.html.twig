@@ -47,7 +47,9 @@
 
     {% if lastPrestataires %}
       <h3 class="partenaire-last-registrated-title">
-        Prestataires dans la catégorie {{ categorie.nom }}:
+        Les derniers prestataires inscrits dans la catégorie {{
+          categorie.nom
+        }}:
       </h3>
       <div class="partenaires-list-wrap">
         {% for prest in lastPrestataires %}

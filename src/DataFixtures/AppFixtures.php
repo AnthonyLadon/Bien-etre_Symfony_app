@@ -46,12 +46,38 @@ class AppFixtures extends Fixture
         // Decoder le fichier json
         $json_data = json_decode($json,true);
 
-        foreach($json_data as $key => $value){
+        // tri des city par ordre alphabétique et remplacement é et è par e
+        foreach ($json_data as $key => $value) {
+            $json_data[$key]['city'] = str_replace('é', 'e', $value['city']);
+            $json_data[$key]['city'] = str_replace('è', 'e', $value['city']);
+        }
+        //tri des city par ordre alphabétique
+        usort($json_data, function($a, $b) {
+            return $a['city'] <=> $b['city'];
+        });
+        // stockage des city triées dans un tableau
+        $city = array_column($json_data, 'city');
+        // suppression des doublons
+        $city = array_unique($city);
+
+        foreach ($city as $key => $value) {
             $commune = new Commune();
-            $codePostal= new CodePostal();
-            $commune->setCommune($value['city']);
-            $codePostal->setCodePostal($value['zip']);
+            $commune->setCommune($value);
             $manager->persist($commune);
+        }
+
+        // tri des code postaux par ordre croissant
+        usort($json_data, function($a, $b) {
+            return $a['zip'] <=> $b['zip'];
+        });
+        // stockage des code postaux triées dans un tableau
+        $zip = array_column($json_data, 'zip');
+        // suppression des doublons
+        $zip = array_unique($zip);
+    
+        foreach ( $zip as $key => $value) {
+            $codePostal = new CodePostal();
+            $codePostal->setCodePostal($value);
             $manager->persist($codePostal);
         }
 

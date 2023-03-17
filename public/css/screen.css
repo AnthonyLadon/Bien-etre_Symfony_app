@@ -1146,13 +1146,14 @@ input:checked + .slide-container .nav label {
 .service-detail-wrap {
   margin: 2rem 0 4rem 0;
   padding: 1rem;
-  border-radius: 5px;
 }
 .service-detail-wrap img {
   display: flex;
   margin: 0 auto;
   min-width: 50%;
   max-width: 85%;
+  border-radius: 5px;
+  box-shadow: 0px 12px 38px 5px #d2a1a3;
 }
 
 .admin-edit-categorie-photo {
