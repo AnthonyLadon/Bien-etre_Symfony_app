@@ -1246,11 +1246,14 @@ input:checked + .slide-container .nav label {
 }
 .stage-card h3 {
   text-transform: uppercase;
-  padding: 0.2rem;
+  padding: 0.4rem;
+  font-size: 1rem;
   text-align: center;
   color: #c0898b;
-  font-size: 0.7rem;
   font-weight: bold;
+  border: 1px solid #c0898b;
+  background-color: rgba(161, 210, 208, 0.6078431373);
+  border-radius: 5px;
 }
 .stage-card p {
   text-align: center;

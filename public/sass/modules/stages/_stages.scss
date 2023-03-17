@@ -28,11 +28,14 @@
 
   h3 {
     text-transform: uppercase;
-    padding: 0.2rem;
+    padding: 0.4rem;
+    font-size: 1rem;
     text-align: center;
     color: $dark-third-color;
-    font-size: 0.7rem;
     font-weight: bold;
+    border: 1px solid $dark-third-color;
+    background-color: $smooth-minth-light;
+    border-radius: 5px;
   }
   p {
     text-align: center;
