@@ -41,9 +41,8 @@ class RegistrationController extends AbstractController
     public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, UserAuthenticatorInterface $userAuthenticator, LoginAuthenticator $authenticator, EntityManagerInterface $entityManager): Response
     {
 
-      // récupération de l'URL de la derniere page visitée
+      // récupération de l'URL de la derniere page visitée depuis le cache du navigateur
       $LastVisitedPage = $request->headers->get('referer');
-
 
         $user = new Utilisateur();
         $form = $this->createForm(RegistrationFormType::class, $user);
@@ -102,8 +101,8 @@ class RegistrationController extends AbstractController
                 $request
             );
 
-            // redirige l'utilisateur vers la derniere page visitée
             return $this->redirect($LastVisitedPage);
+            
         }
 
         return $this->render('registration/register.html.twig', [
@@ -145,10 +144,14 @@ class RegistrationController extends AbstractController
      */
      public function registerPrest(Request $request, EntityManagerInterface $entityManager, $id)
      {
+
         $repository = $entityManager->getRepository(Utilisateur::class);
         $utilisateur = $repository->find($id);
 
         $prestataire = new Prestataire();
+        // donner au prestataire le prenom et nom concaténé de l'utilisateur
+        $prestataire->setNom($utilisateur->getInternautes()->getPrenom() . ' ' . $utilisateur->getInternautes()->getNom());
+
         $form = $this->createForm(PrestataireRegisterType::class, $prestataire);
         $form->handleRequest($request);
 
@@ -176,10 +179,9 @@ class RegistrationController extends AbstractController
             "id" => $prestataire->getId(),
           ]);
 
-
-      return $this->redirectToRoute('profil_prest', [
-        'id' => $prestataire->getId()
-      ]);
+      // return $this->redirectToRoute('profil_prest', [
+      //   'id' => $prestataire->getId()
+      // ]);
     }
 
     return $this->render('profil_utilisateur/inscription_prestataire.html.twig', [

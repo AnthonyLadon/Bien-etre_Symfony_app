@@ -68,7 +68,7 @@ class LoginSecurityController extends AbstractController
                 }
         }
         
-        if($user !== null && $user->getBanni() == 0){
+        if($user !== null && $user->isBanni() == 0){
             // si l'utilisateur n'a pas fait d'erreur de connexion, on remet le compteur à 0
             $user->setNbEssais(0);
             $entityManager->persist($user);

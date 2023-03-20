@@ -35,7 +35,7 @@ class ServiceController extends AbstractController
         $pagination = $paginator->paginate(
             $categories, /* query NOT result */
             $request->query->getInt('page', 1), /*page number*/
-            4 /*limit par page*/
+            8 /*limit par page*/
         );
 
         return $this->render('service/liste.html.twig', [
