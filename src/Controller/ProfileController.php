@@ -21,25 +21,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 
 
+// ******************************************
+// Controller Gestion profil prestataire
+// ******************************************
+
 class ProfileController extends AbstractController
 {
-
-
-    // ----------------------------------------------------------------
-    // Gestion profil prestataire
-    // ----------------------------------------------------------------
-    //------------------------------------------------------------------
-    //j'ai défini le contrôle d'accés dans config/packages/security.yaml
-    // 
-    // access_control:
-    // - { path: ^/admin, roles: ROLE_ADMIN }
-    // - { path: ^/profil, roles: ROLE_USER }
-    // - { path: ^/editer_profil, roles: ROLE_USER }
-    // - { path: ^/editer_adresse, roles: ROLE_USER }
-    // - { path: ^/editer_infos, roles: ROLE_USER }
-    //------------------------------------------------------------------
-
-
 
     // ----------------------------------------------------------------
     // Afficher profil prestataire

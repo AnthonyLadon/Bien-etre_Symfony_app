@@ -34,9 +34,9 @@
 									<li><a id="services" href="{{path ("listeStages")}}"><i class="fa-solid fa-person-chalkboard"></i>&nbsp;Stages</a></li>
 									{# accés au lien seulement si le user est authentifié #}
 									{% if app.user %}
-										<li><a href="{{ path('app_logout') }}"><i class="fa-solid fa-right-from-bracket"></i>&nbsp;Déconnection</a></li>
+										<li><a href="{{ path('app_logout') }}"><i class="fa-solid fa-right-from-bracket"></i>&nbsp;Déconnexion</a></li>
 									{% else %}
-										<li><a href="{{path ("security_login")}}"><i class="fa-solid fa-right-to-bracket"></i>&nbsp;Connection</a></li>
+										<li><a href="{{path ("security_login")}}"><i class="fa-solid fa-right-to-bracket"></i>&nbsp;Connexion</a></li>
 									{% endif %}
 
 									{# accés au lien seulement si le user est authentifié #}

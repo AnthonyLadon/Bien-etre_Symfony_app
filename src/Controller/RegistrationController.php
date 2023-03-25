@@ -142,51 +142,49 @@ class RegistrationController extends AbstractController
      /**
      * @Route("/inscription_prestataire/{id}",name="prestataire_register")
      */
-     public function registerPrest(Request $request, EntityManagerInterface $entityManager, $id)
-     {
 
-        $repository = $entityManager->getRepository(Utilisateur::class);
-        $utilisateur = $repository->find($id);
 
-        $prestataire = new Prestataire();
-        // donner au prestataire le prenom et nom concaténé de l'utilisateur
-        $prestataire->setNom($utilisateur->getInternautes()->getPrenom() . ' ' . $utilisateur->getInternautes()->getNom());
+    public function registerPrest(Request $request, EntityManagerInterface $entityManager, $id)
+    {
 
-        $form = $this->createForm(PrestataireRegisterType::class, $prestataire);
-        $form->handleRequest($request);
+      $repository = $entityManager->getRepository(Utilisateur::class);
+      $utilisateur = $repository->find($id);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+      $prestataire = new Prestataire();
+      // donner au prestataire le prenom et nom concaténé de l'utilisateur
+      $prestataire->setNom($utilisateur->getInternautes()->getPrenom() . ' ' . $utilisateur->getInternautes()->getNom());
 
-          $form = $form->getData();
-          $proposer = $form->getProposer();
+      $form = $this->createForm(PrestataireRegisterType::class, $prestataire);
+      $form->handleRequest($request);
 
-          $prestataire->setUtilisateur($utilisateur);
-          // boucle pour charger les différentes catégories selectionnées dans le formulaire
-          foreach($proposer as $p){
-            $prestataire->addProposer($p);
-            $entityManager->persist($prestataire);
-          }
+      if ($form->isSubmitted() && $form->isValid()) {
 
-          $utilisateur->setRoles(["ROLE_USER", "ROLE_PREST"]);
-          $utilisateur->setTypeUtilisateur('prestataire');
+        $form = $form->getData();
+        $proposer = $form->getProposer();
 
-          $entityManager->persist($utilisateur);
+        $prestataire->setUtilisateur($utilisateur);
+        // boucle pour charger les différentes catégories selectionnées dans le formulaire
+        foreach($proposer as $p){
+          $prestataire->addProposer($p);
           $entityManager->persist($prestataire);
-          $entityManager->flush();
-          $this->addFlash('success', 'Vous êtes un prestataire! Veuillez vous connecter pour renseigner vos stages et promos');
+        }
 
-          return $this->redirectToRoute('profil_prest_stage', [
-            "id" => $prestataire->getId(),
-          ]);
+        $utilisateur->setRoles(["ROLE_USER", "ROLE_PREST"]);
+        $utilisateur->setTypeUtilisateur('prestataire');
 
-      // return $this->redirectToRoute('profil_prest', [
-      //   'id' => $prestataire->getId()
-      // ]);
+        $entityManager->persist($utilisateur);
+        $entityManager->persist($prestataire);
+        $entityManager->flush();
+        $this->addFlash('success', 'Vous êtes un prestataire! Reconnectez-vous pour renseigner vos stages et promos');
+
+        return $this->redirectToRoute('profil_prest_stage', [
+          "id" => $prestataire->getId(),
+        ]);
     }
 
     return $this->render('profil_utilisateur/inscription_prestataire.html.twig', [
-      'PrestataireForm' => $form->createView()
+    'form' => $form->createView()
     ]);
+    }
+
   }
-    
-}

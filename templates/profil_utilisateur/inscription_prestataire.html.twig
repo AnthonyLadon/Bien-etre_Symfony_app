@@ -16,32 +16,32 @@
 
 <h3 class="partenaire-registration-title">Vous n'êtes plus qu'à quelques clics de faire partie des prestataires de Bien-être!</h3>
 
-  {{ form_start(PrestataireForm) }}
+  {{ form_start(form) }}
 
   <div class="form-register">
     <div class="form-register-input">
-      {{ form_label(PrestataireForm.nom) }}
-      {{ form_widget(PrestataireForm.nom) }}
+      {{ form_label(form.nom) }}
+      {{ form_widget(form.nom) }}
     </div>
     <div class="form-register-input">
-      {{ form_label(PrestataireForm.siteWeb) }}
-      {{ form_widget(PrestataireForm.siteWeb) }}
+      {{ form_label(form.siteWeb) }}
+      {{ form_widget(form.siteWeb) }}
     </div>
     <div class="form-register-input">
-      {{ form_label(PrestataireForm.tel) }}
-      {{ form_widget(PrestataireForm.tel) }}
+      {{ form_label(form.tel) }}
+      {{ form_widget(form.tel) }}
     </div>
     <div class="form-register-input">
-      {{ form_label(PrestataireForm.tvaNum) }}
-      {{ form_widget(PrestataireForm.tvaNum) }}
+      {{ form_label(form.tvaNum) }}
+      {{ form_widget(form.tvaNum) }}
     </div>
     <div class="form-register-input-multiple-select">
-      {{ form_label(PrestataireForm.proposer) }}
-      {{ form_widget(PrestataireForm.proposer) }}
+      {{ form_label(form.proposer) }}
+      {{ form_widget(form.proposer) }}
     </div>
-    {{ form_widget(PrestataireForm.soumettre,{'attr': {'class': 'register-form-submit'}}) }}
+    {{ form_widget(form.soumettre,{'attr': {'class': 'register-form-submit'}}) }}
 
   </div>
-  {{ form_end(PrestataireForm) }}
+  {{ form_end(form) }}
 
 {% endblock %}

@@ -1,0 +1,16 @@
+.a_propos_wrap {
+  padding: 1rem;
+
+  h3 {
+    color: $black-pink;
+    font-size: 1.5rem;
+    margin: 0 0 1rem 0;
+  }
+
+  p,
+  li {
+    padding: 0 0 0.8rem 0;
+    color: $darker-pink;
+    line-height: 1.5rem;
+  }
+}

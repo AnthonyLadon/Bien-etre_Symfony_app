@@ -1,18 +1,90 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}A propos{% endblock %}
+{% block title %}
+  A propos
+{% endblock %}
 
 {% block titreh1 %}
-    A propos
+  A propos
 {% endblock %}
 
 {% block searchForm %}
-	{% embed "_searchFormToggle.html.twig" %}{% endembed %}
+  {% embed '_searchFormToggle.html.twig' %}
+
+  {% endembed %}
 {% endblock %}
 
 {% block body %}
+<div class="a_propos_wrap">
+  <h3>
+    A propos de Bien-être
+  </h3>
+  <p>
+    Le site bien-être a été fondé en 1834 par Eugène Google et Tom Facebook
+  </p>
+  <br>
 
-    <h3>A propos de Bien-être</h3>
-    <p>Le site bien-être a été fondé en 1834 par Eugène Google et Tom Facebook</p>
+    <h3>
+    politique de confidentialité</h3>
 
+<ul>
+    <li>
+        Collecte de données personnelles : Nous collectons les données personnelles
+        suivantes auprès des utilisateurs de notre application web : nom, adresse
+        email, adresse postale, numéro de téléphone, informations de paiement et
+        informations de connexion.
+    </li>
+    <li>
+        Base légale pour le traitement des données : Nous collectons et utilisons
+        les données personnelles des utilisateurs pour fournir nos services
+        conformément à nos conditions générales d'utilisation et à l'intérêt
+        légitime de notre entreprise.
+    </li>
+    <li>
+        Durée de conservation des données : Nous conservons les données personnelles
+        des utilisateurs aussi longtemps que nécessaire pour fournir nos services ou
+        aussi longtemps que requis par la loi. Nous supprimons les données
+        personnelles des utilisateurs lorsqu'elles ne sont plus nécessaires à ces
+        fins.
+    </li>
+    <li>
+
+        Droits des utilisateurs : Les utilisateurs de notre application web ont le
+        droit de demander l'accès, la rectification, l'effacement et la portabilité
+        de leurs données personnelles, ainsi que de s'opposer à leur traitement. Les
+        utilisateurs peuvent également retirer leur consentement à tout moment.
+    </li>
+    <li>
+        Mesures de sécurité : Nous prenons des mesures techniques et
+        organisationnelles appropriées pour protéger les données personnelles des
+        utilisateurs contre tout accès non autorisé, toute divulgation, toute
+        altération ou toute destruction.
+    </li>
+    <li>
+    Transfert de données : Nous ne transférons pas les données personnelles des
+    utilisateurs à des tiers sans leur consentement, sauf dans les cas où cela
+    est nécessaire pour fournir nos services, respecter nos obligations légales
+    ou pour protéger nos droits ou la sécurité des utilisateurs.</li>
+
+    <li>
+        Notification des violations de données : En cas de violation de données
+    personnelles, nous notifierons les utilisateurs concernés conformément aux
+    exigences légales applicables.
+    
+    </li>
+    <li>
+        Responsabilité conjointe : Si nous sommes conjointement responsables du
+    traitement des données personnelles avec un tiers, nous prendrons les
+    mesures nécessaires pour garantir la conformité de notre traitement avec les
+    exigences légales applicables et nous informerons les utilisateurs de notre
+    responsabilité conjointe.
+    </li>
+
+</ul>
+</div>
+
+
+
+
+  </div>
 {% endblock %}

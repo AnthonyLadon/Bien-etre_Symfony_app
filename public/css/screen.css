@@ -1083,6 +1083,21 @@ input:checked + .slide-container .nav label {
   height: 50rem;
 }
 
+.a_propos_wrap {
+  padding: 1rem;
+}
+.a_propos_wrap h3 {
+  color: #995557;
+  font-size: 1.5rem;
+  margin: 0 0 1rem 0;
+}
+.a_propos_wrap p,
+.a_propos_wrap li {
+  padding: 0 0 0.8rem 0;
+  color: #b96d6f;
+  line-height: 1.5rem;
+}
+
 .service-list-count {
   text-align: center;
   color: rgba(128, 128, 128, 0.538);
@@ -1099,7 +1114,7 @@ input:checked + .slide-container .nav label {
 }
 
 .service-card {
-  margin: 3rem 0 0 0;
+  margin: 3rem 1rem 0 1rem;
   width: 15rem;
   height: 15rem;
   background-color: #c9e9eb;
