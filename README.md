@@ -1,71 +1,73 @@
 # Projet Bien-être
 
-Présentation du projet
+Le site est un annuaire où des prestataires peuvent s’inscrire gratuitement et mettre en avant leurs services dans le domaine du bien-être.
 
-## Auteur
+## ✍️ Auteur
 
 - [@AnthonyLadon](https://www.github.com/anthonyladon)
 
 
-## Pour tester localement de projet
+## 🚀 Pour installer le projet
 
-- Cloner le projet
+- Prérequis:
+    - php 7.2.5 ou >
+    - composer (https://getcomposer.org/download/)
+    - Un gestionnaire de base de données (MySQL, Postgresql..)
 
+
+- Puis lancez les commandes suivantes:
 ```bash
-  git clone https://github.com/AnthonyLadon/projet_etudes_site_Bien-etre.git
+$ git clone https://github.com/AnthonyLadon/projet_etudes_site_Bien-etre.git
+
+se positionner dans le repertoire du projet:
+$ cd Bien-etre/
+
+installer les dépendances:
+$ composer install
 ```
 
-- Aller dans le repertoire du projet
+- Configurer l'accès à la DB dans le fichier ".env" situé à la racine du projet. Modifiez 'nom_DB' et 'mot_de_passe' (ainsi que l'adresse du localhost si besoin)
+```
+DATABASE_URL="mysql://nom_DB:mot_de_passe@127.0.0.1:8889/bienetre?serverVersion=8&charset=utf8mb4"
+```
 
+- Configurer le mailer dans le fichier ".env" (Pour ce projet j'ai utillisé Mailtrap -> https://mailtrap.io)
+
+
+Lancez la commande pour créer la base de données "Bienetre"
 ```bash
-  cd bienetre
+$  php bin/console doctrine:database:create
 ```
 
-- Installer les dépendences
-
+Lancez les migrations (création des tables + realtions dans la DB)
 ```bash
-  composer install
+$  php bin/console d:m:m
 ```
 
-- Créez une base de données "bienetre"
-
-- Configurer l'accès à la DB dans le fichier ".env" situé à la racine du projet
-
+Lancer les fixutes (insertion de toutes les localités, communes et code postaux de Belgique dans la DB)
 ```bash
-DATABASE_URL="mysql://"DB":"PASSWORD"@127.0.0.1:3306/app?serverVersion=8&charset=utf8mb4"
+php bin/console doctrine:fixtures:load
 ```
 
-- Configurer le mailer dans le fichier ".env"
-
+- Demandez une clé API sur le site: https://opencagedata.com (gratuit).
+- Dans le répertoire src/Controller/PartenaireController, ligne 69:
 ```bash
-MAILER_DSN=smtp://84f6144b7e5ad3:c44d6cc99974d1@sandbox.smtp.mailtrap.io:2525?encryption=tls&auth_mode=login
+$geocoder = new Geocoder('Entrez votre clé API ici');
 ```
 
-- Démarrer le serveur
-
+- Démarrer le serveur Symfony
 ```bash
-  symfony server:start
+$  symfony server:start
 ```
 
 
-## Pour ajouter les localité en base de données
+## 👀 About Me
+After several weeks passed reading the documentation, I think I fell in love with symfony.. 😅
 
-```php
-import Component from 'my-project'
+## 🧑‍🔧 Tech Stack
 
-function App() {
-  return <Component />
-}
-```
-
-
-## 🚀 About Me
-I think I'm now a symfony junior developer 😅 (no kiding)
-
-
-## Tech Stack
-
-**Client:** javascript, twig, sass
+**Client:** javascript, twig, scss
 
 **Server:** php, symfony
 
+**API:** OpenCage Geocoding
