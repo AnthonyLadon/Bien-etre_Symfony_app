@@ -12,7 +12,7 @@ Présentation du projet
 - Cloner le projet
 
 ```bash
-  git clone https://https://github.com/AnthonyLadon/projet_etudes_site_Bien-etre.git
+  git clone https://github.com/AnthonyLadon/projet_etudes_site_Bien-etre.git
 ```
 
 - Aller dans le repertoire du projet
