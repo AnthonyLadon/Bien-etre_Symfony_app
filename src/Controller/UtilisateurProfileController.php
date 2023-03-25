@@ -18,19 +18,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class UtilisateurProfileController extends AbstractController
 {
 
-    // ----------------------------------------------------------------
-    // Gestion profil Utilisateur (Internaute)
-    // ----------------------------------------------------------------
-    //------------------------------------------------------------------
-    // Contrôle d'accès selon les roles défini dans config/packages/security.yaml
-    // 
-    // access_control:
-    // - { path: ^/admin, roles: ROLE_ADMIN }
-    // - { path: ^/profil, roles: ROLE_USER }
-    // - { path: ^/editer_profil, roles: ROLE_USER }
-    // - { path: ^/editer_adresse, roles: ROLE_USER }
-    // - { path: ^/editer_infos, roles: ROLE_USER }
-    //------------------------------------------------------------------
+  /*
+  * Gestion du profil utilisateur (internaute)
+  * Contrôle d'accès selon les roles défini dans config/packages/security.yaml
+  */
+
+
     /**
      * @Route("/profil/{id}",name="profil_user")
      */
